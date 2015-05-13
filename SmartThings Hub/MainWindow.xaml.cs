@@ -33,7 +33,8 @@ namespace SmartThings_Hub
 
         void timer_Tick(object sender, EventArgs e)
         {
-            LockTime.Content = (DateTime.Now.Hour + " " + DateTime.Now.Minute).ToString();
+            LockTime.Content = DateTime.Now.ToString("h" + " " + "mm");
+            LockDate.Content = DateTime.Now.ToString("dddd, " + "MMMM dd" + ", " + "yyyy");
         }
     }
 }

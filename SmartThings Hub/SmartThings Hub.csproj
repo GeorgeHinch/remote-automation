@@ -88,6 +88,7 @@
     <None Include="28H.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Resource Include="Fonts\Roboto-Thin.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -99,22 +100,22 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="background_cascades.jpg" />
-    <BlendEmbeddedFont Include="Fonts\segoeui.ttf">
+    <BlendEmbeddedFont Include="Fonts\Roboto-Bold.ttf">
       <IsSystemFont>True</IsSystemFont>
       <All>True</All>
       <AutoFill>True</AutoFill>
     </BlendEmbeddedFont>
-    <BlendEmbeddedFont Include="Fonts\segoeuib.ttf">
+    <BlendEmbeddedFont Include="Fonts\Roboto-BoldItalic.ttf">
       <IsSystemFont>True</IsSystemFont>
       <All>True</All>
       <AutoFill>True</AutoFill>
     </BlendEmbeddedFont>
-    <BlendEmbeddedFont Include="Fonts\segoeuii.ttf">
+    <BlendEmbeddedFont Include="Fonts\Roboto-Italic.ttf">
       <IsSystemFont>True</IsSystemFont>
       <All>True</All>
       <AutoFill>True</AutoFill>
     </BlendEmbeddedFont>
-    <BlendEmbeddedFont Include="Fonts\segoeuiz.ttf">
+    <BlendEmbeddedFont Include="Fonts\Roboto-Regular.ttf">
       <IsSystemFont>True</IsSystemFont>
       <All>True</All>
       <AutoFill>True</AutoFill>

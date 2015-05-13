@@ -8,16 +8,27 @@
         <Grid.Background>
             <ImageBrush x:Name="backgroundGrid" ImageSource="pack://siteoforigin:,,,/28H.jpg" />
         </Grid.Background>
-        <Grid Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25*" />
+            <ColumnDefinition Width="50*" />
+            <ColumnDefinition Width="25*" />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Button Content="tap to unlock" HorizontalAlignment="Left" Margin="15,0,0,10" VerticalAlignment="Bottom" Background="{x:Null}" BorderBrush="{x:Null}" Padding="1" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontFamily="/SmartThings Hub;component/Fonts/#Roboto" Grid.IsSharedSizeScope="True" Foreground="White" Opacity="0.745" IsDefault="True" FontWeight="Bold" FontSize="21.333"/>
+        </Grid>
+        <Grid Grid.Column="1" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Rectangle HorizontalAlignment="Center" Margin="0,111,0,84.666" VerticalAlignment="Center" Fill="Black" Opacity="0.8" Width="200" Height="37.333"/>
             <Rectangle HorizontalAlignment="Center" Margin="0,153.333,0,42.333" VerticalAlignment="Center" Fill="Black" Opacity="0.8" Width="200" Height="37.333"/>
             <Rectangle HorizontalAlignment="Center" Margin="0,195.666,0,0" VerticalAlignment="Center" Fill="Black" Opacity="0.8" Width="200" Height="37.333"/>
             <Grid>
-                <Rectangle HorizontalAlignment="Center" Margin="0,0,0,126.999" VerticalAlignment="Center" Fill="Black" Opacity="0.8" Width="200" Height="106"/>
-                <Label x:Name="LockTime" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0" Width="180" FontSize="64" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                <Rectangle HorizontalAlignment="Center" Margin="0,0,0,126.999" VerticalAlignment="Center" Fill="Black" Opacity="0.8" Width="2000" Height="106"/>
+                <Label x:Name="LockTime" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0" Width="180" FontSize="64" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontFamily="/SmartThings Hub;component/Fonts/#Roboto" FontWeight="Thin"/>
+                <Label x:Name="LockDate" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10,0,10,138" Width="180" FontSize="13.333" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontFamily="/SmartThings Hub;component/Fonts/#Roboto" FontWeight="Thin"/>
             </Grid>
         </Grid>
-        <Button Content="tap to unlock" HorizontalAlignment="Left" Margin="15,0,0,10" VerticalAlignment="Bottom" Background="{x:Null}" BorderBrush="{x:Null}" Padding="1" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontFamily="/SmartThings Hub;component/Fonts/#Segoe UI" Grid.IsSharedSizeScope="True" FontWeight="Bold" Foreground="White" Opacity="0.745" IsDefault="True"/>
-
+        <Grid Grid.Column="2">
+            
+        </Grid>
+        
     </Grid>
 </Window>
