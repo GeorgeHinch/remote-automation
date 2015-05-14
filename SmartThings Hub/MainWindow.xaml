@@ -1,9 +1,56 @@
-﻿<Window x:Class="SmartThings_Hub.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525"
+        xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" x:Class="SmartThings_Hub.MainWindow"
+        Title="MainWindow"
         WindowStyle="None" ResizeMode="NoResize"  
         WindowStartupLocation="CenterScreen" WindowState="Maximized">
+
+    <Window.Resources>
+        <Style x:Key="BaseButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Background" Value="#ffffff"/>
+            <Setter Property="BorderBrush" Value="#cccccc"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="#333333"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="16,3,16,3"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="Chrome"
+        					Background="{TemplateBinding Background}"
+        					BorderBrush="{TemplateBinding BorderBrush}"
+        					BorderThickness="{TemplateBinding BorderThickness}"
+        					SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="Presenter" Margin="{TemplateBinding Padding}"
+        						VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+        						HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+        						RecognizesAccessKey="True"
+        						SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="#333333" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#dddddd" />
+                                <Setter Property="BorderBrush" Value="#cccccc" />
+                                <Setter Property="Foreground" Value="#333333" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Foreground" Value="#ffffff"/>
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="true">
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
     <Grid>
         <Grid.Background>
             <ImageBrush x:Name="backgroundGrid" ImageSource="pack://siteoforigin:,,,/28H.jpg" />
@@ -14,21 +61,19 @@
             <ColumnDefinition Width="25*" />
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
-            <Button Content="tap to unlock" HorizontalAlignment="Left" Margin="15,0,0,10" VerticalAlignment="Bottom" Background="{x:Null}" BorderBrush="{x:Null}" Padding="1" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontFamily="/SmartThings Hub;component/Fonts/#Roboto" Grid.IsSharedSizeScope="True" Foreground="White" Opacity="0.745" IsDefault="True" FontWeight="Bold" FontSize="21.333"/>
+            <Button x:Name="Unlock" Style="{DynamicResource BaseButtonStyle}" Content="tap to unlock" HorizontalAlignment="Left" Margin="15,0,0,10" VerticalAlignment="Bottom" Background="{x:Null}" BorderBrush="{x:Null}" Padding="1" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontFamily="/SmartThings Hub;component/Fonts/#Roboto" Grid.IsSharedSizeScope="True" Foreground="White" Opacity="0.75" FontSize="21.333" FontWeight="Light"/>
         </Grid>
         <Grid Grid.Column="1" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Rectangle HorizontalAlignment="Center" Margin="0,111,0,84.666" VerticalAlignment="Center" Fill="Black" Opacity="0.8" Width="200" Height="37.333"/>
-            <Rectangle HorizontalAlignment="Center" Margin="0,153.333,0,42.333" VerticalAlignment="Center" Fill="Black" Opacity="0.8" Width="200" Height="37.333"/>
-            <Rectangle HorizontalAlignment="Center" Margin="0,195.666,0,0" VerticalAlignment="Center" Fill="Black" Opacity="0.8" Width="200" Height="37.333"/>
+            <Rectangle HorizontalAlignment="Center" Margin="0,111,0,84.666" VerticalAlignment="Center" Fill="Black" Opacity="0.6" Width="200" Height="37.333"/>
+            <Rectangle HorizontalAlignment="Center" Margin="0,153.333,0,42.333" VerticalAlignment="Center" Fill="Black" Opacity="0.6" Width="200" Height="37.333"/>
+            <Rectangle HorizontalAlignment="Center" Margin="0,195.666,0,0" VerticalAlignment="Center" Fill="Black" Opacity="0.6" Width="200" Height="37.333"/>
             <Grid>
-                <Rectangle HorizontalAlignment="Center" Margin="0,0,0,126.999" VerticalAlignment="Center" Fill="Black" Opacity="0.8" Width="2000" Height="106"/>
+                <Rectangle HorizontalAlignment="Center" Margin="0,0,0,126.999" VerticalAlignment="Center" Fill="Black" Opacity="0.6" Width="200" Height="106"/>
                 <Label x:Name="LockTime" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0" Width="180" FontSize="64" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontFamily="/SmartThings Hub;component/Fonts/#Roboto" FontWeight="Thin"/>
                 <Label x:Name="LockDate" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10,0,10,138" Width="180" FontSize="13.333" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontFamily="/SmartThings Hub;component/Fonts/#Roboto" FontWeight="Thin"/>
             </Grid>
         </Grid>
-        <Grid Grid.Column="2">
-            
-        </Grid>
-        
+        <Grid Grid.Column="2"/>
+
     </Grid>
 </Window>
