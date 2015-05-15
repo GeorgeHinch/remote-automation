@@ -89,7 +89,11 @@
             </Grid>
         </Grid>
         <Grid x:Name="RightColumn" Grid.Column="2">
-
+            <StackPanel>
+                <Image />
+                <Image />
+                <Image />
+            </StackPanel>
         </Grid>
 
     </Grid>
