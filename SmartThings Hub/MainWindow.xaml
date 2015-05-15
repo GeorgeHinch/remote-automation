@@ -73,7 +73,29 @@
             <Rectangle HorizontalAlignment="Center" Margin="0,153.333,0,42.333" VerticalAlignment="Center" Fill="Black" Opacity="0.6" Width="{DynamicResource {x:Static SystemParameters.FullPrimaryScreenWidthKey}}" Height="37.333"/>
             <Rectangle HorizontalAlignment="Center" Margin="0,195.666,0,0" VerticalAlignment="Center" Fill="Black" Opacity="0.6" Width="{DynamicResource {x:Static SystemParameters.FullPrimaryScreenWidthKey}}" Height="37.333"/>
         </Grid>
-        <Grid Grid.Column="2"/>
+        <Grid x:Name="grid" Grid.Column="2">
+            <StackPanel VerticalAlignment="Center">
+                <Rectangle Fill="Black" Opacity="0.6" Height="37.333" Margin="2"/>
+                <Rectangle Fill="Black" Opacity="0.6" Height="37.333" Margin="2"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <Rectangle Fill="Black" Opacity="0.6" Height="37.333" Margin="2"/>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Rectangle Fill="Black" Opacity="0.6" Height="37.333" Margin="2"/>
+                    </Grid>
+                    <Grid Grid.Column="2">
+                        <Rectangle Fill="Black" Opacity="0.6" Height="37.333" Margin="2"/>
+                    </Grid>
+                </Grid>
+            </StackPanel>
+        </Grid>
 
     </Grid>
 </Window>
