@@ -89,10 +89,19 @@
             </Grid>
         </Grid>
         <Grid x:Name="RightColumn" Grid.Column="2">
-            <StackPanel>
-                <Image />
-                <Image />
-                <Image />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Height="35" Opacity="0.1" Margin="0,10,10,0">
+                <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="2">
+                    <Image x:Name="ic_notifications_50px_png" Source="ic_notifications_50px.png" Stretch="Fill"/>
+                </Button>
+                <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="2">
+                    <Image x:Name="ic_bluetooth_connected_50px_png" Source="ic_bluetooth_connected_50px.png" Stretch="Fill"/>
+                </Button>
+                <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="2">
+                    <Image x:Name="ic_signal_wifi_statusbar_4_bar_50px_png" Source="ic_signal_wifi_statusbar_4_bar_50px.png" Stretch="Fill"/>
+                </Button>
+                <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="2">
+                    <Image x:Name="ic_power_connected_50px_png" Source="ic_power_connected_50px.png" Stretch="Fill"/>
+                </Button>
             </StackPanel>
         </Grid>
 
