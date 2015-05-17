@@ -32,12 +32,18 @@ namespace SmartThings_Hub
             } else if (sigStrength >=20 && sigStrength < 40)
             {
                 toReturn.SigStrength = NetworkResultSignalStrength.TWO;
-            } else if (sigStrength >= 60 && sigStrength < 40)
+            } else if (sigStrength >= 40 && sigStrength < 60)
             {
                 toReturn.SigStrength = NetworkResultSignalStrength.THREE;
-            } else if (sigStrength >=80 && sigStrength < 60)
+            } else if (sigStrength >=60 && sigStrength < 80)
             {
                 toReturn.SigStrength = NetworkResultSignalStrength.FOUR;
+            } else if (sigStrength > 80)
+            {
+                toReturn.SigStrength = NetworkResultSignalStrength.FIVE;
+            } else if (sigStrength == 0)
+            {
+                toReturn.SigStrength = NetworkResultSignalStrength.ZERO;
             }
             return toReturn;            
             

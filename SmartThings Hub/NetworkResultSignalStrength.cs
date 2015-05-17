@@ -6,6 +6,7 @@
         TWO,
         THREE,
         FOUR,
-        FIVE
+        FIVE,
+        ZERO
     }
 }

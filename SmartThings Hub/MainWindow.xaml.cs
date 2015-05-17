@@ -44,13 +44,28 @@ namespace SmartThings_Hub
             LockDate.Content = DateTime.Now.ToString("dddd, " + "MMMM dd" + ", " + "yyyy");
             LockPower.Content = MainWindow.PowerLineStatus;
             NetworkStatusResult currentStatus = networkStatuserrrrr.refresh();
+            LockSSID.Content = currentStatus.Ssid;
             //Console.WriteLine(currentStatus.Ssid);
             switch (currentStatus.SigStrength){
                 case NetworkResultSignalStrength.ONE:
+                    LockSigStrength.Content = "ONE";
                     //sigStrengthIcon.Source = ((Image)dic["ic_signal_wifi_statusbar_4_bar_50px"]).Source;
                     break;
-                
-                    
+                case NetworkResultSignalStrength.TWO:
+                    LockSigStrength.Content = "TWO";
+                    break;
+                case NetworkResultSignalStrength.THREE:
+                    LockSigStrength.Content = "THREE";
+                    break;
+                case NetworkResultSignalStrength.FOUR:
+                    LockSigStrength.Content = "FOUR";
+                    break;
+                case NetworkResultSignalStrength.FIVE:
+                    LockSigStrength.Content = "FIVE";
+                    break;
+                case NetworkResultSignalStrength.ZERO:
+                    LockSigStrength.Content = "ZERO";
+                    break;
             }
         }
 
