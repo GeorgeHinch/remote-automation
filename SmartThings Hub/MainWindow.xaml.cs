@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using System.Runtime.InteropServices;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
@@ -35,29 +36,17 @@ namespace SmartThings_Hub
         {
             LockTime.Content = DateTime.Now.ToString("h" + " " + "mm");
             LockDate.Content = DateTime.Now.ToString("dddd, " + "MMMM dd" + ", " + "yyyy");
-        }
-    }
-
-    public class PercentageConverter : IValueConverter
-    {
-        public object Convert(object value,
-            Type targetType,
-            object parameter,
-            System.Globalization.CultureInfo culture)
-        {
-            return System.Convert.ToDouble(value) *
-                   System.Convert.ToDouble(parameter);
+            LockPower.Content = MainWindow.PowerLineStatus;
+            var penis = new NetworkStatus();
         }
 
-        public object ConvertBack(object value,
-            Type targetType,
-            object parameter,
-            System.Globalization.CultureInfo culture)
+        public static PowerLineStatus PowerLineStatus
         {
-            throw new NotImplementedException();
+            get;
         }
     }
 }
+
 
 
 

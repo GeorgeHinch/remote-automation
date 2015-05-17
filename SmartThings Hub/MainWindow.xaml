@@ -52,7 +52,7 @@
 
     <Grid x:Name="ThreeGrid">
         <Grid.Background>
-            <ImageBrush x:Name="backgroundGrid" ImageSource="pack://siteoforigin:,,,/28H.jpg" />
+            <ImageBrush x:Name="backgroundGrid" ImageSource="pack://siteoforigin:,,,/resources/28H.jpg" />
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="30*" />
@@ -60,7 +60,7 @@
             <ColumnDefinition Width="30*" />
         </Grid.ColumnDefinitions>
         <Grid x:Name="LeftColumn" Grid.Column="0">
-            <Button x:Name="Unlock" Style="{DynamicResource BaseButtonStyle}" Content="tap to unlock" HorizontalAlignment="Left" Margin="15,0,0,10" VerticalAlignment="Bottom" Background="{x:Null}" BorderBrush="{x:Null}" Padding="1" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontFamily="/SmartThings Hub;component/Fonts/#Roboto" Grid.IsSharedSizeScope="True" Foreground="White" Opacity="0.75" FontSize="21.333" FontWeight="Light"/>
+            <Button x:Name="Unlock" Style="{DynamicResource BaseButtonStyle}" Content="tap to unlock" HorizontalAlignment="Left" Margin="15,0,0,10" VerticalAlignment="Bottom" Background="{x:Null}" BorderBrush="{x:Null}" Padding="1" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontFamily="/SmartThings Hub;component/Fonts/#Roboto" Grid.IsSharedSizeScope="True" Foreground="White" Opacity="0.75" FontSize="29.333" FontWeight="Light"/>
         </Grid>
         <Grid x:Name="CenterColumn" Grid.Column="1" Margin="0" VerticalAlignment="Center">
             <Grid x:Name="TimeDateBlock">
@@ -68,8 +68,13 @@
                 <Label x:Name="LockTime" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0" Width="180" FontSize="64" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontFamily="/SmartThings Hub;component/Fonts/#Roboto" FontWeight="Thin"/>
                 <Label x:Name="LockDate" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10,0,10,138" Width="180" FontSize="13.333" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontFamily="/SmartThings Hub;component/Fonts/#Roboto" FontWeight="Thin"/>
             </Grid>
-            <Rectangle HorizontalAlignment="Center" Margin="0,111,0,84.666" VerticalAlignment="Center" Fill="Black" Opacity="0.6" Height="37.333" Width="{Binding ActualWidth, ElementName=CenterColumn, Mode=OneWay}"/>
-            <Rectangle HorizontalAlignment="Center" Margin="0,153.333,0,42.333" VerticalAlignment="Center" Fill="Black" Opacity="0.6" Height="37.333" Width="{Binding ActualWidth, ElementName=CenterColumn, Mode=OneWay}"/>
+            <Grid x:Name="HouseStatus">
+                <Rectangle HorizontalAlignment="Center" Margin="0,111,0,84.666" VerticalAlignment="Center" Fill="Black" Opacity="0.6" Height="37.333" Width="{Binding ActualWidth, ElementName=CenterColumn, Mode=OneWay}"/>
+                <Label Name="LockPower" />
+            </Grid>
+            <Grid x:Name="LocalStatus">
+                <Rectangle HorizontalAlignment="Center" Margin="0,153.333,0,42.333" VerticalAlignment="Center" Fill="Black" Opacity="0.6" Height="37.333" Width="{Binding ActualWidth, ElementName=CenterColumn, Mode=OneWay}"/>
+            </Grid>
             <Grid x:Name="ThreeButton" Margin="0,195.666,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -89,18 +94,18 @@
             </Grid>
         </Grid>
         <Grid x:Name="RightColumn" Grid.Column="2">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Height="35" Opacity="0.1" Margin="0,10,10,0">
-                <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="2">
-                    <Image x:Name="ic_notifications_50px_png" Source="ic_notifications_50px.png" Stretch="Fill"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" Opacity="0.15" Margin="0,10,15,0">
+                <Button Style="{DynamicResource BaseButtonStyle}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0" Padding="5" Height="40">
+                    <Image x:Name="ic_notifications_50px_png" Source="pack://application:,,,/resources/symbols/ic_notifications_50px.png" Stretch="Fill"/>
                 </Button>
-                <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="2">
-                    <Image x:Name="ic_bluetooth_connected_50px_png" Source="ic_bluetooth_connected_50px.png" Stretch="Fill"/>
+                <Button Style="{DynamicResource BaseButtonStyle}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0" Padding="5" Height="40">
+                    <Image x:Name="ic_bluetooth_connected_50px_png" Source="pack://application:,,,/resources/symbols/ic_bluetooth_connected_50px.png" Stretch="Fill"/>
                 </Button>
-                <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="2">
-                    <Image x:Name="ic_signal_wifi_statusbar_4_bar_50px_png" Source="ic_signal_wifi_statusbar_4_bar_50px.png" Stretch="Fill"/>
+                <Button Style="{DynamicResource BaseButtonStyle}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0" Padding="5" Height="40">
+                    <Image x:Name="ic_signal_wifi_statusbar_4_bar_50px_png" Source="pack://application:,,,/resources/symbols/ic_signal_wifi_statusbar_4_bar_50px.png" Stretch="Fill"/>
                 </Button>
-                <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="2">
-                    <Image x:Name="ic_power_connected_50px_png" Source="ic_power_connected_50px.png" Stretch="Fill"/>
+                <Button Style="{DynamicResource BaseButtonStyle}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0" Padding="5" Height="40">
+                    <Image x:Name="ic_power_connected_50px_png" Source="pack://application:,,,/resources/symbols/ic_power_connected_50px.png" Stretch="Fill"/>
                 </Button>
             </StackPanel>
         </Grid>
