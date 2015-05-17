@@ -23,6 +23,10 @@ namespace SmartThings_Hub
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        NetworkStatus networkStatuserrrrr;
+        ResourceDictionary dic;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -30,6 +34,8 @@ namespace SmartThings_Hub
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
             timer.Start();
+            networkStatuserrrrr = new NetworkStatus();
+            //dic = this.Resources.MergedDictionaries[0];
         }
 
         void timer_Tick(object sender, EventArgs e)
@@ -37,7 +43,15 @@ namespace SmartThings_Hub
             LockTime.Content = DateTime.Now.ToString("h" + " " + "mm");
             LockDate.Content = DateTime.Now.ToString("dddd, " + "MMMM dd" + ", " + "yyyy");
             LockPower.Content = MainWindow.PowerLineStatus;
-            var penis = new NetworkStatus();
+            NetworkStatusResult currentStatus = networkStatuserrrrr.refresh();
+            //Console.WriteLine(currentStatus.Ssid);
+            switch (currentStatus.SigStrength){
+                case NetworkResultSignalStrength.ONE:
+                    //sigStrengthIcon.Source = ((Image)dic["ic_signal_wifi_statusbar_4_bar_50px"]).Source;
+                    break;
+                
+                    
+            }
         }
 
         public static PowerLineStatus PowerLineStatus
