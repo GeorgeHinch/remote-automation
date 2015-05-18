@@ -71,8 +71,8 @@
             <Grid x:Name="HouseStatus">
                 <Rectangle HorizontalAlignment="Center" Margin="0,111,0,84.666" VerticalAlignment="Center" Fill="Black" Opacity="0.6" Height="37.333" Width="{Binding ActualWidth, ElementName=CenterColumn, Mode=OneWay}"/>
                 <Label Name="LockPower" />
-                <Label Name="LockSigStrength" Margin="0,154,0,-154"/>
-                <Label Name="LockSSID" Margin="0,112,0,-112"/>
+                <Label Name="LockSigStrength" Margin="0,154,0,-154" Foreground="White"/>
+                <Label Name="LockSSID" Margin="0,112,0,-112" Foreground="White"/>
             </Grid>
             <Grid x:Name="LocalStatus">
                 <Rectangle HorizontalAlignment="Center" Margin="0,153.333,0,42.333" VerticalAlignment="Center" Fill="Black" Opacity="0.6" Height="37.333" Width="{Binding ActualWidth, ElementName=CenterColumn, Mode=OneWay}"/>

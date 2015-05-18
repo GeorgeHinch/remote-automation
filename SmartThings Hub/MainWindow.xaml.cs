@@ -25,7 +25,7 @@ namespace SmartThings_Hub
     {
 
         NetworkStatus networkStatuserrrrr;
-        ResourceDictionary dic;
+        //ResourceDictionary dic;
 
         public MainWindow()
         {
@@ -42,10 +42,27 @@ namespace SmartThings_Hub
         {
             LockTime.Content = DateTime.Now.ToString("h" + " " + "mm");
             LockDate.Content = DateTime.Now.ToString("dddd, " + "MMMM dd" + ", " + "yyyy");
-            LockPower.Content = MainWindow.PowerLineStatus;
+            LockPower.Content = SystemParameters.PowerLineStatus;
             NetworkStatusResult currentStatus = networkStatuserrrrr.refresh();
             LockSSID.Content = currentStatus.Ssid;
-            //Console.WriteLine(currentStatus.Ssid);
+            // Getting the current system power status.
+            string strPowerLineStatus;
+            strPowerLineStatus = string.Empty;
+            switch (SystemParameters.PowerLineStatus)
+            {
+                case PowerLineStatus.Offline:
+                    strPowerLineStatus = "PowerLineStatus: Offline";
+                    break;
+                case PowerLineStatus.Online:
+                    strPowerLineStatus = "PowerLineStatus: Online";
+                    break;
+                case PowerLineStatus.Unknown:
+                    strPowerLineStatus = "PowerLineStatus: Unknown";
+                    break;
+            }
+            Console.WriteLine(strPowerLineStatus);
+
+            // Getting the current WiFi signal strength
             switch (currentStatus.SigStrength){
                 case NetworkResultSignalStrength.ONE:
                     LockSigStrength.Content = "ONE";
