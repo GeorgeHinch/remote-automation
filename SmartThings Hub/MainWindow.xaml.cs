@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Timers;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,9 +13,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Runtime.InteropServices;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using Windows.Foundation.UniversalApiContract;
 using Windows.UI.Xaml.Media.Imaging;
 
 namespace SmartThings_Hub
@@ -26,7 +27,6 @@ namespace SmartThings_Hub
     {
 
         NetworkStatus networkStatuserrrrr;
-        //ResourceDictionary dic;
 
         public MainWindow()
         {
@@ -36,16 +36,21 @@ namespace SmartThings_Hub
             timer.Tick += timer_Tick;
             timer.Start();
             networkStatuserrrrr = new NetworkStatus();
-            //dic = this.Resources.MergedDictionaries[0];
         }
 
         void timer_Tick(object sender, EventArgs e)
         {
+            // Placing time & date on lock
             LockTime.Content = DateTime.Now.ToString("h" + " " + "mm");
             LockDate.Content = DateTime.Now.ToString("dddd, " + "MMMM dd" + ", " + "yyyy");
+
+            // Getting system power status
             LockPower.Content = SystemParameters.PowerLineStatus;
+
+            // Getting network SSID & placing it on lock screen
             NetworkStatusResult currentStatus = networkStatuserrrrr.refresh();
             LockSSID.Content = currentStatus.Ssid;
+
             // Getting the current system power status.
             string strPowerLineStatus;
             strPowerLineStatus = string.Empty;
@@ -71,7 +76,6 @@ namespace SmartThings_Hub
                 case NetworkResultSignalStrength.ONE:
                     LockSigStrength.Content = "ONE";
                     sigStrengthIcon.Source = new BitmapImage(new Uri(base.BaseUri, “/resources/symbols/ic_signal_wifi_statusbar_1_bar_50px.png”));
-                    //sigStrengthIcon.Source = ((Image)dic["ic_signal_wifi_statusbar_4_bar_50px"]).Source;
                     break;
                 case NetworkResultSignalStrength.TWO:
                     LockSigStrength.Content = "TWO";
@@ -98,11 +102,3 @@ namespace SmartThings_Hub
         }
     }
 }
-
-
-
-
-
-
-/// http://www.wpf-tutorial.com/misc/dispatchertimer/
-/// http://www.thecodingguys.net/tutorials/csharp/csharp-dates-and-times
