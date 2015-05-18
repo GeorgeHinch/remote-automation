@@ -2,11 +2,10 @@
 {
     public enum NetworkResultSignalStrength
     {
+        ZERO,
         ONE,
         TWO,
         THREE,
-        FOUR,
-        FIVE,
-        ZERO
+        FOUR
     }
 }

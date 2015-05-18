@@ -22,31 +22,28 @@ namespace SmartThings_Hub
                 return toReturn;
             }
             WlanClient.WlanInterface wlanInterface = wlan.Interfaces[0];
-            
+
             Wlan.Dot11Ssid ssid = wlanInterface.CurrentConnection.wlanAssociationAttributes.dot11Ssid;
             var sigStrength = wlanInterface.CurrentConnection.wlanAssociationAttributes.wlanSignalQuality;
             toReturn.Ssid = new String(Encoding.ASCII.GetChars(ssid.SSID, 0, (int)ssid.SSIDLength));
-            if (sigStrength > 0 && sigStrength < 20)
+            if (sigStrength > 0 && sigStrength < 25)
             {
                 toReturn.SigStrength = NetworkResultSignalStrength.ONE;
-            } else if (sigStrength >=20 && sigStrength < 40)
+            } else if (sigStrength >=25 && sigStrength < 50)
             {
                 toReturn.SigStrength = NetworkResultSignalStrength.TWO;
-            } else if (sigStrength >= 40 && sigStrength < 60)
+            } else if (sigStrength >= 50 && sigStrength < 75)
             {
                 toReturn.SigStrength = NetworkResultSignalStrength.THREE;
-            } else if (sigStrength >=60 && sigStrength < 80)
+            } else if (sigStrength >=75)
             {
                 toReturn.SigStrength = NetworkResultSignalStrength.FOUR;
-            } else if (sigStrength > 80)
-            {
-                toReturn.SigStrength = NetworkResultSignalStrength.FIVE;
             } else if (sigStrength == 0)
             {
                 toReturn.SigStrength = NetworkResultSignalStrength.ZERO;
             }
-            return toReturn;            
-            
+            return toReturn;
+
         }
 
         static string GetStringForSSID(Wlan.Dot11Ssid ssid)

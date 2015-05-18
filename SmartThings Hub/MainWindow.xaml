@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="SmartThings_Hub.MainWindow"
         Title="MainWindow"
-        WindowStyle="None" ResizeMode="NoResize"  
+        WindowStyle="None" ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen" WindowState="Maximized">
 
     <Window.Resources>
@@ -107,7 +107,7 @@
                     <Image x:Name="sigStrengthIcon" Source="pack://siteoforigin:,,,/resources/symbols/ic_signal_wifi_statusbar_4_bar_50px.png" Stretch="Fill"/>
                 </Button>
                 <Button Style="{DynamicResource BaseButtonStyle}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0" Padding="5" Height="40">
-                    <Image x:Name="ic_power_connected_50px_png" Source="pack://siteoforigin:,,,/resources/symbols/ic_power_connected_50px.png" Stretch="Fill"/>
+                    <Image x:Name="pwrStateIcon" Source="pack://siteoforigin:,,,/resources/symbols/ic_power_connected_50px.png" Stretch="Fill"/>
                 </Button>
             </StackPanel>
         </Grid>
