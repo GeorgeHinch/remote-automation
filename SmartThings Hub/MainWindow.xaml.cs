@@ -15,8 +15,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-using Windows.Foundation.UniversalApiContract;
-using Windows.UI.Xaml.Media.Imaging;
 
 namespace SmartThings_Hub
 {
@@ -58,15 +56,18 @@ namespace SmartThings_Hub
             {
                 case PowerLineStatus.Offline:
                     strPowerLineStatus = "PowerLineStatus: Offline";
-                    pwrStateIcon.Source = new BitmapImage(new Uri(base.BaseUri, “/resources/symbols/ic_battery_alert_50px.png”));
+                    BitmapImage batAlert = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/resources/symbols/ic_battery_alert_50px.png", UriKind.Absolute));
+                    pwrStateIcon.Source = batAlert as ImageSource;
                     break;
                 case PowerLineStatus.Online:
                     strPowerLineStatus = "PowerLineStatus: Online";
-                    pwrStateIcon.Source = new BitmapImage(new Uri(base.BaseUri, “/resources/symbols/ic_power_connected_50px.png”));
+                    BitmapImage batConnected = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/resources/symbols/ic_power_connected_50px.png", UriKind.Absolute));
+                    pwrStateIcon.Source = batConnected as ImageSource;
                     break;
                 case PowerLineStatus.Unknown:
                     strPowerLineStatus = "PowerLineStatus: Unknown";
-                    pwrStateIcon.Source = new BitmapImage(new Uri(base.BaseUri, “/resources/symbols/ic_battery_unknown_50px.png”));
+                    BitmapImage batUnkown = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/resources/symbols/ic_battery_unknown_50px.png", UriKind.Absolute));
+                    pwrStateIcon.Source = batUnkown as ImageSource;
                     break;
             }
             Console.WriteLine(strPowerLineStatus);
@@ -75,23 +76,32 @@ namespace SmartThings_Hub
             switch (currentStatus.SigStrength){
                 case NetworkResultSignalStrength.ONE:
                     LockSigStrength.Content = "ONE";
-                    sigStrengthIcon.Source = new BitmapImage(new Uri(base.BaseUri, “/resources/symbols/ic_signal_wifi_statusbar_1_bar_50px.png”));
+                    BitmapImage sigOne = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/resources/symbols/ic_signal_wifi_statusbar_1_bar_50px.png", UriKind.Absolute));
+                    sigStrengthIcon.Source = sigOne as ImageSource;
                     break;
                 case NetworkResultSignalStrength.TWO:
                     LockSigStrength.Content = "TWO";
-                    sigStrengthIcon.Source = new BitmapImage(new Uri(base.BaseUri, “/resources/symbols/ic_signal_wifi_statusbar_2_bar_50px.png”));
+                    BitmapImage sigTwo = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/resources/symbols/ic_signal_wifi_statusbar_2_bar_50px.png", UriKind.Absolute));
+                    sigStrengthIcon.Source = sigTwo as ImageSource;
                     break;
                 case NetworkResultSignalStrength.THREE:
                     LockSigStrength.Content = "THREE";
-                    sigStrengthIcon.Source = new BitmapImage(new Uri(base.BaseUri, “/resources/symbols/ic_signal_wifi_statusbar_3_bar_50px.png”));
+                    BitmapImage sigThree = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/resources/symbols/ic_signal_wifi_statusbar_3_bar_50px.png", UriKind.Absolute));
+                    sigStrengthIcon.Source = sigThree as ImageSource;
                     break;
                 case NetworkResultSignalStrength.FOUR:
                     LockSigStrength.Content = "FOUR";
-                    sigStrengthIcon.Source = new BitmapImage(new Uri(base.BaseUri, “/resources/symbols/is_signal_wifi_statusbar_4_bar_50px.png”));
+                    BitmapImage sigFour = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/resources/symbols/ic_signal_wifi_statusbar_4_bar_50px.png", UriKind.Absolute));
+                    sigStrengthIcon.Source = sigFour as ImageSource;
                     break;
                 case NetworkResultSignalStrength.ZERO:
                     LockSigStrength.Content = "ZERO";
-                    sigStrengthIcon.Source = new BitmapImage(new Uri(base.BaseUri, “/resources/symbols/ic_signal_wifi_statusbar_connected_no_internet_50px.png”));
+                    BitmapImage sigZero = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/resources/symbols/ic_signal_wifi_statusbar_connected_no_internet_50px.png", UriKind.Absolute));
+                    sigStrengthIcon.Source = sigZero as ImageSource;
+                    break;
+                case NetworkResultSignalStrength.ETHER:
+                    BitmapImage sigEther = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/resources/symbols/ic_system_update_50px.png", UriKind.Absolute));
+                    sigStrengthIcon.Source = sigEther as ImageSource;
                     break;
             }
         }

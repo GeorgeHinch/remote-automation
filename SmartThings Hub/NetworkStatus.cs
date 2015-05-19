@@ -1,7 +1,7 @@
 ﻿using NativeWifi;
 using System;
-using System.Collections.ObjectModel;
 using System.Text;
+
 
 namespace SmartThings_Hub
 {
@@ -19,7 +19,7 @@ namespace SmartThings_Hub
             NetworkStatusResult toReturn = new NetworkStatusResult();
             if (wlan.Interfaces.Length == 0)
             {
-                Console.WriteLine("Wlan Interfaces Lenght: 0");
+                toReturn.SigStrength = NetworkResultSignalStrength.ETHER;
                 return toReturn;
             }
             WlanClient.WlanInterface wlanInterface = wlan.Interfaces[0];

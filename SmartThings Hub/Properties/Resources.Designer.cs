@@ -63,9 +63,59 @@ namespace SmartThings_Hub.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap ic_battery_alert_50px {
+            get {
+                object obj = ResourceManager.GetObject("ic_battery_alert_50px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ic_battery_unknown_50px {
+            get {
+                object obj = ResourceManager.GetObject("ic_battery_unknown_50px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ic_bluetooth_50px {
+            get {
+                object obj = ResourceManager.GetObject("ic_bluetooth_50px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap ic_bluetooth_connected_50px {
             get {
                 object obj = ResourceManager.GetObject("ic_bluetooth_connected_50px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ic_developer_mode_200px {
+            get {
+                object obj = ResourceManager.GetObject("ic_developer_mode_200px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ic_exit_to_app_200px {
+            get {
+                object obj = ResourceManager.GetObject("ic_exit_to_app_200px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +143,109 @@ namespace SmartThings_Hub.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap ic_report_problem_200px {
+            get {
+                object obj = ResourceManager.GetObject("ic_report_problem_200px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ic_security_200px {
+            get {
+                object obj = ResourceManager.GetObject("ic_security_200px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ic_settings_50px {
+            get {
+                object obj = ResourceManager.GetObject("ic_settings_50px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ic_signal_wifi_statusbar_1_bar_50px {
+            get {
+                object obj = ResourceManager.GetObject("ic_signal_wifi_statusbar_1_bar_50px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ic_signal_wifi_statusbar_2_bar_50px {
+            get {
+                object obj = ResourceManager.GetObject("ic_signal_wifi_statusbar_2_bar_50px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ic_signal_wifi_statusbar_3_bar_50px {
+            get {
+                object obj = ResourceManager.GetObject("ic_signal_wifi_statusbar_3_bar_50px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap ic_signal_wifi_statusbar_4_bar_50px {
             get {
                 object obj = ResourceManager.GetObject("ic_signal_wifi_statusbar_4_bar_50px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ic_signal_wifi_statusbar_connected_no_internet_50px {
+            get {
+                object obj = ResourceManager.GetObject("ic_signal_wifi_statusbar_connected_no_internet_50px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ic_sms_failed_200px {
+            get {
+                object obj = ResourceManager.GetObject("ic_sms_failed_200px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ic_system_update_50px {
+            get {
+                object obj = ResourceManager.GetObject("ic_system_update_50px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ic_view_module_50px {
+            get {
+                object obj = ResourceManager.GetObject("ic_view_module_50px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -118,8 +118,23 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ic_battery_alert_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\symbols\ic_battery_alert_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_battery_unknown_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\symbols\ic_battery_unknown_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_bluetooth_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\symbols\ic_bluetooth_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ic_bluetooth_connected_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\symbols\ic_bluetooth_connected_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_developer_mode_200px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\symbols\ic_developer_mode_200px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_exit_to_app_200px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\symbols\ic_exit_to_app_200px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ic_notifications_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\symbols\ic_notifications_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -127,7 +142,37 @@
   <data name="ic_power_connected_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\symbols\ic_power_connected_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ic_report_problem_200px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\symbols\ic_report_problem_200px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_security_200px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\symbols\ic_security_200px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_settings_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\symbols\ic_settings_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_signal_wifi_statusbar_1_bar_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\symbols\ic_signal_wifi_statusbar_1_bar_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_signal_wifi_statusbar_2_bar_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\symbols\ic_signal_wifi_statusbar_2_bar_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_signal_wifi_statusbar_3_bar_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\symbols\ic_signal_wifi_statusbar_3_bar_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ic_signal_wifi_statusbar_4_bar_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\symbols\ic_signal_wifi_statusbar_4_bar_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_signal_wifi_statusbar_connected_no_internet_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\symbols\ic_signal_wifi_statusbar_connected_no_internet_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_sms_failed_200px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\symbols\ic_sms_failed_200px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_system_update_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\symbols\ic_system_update_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_view_module_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\symbols\ic_view_module_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

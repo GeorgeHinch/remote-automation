@@ -6,6 +6,7 @@
         ONE,
         TWO,
         THREE,
-        FOUR
+        FOUR,
+        ETHER
     }
 }
