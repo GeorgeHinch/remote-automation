@@ -23,27 +23,37 @@ namespace SmartThings_Hub
                 return toReturn;
             }
             WlanClient.WlanInterface wlanInterface = wlan.Interfaces[0];
-
-            Wlan.Dot11Ssid ssid = wlanInterface.CurrentConnection.wlanAssociationAttributes.dot11Ssid;
-            var sigStrength = wlanInterface.CurrentConnection.wlanAssociationAttributes.wlanSignalQuality;
-            toReturn.Ssid = new String(Encoding.ASCII.GetChars(ssid.SSID, 0, (int)ssid.SSIDLength));
-            if (sigStrength > 0 && sigStrength < 25)
+            if (wlanInterface.InterfaceState.Equals(Wlan.WlanInterfaceState.Connected))
             {
-                toReturn.SigStrength = NetworkResultSignalStrength.ONE;
-            } else if (sigStrength >=25 && sigStrength < 50)
-            {
-                toReturn.SigStrength = NetworkResultSignalStrength.TWO;
-            } else if (sigStrength >= 50 && sigStrength < 75)
-            {
-                toReturn.SigStrength = NetworkResultSignalStrength.THREE;
-            } else if (sigStrength >=75)
-            {
-                toReturn.SigStrength = NetworkResultSignalStrength.FOUR;
-            } else if (sigStrength == 0)
+                Wlan.Dot11Ssid ssid = wlanInterface.CurrentConnection.wlanAssociationAttributes.dot11Ssid;
+                var sigStrength = wlanInterface.CurrentConnection.wlanAssociationAttributes.wlanSignalQuality;
+                toReturn.Ssid = new String(Encoding.ASCII.GetChars(ssid.SSID, 0, (int)ssid.SSIDLength));
+                if (sigStrength > 0 && sigStrength < 25)
+                {
+                    toReturn.SigStrength = NetworkResultSignalStrength.ONE;
+                }
+                else if (sigStrength >= 25 && sigStrength < 50)
+                {
+                    toReturn.SigStrength = NetworkResultSignalStrength.TWO;
+                }
+                else if (sigStrength >= 50 && sigStrength < 75)
+                {
+                    toReturn.SigStrength = NetworkResultSignalStrength.THREE;
+                }
+                else if (sigStrength >= 75)
+                {
+                    toReturn.SigStrength = NetworkResultSignalStrength.FOUR;
+                }
+                else if (sigStrength == 0)
+                {
+                    toReturn.SigStrength = NetworkResultSignalStrength.ZERO;
+                }
+                return toReturn;
+            } else
             {
                 toReturn.SigStrength = NetworkResultSignalStrength.ZERO;
+                return toReturn;
             }
-            return toReturn;
 
         }
 

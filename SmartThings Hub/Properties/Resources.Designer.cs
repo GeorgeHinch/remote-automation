@@ -173,6 +173,16 @@ namespace SmartThings_Hub.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap ic_signal_ethernet_50px {
+            get {
+                object obj = ResourceManager.GetObject("ic_signal_ethernet_50px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap ic_signal_wifi_statusbar_1_bar_50px {
             get {
                 object obj = ResourceManager.GetObject("ic_signal_wifi_statusbar_1_bar_50px", resourceCulture);

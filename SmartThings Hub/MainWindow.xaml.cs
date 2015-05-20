@@ -1,19 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Timers;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace SmartThings_Hub
@@ -41,9 +29,6 @@ namespace SmartThings_Hub
             // Placing time & date on lock
             LockTime.Content = DateTime.Now.ToString("h" + " " + "mm");
             LockDate.Content = DateTime.Now.ToString("dddd, " + "MMMM dd" + ", " + "yyyy");
-
-            // Getting system power status
-            LockPower.Content = SystemParameters.PowerLineStatus;
 
             // Getting network SSID & placing it on lock screen
             NetworkStatusResult currentStatus = networkStatuserrrrr.refresh();
@@ -75,32 +60,27 @@ namespace SmartThings_Hub
             // Getting the current WiFi signal strength
             switch (currentStatus.SigStrength){
                 case NetworkResultSignalStrength.ONE:
-                    LockSigStrength.Content = "ONE";
                     BitmapImage sigOne = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/resources/symbols/ic_signal_wifi_statusbar_1_bar_50px.png", UriKind.Absolute));
                     sigStrengthIcon.Source = sigOne as ImageSource;
                     break;
                 case NetworkResultSignalStrength.TWO:
-                    LockSigStrength.Content = "TWO";
                     BitmapImage sigTwo = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/resources/symbols/ic_signal_wifi_statusbar_2_bar_50px.png", UriKind.Absolute));
                     sigStrengthIcon.Source = sigTwo as ImageSource;
                     break;
                 case NetworkResultSignalStrength.THREE:
-                    LockSigStrength.Content = "THREE";
                     BitmapImage sigThree = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/resources/symbols/ic_signal_wifi_statusbar_3_bar_50px.png", UriKind.Absolute));
                     sigStrengthIcon.Source = sigThree as ImageSource;
                     break;
                 case NetworkResultSignalStrength.FOUR:
-                    LockSigStrength.Content = "FOUR";
                     BitmapImage sigFour = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/resources/symbols/ic_signal_wifi_statusbar_4_bar_50px.png", UriKind.Absolute));
                     sigStrengthIcon.Source = sigFour as ImageSource;
                     break;
                 case NetworkResultSignalStrength.ZERO:
-                    LockSigStrength.Content = "ZERO";
                     BitmapImage sigZero = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/resources/symbols/ic_signal_wifi_statusbar_connected_no_internet_50px.png", UriKind.Absolute));
                     sigStrengthIcon.Source = sigZero as ImageSource;
                     break;
                 case NetworkResultSignalStrength.ETHER:
-                    BitmapImage sigEther = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/resources/symbols/ic_system_update_50px.png", UriKind.Absolute));
+                    BitmapImage sigEther = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/resources/symbols/ic_signal_ethernet_50px.png", UriKind.Absolute));
                     sigStrengthIcon.Source = sigEther as ImageSource;
                     break;
             }
