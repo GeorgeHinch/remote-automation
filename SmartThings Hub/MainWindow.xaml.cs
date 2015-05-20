@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
@@ -22,6 +23,8 @@ namespace SmartThings_Hub
             timer.Tick += timer_Tick;
             timer.Start();
             networkStatuserrrrr = new NetworkStatus();
+            ToolTipService.ShowDurationProperty.OverrideMetadata(
+                typeof(DependencyObject), new FrameworkPropertyMetadata(Int32.MaxValue));
         }
 
         void timer_Tick(object sender, EventArgs e)

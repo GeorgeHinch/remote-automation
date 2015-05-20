@@ -122,8 +122,11 @@
                 <Button Style="{DynamicResource BaseButtonStyle}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0" Padding="5" Height="40">
                     <Image x:Name="sigStrengthIcon" Source="pack://siteoforigin:,,,/resources/symbols/ic_signal_wifi_statusbar_4_bar_50px.png" Stretch="Fill" ToolTip="Network SSID"/>
                 </Button>
-                <Button Style="{DynamicResource BaseButtonStyle}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0" Padding="5" Height="40">
-                    <Image x:Name="pwrStateIcon" Source="pack://siteoforigin:,,,/resources/symbols/ic_power_connected_50px.png" Stretch="Fill" ToolTip="Power status: Connected"/>
+                <Button Style="{DynamicResource BaseButtonStyle}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0" Padding="5" Height="40" ToolTipService.ShowDuration="12000">
+                    <Image x:Name="pwrStateIcon" Source="pack://siteoforigin:,,,/resources/symbols/ic_power_connected_50px.png" Stretch="Fill"/>
+                    <Button.ToolTip>
+                        <ToolTip>Power status: Connected</ToolTip>
+                    </Button.ToolTip>
                 </Button>
             </StackPanel>
         </Grid>
