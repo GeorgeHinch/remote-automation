@@ -114,18 +114,41 @@
         <Grid x:Name="RightColumn" Grid.Column="2">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" Opacity="0.15" Margin="0,10,15,0">
                 <Button Style="{DynamicResource BaseButtonStyle}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0" Padding="5" Height="40">
-                    <Image x:Name="ssmthngNotificationIcon" Source="pack://siteoforigin:,,,/resources/symbols/ic_notifications_50px.png" Stretch="Fill" ToolTip="Notifications Stackpanel"/>
+                    <Image x:Name="ssmthngNotificationIcon" Source="pack://siteoforigin:,,,/resources/symbols/ic_notifications_50px.png" Stretch="Fill"/>
+                    <Button.ToolTip>
+                        <ToolTip>
+                          <Label>Notifications</Label>
+                          <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top">
+                            <Label>Connected 1</Label>
+                            <Label>Connected 2</Label>
+                            <Label>Connected 3</Label>
+                          </StackPanel>
+                        </ToolTip>
+                    </Button.ToolTip>
                 </Button>
                 <Button Style="{DynamicResource BaseButtonStyle}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0" Padding="5" Height="40">
-                    <Image x:Name="conBluetoothIcon" Source="pack://siteoforigin:,,,/resources/symbols/ic_bluetooth_connected_50px.png" Stretch="Fill" ToolTip="Bluetooth Stackpanel"/>
+                    <Image x:Name="conBluetoothIcon" Source="pack://siteoforigin:,,,/resources/symbols/ic_bluetooth_connected_50px.png" Stretch="Fill"/>
+                    <Button.ToolTip>
+                        <ToolTip>
+                          <Label>Connected Devices</Label>
+                          <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top">
+                            <Label>Connected 1</Label>
+                            <Label>Connected 2</Label>
+                            <Label>Connected 3</Label>
+                          </StackPanel>
+                        </ToolTip>
+                    </Button.ToolTip>
                 </Button>
                 <Button Style="{DynamicResource BaseButtonStyle}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0" Padding="5" Height="40">
-                    <Image x:Name="sigStrengthIcon" Source="pack://siteoforigin:,,,/resources/symbols/ic_signal_wifi_statusbar_4_bar_50px.png" Stretch="Fill" ToolTip="Network SSID"/>
+                    <Image x:Name="sigStrengthIcon" Source="pack://siteoforigin:,,,/resources/symbols/ic_signal_wifi_statusbar_4_bar_50px.png" Stretch="Fill"/>
+                    <Button.ToolTip>
+                        <ToolTip>Wlan SSID</ToolTip>
+                    </Button.ToolTip>
                 </Button>
                 <Button Style="{DynamicResource BaseButtonStyle}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0" Padding="5" Height="40" ToolTipService.ShowDuration="12000">
                     <Image x:Name="pwrStateIcon" Source="pack://siteoforigin:,,,/resources/symbols/ic_power_connected_50px.png" Stretch="Fill"/>
                     <Button.ToolTip>
-                        <ToolTip>Power status: Connected</ToolTip>
+                        <ToolTip>Power status: {DynamicResource BaseButtonStyle}</ToolTip>
                     </Button.ToolTip>
                 </Button>
             </StackPanel>
