@@ -152,8 +152,7 @@
             <StackPanel Orientation="Vertical" Margin="10,0,10,10">
                 <Label>Connected Devices</Label>
                 <Separator />
-                <TextBlock>Sample device</TextBlock>
-                <TextBlock>Sample device</TextBlock>
+                <ListBox x:Name="btListbox"></ListBox>
             </StackPanel>
         </Popup>
         <Popup x:Name="notifyPopup" IsOpen="False" PlacementTarget="{Binding ElementName=ssmthngNotificationIcon}" StaysOpen="False" Placement="Left" VerticalOffset="35" 

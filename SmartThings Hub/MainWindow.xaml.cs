@@ -43,12 +43,12 @@ namespace SmartThings_Hub
             switch (SystemParameters.PowerLineStatus)
             {
                 case PowerLineStatus.Offline:
-                    strPowerLineStatus = "Power Status: Offline";
+                    strPowerLineStatus = "Device is running on battery";
                     BitmapImage batAlert = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/resources/symbols/ic_battery_alert_50px.png", UriKind.Absolute));
                     pwrStateIcon.Source = batAlert as ImageSource;
                     break;
                 case PowerLineStatus.Online:
-                    strPowerLineStatus = "Power Status: Online";
+                    strPowerLineStatus = "Device is plugged in";
                     BitmapImage batConnected = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/resources/symbols/ic_power_connected_50px.png", UriKind.Absolute));
                     pwrStateIcon.Source = batConnected as ImageSource;
                     break;
@@ -68,6 +68,7 @@ namespace SmartThings_Hub
             {
                 sigPopupLabel.Content = currentStatus.Ssid;
             }
+            
 
             // Getting the current WiFi signal strength
             switch (currentStatus.SigStrength){
@@ -98,6 +99,19 @@ namespace SmartThings_Hub
             }
         }
 
+        async void btList()
+        {
+            btListbox.Items.Clear();
+
+            var devices = await DeviceInformation.FindAllAsync(RfcommDeviceService.GetDeviceSelector(RfcommServiceId.SerialPort));
+
+            foreach (var device in devices)
+            {
+                btListbox.Items.Add(device);
+            }
+        }
+
+
         private void Show_pwrPopup_Click(object sender, RoutedEventArgs e)
         {
             pwrPopup.IsOpen = true;
@@ -122,5 +136,6 @@ namespace SmartThings_Hub
         {
             get;
         }
+        public object DeviceInformation { get; private set; }
     }
 }
