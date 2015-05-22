@@ -43,22 +43,31 @@ namespace SmartThings_Hub
             switch (SystemParameters.PowerLineStatus)
             {
                 case PowerLineStatus.Offline:
-                    strPowerLineStatus = "PowerLineStatus: Offline";
+                    strPowerLineStatus = "Power Status: Offline";
                     BitmapImage batAlert = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/resources/symbols/ic_battery_alert_50px.png", UriKind.Absolute));
                     pwrStateIcon.Source = batAlert as ImageSource;
                     break;
                 case PowerLineStatus.Online:
-                    strPowerLineStatus = "PowerLineStatus: Online";
+                    strPowerLineStatus = "Power Status: Online";
                     BitmapImage batConnected = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/resources/symbols/ic_power_connected_50px.png", UriKind.Absolute));
                     pwrStateIcon.Source = batConnected as ImageSource;
                     break;
                 case PowerLineStatus.Unknown:
-                    strPowerLineStatus = "PowerLineStatus: Unknown";
+                    strPowerLineStatus = "Power Status: Unknown";
                     BitmapImage batUnkown = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/resources/symbols/ic_battery_unknown_50px.png", UriKind.Absolute));
                     pwrStateIcon.Source = batUnkown as ImageSource;
                     break;
             }
-            Console.WriteLine(strPowerLineStatus);
+
+            //Status icons popups
+            pwrPopupLabel.Content = strPowerLineStatus;
+            if (currentStatus.SigStrength.Equals(NetworkResultSignalStrength.ETHER))
+            {
+                sigPopupLabel.Content = "Connected via Ethernet";
+            } else
+            {
+                sigPopupLabel.Content = currentStatus.Ssid;
+            }
 
             // Getting the current WiFi signal strength
             switch (currentStatus.SigStrength){
@@ -87,6 +96,26 @@ namespace SmartThings_Hub
                     sigStrengthIcon.Source = sigEther as ImageSource;
                     break;
             }
+        }
+
+        private void Show_pwrPopup_Click(object sender, RoutedEventArgs e)
+        {
+            pwrPopup.IsOpen = true;
+        }
+
+        private void Show_sigPopup_Click(object sender, RoutedEventArgs e)
+        {
+            sigPopup.IsOpen = true;
+        }
+
+        private void Show_btPopup_Click(object sender, RoutedEventArgs e)
+        {
+            btPopup.IsOpen = true;
+        }
+
+        private void Show_notifyPopup_Click(object sender, RoutedEventArgs e)
+        {
+            notifyPopup.IsOpen = true;
         }
 
         public static PowerLineStatus PowerLineStatus
