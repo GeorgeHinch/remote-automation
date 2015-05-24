@@ -112,13 +112,13 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="0">
-                    <Rectangle Fill="Black" Opacity="0.6" Height="37.333" Margin="0,0,2,2"/>
+                    <Rectangle Fill="Black" Opacity="0.6" Height="80" Margin="0,22,2,-20"/>
                 </Grid>
                 <Grid Grid.Column="1">
-                    <Rectangle Fill="Black" Opacity="0.6" Height="37.333" Margin="2,0,2,2"/>
+                    <Rectangle Fill="Black" Opacity="0.6" Height="80" Margin="0,22,2,-20"/>
                 </Grid>
                 <Grid Grid.Column="2">
-                    <Rectangle Fill="Black" Opacity="0.6" Height="37.333" Margin="2,0,0,2"/>
+                    <Rectangle Fill="Black" Opacity="0.6" Height="80" Margin="0,22,2,-20"/>
                 </Grid>
             </Grid>
         </Grid>
