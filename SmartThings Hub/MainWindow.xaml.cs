@@ -99,7 +99,7 @@ namespace SmartThings_Hub
             }
         }
 
-        /*async void btList()
+        async void btList()
         {
             btListbox.Items.Clear();
 
@@ -109,7 +109,7 @@ namespace SmartThings_Hub
             {
                 btListbox.Items.Add(device);
             }
-        }*/
+        }
 
 
         private void Show_pwrPopup_Click(object sender, RoutedEventArgs e)
@@ -136,6 +136,9 @@ namespace SmartThings_Hub
         {
             get;
         }
-        public object DeviceInformation { get; private set; }
+
+        public object DeviceInformation {
+            get; private set;
+        }
     }
 }
