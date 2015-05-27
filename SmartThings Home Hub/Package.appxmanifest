@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="edb1e940-d988-4836-a518-de665f39a89a"
-    Publisher="CN=Administrator"
+    Name="132e78d5-e7f7-4f45-89e7-776780a81b22"
+    Publisher="CN=georg"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="edb1e940-d988-4836-a518-de665f39a89a" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="132e78d5-e7f7-4f45-89e7-776780a81b22" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>SmartThings Home Hub</DisplayName>
-    <PublisherDisplayName>George Hinchliffe</PublisherDisplayName>
+    <PublisherDisplayName>georg</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
