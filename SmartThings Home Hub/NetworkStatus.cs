@@ -1,9 +1,9 @@
-﻿using 
+﻿using NativeWifi;
 using System;
 using System.Text;
 
 
-namespace SmartThings_Hub
+namespace SmartThings_Home_Hub
 {
     public class NetworkStatus
     {
@@ -27,7 +27,7 @@ namespace SmartThings_Hub
             {
                 Wlan.Dot11Ssid ssid = wlanInterface.CurrentConnection.wlanAssociationAttributes.dot11Ssid;
                 var sigStrength = wlanInterface.CurrentConnection.wlanAssociationAttributes.wlanSignalQuality;
-                toReturn.Ssid = new String(Encoding.ASCII.GetChars(ssid.SSID, 0, (int)ssid.SSIDLength));
+                toReturn.Ssid = new String(Encoding.Unicode.GetChars(ssid.SSID, 0, (int)ssid.SSIDLength));
                 if (sigStrength > 0 && sigStrength < 25)
                 {
                     toReturn.SigStrength = NetworkResultSignalStrength.ONE;
@@ -59,7 +59,7 @@ namespace SmartThings_Hub
 
         static string GetStringForSSID(Wlan.Dot11Ssid ssid)
         {
-            return Encoding.ASCII.GetString(ssid.SSID, 0, (int)ssid.SSIDLength);
+            return Encoding.Unicode.GetString(ssid.SSID, 0, (int)ssid.SSIDLength);
         }
     }
 }
