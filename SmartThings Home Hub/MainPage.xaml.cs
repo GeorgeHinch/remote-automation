@@ -1,5 +1,4 @@
-﻿using NativeWifi;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,8 +7,16 @@ using System.Threading;
 using System.Windows;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.Devices;
+using Windows.Devices.Bluetooth;
+using Windows.Devices.Bluetooth.Rfcomm;
+using Windows.Devices.Enumeration;
+using Windows.Devices.WiFi;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.System.Power;
+using Windows.Networking.Connectivity;
+using Windows.System.Threading;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -28,7 +35,7 @@ namespace SmartThings_Home_Hub
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        NetworkStatus networkStatuserrrrr;
+        ///NetworkStatus networkStatuserrrrr;
 
         public MainPage()
         {
@@ -36,44 +43,47 @@ namespace SmartThings_Home_Hub
             InitializeComponent();
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
-            timer.Tick += timer_Tick;
+            EventHandler<Object> stupd = new EventHandler<object>(this.timer_Tick);
+            timer.Tick += stupd;
             timer.Start();
-            networkStatuserrrrr = new NetworkStatus();
+            ///networkStatuserrrrr = new NetworkStatus();
         }
-        void timer_Tick(object sender, EventArgs e)
+
+        
+        void timer_Tick(object sender, object something)
         {
             // Placing time & date on lock
             LockTime.Text = DateTime.Now.ToString("h" + " " + "mm");
             LockDate.Text = DateTime.Now.ToString("dddd, " + "MMMM dd" + ", " + "yyyy");
 
-            // Getting network SSID & placing it on lock screen
+            /*// Getting network SSID & placing it on lock screen
             NetworkStatusResult currentStatus = networkStatuserrrrr.refresh();
-            LockSSID.Text = currentStatus.Ssid;
+            LockSSID.Text = currentStatus.Ssid;*/
 
             // Getting the current system power status.
             string strPowerLineStatus;
             strPowerLineStatus = string.Empty;
-            switch (SystemParameters.PowerLineStatus)
+            switch (PowerSupplyStatus)
             {
-                case PowerLineStatus.Offline:
+                case PowerSupplyStatus.Inadequate:
                     strPowerLineStatus = "Device is running on battery";
-                    BitmapImage batAlert = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/resources/symbols/ic_battery_alert_50px.png", UriKind.Absolute));
+                    BitmapImage batAlert = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/Assets/symbols/ic_battery_alert_50px.png", UriKind.Absolute));
                     pwrStateIcon.Source = batAlert as ImageSource;
                     break;
-                case PowerLineStatus.Online:
+                case PowerSupplyStatus.Adequate:
                     strPowerLineStatus = "Device is plugged in";
-                    BitmapImage batConnected = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/resources/symbols/ic_power_connected_50px.png", UriKind.Absolute));
+                    BitmapImage batConnected = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/Assets/symbols/ic_power_connected_50px.png", UriKind.Absolute));
                     pwrStateIcon.Source = batConnected as ImageSource;
                     break;
-                case PowerLineStatus.Unknown:
+                case PowerSupplyStatus.NotPresent:
                     strPowerLineStatus = "Power Status: Unknown";
-                    BitmapImage batUnkown = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/resources/symbols/ic_battery_unknown_50px.png", UriKind.Absolute));
+                    BitmapImage batUnkown = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/Assets/symbols/ic_battery_unknown_50px.png", UriKind.Absolute));
                     pwrStateIcon.Source = batUnkown as ImageSource;
                     break;
             }
 
             //Status icons popups
-            pwrPopupLabel.Content = strPowerLineStatus;
+            /*pwrPopupLabel.Content = strPowerLineStatus;
             if (currentStatus.SigStrength.Equals(NetworkResultSignalStrength.ETHER))
             {
                 sigPopupLabel.Content = "Connected via Ethernet";
@@ -81,40 +91,40 @@ namespace SmartThings_Home_Hub
             else
             {
                 sigPopupLabel.Content = currentStatus.Ssid;
-            }
+            }*/
 
 
-            // Getting the current WiFi signal strength
+            /*// Getting the current WiFi signal strength
             switch (currentStatus.SigStrength)
             {
                 case NetworkResultSignalStrength.ONE:
-                    BitmapImage sigOne = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/resources/symbols/ic_signal_wifi_statusbar_1_bar_50px.png", UriKind.Absolute));
+                    BitmapImage sigOne = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/Assets/symbols/ic_signal_wifi_statusbar_1_bar_50px.png", UriKind.Absolute));
                     sigStrengthIcon.Source = sigOne as ImageSource;
                     break;
                 case NetworkResultSignalStrength.TWO:
-                    BitmapImage sigTwo = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/resources/symbols/ic_signal_wifi_statusbar_2_bar_50px.png", UriKind.Absolute));
+                    BitmapImage sigTwo = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/Assets/symbols/ic_signal_wifi_statusbar_2_bar_50px.png", UriKind.Absolute));
                     sigStrengthIcon.Source = sigTwo as ImageSource;
                     break;
                 case NetworkResultSignalStrength.THREE:
-                    BitmapImage sigThree = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/resources/symbols/ic_signal_wifi_statusbar_3_bar_50px.png", UriKind.Absolute));
+                    BitmapImage sigThree = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/Assets/symbols/ic_signal_wifi_statusbar_3_bar_50px.png", UriKind.Absolute));
                     sigStrengthIcon.Source = sigThree as ImageSource;
                     break;
                 case NetworkResultSignalStrength.FOUR:
-                    BitmapImage sigFour = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/resources/symbols/ic_signal_wifi_statusbar_4_bar_50px.png", UriKind.Absolute));
+                    BitmapImage sigFour = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/Assets/symbols/ic_signal_wifi_statusbar_4_bar_50px.png", UriKind.Absolute));
                     sigStrengthIcon.Source = sigFour as ImageSource;
                     break;
                 case NetworkResultSignalStrength.ZERO:
-                    BitmapImage sigZero = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/resources/symbols/ic_signal_wifi_statusbar_connected_no_internet_50px.png", UriKind.Absolute));
+                    BitmapImage sigZero = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/Assets/symbols/ic_signal_wifi_statusbar_connected_no_internet_50px.png", UriKind.Absolute));
                     sigStrengthIcon.Source = sigZero as ImageSource;
                     break;
                 case NetworkResultSignalStrength.ETHER:
-                    BitmapImage sigEther = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/resources/symbols/ic_signal_ethernet_50px.png", UriKind.Absolute));
+                    BitmapImage sigEther = new BitmapImage(new Uri(@"pack://siteoforigin:,,,/Assets/symbols/ic_signal_ethernet_50px.png", UriKind.Absolute));
                     sigStrengthIcon.Source = sigEther as ImageSource;
                     break;
-            }
+            }*/
         }
 
-        async void btList()
+        /*async void btList()
         {
             btListbox.Items.Clear();
 
@@ -124,30 +134,19 @@ namespace SmartThings_Home_Hub
             {
                 btListbox.Items.Add(device);
             }
-        }
+        }*/
 
-
-        private void Show_pwrPopup_Click(object sender, RoutedEventArgs e)
+        public static PowerSupplyStatus PowerSupplyStatus
         {
-            pwrPopup.IsOpen = true;
+            get;
         }
 
-        private void Show_sigPopup_Click(object sender, RoutedEventArgs e)
-        {
-            sigPopup.IsOpen = true;
+        public string Ssid
+        { 
+            get;
         }
 
-        private void Show_btPopup_Click(object sender, RoutedEventArgs e)
-        {
-            btPopup.IsOpen = true;
-        }
-
-        private void Show_notifyPopup_Click(object sender, RoutedEventArgs e)
-        {
-            notifyPopup.IsOpen = true;
-        }
-
-        public static PowerLineStatus PowerLineStatus
+        public byte SignalBars
         {
             get;
         }
