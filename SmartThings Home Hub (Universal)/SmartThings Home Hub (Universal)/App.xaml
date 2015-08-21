@@ -1,0 +1,11 @@
+﻿<Application
+    x:Class="SmartThings_Home_Hub__Universal_.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SmartThings_Home_Hub__Universal_"
+    RequestedTheme="Light">
+    <Application.Resources>
+        <FontFamily x:Key="Roboto_Thin">Fonts/Roboto-Thin.ttf#Roboto Thin</FontFamily>
+    </Application.Resources>
+
+</Application>

@@ -1,0 +1,88 @@
+﻿<Page
+    x:Class="SmartThings_Home_Hub__Universal_.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SmartThings_Home_Hub__Universal_"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Width="800" Height="480" FontFamily="Fonts/Roboto-Thin.ttf#Roboto Thin" FontWeight="Thin">
+
+    <Grid x:Name="View">
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="Assets/28H.jpg"/>
+        </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30*" />
+            <ColumnDefinition Width="40*" />
+            <ColumnDefinition Width="30*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid x:Name="LeftColumn" Grid.Column="0">
+            <Button x:Name="Unlock" Content="tap to unlock" HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="{x:Null}" BorderBrush="{x:Null}" Padding="1" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontFamily="/SmartThings Hub;component/Fonts/#Roboto" Foreground="White" Opacity="0.75" FontSize="20" FontWeight="Light" Margin="15,0,0,10"/>
+        </Grid>
+
+        <Grid x:Name="CenterColumn" Grid.Column="1" Margin="0" VerticalAlignment="Center">
+
+            <Grid x:Name="StatusBlock" Width="{Binding ActualWidth, ElementName=CenterColumn, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=CenterColumn, Mode=OneWay}" Margin="0,10,0,-10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="5*" />
+                </Grid.RowDefinitions>
+
+                <Grid x:Name="TimeDateBlock" Grid.Row="0" Width="{Binding ActualWidth, ElementName=CenterColumn, Mode=OneWay}" HorizontalAlignment="Left" Background="#7F000000" Height="{Binding RowDefinitions[0].Height.GridUnitType, ElementName=TimeDateBlock, Mode=OneWay}" d:LayoutOverrides="TopPosition, BottomPosition" Margin="0,-73,0,19">
+                    <TextBlock x:Name="Status_Time" TextWrapping="Wrap" Text="1:28" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Height="{Binding RowDefinitions[0].Height.Value, ElementName=TimeDateBlock, Mode=OneWay}" Width="{Binding ActualWidth, ElementName=CenterColumn, Mode=OneWay}" FontSize="96" FontFamily="Fonts\Roboto-Thin.ttf" TextAlignment="Center"/>
+                    <TextBlock x:Name="Status_Date" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Tuesday, May 15, 2015" VerticalAlignment="Bottom" Width="{Binding ActualWidth, ElementName=CenterColumn, Mode=OneWay}" TextAlignment="Center" Foreground="White" Margin="0,0,0,12" FontWeight="Light" FontFamily="Fonts/Roboto-Thin.ttf#Roboto Thin"/>
+                </Grid>
+                <Grid x:Name="HouseStatus" Grid.Row="1" HorizontalAlignment="Left" Width="{Binding ActualWidth, ElementName=CenterColumn, Mode=OneWay}" Height="{Binding RowDefinitions[0].Height.Value, ElementName=HouseStatus, Mode=OneWay}" Margin="0,-29,0,10" Grid.RowSpan="2" d:LayoutOverrides="TopPosition, BottomPosition">
+                    <Rectangle HorizontalAlignment="Center" Fill="Black" Opacity="0.6" Width="{Binding ActualWidth, ElementName=CenterColumn, Mode=OneWay}" Margin="0,15,0,-37" d:LayoutOverrides="TopPosition, BottomPosition"/>
+                </Grid>
+                <Grid x:Name="LocalStatus" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="128*"/>
+                        <ColumnDefinition Width="193*"/>
+                    </Grid.ColumnDefinitions>
+                    <Rectangle HorizontalAlignment="Center" VerticalAlignment="Bottom" Fill="Black" Opacity="0.6" Width="{Binding ActualWidth, ElementName=CenterColumn, Mode=OneWay}" Height="60" Margin="0,0,0,-110" Grid.ColumnSpan="2"/>
+                </Grid>
+                <Grid x:Name="ThreeButton" Grid.Row="3" Margin="0,35,0,-35">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <Rectangle Fill="Black" Opacity="0.6" Height="80" Margin="0,60,4,-23"/>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Rectangle Fill="Black" Opacity="0.6" Height="80" Margin="0,60,4,-23"/>
+                    </Grid>
+                    <Grid Grid.Column="2">
+                        <Rectangle Fill="Black" Opacity="0.6" Height="80" Margin="0,60,0,-23"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <Grid x:Name="RightColumn" Grid.Column="2">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" Opacity="0.15" Margin="0,10,15,0">
+                <Button x:Name="ssmthngNotificationIconBtn" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0" Padding="5" Height="40">
+                    <Image x:Name="ssmthngNotificationIcon" Source="pack://siteoforigin:,,,/resources/symbols/ic_notifications_50px.png" Stretch="Fill"/>
+                </Button>
+                <Button x:Name="conBluetoothIconBtn" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0" Padding="5" Height="40">
+                    <Image x:Name="conBluetoothIcon" Source="pack://siteoforigin:,,,/resources/symbols/ic_bluetooth_connected_50px.png" Stretch="Fill" Margin="0"/>
+                </Button>
+                <Button x:Name="sigStrengthIconBtn" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0" Padding="5" Height="40">
+                    <Image x:Name="sigStrengthIcon" Source="pack://siteoforigin:,,,/resources/symbols/ic_signal_wifi_statusbar_4_bar_50px.png" Stretch="Fill"/>
+                </Button>
+                <Button x:Name="pwrStateIconBtn" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0" Padding="5" Height="40">
+                    <Image x:Name="pwrStateIcon" Source="pack://siteoforigin:,,,/resources/symbols/ic_power_connected_50px.png" Stretch="Fill"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+
+    </Grid>
+</Page>
