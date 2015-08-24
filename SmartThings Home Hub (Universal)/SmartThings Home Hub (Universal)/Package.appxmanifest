@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="5cd7ad25-324d-486c-8a73-a4f9d49bfb08" Publisher="CN=georgeh" Version="1.0.0.0" />
+  <Identity Name="SmartThings-Home-Hub" Publisher="CN=georgeh" Version="1.0.0.0" />
   <mp:PhoneIdentity PhoneProductId="5cd7ad25-324d-486c-8a73-a4f9d49bfb08" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>SmartThings Home Hub (Universal)</DisplayName>
-    <PublisherDisplayName>georgeh</PublisherDisplayName>
+    <PublisherDisplayName>George Hinchliffe</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
@@ -17,9 +17,9 @@
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="SmartThings_Home_Hub__Universal_.App">
       <uap:VisualElements DisplayName="SmartThings Home Hub (Universal)" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="SmartThings Home Hub (Universal)" BackgroundColor="transparent">
         <uap:LockScreen Notification="badge" BadgeLogo="Assets\BadgeLogo.png" />
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" ShortName="Home Hub" Square71x71Logo="Assets\Square71x71Logo.png" Square310x310Logo="Assets\Square310x310Logo.png">
         </uap:DefaultTile>
-        <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        <uap:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="white" />
         <uap:InitialRotationPreference>
           <uap:Rotation Preference="landscape" />
           <uap:Rotation Preference="landscapeFlipped" />
