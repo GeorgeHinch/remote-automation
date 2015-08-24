@@ -32,5 +32,10 @@ namespace SmartThings_Home_Hub__Universal_
         {
 
         }
+
+        private void Status_Time_SelectionChanged_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

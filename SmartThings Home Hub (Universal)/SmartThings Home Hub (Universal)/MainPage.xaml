@@ -5,7 +5,7 @@
     xmlns:local="using:SmartThings_Home_Hub__Universal_"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Width="800" Height="480" FontFamily="Fonts/Roboto-Thin.ttf#Roboto Thin" FontWeight="Thin">
+    mc:Ignorable="d" Width="800" Height="480" FontFamily="{StaticResource FF-RobotoThin}">
 
     <Grid x:Name="View">
         <Grid.Background>
@@ -19,7 +19,7 @@
         </Grid.ColumnDefinitions>
 
         <Grid x:Name="LeftColumn" Grid.Column="0">
-            <Button x:Name="Unlock" Content="tap to unlock" HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="{x:Null}" BorderBrush="{x:Null}" Padding="1" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontFamily="/SmartThings Hub;component/Fonts/#Roboto" Foreground="White" Opacity="0.75" FontSize="20" FontWeight="Light" Margin="15,0,0,10"/>
+            <Button x:Name="Unlock" Content="tap to unlock" HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="{x:Null}" BorderBrush="{x:Null}" Padding="1" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontFamily="{StaticResource FF-RobotoLight}" Foreground="White" Opacity="0.75" FontSize="20" Margin="15,0,0,10"/>
         </Grid>
 
         <Grid x:Name="CenterColumn" Grid.Column="1" Margin="0" VerticalAlignment="Center">
@@ -33,8 +33,8 @@
                 </Grid.RowDefinitions>
 
                 <Grid x:Name="TimeDateBlock" Grid.Row="0" Width="{Binding ActualWidth, ElementName=CenterColumn, Mode=OneWay}" HorizontalAlignment="Left" Background="#7F000000" Height="{Binding RowDefinitions[0].Height.GridUnitType, ElementName=TimeDateBlock, Mode=OneWay}" d:LayoutOverrides="TopPosition, BottomPosition" Margin="0,-73,0,19">
-                    <TextBlock x:Name="Status_Time" TextWrapping="Wrap" Text="1:28" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Height="{Binding RowDefinitions[0].Height.Value, ElementName=TimeDateBlock, Mode=OneWay}" Width="{Binding ActualWidth, ElementName=CenterColumn, Mode=OneWay}" FontSize="96" FontFamily="Fonts\Roboto-Thin.ttf" TextAlignment="Center"/>
-                    <TextBlock x:Name="Status_Date" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Tuesday, May 15, 2015" VerticalAlignment="Bottom" Width="{Binding ActualWidth, ElementName=CenterColumn, Mode=OneWay}" TextAlignment="Center" Foreground="White" Margin="0,0,0,12" FontWeight="Light" FontFamily="Fonts/Roboto-Thin.ttf#Roboto Thin"/>
+                    <TextBlock x:Name="Status_Time" TextWrapping="Wrap" Text="11:28" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Height="{Binding RowDefinitions[0].Height.Value, ElementName=TimeDateBlock, Mode=OneWay}" Width="{Binding ActualWidth, ElementName=CenterColumn, Mode=OneWay}" FontSize="96" TextAlignment="Center" SelectionChanged="Status_Time_SelectionChanged_1" FontFamily="{StaticResource FF-RobotoThin}"/>
+                    <TextBlock x:Name="Status_Date" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Tuesday, May 15, 2015" VerticalAlignment="Bottom" Width="{Binding ActualWidth, ElementName=CenterColumn, Mode=OneWay}" TextAlignment="Center" Foreground="White" Margin="0,0,0,12" FontFamily="{StaticResource FF-RobotoThin}" FontSize="13.333"/>
                 </Grid>
                 <Grid x:Name="HouseStatus" Grid.Row="1" HorizontalAlignment="Left" Width="{Binding ActualWidth, ElementName=CenterColumn, Mode=OneWay}" Height="{Binding RowDefinitions[0].Height.Value, ElementName=HouseStatus, Mode=OneWay}" Margin="0,-29,0,10" Grid.RowSpan="2" d:LayoutOverrides="TopPosition, BottomPosition">
                     <Rectangle HorizontalAlignment="Center" Fill="Black" Opacity="0.6" Width="{Binding ActualWidth, ElementName=CenterColumn, Mode=OneWay}" Margin="0,15,0,-37" d:LayoutOverrides="TopPosition, BottomPosition"/>
