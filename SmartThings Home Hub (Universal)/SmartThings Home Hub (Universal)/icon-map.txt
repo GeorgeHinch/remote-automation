@@ -1,0 +1,95 @@
+http://modernicons.io/segoe-mdl2/cheatsheet/
+
+Ethernet - &#59449;
+Ethernet (connected, no internet) - &#60246;
+Ethernet (error) - &#60245;
+Wifi 0 - &#59506;
+Wifi 1 - &#59507;
+Wifi 2 - &#59508;
+Wifi 3 - &#59137;
+Wifi 0 (connected, no internet) - &#60256;
+Wifi 1 (connected, no internet) - &#60257;
+Wifi 2 (connected, no internet) - &#60258;
+Wifi 3 (connected, no internet) - &#60259;
+Wifi 0 (error) - &#60256;
+Wifi 1 (error) - &#60257;
+Wifi 2 (error) - &#60258;
+Wifi 3 (error) - &#60259;
+
+Power - &#59368;
+
+Chevron (left) - &#57358;
+Chevron (right) - &#57359;
+
+Bluetooth - &#59138;
+Bluetooth connected -
+
+Notifications (none) - &#59676;
+Notifications - &#59367;
+
+Battery (0%) - &#59472;
+Battery (10%) - &#59473;
+Battery (20%) - &#60324;
+Battery (30%) - &#59475;
+Battery (40%) - &#59476;
+Battery (50%) - &#59477;
+Battery (60%) - &#59478;
+Battery (70%) - &#59479;
+Battery (80%) - &#59480;
+Battery (90%) - &#59481;
+Battery (100%) - &#59455;
+Battery (charging, 0%) - &#59482;
+Battery (charging, 10%) - &#59483;
+Battery (charging, 20%) - &#59484;
+Battery (charging, 30%) - &#59485;
+Battery (charging, 40%) - &#59486;
+Battery (charging, 50%) - &#59487;
+Battery (charging, 60%) - &#59488;
+Battery (charging, 70%) - &#59489;
+Battery (charging, 80%) - &#59490;
+Battery (charging, 90%) - &#59454;
+Battery (charging, 100%) - &#60051;
+Battery (save, 0%) - &#59491;
+Battery (save, 10%) - &#59492;
+Battery (save, 20%) - &#59493;
+Battery (save, 30%) - &#59494;
+Battery (save, 40%) - &#59495;
+Battery (save, 50%) - &#59496;
+Battery (save, 60%) - &#59497;
+Battery (save, 70%) - &#59498;
+Battery (save, 80%) - &#59499;
+Battery (save, 90%) - &#60052;
+Battery (save, 100%) - &#60053;
+Battery (error) - 
+Battery (disconnect) - &#59798;
+
+Volume 0 - &#57752;
+Volume 1 - &#59794;
+Volume 2 - &#59795;
+Volume 3 - &#59796;
+Volume 4 - &#59797;
+
+Settings - &#57621;
+Personalization - &#59249;
+LED - &#59265;
+Remote - &#59729;
+
+Night - &#60009;
+Day - &#59142;
+
+Light - &#60032;
+Lock (unlocked) - &#57847;
+Lock (locked) - &#57846;
+Presence - &#57796;
+Security - &#59175;
+Motion - &#59389;
+Enviroment - &#57640;
+Weather - &#59142; &#59219;
+News - &#57811;
+Sonos - &#59733;
+
+Update (flash) - &#59534;
+Update (internet) - &#59752;
+
+Home - &#57828;
+
