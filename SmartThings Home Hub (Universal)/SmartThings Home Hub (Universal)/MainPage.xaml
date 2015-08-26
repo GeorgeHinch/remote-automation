@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" Width="800" Height="480" FontFamily="{StaticResource FF-RobotoThin}">
 
-    <Grid x:Name="View">
+    <Grid x:Name="lockScreen">
         <Grid.Background>
             <ImageBrush Stretch="Fill" ImageSource="Assets/28H.jpg"/>
         </Grid.Background>
@@ -19,7 +19,7 @@
         </Grid.ColumnDefinitions>
 
         <Grid x:Name="LeftColumn" Grid.Column="0">
-            <Button x:Name="Unlock" Content="tap to unlock" HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="{x:Null}" BorderBrush="{x:Null}" Padding="1" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontFamily="{StaticResource FF-RobotoLight}" Foreground="White" Opacity="0.75" FontSize="20" Margin="15,0,0,10" Style="{StaticResource BaseLockButton}"/>
+            <Button x:Name="Unlock" Content="tap to unlock" Click="Unlock_Click" HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="{x:Null}" BorderBrush="{x:Null}" Padding="1" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontFamily="{StaticResource FF-RobotoLight}" Foreground="White" Opacity="0.75" FontSize="20" Margin="15,0,0,10" Style="{StaticResource BaseLockButton}"/>
         </Grid>
 
         <Grid x:Name="CenterColumn" Grid.Column="1" Margin="0" VerticalAlignment="Center">
@@ -32,7 +32,7 @@
                     <RowDefinition Height="20*" />
                 </Grid.RowDefinitions>
 
-                <Grid x:Name="TimeDateBlock" Grid.Row="0" Width="{Binding ActualWidth, ElementName=CenterColumn, Mode=OneWay}" HorizontalAlignment="Left" Background="#7F000000" Height="{Binding RowDefinitions[0].Height.GridUnitType, ElementName=TimeDateBlock, Mode=OneWay}">
+                <Grid x:Name="TimeDateBlock" Grid.Row="0" Width="320" HorizontalAlignment="Left" Background="#7F000000" Height="{Binding RowDefinitions[0].Height.GridUnitType, ElementName=TimeDateBlock, Mode=OneWay}">
                     <TextBlock x:Name="Status_Time" TextWrapping="Wrap" Text="11:28" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Height="{Binding RowDefinitions[0].Height.Value, ElementName=TimeDateBlock, Mode=OneWay}" Width="{Binding ActualWidth, ElementName=CenterColumn, Mode=OneWay}" FontSize="96" TextAlignment="Center" SelectionChanged="Status_Time_SelectionChanged_1" FontFamily="{StaticResource FF-RobotoThin}"/>
                     <TextBlock x:Name="Status_Date" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Tuesday, May 15, 2015" VerticalAlignment="Bottom" Width="{Binding ActualWidth, ElementName=CenterColumn, Mode=OneWay}" TextAlignment="Center" Foreground="White" Margin="0,0,0,12" FontFamily="{StaticResource FF-RobotoThin}" FontSize="13.333"/>
                 </Grid>
@@ -40,7 +40,7 @@
                     <TextBlock Text="apartment is set to..." Margin="15,10" FontFamily="{StaticResource FF-RobotoLight}" Foreground="White" FontSize="10.667" />
                     <TextBlock x:Name="Status_mode" Text="home" Margin="15,23,15,8" FontFamily="{StaticResource FF-RobotoLight}" Foreground="#7FFFFFFF" FontSize="24" d:LayoutOverrides="Height, TopPosition, BottomPosition" />
                 </Grid>
-                <Grid x:Name="LocalStatus" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#7F000000" Width="{Binding ActualWidth, ElementName=CenterColumn, Mode=OneWay}" Margin="0,-10,0,0">
+                <Grid x:Name="LocalStatus" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#7F000000" Width="{Binding ActualWidth, ElementName=CenterColumn, Mode=OneWay}" Margin="0,70,0,0" Grid.RowSpan="2">
                     <TextBlock Text="the hub is..." Margin="15,10" FontFamily="{StaticResource FF-RobotoLight}" Foreground="White" FontSize="10.667" />
                     <TextBlock x:Name="Status_hub" Text="active" Margin="15,23,15,8" FontFamily="{StaticResource FF-RobotoLight}" Foreground="#7FFFFFFF" FontSize="24" d:LayoutOverrides="Height, TopPosition, BottomPosition" />
                 </Grid>
@@ -52,10 +52,16 @@
                     </Grid.ColumnDefinitions>
 
                     <Grid Grid.Column="0" Background="#7F000000" Margin="0,0,2.5,0" >
+                        <TextBlock x:Name="lockBttm1Icon" Text="&#60032;" Margin="15,10" FontFamily="Segoe MDL2 Assets" Foreground="#7FFFFFFF" TextAlignment="Center" FontSize="40"/>
+                        <TextBlock x:Name="lockBttm1Label" Text="kitchen" Margin="15,55,15,10" FontFamily="{StaticResource FF-RobotoThin}" Foreground="White" TextAlignment="Center"/>
                     </Grid>
                     <Grid Grid.Column="1" Background="#7F000000" Margin="2.5,0" >
+                        <TextBlock x:Name="lockBttm2Icon" Text="&#57847;" Margin="15,10" FontFamily="Segoe MDL2 Assets" Foreground="#7FFFFFFF" TextAlignment="Center" FontSize="40"/>
+                        <TextBlock x:Name="lockBttm2Label" Text="front door" Margin="15,55,15,10" FontFamily="{StaticResource FF-RobotoThin}" Foreground="White" TextAlignment="Center"/>
                     </Grid>
                     <Grid Grid.Column="2" Background="#7F000000" Margin="2.5,0,0,0" >
+                        <TextBlock x:Name="lockBttm3Icon" Text="&#60032;" Margin="15,10" FontFamily="Segoe MDL2 Assets" Foreground="#7FFFFFFF" TextAlignment="Center" FontSize="40"/>
+                        <TextBlock x:Name="lockBttm3Label" Text="bedroom" Margin="15,55,15,10" FontFamily="{StaticResource FF-RobotoThin}" Foreground="White" TextAlignment="Center"/>
                     </Grid>
                 </Grid>
             </Grid>

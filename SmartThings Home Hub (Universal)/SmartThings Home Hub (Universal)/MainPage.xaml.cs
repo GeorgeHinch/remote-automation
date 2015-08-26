@@ -1,4 +1,5 @@
 ﻿using System;
+using Windows.UI.Xaml.Navigation;
 using Windows.System.Power;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -37,5 +38,11 @@ namespace SmartThings_Home_Hub__Universal_
         {
 
         }
+
+        private void Unlock_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(home));
+        }
+
     }
 }
