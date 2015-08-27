@@ -11,6 +11,7 @@ namespace SmartThings_Home_Hub__Universal_
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
+
     public sealed partial class MainPage : Page
     {
         public MainPage()
@@ -41,7 +42,7 @@ namespace SmartThings_Home_Hub__Universal_
 
         private void Unlock_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(home));
+            this.Frame.Navigate(typeof(HomePage));
         }
 
     }
