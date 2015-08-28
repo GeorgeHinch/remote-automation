@@ -42,21 +42,21 @@
             <FlipView x:Name="flipView" d:LayoutOverrides="Height, LeftPosition, RightPosition" Background="{x:Null}">
                 <StackPanel x:Name="HomeGroup1" HorizontalAlignment="Center" Height="300" VerticalAlignment="Center" Width="700">
                     <StackPanel Orientation="Horizontal">
-                        <Button Width="175" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top">
+                        <Button Width="175" Click="Lights_Click" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top">
                             <StackPanel>
                                 <TextBlock Text="&#60032;" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" FontSize="48" Margin="0,0,0,15" Foreground="#FF004261"/>
                                 <TextBlock Text="Lights" TextAlignment="Center" Margin="0,0,0,5" Foreground="#FF595959"/>
                                 <TextBlock Text="Switches, dimmers, light bulbs" TextAlignment="Center" MaxLines="2" TextWrapping="Wrap" Foreground="#FFCCCCCC"/>
                             </StackPanel>
                         </Button>
-                        <Button Width="175" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <Button Width="175" Click="Locks_Click" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top">
                             <StackPanel>
                                 <TextBlock Text="&#57846;" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" FontSize="48" Margin="0,0,0,15" Foreground="#FF004261"/>
                                 <TextBlock Text="Locks" TextAlignment="Center" Margin="0,0,0,5" Foreground="#FF595959"/>
                                 <TextBlock Text="Door locks, deadbolts" TextAlignment="Center" MaxLines="2" TextWrapping="Wrap" Foreground="#FFCCCCCC"/>
                             </StackPanel>
                         </Button>
-                        <Button Width="175" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top">
+                        <Button Width="175" Click="Weather_Click" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top">
                             <StackPanel>
                                 <TextBlock Text="&#59219;" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" FontSize="48" Margin="0,0,0,15" Foreground="#FF004261"/>
                                 <TextBlock Text="Weather" TextAlignment="Center" Margin="0,0,0,5" Foreground="#FF595959"/>
@@ -72,28 +72,28 @@
                         </Button>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Button Width="175" Padding="15,10,15,0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top">
+                        <Button Width="175" Click="Security_Click" Padding="15,10,15,0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top">
                             <StackPanel>
                                 <TextBlock Text="&#59184;" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" FontSize="48" Margin="0,0,0,15" Foreground="#FF004261"/>
                                 <TextBlock Text="Security" TextAlignment="Center" Margin="0,0,0,5" Foreground="#FF595959"/>
                                 <TextBlock Text="Alarm, siren, strobe" TextAlignment="Center" MaxLines="2" TextWrapping="Wrap" Foreground="#FFCCCCCC"/>
                             </StackPanel>
                         </Button>
-                        <Button Width="175" Padding="15,10,15,0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top">
+                        <Button Width="175" Click="Presence_Click" Padding="15,10,15,0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top">
                             <StackPanel>
                                 <TextBlock Text="&#57796;" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" FontSize="48" Margin="0,0,0,15" Foreground="#FF004261"/>
                                 <TextBlock Text="Presence" TextAlignment="Center" Margin="0,0,0,5" Foreground="#FF595959"/>
                                 <TextBlock Text="Presence sensor, phone" TextAlignment="Center" MaxLines="2" TextWrapping="Wrap" Foreground="#FFCCCCCC"/>
                             </StackPanel>
                         </Button>
-                        <Button Width="175" Padding="15,10,15,0" Background="{x:Null}" BorderBrush="{x:Null}">
+                        <Button Width="175" Click="Motion_Click" Padding="15,10,15,0" Background="{x:Null}" BorderBrush="{x:Null}">
                             <StackPanel>
                                 <TextBlock Text="&#59389;" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" FontSize="48" Margin="0,0,0,15" Foreground="#FF004261"/>
                                 <TextBlock Text="Motion" TextAlignment="Center" Margin="0,0,0,5" Foreground="#FF595959"/>
                                 <TextBlock Text="Motion sensor, multi-sensor" TextAlignment="Center" MaxLines="2" TextWrapping="Wrap" Foreground="#FFCCCCCC"/>
                             </StackPanel>
                         </Button>
-                        <Button Width="175" Padding="15,10,15,0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top">
+                        <Button Width="175" Click="Enviroment_Click" Padding="15,10,15,0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top">
                             <StackPanel>
                                 <TextBlock Text="&#57643;" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" FontSize="48" Margin="0,0,0,15" Foreground="#FF004261"/>
                                 <TextBlock Text="Enviroment" TextAlignment="Center" Margin="0,0,0,5" Foreground="#FF595959"/>
@@ -106,7 +106,7 @@
 
                 <StackPanel x:Name="HomeGroup2" HorizontalAlignment="Center" Height="300" VerticalAlignment="Center" Width="700">
                     <StackPanel Orientation="Horizontal">
-                        <Button Width="175" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top">
+                        <Button Width="175" Click="News_Click" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top">
                             <StackPanel>
                                 <TextBlock Text="&#57811;" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" FontSize="48" Margin="0,0,0,15" Foreground="#FF004261"/>
                                 <TextBlock Text="News" TextAlignment="Center" Margin="0,0,0,5" Foreground="#FF595959"/>
@@ -125,9 +125,6 @@
                     </StackPanel>
                 </StackPanel>
             </FlipView>
-            <Button Margin="15,50,50,25" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="{x:Null}" BorderBrush="{x:Null}">
-                <TextBlock Text="Next &gt;" TextAlignment="Right" Foreground="#FFC9C9C9"></TextBlock>
-            </Button>
         </Grid>
     </Grid>
 </Page>

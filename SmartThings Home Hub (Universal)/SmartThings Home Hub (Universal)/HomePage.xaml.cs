@@ -27,9 +27,49 @@ namespace SmartThings_Home_Hub__Universal_
             this.InitializeComponent();
         }
 
+        private void Lights_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(LightsPage));
+        }
+
+        private void Locks_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(LocksPage));
+        }
+
+        private void Weather_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(WeatherPage));
+        }
+
         private void Music_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MusicPage));
+        }
+
+        private void Security_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(SecurityPage));
+        }
+
+        private void Presence_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(PresencePage));
+        }
+
+        private void Motion_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MotionPage));
+        }
+
+        private void Enviroment_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(EnviromentPage));
+        }
+
+        private void News_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(NewsPage));
         }
 
         private void Settings_Click(object sender, RoutedEventArgs e)
