@@ -1574,17 +1574,6 @@
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
-      },
-      "WUnderground.Client/1.0.5": {
-        "dependencies": {
-          "Newtonsoft.Json": "[6.0.2, )"
-        },
-        "compile": {
-          "lib/portable-net45+wpa81+win81/WUnderground.Client.dll": {}
-        },
-        "runtime": {
-          "lib/portable-net45+wpa81+win81/WUnderground.Client.dll": {}
-        }
       }
     },
     "UAP,Version=v10.0/win10-arm": {
@@ -3249,17 +3238,6 @@
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
-      },
-      "WUnderground.Client/1.0.5": {
-        "dependencies": {
-          "Newtonsoft.Json": "[6.0.2, )"
-        },
-        "compile": {
-          "lib/portable-net45+wpa81+win81/WUnderground.Client.dll": {}
-        },
-        "runtime": {
-          "lib/portable-net45+wpa81+win81/WUnderground.Client.dll": {}
-        }
       }
     },
     "UAP,Version=v10.0/win10-arm-aot": {
@@ -4895,17 +4873,6 @@
         },
         "runtime": {
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
-        }
-      },
-      "WUnderground.Client/1.0.5": {
-        "dependencies": {
-          "Newtonsoft.Json": "[6.0.2, )"
-        },
-        "compile": {
-          "lib/portable-net45+wpa81+win81/WUnderground.Client.dll": {}
-        },
-        "runtime": {
-          "lib/portable-net45+wpa81+win81/WUnderground.Client.dll": {}
         }
       }
     },
@@ -6576,17 +6543,6 @@
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
-      },
-      "WUnderground.Client/1.0.5": {
-        "dependencies": {
-          "Newtonsoft.Json": "[6.0.2, )"
-        },
-        "compile": {
-          "lib/portable-net45+wpa81+win81/WUnderground.Client.dll": {}
-        },
-        "runtime": {
-          "lib/portable-net45+wpa81+win81/WUnderground.Client.dll": {}
-        }
       }
     },
     "UAP,Version=v10.0/win10-x86-aot": {
@@ -8222,17 +8178,6 @@
         },
         "runtime": {
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
-        }
-      },
-      "WUnderground.Client/1.0.5": {
-        "dependencies": {
-          "Newtonsoft.Json": "[6.0.2, )"
-        },
-        "compile": {
-          "lib/portable-net45+wpa81+win81/WUnderground.Client.dll": {}
-        },
-        "runtime": {
-          "lib/portable-net45+wpa81+win81/WUnderground.Client.dll": {}
         }
       }
     },
@@ -9903,17 +9848,6 @@
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
-      },
-      "WUnderground.Client/1.0.5": {
-        "dependencies": {
-          "Newtonsoft.Json": "[6.0.2, )"
-        },
-        "compile": {
-          "lib/portable-net45+wpa81+win81/WUnderground.Client.dll": {}
-        },
-        "runtime": {
-          "lib/portable-net45+wpa81+win81/WUnderground.Client.dll": {}
-        }
       }
     },
     "UAP,Version=v10.0/win10-x64-aot": {
@@ -11549,17 +11483,6 @@
         },
         "runtime": {
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
-        }
-      },
-      "WUnderground.Client/1.0.5": {
-        "dependencies": {
-          "Newtonsoft.Json": "[6.0.2, )"
-        },
-        "compile": {
-          "lib/portable-net45+wpa81+win81/WUnderground.Client.dll": {}
-        },
-        "runtime": {
-          "lib/portable-net45+wpa81+win81/WUnderground.Client.dll": {}
         }
       }
     }
@@ -14985,18 +14908,6 @@
         "package/services/metadata/core-properties/1cffc42bca944f1d81ef3c3abdb0f0be.psmdcp",
         "[Content_Types].xml"
       ]
-    },
-    "WUnderground.Client/1.0.5": {
-      "sha512": "MUzSLiP5oi+pIHg9Mpeu5pNXnKFkI4soibxAaQqlO2VxUk5zlXXPuK6SHU+mPjJmTFoTw4pPFNI/6+j8vBVe6w==",
-      "type": "Package",
-      "files": [
-        "_rels/.rels",
-        "WUnderground.Client.nuspec",
-        "lib/portable-net45+wpa81+win81/WUnderground.Client.dll",
-        "lib/portable-net45+wpa81+win81/WUnderground.Client.XML",
-        "package/services/metadata/core-properties/e1372471c0c643e8b4ce59e2d16198ac.psmdcp",
-        "[Content_Types].xml"
-      ]
     }
   },
   "projectFileDependencyGroups": {
@@ -15005,8 +14916,7 @@
       "Microsoft.ApplicationInsights.PersistenceChannel >= 1.0.0",
       "Microsoft.ApplicationInsights.WindowsApps >= 1.0.0",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.0.0",
-      "Newtonsoft.Json >= 7.0.1",
-      "WUnderground.Client >= 1.0.5"
+      "Newtonsoft.Json >= 7.0.1"
     ],
     "UAP,Version=v10.0": []
   }
