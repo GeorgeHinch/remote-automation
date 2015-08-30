@@ -7,14 +7,17 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" Width="800" Height="480" FontFamily="{StaticResource FF-RobotoThin}">
 
-    <Grid Background="#FFFFFFFF">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="Assets/weather-background-1.jpg"/>
+        </Grid.Background>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="10*" />
             <RowDefinition Height="90*" />
         </Grid.RowDefinitions>
 
-        <Grid x:Name="StatusBar" Grid.Row="0" Background="#FFE9E9E9">
+        <Grid x:Name="StatusBar" Grid.Row="0">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Margin="15,10,0,0">
                 <Button x:Name="ReturnHome" Click="Home_Click" Content="&#57828;" FontFamily="Segoe MDL2 Assets" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="2" FontSize="18.667" Margin="0,5" Padding="4" />
                 <TextBlock Text="  Weather" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource FF-RobotoThin}" />
@@ -43,17 +46,43 @@
             </StackPanel>
         </Grid>
 
-        <Grid x:Name="music_mainView" Grid.Row="1">
+        <Grid x:Name="weather_mainView" Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20*" />
-                <ColumnDefinition Width="80*" />
+                <ColumnDefinition Width="30*" />
+                <ColumnDefinition Width="40*" />
+                <ColumnDefinition Width="30*" />
             </Grid.ColumnDefinitions>
 
-            <Grid x:Name="musicListView" Grid.Column="0" Background="#FFF4F4F4">
+            <Grid Grid.Column="0">
 
             </Grid>
 
-            <Grid x:Name="musicListDetails" Grid.Column="1">
+            <Grid Grid.Column="1">
+                <!-- <Ellipse Margin="10,0,10,132" d:LayoutOverrides="TopPosition, BottomPosition" HorizontalAlignment="Center" Width="200" Height="200" Stroke="Black" StrokeThickness="2"/> -->
+                <Canvas Margin="10,139,-10,-139">
+                    <Path Stroke="#3F000000">
+                        <Path.Data>
+                            <PathGeometry>
+                                <PathFigure StartPoint="100,100">
+                                    <ArcSegment IsLargeArc="True"
+                                Size="100, 100"
+                                Point="200, 100"
+                                SweepDirection="Clockwise" />
+                                </PathFigure>
+                            </PathGeometry>
+                        </Path.Data>
+                    </Path>
+                </Canvas>
+                <TextBlock x:Name="WeatherTemp" HorizontalAlignment="Center" TextWrapping="Wrap" Text="78°" VerticalAlignment="Top" Margin="88,111,60,0" FontFamily="{StaticResource FF-RobotoThin}" FontSize="64" Width="172" TextAlignment="Center"/>
+                <TextBlock x:Name="WeatherLow" HorizontalAlignment="Left" TextWrapping="Wrap" Text="« 54°" VerticalAlignment="Bottom" Margin="88,0,0,156"/>
+                <TextBlock x:Name="WeatherHigh" HorizontalAlignment="Right" TextWrapping="Wrap" Text="78° »" VerticalAlignment="Bottom" Margin="0,0,88,156"/>
+                <TextBlock x:Name="WeatherLocation" TextWrapping="Wrap" Text="precipitation" Margin="120,0,120,199" d:LayoutOverrides="Width, LeftPosition, RightPosition" FontFamily="{StaticResource FF-RobotoThin}" Foreground="Black" FontSize="10.667" VerticalAlignment="Bottom" TextAlignment="Center"/>
+                <TextBlock x:Name="WeatherIcon" TextWrapping="Wrap" Text="&#xF00C;" VerticalAlignment="Top" Margin="100,111,0,0" FontFamily="{StaticResource FF-WeatherIcons}" FontSize="16" d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Left"/>
+
+
+            </Grid>
+
+            <Grid Grid.Column="2">
 
             </Grid>
 
