@@ -93,9 +93,3 @@ Update (internet) - &#59752;
 
 Home - &#57828;
 
-
-
-
-string q = string.Format("http://api.wunderground.com/api/131520743d6aa8eb/conditions/forecast/geolookup/q/{0},{1}.json", latitude, longitude);
-                var bingKey = "qbqjIZwPmqEr0SWkwipuHrzQoCdNaWdyJEC9zCiCH7s";ss
-

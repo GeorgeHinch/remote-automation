@@ -54,7 +54,7 @@
             </Grid>
 
             <Grid x:Name="musicListDetails" Grid.Column="1">
-
+                <TextBlock x:Name="Light1" Text="Sample"></TextBlock>
             </Grid>
 
         </Grid>
