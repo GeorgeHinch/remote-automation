@@ -93,3 +93,6 @@ Update (internet) - &#59752;
 
 Home - &#57828;
 
+
+https://www.bing.com/news/?format=RSS
+

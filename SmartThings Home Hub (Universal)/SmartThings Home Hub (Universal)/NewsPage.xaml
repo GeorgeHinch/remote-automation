@@ -43,20 +43,93 @@
             </StackPanel>
         </Grid>
 
-        <Grid x:Name="music_mainView" Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20*" />
-                <ColumnDefinition Width="80*" />
-            </Grid.ColumnDefinitions>
+        <Grid x:Name="news_mainView" Grid.Row="1">
+            <SplitView x:Name="newsSplitView" DisplayMode="Inline" OpenPaneLength="160" IsPaneOpen="True">
+                <SplitView.Pane>
+                    <StackPanel Background="#FFF4F4F4">
+                        <!-- Vertical scrolling item list -->
+                        <ListView
+            x:Name="itemListView"
+            AutomationProperties.AutomationId="ItemsListView"
+            AutomationProperties.Name="Items"
+            TabIndex="1"
+            Grid.Row="1"
+            Margin="-10,-10,0,0"
+            Padding="120,0,0,60"
+            ItemsSource="{Binding Source={StaticResource itemsViewSource}}"
+            IsSwipeEnabled="False"
+            SelectionChanged="ItemListView_SelectionChanged">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Height="110" Margin="6">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Border Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}" Width="110" Height="110">
+                                            <Image Source="{Binding Image}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}"/>
+                                        </Border>
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Top" Margin="10,0,0,0">
+                                            <TextBlock Text="{Binding Title}" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="NoWrap"/>
+                                            <TextBlock Text="{Binding PubDate}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap"/>
+                                            <TextBlock Text="{Binding Brief}" Style="{StaticResource BodyTextBlockStyle}" MaxHeight="60"/>
+                                        </StackPanel>
+                                    </Grid>
 
-            <Grid x:Name="musicListView" Grid.Column="0" Background="#FFF4F4F4">
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="FrameworkElement">
+                                    <Setter Property="Margin" Value="0,0,0,10"/>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                        </ListView>
+                    </StackPanel>
+                </SplitView.Pane>
+                <SplitView.Content>
+                    <Grid>
+                        <!-- Details for selected item -->
+                        <ScrollViewer x:Name="itemDetail" AutomationProperties.AutomationId="ItemDetailScrollViewer" Grid.Column="1" Grid.RowSpan="2" Padding="60,0,66,0" DataContext="{Binding SelectedItem, ElementName=itemListView}" d:DataContext="{Binding Groups[0].Items[0], Source={d:DesignData Source=/DataModel/SampleData.json, Type=data:SampleDataSource}}" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollMode="Disabled" ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.ZoomMode="Disabled">
 
-            </Grid>
+                            <Grid x:Name="itemDetailGrid" Margin="0,60,0,50">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <StackPanel x:Name="itemDetailTitlePanel" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                                    <TextBlock x:Name="itemTitle" Margin="0,-10,0,0" Text="{Binding Title}" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                                    <TextBlock x:Name="itemSubtitle" Margin="0,0,0,20" Text="{Binding PubDate}" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                </StackPanel>
+                                <Grid Grid.Row="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="120"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
 
-            <Grid x:Name="musicListDetails" Grid.Column="1">
+                                    <TextBlock Grid.Row="0" Text="Author" Style="{StaticResource SubtitleTextBlockStyle}" Margin="0,10" />
+                                    <TextBlock Grid.Row="1" Text="Pub Date" Style="{StaticResource SubtitleTextBlockStyle}" Margin="0,10" />
+                                    <TextBlock Grid.Row="2" Text="Link" Style="{StaticResource SubtitleTextBlockStyle}" Margin="0,10" />
+                                    <TextBlock Grid.Row="3" Text="Categories" Style="{StaticResource SubtitleTextBlockStyle}" Margin="0,10" />
 
-            </Grid>
+                                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Author}" Style="{StaticResource BodyTextBlockStyle}" Margin="0,10" />
+                                    <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding PubDate}" Style="{StaticResource BodyTextBlockStyle}" Margin="0,10" />
+                                    <HyperlinkButton Grid.Row="2" Grid.Column="1" Content="{Binding Link}" Margin="0,10" />
+                                    <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding CategoriesAppended}" Style="{StaticResource BodyTextBlockStyle}" Margin="0,10" />
 
+                                    <TextBlock Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Summary}" Style="{StaticResource BodyTextBlockStyle}" Margin="0,10" />
+                                </Grid>
+                            </Grid>
+                        </ScrollViewer>
+                    </Grid>
+                </SplitView.Content>
+            </SplitView>
         </Grid>
     </Grid>
 </Page>
