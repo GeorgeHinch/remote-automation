@@ -7,6 +7,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" Width="800" Height="480" FontFamily="{StaticResource FF-RobotoThin}">
 
+    <Page.Resources>
+        <!-- Collection of items displayed by this page -->
+        <CollectionViewSource
+            x:Name="itemsViewSource"
+            Source="{Binding Items}"
+            d:Source="{Binding Groups[0].Items, Source={d:DesignData Source=/DataModel/SampleData.json, Type=data:SampleDataSource}}"/>
+    </Page.Resources>
+
     <Grid Background="#FFFFFFFF">
 
         <Grid.RowDefinitions>
@@ -49,16 +57,16 @@
                     <StackPanel Background="#FFF4F4F4">
                         <!-- Vertical scrolling item list -->
                         <ListView
-            x:Name="itemListView"
-            AutomationProperties.AutomationId="ItemsListView"
-            AutomationProperties.Name="Items"
-            TabIndex="1"
-            Grid.Row="1"
-            Margin="-10,-10,0,0"
-            Padding="120,0,0,60"
-            ItemsSource="{Binding Source={StaticResource itemsViewSource}}"
-            IsSwipeEnabled="False"
-            SelectionChanged="ItemListView_SelectionChanged">
+                        x:Name="itemListView"
+                        AutomationProperties.AutomationId="ItemsListView"
+                        AutomationProperties.Name="Items"
+                        TabIndex="1"
+                        Grid.Row="1"
+                        Margin="-10,-10,0,0"
+                        Padding="120,0,0,60"
+                        ItemsSource="{Binding Source={StaticResource itemsViewSource}}"
+                        IsSwipeEnabled="False"
+                        SelectionChanged="ItemListView_SelectionChanged">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <Grid Height="110" Margin="6">

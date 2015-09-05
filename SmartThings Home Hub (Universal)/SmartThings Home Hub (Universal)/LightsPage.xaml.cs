@@ -25,6 +25,7 @@ namespace SmartThings_Home_Hub__Universal_
         public LightsPage()
         {
             this.InitializeComponent();
+            SmartThingsAPI.SwitchesLoad();
         }
 
         private void Home_Click(object sender, RoutedEventArgs e)

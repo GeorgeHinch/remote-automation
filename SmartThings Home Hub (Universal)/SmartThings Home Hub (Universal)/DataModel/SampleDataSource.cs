@@ -80,11 +80,11 @@ namespace RSSReader.Data
     /// SampleDataSource initializes with data read from a static json file included in the 
     /// project.  This provides sample data at both design-time and run-time.
     /// </summary>
-    public sealed class SampleDataSource
+    public class SampleDataSource
     {
-        private static SampleDataSource _sampleDataSource = new SampleDataSource();
+        public static SampleDataSource _sampleDataSource = new SampleDataSource();
 
-        private ObservableCollection<SampleDataGroup> _groups = new ObservableCollection<SampleDataGroup>();
+        public ObservableCollection<SampleDataGroup> _groups = new ObservableCollection<SampleDataGroup>();
         public ObservableCollection<SampleDataGroup> Groups
         {
             get { return this._groups; }
@@ -115,7 +115,7 @@ namespace RSSReader.Data
             return null;
         }
 
-        private async Task GetSampleDataAsync()
+        public async Task GetSampleDataAsync()
         {
             if (this._groups.Count != 0)
                 return;
