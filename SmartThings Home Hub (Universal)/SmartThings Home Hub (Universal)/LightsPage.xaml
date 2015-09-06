@@ -33,28 +33,16 @@
                 <Button x:Name="sigStrengthIconBtn" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0" Padding="5" Height="30">
                     <TextBlock x:Name="sigStrengthIcon" Text="&#59449;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="sigStrength" Foreground="Black" />
                 </Button>
-                <Button x:Name="pwrStateIconBtn" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0" Padding="5" Height="40" BorderThickness="0">
-                    <TextBlock x:Name="pwrStateIcon" Text="&#59798;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="pwrState" Foreground="Black" FontSize="25" RenderTransformOrigin="0.5,0.5" >
-                        <TextBlock.RenderTransform>
-                            <CompositeTransform TranslateY="-2"/>
-                        </TextBlock.RenderTransform>
-                    </TextBlock>
+                <Button x:Name="pwrStateIconBtn" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0" Padding="5" Height="30" BorderThickness="0">
+                    <TextBlock x:Name="pwrStateIcon" Text="&#59798;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="pwrState" Foreground="Black" />
                 </Button>
             </StackPanel>
         </Grid>
 
-        <Grid x:Name="music_mainView" Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20*" />
-                <ColumnDefinition Width="80*" />
-            </Grid.ColumnDefinitions>
+        <Grid x:Name="lights_mainView" Grid.Row="1">
 
-            <Grid x:Name="musicListView" Grid.Column="0" Background="#FFF4F4F4">
-
-            </Grid>
-
-            <Grid x:Name="musicListDetails" Grid.Column="1">
-                <TextBlock x:Name="Light1" Text="Sample"></TextBlock>
+            <Grid x:Name="lightsListDetails" Grid.Column="1">
+                <TextBlock x:Name="Light1" Text="Sample" x:FieldModifier="public"></TextBlock>
             </Grid>
 
         </Grid>

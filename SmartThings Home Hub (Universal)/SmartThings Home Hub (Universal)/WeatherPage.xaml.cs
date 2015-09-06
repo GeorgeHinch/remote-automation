@@ -212,10 +212,10 @@ namespace SmartThings_Home_Hub__Universal_
                             WeatherIcon.Text = $"";
                             break;
                         case "few clouds":
-                            WeatherIcon.Text = $"";
+                            WeatherIcon.Text = $"";
                             break;
                         case "scattered clouds":
-                            WeatherIcon.Text = $"";
+                            WeatherIcon.Text = $"";
                             break;
                         case "broken clouds":
                             WeatherIcon.Text = $"";

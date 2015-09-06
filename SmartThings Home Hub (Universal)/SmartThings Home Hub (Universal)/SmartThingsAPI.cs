@@ -7,7 +7,10 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 
 namespace SmartThings_Home_Hub__Universal_
 {
@@ -36,7 +39,7 @@ namespace SmartThings_Home_Hub__Universal_
                     for (int i = 0; i < switchesDetails.Length; i++)
                     {
                         Debug.WriteLine(switchesDetails[i].label);
-                        LightsPage.Light1.Text = switchesDetails[i].label;
+                        //LightsPage.Light1.Text = switchesDetails[i].label;
                     }
                 }
             }
