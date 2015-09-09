@@ -41,9 +41,100 @@
 
         <Grid x:Name="lights_mainView" Grid.Row="1">
 
-            <Grid x:Name="lightsListDetails" Grid.Column="1">
-                <TextBlock x:Name="Light1" Text="Sample" x:FieldModifier="public"></TextBlock>
-            </Grid>
+            <FlipView x:Name="light_flipView" d:LayoutOverrides="Height, LeftPosition, RightPosition" Background="{x:Null}">
+                <StackPanel x:Name="lightGroup1" HorizontalAlignment="Center" Height="300" VerticalAlignment="Center" Width="700">
+                    <StackPanel Orientation="Horizontal">
+                        <Button Width="175" Click="brelandRoomLight_Click" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top">
+                            <StackPanel>
+                                <TextBlock Text="&#60032;" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" FontSize="48" Margin="0,0,0,15" Foreground="#FF004261"/>
+                                <TextBlock Text="Breland Room Lamp" TextAlignment="Center" Margin="0,0,0,5" Foreground="#FF595959"/>
+                                <TextBlock Text="dimmer switch" TextAlignment="Center" MaxLines="2" TextWrapping="Wrap" Foreground="#FFCCCCCC"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Width="175" Click="brelandBathLight_Click" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top">
+                            <StackPanel>
+                                <TextBlock Text="&#60032;" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" FontSize="48" Margin="0,0,0,15" Foreground="#FF004261"/>
+                                <TextBlock Text="Breland's Bathroom" TextAlignment="Center" Margin="0,0,0,5" Foreground="#FF595959"/>
+                                <TextBlock Text="dimmer switch" TextAlignment="Center" MaxLines="2" TextWrapping="Wrap" Foreground="#FFCCCCCC"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Width="175" Click="brelandLight_Click" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top">
+                            <StackPanel>
+                                <TextBlock Text="&#60032;" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" FontSize="48" Margin="0,0,0,15" Foreground="#FF004261"/>
+                                <TextBlock Text="Breland's Room" TextAlignment="Center" Margin="0,0,0,5" Foreground="#FF595959"/>
+                                <TextBlock Text="relay switch" TextAlignment="Center" MaxLines="2" TextWrapping="Wrap" Foreground="#FFCCCCCC"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Click="entryLight_Click" Width="175" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top">
+                            <StackPanel>
+                                <TextBlock Text="&#60032;" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" FontSize="48" Margin="0,0,0,15" Foreground="#FF004261"/>
+                                <TextBlock Text="Entry Way" TextAlignment="Center" Margin="0,0,0,5" Foreground="#FF595959"/>
+                                <TextBlock Text="relay switch" TextAlignment="Center" MaxLines="2" TextWrapping="Wrap" Foreground="#FFCCCCCC"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Width="175" Click="georgeBathLight_Click" Padding="15,10,15,0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top">
+                            <StackPanel>
+                                <TextBlock Text="&#60032;" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" FontSize="48" Margin="0,0,0,15" Foreground="#FF004261"/>
+                                <TextBlock Text="George Bathroom" TextAlignment="Center" Margin="0,0,0,5" Foreground="#FF595959"/>
+                                <TextBlock Text="dimmer switch" TextAlignment="Center" MaxLines="2" TextWrapping="Wrap" Foreground="#FFCCCCCC"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Width="175" Click="georgeRoomLight_Click" Padding="15,10,15,0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top">
+                            <StackPanel>
+                                <TextBlock Text="&#60032;" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" FontSize="48" Margin="0,0,0,15" Foreground="#FF004261"/>
+                                <TextBlock Text="George's Room" TextAlignment="Center" Margin="0,0,0,5" Foreground="#FF595959"/>
+                                <TextBlock Text="relay switch" TextAlignment="Center" MaxLines="2" TextWrapping="Wrap" Foreground="#FFCCCCCC"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Width="175" Click="hallwayLight_Click" Padding="15,10,15,0" Background="{x:Null}" BorderBrush="{x:Null}">
+                            <StackPanel>
+                                <TextBlock Text="&#60032;" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" FontSize="48" Margin="0,0,0,15" Foreground="#FF004261"/>
+                                <TextBlock Text="Hallway" TextAlignment="Center" Margin="0,0,0,5" Foreground="#FF595959"/>
+                                <TextBlock Text="relay switch" TextAlignment="Center" MaxLines="2" TextWrapping="Wrap" Foreground="#FFCCCCCC"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Width="175" Click="kitchenLight_Click" Padding="15,10,15,0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top">
+                            <StackPanel>
+                                <TextBlock Text="&#60032;" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" FontSize="48" Margin="0,0,0,15" Foreground="#FF004261"/>
+                                <TextBlock Text="Kitchen" TextAlignment="Center" Margin="0,0,0,5" Foreground="#FF595959"/>
+                                <TextBlock Text="relay switch" TextAlignment="Center" MaxLines="2" TextWrapping="Wrap" Foreground="#FFCCCCCC"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+
+
+                <StackPanel x:Name="lightGroup2" HorizontalAlignment="Center" Height="300" VerticalAlignment="Center" Width="700">
+                    <StackPanel Orientation="Horizontal">
+                        <Button Width="175" Click="kitchenBarLight_Click" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top">
+                            <StackPanel>
+                                <TextBlock Text="&#60032;" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" FontSize="48" Margin="0,0,0,15" Foreground="#FF004261"/>
+                                <TextBlock Text="Kitchen Bar" TextAlignment="Center" Margin="0,0,0,5" Foreground="#FF595959"/>
+                                <TextBlock Text="dimmer switch" TextAlignment="Center" MaxLines="2" TextWrapping="Wrap" Foreground="#FFCCCCCC"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Width="175" Click="livingRoomCouchLight_Click" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top">
+                            <StackPanel>
+                                <TextBlock Text="&#60032;" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" FontSize="48" Margin="0,0,0,15" Foreground="#FF004261"/>
+                                <TextBlock Text="Living Room Couch" TextAlignment="Center" Margin="0,0,0,5" Foreground="#FF595959"/>
+                                <TextBlock Text="relay switch" TextAlignment="Center" MaxLines="2" TextWrapping="Wrap" Foreground="#FFCCCCCC"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Width="175" Click="livingRoomLight_Click" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top">
+                            <StackPanel>
+                                <TextBlock Text="&#60032;" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" FontSize="48" Margin="0,0,0,15" Foreground="#FF004261"/>
+                                <TextBlock Text="Living Room Lamp" TextAlignment="Center" Margin="0,0,0,5" Foreground="#FF595959"/>
+                                <TextBlock Text="dimmer switch" TextAlignment="Center" MaxLines="2" TextWrapping="Wrap" Foreground="#FFCCCCCC"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        
+                    </StackPanel>
+                </StackPanel>
+            </FlipView>
 
         </Grid>
     </Grid>
