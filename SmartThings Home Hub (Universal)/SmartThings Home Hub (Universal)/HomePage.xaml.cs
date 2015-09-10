@@ -25,6 +25,21 @@ namespace SmartThings_Home_Hub__Universal_
         public HomePage()
         {
             this.InitializeComponent();
+            /*ComponentDispatcher.ThreadIdle += new EventHandler(ComponentDispatcher_ThreadIdle);
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(30);
+            timer.Tick += new EventHandler<object>(timer_Tick);
+        }
+
+        void timer_Tick(object sender, object e)
+        {
+            //Do your action here
+            timer.Stop();
+        }
+
+        void ComponentDispatcher_ThreadIdle(object sender, EventArgs e)
+        {
+            timer.Start();*/
         }
 
         private void Lights_Click(object sender, RoutedEventArgs e)
@@ -75,21 +90,6 @@ namespace SmartThings_Home_Hub__Universal_
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(SettingsPage));
-        }
-
-        private void Session_Timeout()
-        {
-            function logout() {
-                location.href = '/your/logout/page.aspx';
-            }
-
-            var timeout = setTimeout(300000, logout);
-            function resetTimeout() {
-                clearTimeout(timeout);
-                timeout = setTimeout(300000, logout);
-            }
-
-            document.onclick = resetTimeout;
         }
     }
 }
