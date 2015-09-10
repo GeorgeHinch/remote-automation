@@ -43,7 +43,7 @@
 
             <FlipView x:Name="light_flipView" d:LayoutOverrides="Height, LeftPosition, RightPosition" Background="{x:Null}">
                 <StackPanel x:Name="lightGroup1" HorizontalAlignment="Center" Height="300" VerticalAlignment="Center" Width="700">
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
                         <Button Width="175" Click="brelandRoomLight_Click" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top">
                             <StackPanel>
                                 <TextBlock Text="&#60032;" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" FontSize="48" Margin="0,0,0,15" Foreground="#FF004261"/>
@@ -73,7 +73,7 @@
                             </StackPanel>
                         </Button>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
                         <Button Width="175" Click="georgeBathLight_Click" Padding="15,10,15,0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top">
                             <StackPanel>
                                 <TextBlock Text="&#60032;" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" FontSize="48" Margin="0,0,0,15" Foreground="#FF004261"/>
@@ -107,7 +107,7 @@
 
 
                 <StackPanel x:Name="lightGroup2" HorizontalAlignment="Center" Height="300" VerticalAlignment="Center" Width="700">
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
                         <Button Width="175" Click="kitchenBarLight_Click" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top">
                             <StackPanel>
                                 <TextBlock Text="&#60032;" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" FontSize="48" Margin="0,0,0,15" Foreground="#FF004261"/>
@@ -130,7 +130,7 @@
                             </StackPanel>
                         </Button>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
                         
                     </StackPanel>
                 </StackPanel>

@@ -76,5 +76,20 @@ namespace SmartThings_Home_Hub__Universal_
         {
             this.Frame.Navigate(typeof(SettingsPage));
         }
+
+        private void Session_Timeout()
+        {
+            function logout() {
+                location.href = '/your/logout/page.aspx';
+            }
+
+            var timeout = setTimeout(300000, logout);
+            function resetTimeout() {
+                clearTimeout(timeout);
+                timeout = setTimeout(300000, logout);
+            }
+
+            document.onclick = resetTimeout;
+        }
     }
 }

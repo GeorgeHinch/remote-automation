@@ -67,57 +67,57 @@ namespace SmartThings_Home_Hub__Universal_
 
         /// Lights
         /// 
-        public static void brelandRoomLight_Click(/*object sender, RoutedEventArgs e*/)
+        public void brelandRoomLight_Click(object sender, RoutedEventArgs e)
         {
             HttpRequestMessage request = new HttpRequestMessage(
                 HttpMethod.Get,
-                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=switch&device=2c9650de-25da-4f1c-8ea0-51ca3c984007&command=toggle&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
+                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=dimmer&device=43447e8e-9709-4445-8dd7-7c0e46fa149f&command=toggle&value=10&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
             HttpClient client = new HttpClient();
             client.SendAsync(request);
 
         }
 
-        public static void brelandBathLight_Click(/*object sender, RoutedEventArgs e*/)
+        public void brelandBathLight_Click(object sender, RoutedEventArgs e)
         {
             HttpRequestMessage request = new HttpRequestMessage(
                 HttpMethod.Get,
-                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=switch&device=2c9650de-25da-4f1c-8ea0-51ca3c984007&command=toggle&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
+                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=dimmer&device=08760254-cf3e-4ea1-a625-ec0822177d07&command=toggle&value=10&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
             HttpClient client = new HttpClient();
             client.SendAsync(request);
 
         }
 
-        public static void brelandLight_Click(/*object sender, RoutedEventArgs e*/)
+        public void brelandLight_Click(object sender, RoutedEventArgs e)
         {
             HttpRequestMessage request = new HttpRequestMessage(
                 HttpMethod.Get,
-                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=switch&device=2c9650de-25da-4f1c-8ea0-51ca3c984007&command=toggle&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
+                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=switch&device=f04af812-1a35-4106-ba8a-04eedbf10c79&command=toggle&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
             HttpClient client = new HttpClient();
             client.SendAsync(request);
 
         }
 
-        public static void entryLight_Click(/*object sender, RoutedEventArgs e*/)
+        public void entryLight_Click(object sender, RoutedEventArgs e)
         {
             HttpRequestMessage request = new HttpRequestMessage(
                 HttpMethod.Get,
-                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=switch&device=2c9650de-25da-4f1c-8ea0-51ca3c984007&command=toggle&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
+                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=switch&device=a48055ea-da98-490d-9229-d9524dcda6b3&command=toggle&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
             HttpClient client = new HttpClient();
             client.SendAsync(request);
 
         }
 
-        public static void georgeBathLight_Click(/*object sender, RoutedEventArgs e*/)
+        public void georgeBathLight_Click(object sender, RoutedEventArgs e)
         {
             HttpRequestMessage request = new HttpRequestMessage(
                 HttpMethod.Get,
-                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=switch&device=2c9650de-25da-4f1c-8ea0-51ca3c984007&command=toggle&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
+                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=dimmer&device=765c8e03-2022-4c34-af6b-3cec3e44afe3&command=toggle&value=10&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
             HttpClient client = new HttpClient();
             client.SendAsync(request);
            
         }
 
-        public static void georgeRoomLight_Click(/*object sender, RoutedEventArgs e*/)
+        public void georgeRoomLight_Click(object sender, RoutedEventArgs e)
         {
             HttpRequestMessage request = new HttpRequestMessage(
                 HttpMethod.Get,
@@ -127,51 +127,51 @@ namespace SmartThings_Home_Hub__Universal_
 
         }
 
-        public static void hallwayLight_Click(/*object sender, RoutedEventArgs e*/)
+        public void hallwayLight_Click(object sender, RoutedEventArgs e)
         {
             HttpRequestMessage request = new HttpRequestMessage(
                 HttpMethod.Get,
-                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=switch&device=2c9650de-25da-4f1c-8ea0-51ca3c984007&command=toggle&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
+                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=switch&device=7066e4f4-ef7a-4254-8140-306a2e36b8e0&command=toggle&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
             HttpClient client = new HttpClient();
             client.SendAsync(request);
 
         }
 
-        public static void kitchenLight_Click(/*object sender, RoutedEventArgs e*/)
+        public void kitchenLight_Click(object sender, RoutedEventArgs e)
         {
             HttpRequestMessage request = new HttpRequestMessage(
                 HttpMethod.Get,
-                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=switch&device=2c9650de-25da-4f1c-8ea0-51ca3c984007&command=toggle&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
+                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=switch&device=90270527-f60e-4382-8e5c-c1db05b3ae58&command=toggle&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
             HttpClient client = new HttpClient();
             client.SendAsync(request);
 
         }
 
-        public static void kitchenBarLight_Click(/*object sender, RoutedEventArgs e*/)
+        public void kitchenBarLight_Click(object sender, RoutedEventArgs e)
         {
             HttpRequestMessage request = new HttpRequestMessage(
                 HttpMethod.Get,
-                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=switch&device=2c9650de-25da-4f1c-8ea0-51ca3c984007&command=toggle&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
+                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=dimmer&device=395d668e-1f0a-4321-b4fb-9a273c32322d&command=toggle&value=10&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
             HttpClient client = new HttpClient();
             client.SendAsync(request);
 
         }
 
-        public static void livingRoomCouchLight_Click(/*object sender, RoutedEventArgs e*/)
+        public void livingRoomCouchLight_Click(object sender, RoutedEventArgs e)
         {
             HttpRequestMessage request = new HttpRequestMessage(
                 HttpMethod.Get,
-                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=switch&device=2c9650de-25da-4f1c-8ea0-51ca3c984007&command=toggle&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
+                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=switch&device=7a609c91-5775-4bf1-a136-f7798941b20b&command=toggle&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
             HttpClient client = new HttpClient();
             client.SendAsync(request);
 
         }
 
-        public static void livingRoomLight_Click(/*object sender, RoutedEventArgs e*/)
+        public void livingRoomLight_Click(object sender, RoutedEventArgs e)
         {
             HttpRequestMessage request = new HttpRequestMessage(
                 HttpMethod.Get,
-                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=switch&device=2c9650de-25da-4f1c-8ea0-51ca3c984007&command=toggle&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
+                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=dimmer&device=3a7e702b-4cc7-496c-9302-2475c4cff667&command=toggle&value=10&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
             HttpClient client = new HttpClient();
             client.SendAsync(request);
 
