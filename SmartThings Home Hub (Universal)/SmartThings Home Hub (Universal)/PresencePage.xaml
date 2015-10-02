@@ -43,18 +43,39 @@
             </StackPanel>
         </Grid>
 
-        <Grid x:Name="music_mainView" Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20*" />
-                <ColumnDefinition Width="80*" />
-            </Grid.ColumnDefinitions>
+        <Grid x:Name="presence_mainView" Grid.Row="1">
 
-            <Grid x:Name="musicListView" Grid.Column="0" Background="#FFF4F4F4">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-            </Grid>
+                <Grid Grid.Column="0">
+                    
+                </Grid>
 
-            <Grid x:Name="musicListDetails" Grid.Column="1">
+                <Grid Grid.Column="1">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock x:Name="presIcon1" Text="&#57796;" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" FontSize="96" Margin="0,0,0,15" Foreground="#FFCCCCCC"/>
+                        <TextBlock x:Name="presName1" Text="Breland" TextAlignment="Center" Margin="0,0,0,5" Foreground="#FF595959"/>
+                        <TextBlock x:Name="presStat1" Text="not present" TextAlignment="Center" MaxLines="2" TextWrapping="Wrap" Foreground="#FFCCCCCC"/>
+                    </StackPanel>
+                </Grid>
 
+                <Grid Grid.Column="2">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock x:Name="presIcon2" Text="&#57796;" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" FontSize="96" Margin="0,0,0,15" Foreground="#FF004261"/>
+                        <TextBlock x:Name="presName2" Text="George" TextAlignment="Center" Margin="0,0,0,5" Foreground="#FF595959"/>
+                        <TextBlock x:Name="presStat2" Text="present" TextAlignment="Center" MaxLines="2" TextWrapping="Wrap" Foreground="#FFCCCCCC"/>
+                    </StackPanel>
+                </Grid>
+
+                <Grid Grid.Column="3">
+
+                </Grid>
             </Grid>
 
         </Grid>

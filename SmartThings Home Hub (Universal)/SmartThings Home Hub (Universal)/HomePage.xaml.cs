@@ -12,6 +12,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.Threading;
+using Windows.Devices.Input;
+using System.Diagnostics;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -22,25 +25,73 @@ namespace SmartThings_Home_Hub__Universal_
     /// </summary>
     public sealed partial class HomePage : Page
     {
+        private DispatcherTimer _timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(10) };
+
         public HomePage()
         {
             this.InitializeComponent();
-            /*ComponentDispatcher.ThreadIdle += new EventHandler(ComponentDispatcher_ThreadIdle);
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(30);
-            timer.Tick += new EventHandler<object>(timer_Tick);
+            this.timerReset();
         }
 
-        void timer_Tick(object sender, object e)
+        private void timerReset()
         {
-            //Do your action here
-            timer.Stop();
+            _timer.Start();
+            Debug.WriteLine("shit");
         }
 
-        void ComponentDispatcher_ThreadIdle(object sender, EventArgs e)
+        private void HomePage_PointerMoved(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
         {
-            timer.Start();*/
+            // restart the timer whenever the user moves the cursor
+            timerReset();
         }
+
+        private void Timer_Tick(object sender, object e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
+        }
+
+        private void btnPlay_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            _timer.Tick += Timer_Tick;
+            this.PointerMoved += HomePage_PointerMoved;
+
+            _timer.Start();
+        }
+
+        private void btnPause_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            _timer.Tick -= Timer_Tick;
+            this.PointerMoved -= HomePage_PointerMoved;
+
+            _timer.Stop();
+        }
+
+
+
+
+
+
+
+
+
+
+        /* public void AttachEvents()
+        {
+            Application.Current.RootVisual.MouseMove += new MouseEventHandler(RootVisual_MouseMove);
+            Application.Current.RootVisual.KeyDown += new KeyEventHandler(RootVisual_KeyDown);
+
+            MouseDevice.MouseMoved; 
+
+            Application.Current.RootVisual.AddHandler(UIElement.MouseLeftButtonDownEvent, (MouseButtonEventHandler)RootVisual_MouseButtonDown, true);
+            Application.Current.RootVisual.AddHandler(UIElement.MouseRightButtonDownEvent, (MouseButtonEventHandler)RootVisual_MouseButtonDown, true);
+        }
+
+        public event TypedEventHandler<MouseDevice, MouseEventArgs> MouseMoved;
+        */
+
+
+
+
 
         private void Lights_Click(object sender, RoutedEventArgs e)
         {

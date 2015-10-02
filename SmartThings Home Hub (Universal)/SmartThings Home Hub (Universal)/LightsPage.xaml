@@ -33,8 +33,8 @@
                 <Button x:Name="sigStrengthIconBtn" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0" Padding="5" Height="30">
                     <TextBlock x:Name="sigStrengthIcon" Text="&#59449;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="sigStrength" Foreground="Black" />
                 </Button>
-                <Button x:Name="pwrStateIconBtn" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0" Padding="5" Height="30" BorderThickness="0">
-                    <TextBlock x:Name="pwrStateIcon" Text="&#59798;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="pwrState" Foreground="Black" />
+                <Button x:Name="pwrStateIconBtn" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0" Padding="5" Height="30">
+                    <TextBlock x:Name="pwrStateIcon" Text="&#60341;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="pwrState" Foreground="Black" />
                 </Button>
             </StackPanel>
         </Grid>

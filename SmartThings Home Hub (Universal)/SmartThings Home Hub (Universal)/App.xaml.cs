@@ -42,6 +42,8 @@ namespace SmartThings_Home_Hub__Universal_
                 Microsoft.ApplicationInsights.WindowsCollectors.Session);
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+            StatusLED.LEDTimer();
         }
 
         /// <summary>

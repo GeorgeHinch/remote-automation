@@ -22,6 +22,8 @@ namespace SmartThings_Home_Hub__Universal_
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += new EventHandler<object>(dispatchTimer_Tick);
             timer.Start();
+
+            
         }
 
         void  dispatchTimer_Tick(object sender, object e)
@@ -38,16 +40,6 @@ namespace SmartThings_Home_Hub__Universal_
                 $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=helloHome&device=helloHome&command=Auto+Sleep&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79s");
             HttpClient client = new HttpClient();
             client.SendAsync(request);
-
-        }
-
-        private void Status_Time_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Status_Time_SelectionChanged_1(object sender, RoutedEventArgs e)
-        {
 
         }
 

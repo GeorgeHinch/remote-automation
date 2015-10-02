@@ -208,6 +208,9 @@ namespace SmartThings_Home_Hub__Universal_
                             break;
 
                         /// Clouds
+                        case "sky is clear":
+                            WeatherIcon.Text = $"";
+                            break;
                         case "clear sky":
                             WeatherIcon.Text = $"";
                             break;
