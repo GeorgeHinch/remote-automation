@@ -7,6 +7,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" Width="800" Height="480" FontFamily="{StaticResource FF-RobotoThin}">
 
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/SplitViewStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
     <Grid Background="#FFFFFFFF">
 
         <Grid.RowDefinitions>
@@ -44,7 +52,43 @@
         </Grid>
 
         <Grid x:Name="music_mainView" Grid.Row="1">
-            <Grid.ColumnDefinitions>
+
+            <SplitView  x:Name="settingsSplitView" DisplayMode="Inline" OpenPaneLength="160" IsPaneOpen="True">
+                <SplitView.Content>
+                    <Frame x:Name="settingsFrame"></Frame>
+                </SplitView.Content>
+                <SplitView.Pane>
+                    <StackPanel>
+                        <!-- Accounts button -->
+                        <RadioButton Tag="&#57826;" Content="Accounts" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnAccountsButtonChecked" IsChecked="True" />
+
+                        <!-- Bluetooth button -->
+                        <RadioButton Tag="&#59138;" Content="Bluetooth" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnBluetoothButtonChecked" />
+
+                        <!-- LEDs button -->
+                        <RadioButton Tag="&#59265;" Content="LEDs" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnLEDsButtonChecked" />
+                        
+                        <!-- Location button -->
+                        <RadioButton Tag="&#57796;" Content="Location" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnLocationButtonChecked" />
+
+                        <!-- Location button -->
+                        <RadioButton Tag="&#59449;" Content="Network" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnNetworkButtonChecked" />
+
+                        <!-- Personalization button -->
+                        <RadioButton Tag="&#59249;" Content="Personalization" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnPersonalizationButtonChecked" />
+                        
+                        <!-- Updates button -->
+                        <RadioButton Tag="&#59752;" Content="Updates" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnUpdatesButtonChecked" />
+
+                        <Line Stroke="#FFCFCFCF" X1="0" Y1="0" X2="160" Y2="0"/>
+
+                        <!-- Power button -->
+                        <RadioButton Tag="&#57805;" Content="Power" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnPowerButtonChecked" />                    
+                    </StackPanel>
+                </SplitView.Pane>
+            </SplitView>
+            
+            <!--<Grid.ColumnDefinitions>
                 <ColumnDefinition Width="20*" />
                 <ColumnDefinition Width="80*" />
             </Grid.ColumnDefinitions>
@@ -55,7 +99,7 @@
 
             <Grid x:Name="musicListDetails" Grid.Column="1">
 
-            </Grid>
+            </Grid>-->
 
         </Grid>
     </Grid>

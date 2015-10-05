@@ -31,5 +31,45 @@ namespace SmartThings_Home_Hub__Universal_
         {
             this.Frame.Navigate(typeof(HomePage));
         }
+
+        private void OnAccountsButtonChecked(object sender, RoutedEventArgs e)
+        {
+            settingsFrame.Navigate(typeof(AccountSettings));
+        }
+
+        private void OnBluetoothButtonChecked(object sender, RoutedEventArgs e)
+        {
+            settingsFrame.Navigate(typeof(BluetoothSettings));
+        }
+
+        private void OnLEDsButtonChecked(object sender, RoutedEventArgs e)
+        {
+            settingsFrame.Navigate(typeof(LEDsSettings));
+        }
+
+        private void OnLocationButtonChecked(object sender, RoutedEventArgs e)
+        {
+            settingsFrame.Navigate(typeof(LocationSettings));
+        }
+
+        private void OnNetworkButtonChecked(object sender, RoutedEventArgs e)
+        {
+            settingsFrame.Navigate(typeof(NetworkSettings));
+        }
+
+        private void OnPersonalizationButtonChecked(object sender, RoutedEventArgs e)
+        {
+            settingsFrame.Navigate(typeof(PersonalizationSettings));
+        }
+
+        private void OnPowerButtonChecked(object sender, RoutedEventArgs e)
+        {
+            settingsFrame.Navigate(typeof(PowerSettings));
+        }
+
+        private void OnUpdatesButtonChecked(object sender, RoutedEventArgs e)
+        {
+            settingsFrame.Navigate(typeof(UpdatesSettings));
+        }
     }
 }

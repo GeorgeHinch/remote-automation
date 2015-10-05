@@ -43,7 +43,7 @@ namespace SmartThings_Home_Hub__Universal_
             this.InitializeComponent();
             this.Suspending += OnSuspending;
 
-            StatusLED.LEDTimer();
+            //StatusLED.LEDTimer();
         }
 
         /// <summary>

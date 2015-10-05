@@ -17,12 +17,12 @@ namespace SmartThings_Home_Hub__Universal_
 
         public static void LEDTimer()
         {
+            InitGPIO();
+
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(500);
             timer.Tick += Timer_Tick;
             timer.Start();
-
-            InitGPIO();
         }
 
         private static void Timer_Tick(object sender, object e)
@@ -30,7 +30,7 @@ namespace SmartThings_Home_Hub__Universal_
             sendColor(0,255,0);
         }
 
-
+        
         private static void InitGPIO()
         {
             var gpio = GpioController.GetDefault();
@@ -40,9 +40,8 @@ namespace SmartThings_Home_Hub__Universal_
             {
                 whitewire = null;
                 yellowwire = null;
-                //GpioStatus.Text = "There is no GPIO controller on this device.";
                 Debug.WriteLine("There is no GPIO controller on this device.");
-                return;
+                //return;
             }
 
             whitewire = gpio.OpenPin(WHITE_WIRE);
@@ -51,7 +50,6 @@ namespace SmartThings_Home_Hub__Universal_
             // Show an error if the pin wasn't initialized properly
             if (whitewire == null || yellowwire == null)
             {
-                //GpioStatus.Text = "There were problems initializing the GPIO red/blue/green pin.";
                 Debug.WriteLine("There were problems initializing the GPIO red/blue/green pin.");
                 return;
             }
@@ -61,7 +59,6 @@ namespace SmartThings_Home_Hub__Universal_
             yellowwire.Write(GpioPinValue.High);
             yellowwire.SetDriveMode(GpioPinDriveMode.Output);
 
-            //GpioStatus.Text = "GPIO blue/red/green pin initialized correctly.";
             Debug.WriteLine("GPIO blue/red/green pin initialized correctly.");
         }
 
@@ -104,43 +101,10 @@ namespace SmartThings_Home_Hub__Universal_
             sendByte(b);
         }
 
-        private static void FlipLED()
-        {
-            if (LEDStatus == 0)
-            {
-                LEDStatus = 1;
-                if (whitewire != null && yellowwire != null)
-                {
-                    //turn on red
-                }
-            }
-            else if (LEDStatus == 1)
-            {
-                LEDStatus = 2;
-                if (whitewire != null && yellowwire != null)
-                {
-                    //turn on blue
-                }
-            }
-
-            else
-            {
-                LEDStatus = 0;
-                if (whitewire != null && yellowwire != null)
-                {
-                    //turn on green
-                }
-            }
-        }
-
-        private static int LEDStatus = 0;
         private const int WHITE_WIRE = 8;
         private const int YELLOW_WIRE = 10;
         private static GpioPin whitewire;
         private static GpioPin yellowwire;
         private static DispatcherTimer timer;
-        private static SolidColorBrush redBrush = new SolidColorBrush(Windows.UI.Colors.Red);
-        private static SolidColorBrush blueBrush = new SolidColorBrush(Windows.UI.Colors.Blue);
-        private static SolidColorBrush greenBrush = new SolidColorBrush(Windows.UI.Colors.Green);
     }
 }
