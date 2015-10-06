@@ -8,6 +8,11 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Restart" />
+            <Button Content="Power" />
+            <Button Content="Return to Lock" />
+        </StackPanel>
 
     </Grid>
 </Page>
