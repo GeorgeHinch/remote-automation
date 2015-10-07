@@ -55,7 +55,7 @@
 
             <SplitView  x:Name="settingsSplitView" DisplayMode="Inline" OpenPaneLength="160" IsPaneOpen="True">
                 <SplitView.Content>
-                    <Frame x:Name="settingsFrame"></Frame>
+                    <Frame x:Name="settingsFrame" Padding="20,20,0,0"></Frame>
                 </SplitView.Content>
                 <SplitView.Pane>
                     <StackPanel>

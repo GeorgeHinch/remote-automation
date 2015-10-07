@@ -8,6 +8,21 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="SmartThings Account" />
 
+            <Line Stroke="#FFCFCFCF" X1="0" Y1="0" X2="1000" Y2="0" Margin="0,5,0,20" />
+            
+            <TextBlock Text="App ID:" />
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="AppIDBox" PlaceholderText="App ID" Margin="10" Width="300" />
+                    <Button x:Name="AppIDSave" Content="Save"  Margin="10" HorizontalAlignment="Center"/>
+            </StackPanel>
+            <TextBlock Text="Access Token:" />
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="AccessTokenBox" PlaceholderText="Access Token" Margin="10" Width="300" />
+                    <Button x:Name="AccessTokenSave" Content="Save"  Margin="10" HorizontalAlignment="Center" />
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

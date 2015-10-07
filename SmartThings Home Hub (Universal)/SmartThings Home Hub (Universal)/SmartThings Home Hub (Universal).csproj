@@ -178,8 +178,14 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountSettings.xaml.cs">
+      <DependentUpon>AccountSettings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BluetoothSettings.xaml.cs">
+      <DependentUpon>BluetoothSettings.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\NavigationHelper.cs" />
     <Compile Include="Common\ObservableDictionary.cs" />
@@ -195,8 +201,14 @@
     <Compile Include="HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LEDsSettings.xaml.cs">
+      <DependentUpon>LEDsSettings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LightsPage.xaml.cs">
       <DependentUpon>LightsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LocationSettings.xaml.cs">
+      <DependentUpon>LocationSettings.xaml</DependentUpon>
     </Compile>
     <Compile Include="LocksPage.xaml.cs">
       <DependentUpon>LocksPage.xaml</DependentUpon>
@@ -210,8 +222,17 @@
     <Compile Include="MusicPage.xaml.cs">
       <DependentUpon>MusicPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NetworkSettings.xaml.cs">
+      <DependentUpon>NetworkSettings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NewsPage.xaml.cs">
       <DependentUpon>NewsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PersonalizationSettings.xaml.cs">
+      <DependentUpon>PersonalizationSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PowerSettings.xaml.cs">
+      <DependentUpon>PowerSettings.xaml</DependentUpon>
     </Compile>
     <Compile Include="PresencePage.xaml.cs">
       <DependentUpon>PresencePage.xaml</DependentUpon>
@@ -226,6 +247,9 @@
     <Compile Include="SmartThingsAPI.cs" />
     <Compile Include="StatusLED.cs" />
     <Compile Include="SystemStatus.cs" />
+    <Compile Include="UpdatesSettings.xaml.cs">
+      <DependentUpon>UpdatesSettings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WeatherPage.xaml.cs">
       <DependentUpon>WeatherPage.xaml</DependentUpon>
     </Compile>
@@ -372,7 +396,9 @@
       <Name>Windows IoT Extensions for the UWP</Name>
     </SDKReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Settings\" />
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
