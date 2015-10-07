@@ -9,9 +9,9 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Orientation="Vertical">
-            <TextBlock Text="SmartThings Account" />
+            <TextBlock Text="SmartThings Account" FontSize="18.667" />
 
-            <Line Stroke="#FFCFCFCF" X1="0" Y1="0" X2="1000" Y2="0" Margin="0,5,0,20" />
+            <Line Stroke="#FFCFCFCF" X1="0" Y1="0" X2="1000" Y2="0" Margin="0,10,0,20" />
             
             <TextBlock Text="App ID:" />
             <StackPanel Orientation="Horizontal">
