@@ -67,7 +67,7 @@
 
                         <!-- LEDs button -->
                         <RadioButton Tag="&#59265;" Content="LEDs" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnLEDsButtonChecked" />
-                        
+
                         <!-- Location button -->
                         <RadioButton Tag="&#57796;" Content="Location" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnLocationButtonChecked" />
 
@@ -76,31 +76,17 @@
 
                         <!-- Personalization button -->
                         <RadioButton Tag="&#59249;" Content="Personalization" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnPersonalizationButtonChecked" />
-                        
+
                         <!-- Updates button -->
                         <RadioButton Tag="&#59752;" Content="Updates" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnUpdatesButtonChecked" />
 
                         <Line Stroke="#FFCFCFCF" X1="0" Y1="0" X2="160" Y2="0"/>
 
                         <!-- Power button -->
-                        <RadioButton Tag="&#57805;" Content="Power" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnPowerButtonChecked" />                    
+                        <RadioButton Tag="&#57805;" Content="Power" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnPowerButtonChecked" />
                     </StackPanel>
                 </SplitView.Pane>
             </SplitView>
-            
-            <!--<Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20*" />
-                <ColumnDefinition Width="80*" />
-            </Grid.ColumnDefinitions>
-
-            <Grid x:Name="musicListView" Grid.Column="0" Background="#FFF4F4F4">
-
-            </Grid>
-
-            <Grid x:Name="musicListDetails" Grid.Column="1">
-
-            </Grid>-->
-
         </Grid>
     </Grid>
 </Page>

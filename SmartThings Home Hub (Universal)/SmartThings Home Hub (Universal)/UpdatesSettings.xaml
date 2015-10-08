@@ -7,7 +7,22 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="-20,-20,0,0">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Width="175" Padding="15,10,15,0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top">
+                <StackPanel>
+                    <TextBlock Text="&#59752;" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" FontSize="48" Margin="0,0,0,15" Foreground="#FF004261"/>
+                    <TextBlock Text="Internet" TextAlignment="Center" Margin="0,0,0,5" Foreground="#FF595959"/>
+                    <TextBlock Text="Update device from the Internet" TextAlignment="Center" MaxLines="2" TextWrapping="Wrap" Foreground="#FFCCCCCC"/>
+                </StackPanel>
+            </Button>
+            <Button Width="175" Padding="15,10,15,0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top">
+                <StackPanel>
+                    <TextBlock Text="&#59534;" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" FontSize="48" Margin="0,0,0,15" Foreground="#FF004261"/>
+                    <TextBlock Text="USB" TextAlignment="Center" Margin="0,0,0,5" Foreground="#FF595959"/>
+                    <TextBlock Text="Update device by USB flash drive" TextAlignment="Center" MaxLines="2" TextWrapping="Wrap" Foreground="#FFCCCCCC"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
     </Grid>
 </Page>

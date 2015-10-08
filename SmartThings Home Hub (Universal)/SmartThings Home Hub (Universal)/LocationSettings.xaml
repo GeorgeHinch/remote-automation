@@ -8,6 +8,72 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="Weather Location" FontSize="18.667" />
 
+            <Line Stroke="#FFCFCFCF" X1="0" Y1="0" X2="1000" Y2="0" Margin="0,10,0,20" />
+
+            <TextBlock Text="City:" />
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="CityNameBox" PlaceholderText="City" Margin="10" Width="300" />
+            </StackPanel>
+            <TextBlock Text="State:" />
+            <StackPanel Orientation="Horizontal">
+                <ComboBox x:Name="StateDropDown" PlaceholderText="State" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="226" Margin="10">
+                    <ComboBoxItem>Alabama</ComboBoxItem>
+                    <ComboBoxItem>Alaska</ComboBoxItem>
+                    <ComboBoxItem>Arizona</ComboBoxItem>
+                    <ComboBoxItem>Arkansas</ComboBoxItem>
+                    <ComboBoxItem>California</ComboBoxItem>
+                    <ComboBoxItem>Colorado</ComboBoxItem>
+                    <ComboBoxItem>Connecticut</ComboBoxItem>
+                    <ComboBoxItem>Delaware</ComboBoxItem>
+                    <ComboBoxItem>District of Columbia</ComboBoxItem>
+                    <ComboBoxItem>Florida</ComboBoxItem>
+                    <ComboBoxItem>Georgia</ComboBoxItem>
+                    <ComboBoxItem>Hawaii</ComboBoxItem>
+                    <ComboBoxItem>Idaho</ComboBoxItem>
+                    <ComboBoxItem>Illinois</ComboBoxItem>
+                    <ComboBoxItem>Indiana</ComboBoxItem>
+                    <ComboBoxItem>Iowa</ComboBoxItem>
+                    <ComboBoxItem>Kansas</ComboBoxItem>
+                    <ComboBoxItem>Kentucky</ComboBoxItem>
+                    <ComboBoxItem>Louisiana</ComboBoxItem>
+                    <ComboBoxItem>Maine</ComboBoxItem>
+                    <ComboBoxItem>Maryland</ComboBoxItem>
+                    <ComboBoxItem>Massachusetts</ComboBoxItem>
+                    <ComboBoxItem>Michigan</ComboBoxItem>
+                    <ComboBoxItem>Minnesota</ComboBoxItem>
+                    <ComboBoxItem>Mississippi</ComboBoxItem>
+                    <ComboBoxItem>Missouri</ComboBoxItem>
+                    <ComboBoxItem>Montana</ComboBoxItem>
+                    <ComboBoxItem>Nebraska</ComboBoxItem>
+                    <ComboBoxItem>Nevada</ComboBoxItem>
+                    <ComboBoxItem>New Hampshire</ComboBoxItem>
+                    <ComboBoxItem>New Jersey</ComboBoxItem>
+                    <ComboBoxItem>New Mexico</ComboBoxItem>
+                    <ComboBoxItem>New York</ComboBoxItem>
+                    <ComboBoxItem>North Carolina</ComboBoxItem>
+                    <ComboBoxItem>North Dakota</ComboBoxItem>
+                    <ComboBoxItem>Ohio</ComboBoxItem>
+                    <ComboBoxItem>Oklahoma</ComboBoxItem>
+                    <ComboBoxItem>Oregon</ComboBoxItem>
+                    <ComboBoxItem>Pennsylvania</ComboBoxItem>
+                    <ComboBoxItem>Rhode Island</ComboBoxItem>
+                    <ComboBoxItem>South Carolina</ComboBoxItem>
+                    <ComboBoxItem>South Dakota</ComboBoxItem>
+                    <ComboBoxItem>Tennessee</ComboBoxItem>
+                    <ComboBoxItem>Texas</ComboBoxItem>
+                    <ComboBoxItem>Utah</ComboBoxItem>
+                    <ComboBoxItem>Vermont</ComboBoxItem>
+                    <ComboBoxItem>Virginia</ComboBoxItem>
+                    <ComboBoxItem>Washington</ComboBoxItem>
+                    <ComboBoxItem>West Virginia</ComboBoxItem>
+                    <ComboBoxItem>Wisconsin</ComboBoxItem>
+                    <ComboBoxItem>Wyoming</ComboBoxItem>
+                </ComboBox>
+                <Button x:Name="StateSave" Content="Save"  Margin="10" HorizontalAlignment="Center" />
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

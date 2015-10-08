@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -25,6 +29,40 @@ namespace SmartThings_Home_Hub__Universal_
         public PowerSettings()
         {
             this.InitializeComponent();
+        }
+
+        private void ShutdownComputer()
+        {
+            /*HttpRequestMessage request = new HttpRequestMessage(
+                HttpMethod.Get,
+                $"http://localhost:8080/api/control/shutdown");
+            HttpClient client = new HttpClient();*/
+            Debug.WriteLine("Shutdown");
+
+            ShutdownManager.BeginShutdown(ShutdownKind.Shutdown, new TimeSpan(0));
+
+            /*var response = client.SendAsync(request).Result;
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                Debug.WriteLine("Shutdown");
+            }*/
+        }
+
+        private void RebootComputer()
+        {
+            /*HttpRequestMessage request = new HttpRequestMessage(
+                HttpMethod.Get,
+                $"http://localhost:8080/api/control/reboot");
+            HttpClient client = new HttpClient();*/
+            Debug.WriteLine("Reboot");
+
+            ShutdownManager.BeginShutdown(ShutdownKind.Shutdown, new TimeSpan(0));
+
+            /*var response = client.SendAsync(request).Result;
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                Debug.WriteLine("Shutdown");
+            }*/
         }
     }
 }
