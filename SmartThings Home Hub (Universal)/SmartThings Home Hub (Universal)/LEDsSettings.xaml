@@ -17,7 +17,10 @@
             <ToggleSwitch x:Name="toggleSwitch"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10"/>
             <TextBlock Text="State:" />
             <StackPanel Orientation="Horizontal">
-                <Button x:Name="StateSave" Content="Save"  Margin="10" HorizontalAlignment="Center" />
+                <ToggleButton x:Name="WhiteLED" Content="White"  Margin="10" HorizontalAlignment="Center" />
+                <ToggleButton x:Name="BlueLED" Content="Blue"  Margin="10" HorizontalAlignment="Center" />
+                <ToggleButton x:Name="FadeLED" Content="Fade"  Margin="10" HorizontalAlignment="Center" IsChecked="True" />
+                <ToggleButton x:Name="RainbowLED" Content="Rainbow"  Margin="10" HorizontalAlignment="Center" />
             </StackPanel>
         </StackPanel>
     </Grid>

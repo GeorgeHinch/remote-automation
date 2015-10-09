@@ -1,5 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" 
+         xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+         xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" 
+          xmlns:iot="http://schemas.microsoft.com/appx/manifest/iot/windows10"
+         IgnorableNamespaces="uap mp iot">
   <Identity Name="SmartThings-Home-Hub" Publisher="CN=georgeh" Version="1.0.0.0" />
   <mp:PhoneIdentity PhoneProductId="5cd7ad25-324d-486c-8a73-a4f9d49bfb08" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
@@ -33,10 +37,10 @@
     <uap:Capability Name="musicLibrary" />
     <uap:Capability Name="videosLibrary" />
     <uap:Capability Name="picturesLibrary" />
+    <iot:Capability Name="systemManagement" />
     <DeviceCapability Name="location" />
     <DeviceCapability Name="microphone" />
     <DeviceCapability Name="proximity" />
-    <DeviceCapability Name="systemManagment" />
     <DeviceCapability Name="b7152a76-3644-4e58-9083-9f42639b78d5" />
   </Capabilities>
 </Package>
