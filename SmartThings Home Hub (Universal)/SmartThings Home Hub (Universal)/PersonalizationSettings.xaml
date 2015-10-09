@@ -38,19 +38,19 @@
 
                 <TextBlock Text="Alerts:" />
 
-                <ToggleSwitch x:Name="SmartThingsLowBatterySwitch"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10"/>
+                <ToggleSwitch x:Name="SmartThingsLowBatterySwitch" Label="SmartThings Low Battery" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10"/>
 
-                <ToggleSwitch x:Name="SmartThingsKnockSwitch"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10"/>
+                <ToggleSwitch x:Name="SmartThingsKnockSwitch" Label="SmartThings Knock" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10"/>
 
-                <ToggleSwitch x:Name="tSmartThingsAwayDoorSwitch"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10"/>
+                <ToggleSwitch x:Name="tSmartThingsAwayDoorSwitch" Label="SmartThings Door" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10"/>
 
-                <ToggleSwitch x:Name="SmartThingsEnviromentSwitch"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10"/>
+                <ToggleSwitch x:Name="SmartThingsEnviromentSwitch" Label="SmartThings Enviroment" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10"/>
 
-                <ToggleSwitch x:Name="WUSeverWeatherSwitch"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10"/>
+                <ToggleSwitch x:Name="WUSeverWeatherSwitch" Label="Severe Weather" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10"/>
 
-                <ToggleSwitch x:Name="PowerStatusSwitch"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10"/>
+                <ToggleSwitch x:Name="PowerStatusSwitch" Label="Device Power Alerts" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10"/>
 
-                <ToggleSwitch x:Name="NetworkStatusSwitch"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10"/>
+                <ToggleSwitch x:Name="NetworkStatusSwitch" Label="Device Network Connectivity" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>
