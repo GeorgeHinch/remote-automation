@@ -1,4 +1,4 @@
-﻿<Page
+﻿<Page x:Name="page"
     x:Class="SmartThings_Home_Hub__Universal_.PersonalizationSettings"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -8,29 +8,41 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <ScrollViewer x:Name="scrollViewer" VerticalScrollBarVisibility="Auto">
             <StackPanel Orientation="Vertical">
-                <TextBlock Text="Lock Background" FontSize="18.667" />
+                <TextBlock x:Name="Lock_BackgroudHeader" Text="Lock Background" FontSize="18.667" />
 
                 <Line Stroke="#FFCFCFCF" X1="0" Y1="0" X2="1000" Y2="0" Margin="0,10,0,20" />
 
                 <TextBlock Text="Choose a local or network file for the lock background (720x480 px):" />
+                <StackPanel Height="100" HorizontalAlignment="Left" Orientation="Horizontal">
+                    <Button x:Name="LockImage_1" Content="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Width="140">
+                        <Button.Background>
+                            <ImageBrush Stretch="Fill" ImageSource="Assets/28H.jpg"/>
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="LockImage_2" Content="Button" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Width="140"/>
+                    <Button x:Name="LockImage_3" Content="Button" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Width="140"/>
+                    <Button x:Name="LockImage_More" Content="&#xE710;" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Width="80" FontFamily="Segoe MDL2 Assets" FontSize="26.667" FontWeight="Bold" Foreground="#FF7A7A7A"/>
+                </StackPanel>
 
-                <TextBlock Text="Display" FontSize="18.667" />
+                <TextBlock x:Name="DisplayHeader" Text="Display" FontSize="18.667" Margin="0,30,0,0" />
 
                 <Line Stroke="#FFCFCFCF" X1="0" Y1="0" X2="1000" Y2="0" Margin="0,10,0,20" />
 
                 <TextBlock Text="Sleep:" />
+                <Slider x:Name="slider" Width="300" HorizontalAlignment="Left" Margin="10" Maximum="5" LargeChange="1" TickFrequency="1" TickPlacement="BottomRight" Value="2"/>
 
                 <TextBlock Text="Brightness:" />
+                <Slider x:Name="slider1" Width="300" HorizontalAlignment="Left" Margin="10" Minimum="20" Value="100"/>
 
-                <TextBlock Text="Alerts" FontSize="18.667" />
+                <TextBlock x:Name="AlertsHeader" Text="Alerts" FontSize="18.667" Margin="0,30,0,0" />
 
                 <Line Stroke="#FFCFCFCF" X1="0" Y1="0" X2="1000" Y2="0" Margin="0,10,0,20" />
 
                 <TextBlock Text="Pulse LED:" />
 
-                <ToggleSwitch x:Name="PulseLEDSwitch"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10"/>
+                <ToggleSwitch x:Name="PulseLEDSwitch"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" IsOn="True"/>
 
                 <TextBlock Text="Alert modals:" />
 
@@ -38,19 +50,19 @@
 
                 <TextBlock Text="Alerts:" />
 
-                <ToggleSwitch x:Name="SmartThingsLowBatterySwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Header="SmartThings Low Battery"/>
+                <ToggleSwitch x:Name="SmartThingsLowBatterySwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Header="SmartThings Low Battery" IsOn="True" FontSize="10.667"/>
 
-                <ToggleSwitch x:Name="SmartThingsKnockSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Header="SmartThings Knock"/>
+                <ToggleSwitch x:Name="SmartThingsKnockSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Header="SmartThings Knock" IsOn="True" FontSize="10.667"/>
 
-                <ToggleSwitch x:Name="tSmartThingsAwayDoorSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Header="SmartThings Door"/>
+                <ToggleSwitch x:Name="tSmartThingsAwayDoorSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Header="SmartThings Door" IsOn="True" FontSize="10.667"/>
 
-                <ToggleSwitch x:Name="SmartThingsEnviromentSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Header="SmartThings Enviroment"/>
+                <ToggleSwitch x:Name="SmartThingsEnviromentSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Header="SmartThings Enviroment" FontSize="10.667"/>
 
-                <ToggleSwitch x:Name="WUSeverWeatherSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Header="Sever Weather"/>
+                <ToggleSwitch x:Name="WUSeverWeatherSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Header="Sever Weather" IsOn="True" FontSize="10.667"/>
 
-                <ToggleSwitch x:Name="PowerStatusSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Header="Device Power"/>
+                <ToggleSwitch x:Name="PowerStatusSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Header="Device Power" IsOn="True" FontSize="10.667"/>
 
-                <ToggleSwitch x:Name="NetworkStatusSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Header="Device Network Connectivity"/>
+                <ToggleSwitch x:Name="NetworkStatusSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Header="Device Network Connectivity" IsOn="True" FontSize="10.667"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>
