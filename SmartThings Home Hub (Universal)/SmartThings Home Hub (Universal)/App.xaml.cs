@@ -31,6 +31,7 @@ namespace SmartThings_Home_Hub__Universal_
     /// </summary>
     sealed partial class App : Application
     {
+        StatusLED statusLeds;
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -43,9 +44,15 @@ namespace SmartThings_Home_Hub__Universal_
             this.InitializeComponent();
             this.Suspending += OnSuspending;
 
-            //StatusLED.LEDTimer();
+            this.statusLeds = new StatusLED(27,22,5);
+            this.statusLeds.setColorAll(0, 255, 0);
         }
 
+
+        public StatusLED getLEDs()
+        {
+            return this.statusLeds;
+        }
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
         /// will be used such as when the application is launched to open a specific file.

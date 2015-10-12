@@ -201,6 +201,7 @@
     <Compile Include="HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="IColorGenerator.cs" />
     <Compile Include="LEDsSettings.xaml.cs">
       <DependentUpon>LEDsSettings.xaml</DependentUpon>
     </Compile>
@@ -238,6 +239,7 @@
       <DependentUpon>PresencePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RainbowGenerator.cs" />
     <Compile Include="SecurityPage.xaml.cs">
       <DependentUpon>SecurityPage.xaml</DependentUpon>
     </Compile>

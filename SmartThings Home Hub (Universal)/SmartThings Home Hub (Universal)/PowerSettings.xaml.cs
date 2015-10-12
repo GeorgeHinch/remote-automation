@@ -31,15 +31,21 @@ namespace SmartThings_Home_Hub__Universal_
             this.InitializeComponent();
         }
 
-        private void ShutdownComputer()
+        public void ShutdownComputer(object target, RoutedEventArgs args)
         {
             /*HttpRequestMessage request = new HttpRequestMessage(
                 HttpMethod.Get,
                 $"http://localhost:8080/api/control/shutdown");
             HttpClient client = new HttpClient();*/
+
+
+
             Debug.WriteLine("Shutdown");
 
             ShutdownManager.BeginShutdown(ShutdownKind.Shutdown, new TimeSpan(0));
+
+
+
 
             /*var response = client.SendAsync(request).Result;
             if (response.StatusCode == HttpStatusCode.OK)
@@ -48,7 +54,7 @@ namespace SmartThings_Home_Hub__Universal_
             }*/
         }
 
-        private void RebootComputer()
+        public void RebootComputer(object target, RoutedEventArgs args)
         {
             /*HttpRequestMessage request = new HttpRequestMessage(
                 HttpMethod.Get,
