@@ -44,6 +44,7 @@ namespace SmartThings_Home_Hub__Universal_
             this.dataPin = data_pin;
             this.numLeds = num_leds;
             this.ledVals = new Dictionary<byte, RGBVal>();
+            this.generatedLedVals = new Dictionary<byte, RGBVal>();
             this.timer = new DispatcherTimer();
             this.gpio = GpioController.GetDefault();
             bool clockOpen = gpio.TryOpenPin(this.clockPin, GpioSharingMode.Exclusive, out gpClockPin, out gpClockStatus);
@@ -57,6 +58,7 @@ namespace SmartThings_Home_Hub__Universal_
             for (byte i = 0; i < this.numLeds; i++)
             {
                 this.ledVals[i] = new RGBVal(0, 0, 0);
+                this.generatedLedVals[i] = new RGBVal(0, 0, 0);
             }
             hasUpdate = true;
             manualMode = true;
@@ -236,7 +238,7 @@ namespace SmartThings_Home_Hub__Universal_
         public void rainbowTogether()
         {
             this.manualMode = false;
-            this.colorGenerator = new RainbowGenerator(true, TimeSpan.FromSeconds(1));
+            this.colorGenerator = new RainbowGenerator(true, TimeSpan.FromSeconds(30), numLeds);
         }
     }
 }

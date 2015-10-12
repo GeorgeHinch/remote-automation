@@ -45,6 +45,7 @@ namespace SmartThings_Home_Hub__Universal_
 
         private void RainbowLED_Checked(object sender, RoutedEventArgs e)
         {
+            ((App)Application.Current).getLEDs().rainbowTogether();
 
         }
     }
