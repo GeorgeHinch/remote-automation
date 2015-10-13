@@ -197,7 +197,6 @@
     <Compile Include="EnviromentPage.xaml.cs">
       <DependentUpon>EnviromentPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FadeGenerator.cs" />
     <Compile Include="FeedData.cs" />
     <Compile Include="HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>

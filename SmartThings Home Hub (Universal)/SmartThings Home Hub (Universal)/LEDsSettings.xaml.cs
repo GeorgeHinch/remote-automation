@@ -25,11 +25,12 @@ namespace SmartThings_Home_Hub__Universal_
         public LEDsSettings()
         {
             this.InitializeComponent();
+            
         }
 
         private void FadeLED_Checked(object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).getLEDs().fadeTogether();
+
         }
 
         private void BlueLED_Checked(object sender, RoutedEventArgs e)

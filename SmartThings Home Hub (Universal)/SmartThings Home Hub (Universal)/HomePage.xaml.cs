@@ -36,6 +36,7 @@ namespace SmartThings_Home_Hub__Universal_
         private void timerReset()
         {
             _timer.Start();
+            Debug.WriteLine("shit");
         }
 
         private void HomePage_PointerMoved(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
