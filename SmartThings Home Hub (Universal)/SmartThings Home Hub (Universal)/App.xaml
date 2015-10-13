@@ -17,13 +17,14 @@
         <FontFamily x:Key="FF-RobotoBold-Italic">ms-appx:///Fonts/Roboto-BoldItalic.ttf#Roboto</FontFamily>
         <FontFamily x:Key="FF-RobotoBlack">ms-appx:///Fonts/Roboto-Black.ttf#Roboto</FontFamily>
         <FontFamily x:Key="FF-RobotoBlack-Italic">ms-appx:///Fonts/Roboto-BlackItalic.ttf#Roboto</FontFamily>
-        
+
         <FontFamily x:Key="FF-WeatherIcons">ms-appx:///Fonts/WeatherIcons-Regular.ttf#Weather Icons</FontFamily>
 
         <Style x:Key="BaseLockButton" TargetType="Button">
-            
-        </Style>
-    </Application.Resources>
-    
 
+        </Style>
+
+        <SolidColorBrush x:Key="SystemControlHighlightAccentBrush">#ff1BA1E2</SolidColorBrush>
+
+    </Application.Resources>
 </Application>

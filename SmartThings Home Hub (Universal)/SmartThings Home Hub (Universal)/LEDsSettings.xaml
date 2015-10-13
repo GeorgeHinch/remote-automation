@@ -14,10 +14,11 @@
             <Line Stroke="#FFCFCFCF" X1="0" Y1="0" X2="1000" Y2="0" Margin="0,10,0,20" />
 
             <TextBlock Text="Turn on or off the device LED notifications." />
-            <ToggleSwitch x:Name="toggleSwitch"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" IsOn="True"/>
+            <ToggleSwitch x:Name="toggleSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" IsOn="True"/>
+            
             <TextBlock Text="State:" />
             <StackPanel Orientation="Horizontal">
-                <RadioButton Content="White" x:Name="WhiteLED" Margin="10" Width="61" Checked="WhiteLED_Checked">
+                <RadioButton Content="White" x:Name="WhiteLED" Margin="10" Checked="WhiteLED_Checked" MinWidth="0">
                     <RadioButton.Template>
                         <ControlTemplate>
                             <ToggleButton IsChecked="{Binding IsChecked, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
@@ -25,7 +26,7 @@
                         </ControlTemplate>
                     </RadioButton.Template>
                 </RadioButton>
-                <RadioButton Content="Blue" x:Name="BlueLED" Margin="10" Width="49" Checked="BlueLED_Checked" >
+                <RadioButton Content="Blue" x:Name="BlueLED" Margin="10" Checked="BlueLED_Checked" MinWidth="0" >
                     <RadioButton.Template>
                         <ControlTemplate>
                             <ToggleButton IsChecked="{Binding IsChecked, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
@@ -33,7 +34,7 @@
                         </ControlTemplate>
                     </RadioButton.Template>
                 </RadioButton>
-                <RadioButton Content="Fade" x:Name="FadeLED" Margin="10" IsChecked="True" Width="52" Checked="FadeLED_Checked" >
+                <RadioButton Content="Fade" x:Name="FadeLED" Margin="10" IsChecked="True" Checked="FadeLED_Checked" HorizontalAlignment="Left" MinWidth="0" >
                     <RadioButton.Template>
                         <ControlTemplate>
                             <ToggleButton Width="52" IsChecked="{Binding IsChecked, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
@@ -41,7 +42,7 @@
                         </ControlTemplate>
                     </RadioButton.Template>
                 </RadioButton>
-                <RadioButton Content="Rainbow" x:Name="RainbowLED" Margin="10" Width="42" Checked="RainbowLED_Checked">
+                <RadioButton Content="Rainbow" x:Name="RainbowLED" Margin="10" Checked="RainbowLED_Checked" MinWidth="0">
                     <RadioButton.Template>
                         <ControlTemplate>
                             <ToggleButton Width="78" IsChecked="{Binding IsChecked, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"

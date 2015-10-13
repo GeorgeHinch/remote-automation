@@ -26,7 +26,7 @@ namespace SmartThings_Home_Hub__Universal_
             WeatherLocation.Text = $"{city}, {country}";
             HttpRequestMessage request = new HttpRequestMessage(
                 HttpMethod.Get,
-                $"http://api.openweathermap.org/data/2.5/weather?q={city},{country}");
+                $"http://api.openweathermap.org/data/2.5/weather?q={city},{country}&APPID=e1e2647eeddb5412d5c4ee2fef620871");
             HttpClient client = new HttpClient();
             var response = client.SendAsync(request).Result;
             if (response.StatusCode == HttpStatusCode.OK)
