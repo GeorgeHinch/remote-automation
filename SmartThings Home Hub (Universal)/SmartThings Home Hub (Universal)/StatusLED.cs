@@ -40,32 +40,39 @@ namespace SmartThings_Home_Hub__Universal_
 
         public StatusLED(byte clock_pin, byte data_pin, byte num_leds)
         {
-            this.clockPin = clock_pin;
-            this.dataPin = data_pin;
-            this.numLeds = num_leds;
-            this.ledVals = new Dictionary<byte, RGBVal>();
-            this.generatedLedVals = new Dictionary<byte, RGBVal>();
-            this.timer = new DispatcherTimer();
-            this.gpio = GpioController.GetDefault();
-            bool clockOpen = gpio.TryOpenPin(this.clockPin, GpioSharingMode.Exclusive, out gpClockPin, out gpClockStatus);
-            bool dataOpen = gpio.TryOpenPin(this.dataPin, GpioSharingMode.Exclusive, out gpDataPin, out gpDataStatus);
-            gpClockPin.SetDriveMode(GpioPinDriveMode.Output);
-            gpDataPin.SetDriveMode(GpioPinDriveMode.Output);
-            if (!dataOpen || !clockOpen)
+          if (gpio == null)
             {
-                throw new Exception("Failed to open required pins.");
-            }
-            for (byte i = 0; i < this.numLeds; i++)
+                Debug.WriteLine("There is no GPIO controller on this device.");
+                return;
+            } else
             {
-                this.ledVals[i] = new RGBVal(0, 0, 0);
-                this.generatedLedVals[i] = new RGBVal(0, 0, 0);
+              this.clockPin = clock_pin;
+              this.dataPin = data_pin;
+              this.numLeds = num_leds;
+              this.ledVals = new Dictionary<byte, RGBVal>();
+              this.generatedLedVals = new Dictionary<byte, RGBVal>();
+              this.timer = new DispatcherTimer();
+              this.gpio = GpioController.GetDefault();
+              bool clockOpen = gpio.TryOpenPin(this.clockPin, GpioSharingMode.Exclusive, out gpClockPin, out gpClockStatus);
+              bool dataOpen = gpio.TryOpenPin(this.dataPin, GpioSharingMode.Exclusive, out gpDataPin, out gpDataStatus);
+              gpClockPin.SetDriveMode(GpioPinDriveMode.Output);
+              gpDataPin.SetDriveMode(GpioPinDriveMode.Output);
+              if (!dataOpen || !clockOpen)
+              {
+                  throw new Exception("Failed to open required pins.");
+              }
+              for (byte i = 0; i < this.numLeds; i++)
+              {
+                  this.ledVals[i] = new RGBVal(0, 0, 0);
+                  this.generatedLedVals[i] = new RGBVal(0, 0, 0);
+              }
+              hasUpdate = true;
+              manualMode = true;
+              this.timer.Interval = TimeSpan.FromMilliseconds(100);
+              this.timer.Tick += Timer_Tick;
+              this.timer.Start();
+              Debug.WriteLine("Started status led thing.");
             }
-            hasUpdate = true;
-            manualMode = true;
-            this.timer.Interval = TimeSpan.FromMilliseconds(100);
-            this.timer.Tick += Timer_Tick;
-            this.timer.Start();
-            Debug.WriteLine("Started status led thing.");
         }
 
         private void Timer_Tick(object sender, object e)
@@ -178,7 +185,7 @@ namespace SmartThings_Home_Hub__Universal_
                 //Debug.WriteLine(String.Format("{0},{1},{2}", something.getR(), something.getG(), something.getB()));
                 this.sendColor(something.getR(), something.getG(), something.getB());
             }
-            
+
             // # Terminate data frame (32x "0")
             this.sendByte(0x00);
             this.sendByte(0x00);
@@ -194,7 +201,7 @@ namespace SmartThings_Home_Hub__Universal_
             }
         }
 
-       
+
         public void setColor(byte whihcLED, byte r, byte g, byte b)
         {
             lock (this)
@@ -233,8 +240,8 @@ namespace SmartThings_Home_Hub__Universal_
                 return b;
             }
         }
-        
-        
+
+
         public void rainbowTogether()
         {
             this.manualMode = false;
