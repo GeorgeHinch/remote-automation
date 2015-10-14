@@ -40,7 +40,8 @@ namespace SmartThings_Home_Hub__Universal_
 
         public StatusLED(byte clock_pin, byte data_pin, byte num_leds)
         {
-          if (gpio == null)
+            this.gpio = GpioController.GetDefault();
+            if (gpio == null)
             {
                 Debug.WriteLine("There is no GPIO controller on this device.");
                 return;
@@ -52,7 +53,6 @@ namespace SmartThings_Home_Hub__Universal_
               this.ledVals = new Dictionary<byte, RGBVal>();
               this.generatedLedVals = new Dictionary<byte, RGBVal>();
               this.timer = new DispatcherTimer();
-              this.gpio = GpioController.GetDefault();
               bool clockOpen = gpio.TryOpenPin(this.clockPin, GpioSharingMode.Exclusive, out gpClockPin, out gpClockStatus);
               bool dataOpen = gpio.TryOpenPin(this.dataPin, GpioSharingMode.Exclusive, out gpDataPin, out gpDataStatus);
               gpClockPin.SetDriveMode(GpioPinDriveMode.Output);

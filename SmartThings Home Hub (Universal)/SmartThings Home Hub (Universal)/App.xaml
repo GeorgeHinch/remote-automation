@@ -25,6 +25,8 @@
         </Style>
 
         <SolidColorBrush x:Key="SystemControlHighlightAccentBrush">#ff1BA1E2</SolidColorBrush>
+        <SolidColorBrush x:Key="SystemControlHighlightListAccentHighBrush">#FF006AC1</SolidColorBrush>
+        <SolidColorBrush x:Key="SystemControlForegroundAccentBrush">#ff1BA1E2</SolidColorBrush>
 
     </Application.Resources>
 </Application>
