@@ -40,29 +40,29 @@
 
                 <Line Stroke="#FFCFCFCF" X1="0" Y1="0" X2="1000" Y2="0" Margin="0,10,0,20" />
 
+                <TextBlock Text="Alerts:" />
+
+                <ToggleSwitch x:Name="AlertModalsSwitch"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="alertStatus_Toggled" Margin="10"/>
+
                 <TextBlock Text="Pulse LED:" />
 
-                <ToggleSwitch x:Name="PulseLEDSwitch"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" IsOn="True"/>
-
-                <TextBlock Text="Alert modals:" />
-
-                <ToggleSwitch x:Name="AlertModalsSwitch"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10"/>
+                <ToggleSwitch x:Name="PulseLEDSwitch"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="PulseLEDSwitch_Toggled" Margin="10"/>
 
                 <TextBlock Text="Alerts:" />
 
-                <ToggleSwitch x:Name="SmartThingsLowBatterySwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Header="SmartThings Low Battery" IsOn="True" FontSize="10.667"/>
+                <ToggleSwitch x:Name="SmartThingsLowBatterySwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="SmartThingsLowBatterySwitch_Toggled" Margin="10" Header="SmartThings Low Battery" FontSize="10.667"/>
 
-                <ToggleSwitch x:Name="SmartThingsKnockSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Header="SmartThings Knock" IsOn="True" FontSize="10.667"/>
+                <ToggleSwitch x:Name="SmartThingsKnockSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="SmartThingsKnockSwitch_Toggled" Margin="10" Header="SmartThings Knock" FontSize="10.667"/>
 
-                <ToggleSwitch x:Name="tSmartThingsAwayDoorSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Header="SmartThings Door" IsOn="True" FontSize="10.667"/>
+                <ToggleSwitch x:Name="SmartThingsAwayDoorSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="SmartThingsAwayDoorSwitch_Toggled" Margin="10" Header="SmartThings Door" FontSize="10.667"/>
 
-                <ToggleSwitch x:Name="SmartThingsEnviromentSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Header="SmartThings Enviroment" FontSize="10.667"/>
+                <ToggleSwitch x:Name="SmartThingsEnviromentSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="SmartThingsEnviromentSwitch_Toggled" Margin="10" Header="SmartThings Enviroment" FontSize="10.667"/>
 
-                <ToggleSwitch x:Name="WUSeverWeatherSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Header="Sever Weather" IsOn="True" FontSize="10.667"/>
+                <ToggleSwitch x:Name="SeverWeatherSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Toggled="SeverWeatherSwitch_Toggled" Header="Sever Weather" FontSize="10.667"/>
 
-                <ToggleSwitch x:Name="PowerStatusSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Header="Device Power" IsOn="True" FontSize="10.667"/>
+                <ToggleSwitch x:Name="PowerStatusSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Toggled="PowerStatusSwitch_Toggled" Header="Device Power" FontSize="10.667"/>
 
-                <ToggleSwitch x:Name="NetworkStatusSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Header="Device Network Connectivity" IsOn="True" FontSize="10.667"/>
+                <ToggleSwitch x:Name="NetworkStatusSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Toggled="NetworkStatusSwitch_Toggled" Header="Device Network Connectivity" FontSize="10.667"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>
