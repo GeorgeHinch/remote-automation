@@ -42,6 +42,7 @@ namespace SmartThings_Home_Hub__Universal_
             }
 
             ledRadio_Checker();
+            ledPower_Checker();
         }
 
         private void FadeLED_Checked(object sender, RoutedEventArgs e)
@@ -150,6 +151,7 @@ namespace SmartThings_Home_Hub__Universal_
 
             if (settingValue == true)
             {
+                ledRadio_Enable();
                 ledRadio_Checker();
             }
             else if (settingValue == false)
@@ -161,10 +163,19 @@ namespace SmartThings_Home_Hub__Universal_
 
         private void ledRadio_Disable()
         {
+
             WhiteLED.IsEnabled = false;
             BlueLED.IsEnabled = false;
             FadeLED.IsEnabled = false;
             RainbowLED.IsEnabled = false;
+        }
+
+        private void ledRadio_Enable()
+        {
+            WhiteLED.IsEnabled = true;
+            BlueLED.IsEnabled = true;
+            FadeLED.IsEnabled = true;
+            RainbowLED.IsEnabled = true;
         }
     }
 }
