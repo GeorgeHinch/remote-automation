@@ -197,6 +197,7 @@
     <Compile Include="EnviromentPage.xaml.cs">
       <DependentUpon>EnviromentPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FadeGenerator.cs" />
     <Compile Include="FeedData.cs" />
     <Compile Include="HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
@@ -249,6 +250,7 @@
     <Compile Include="SmartThingsAPI.cs" />
     <Compile Include="StatusLED.cs" />
     <Compile Include="SystemStatus.cs" />
+    <Compile Include="TurnOffLED.cs" />
     <Compile Include="UpdatesSettings.xaml.cs">
       <DependentUpon>UpdatesSettings.xaml</DependentUpon>
     </Compile>

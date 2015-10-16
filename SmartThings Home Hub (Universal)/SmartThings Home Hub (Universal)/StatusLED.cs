@@ -247,5 +247,17 @@ namespace SmartThings_Home_Hub__Universal_
             this.manualMode = false;
             this.colorGenerator = new RainbowGenerator(true, TimeSpan.FromSeconds(30), numLeds);
         }
+
+        public void fadeTogether()
+        {
+            this.manualMode = false;
+            this.colorGenerator = new FadeGenerator(true, TimeSpan.FromSeconds(30), numLeds);
+        }
+
+        public void turnOffLED()
+        {
+            this.manualMode = false;
+            /*this.colorGenerator = new TurnOffLED(true, TimeSpan.FromSeconds(1), numLeds);*/
+        }
     }
 }
