@@ -8,32 +8,22 @@ namespace SmartThings_Home_Hub__Universal_
 {
     class TurnOffLED : IColorGenerator
     {
-        bool goUp = true;
-
         public bool generate(Dictionary<byte, StatusLED.RGBVal> vals, byte numLeds)
         {
             if (shouldFillAgain())
             {
-                if (goUp)
-                {
-                    rgbColour[0]++;
-                    rgbColour[1]++;
-                    rgbColour[2]++;
-                }
-                else
+
+                if (rgbColour[0] > 0)
                 {
                     rgbColour[0]--;
+                }
+                if (rgbColour[1] > 0)
+                {
                     rgbColour[1]--;
+                }
+                if (rgbColour[2] > 0)
+                {
                     rgbColour[2]--;
-                }
-
-                if (rgbColour[0] == 128)
-                {
-                    goUp = false;
-                }
-                else if (rgbColour[0] == 0)
-                {
-                    goUp = true;
                 }
 
                 this.lastFillTime = ToUnixTimeMS(DateTime.Now);
@@ -54,7 +44,7 @@ namespace SmartThings_Home_Hub__Universal_
         private double msPerFill;
         private long lastFillTime;
 
-        /*public FadeGenerator(Boolean together, TimeSpan intervalForRainbow, byte numLeds)
+        public TurnOffLED(Boolean together, TimeSpan intervalForRainbow, byte numLeds)
         {
             this.numLeds = numLeds;
             this.msPerFill = Math.Floor((double)((double)intervalForRainbow.TotalMilliseconds / steps));
@@ -62,7 +52,7 @@ namespace SmartThings_Home_Hub__Universal_
             rgbColour[0] = 0;
             rgbColour[1] = 0;
             rgbColour[2] = 0;
-        } */
+        }
 
         private long ToUnixTimeMS(DateTime date)
         {

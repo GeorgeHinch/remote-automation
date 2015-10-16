@@ -46,7 +46,7 @@ namespace SmartThings_Home_Hub__Universal_
 
             this.statusLeds = new StatusLED(27,22,5);
             /* this.statusLeds.setColorAll(0, 255, 0); */
-            new LEDsSettings().ledRadio_Checker();
+            new LEDsSettings().ledPower_Checker();
         }
 
 

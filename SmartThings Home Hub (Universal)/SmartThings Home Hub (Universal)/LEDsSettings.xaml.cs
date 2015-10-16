@@ -137,20 +137,34 @@ namespace SmartThings_Home_Hub__Universal_
             /* Store LED on/off status */
             roamingSettings.Values["ledPower"] = ledPower.IsOn;
 
+            ledPower_Checker();
+            
+        }
 
-            object settingValue = roamingSettings.Values["ledPower"];
+        public void ledPower_Checker()
+        {
+            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+
+            bool settingValue = (bool)roamingSettings.Values["ledPower"];
 
 
-            if ((bool)roamingSettings.Values["ledPower"] == true)
+            if (settingValue == true)
             {
                 ledRadio_Checker();
-                Debug.WriteLine("Write a switch, dumbass.");
-                return;
             }
-            else if ((bool)roamingSettings.Values["ledPower"] == false)
+            else if (settingValue == false)
             {
+                /*ledRadio_Disable();*/
                 ((App)Application.Current).getLEDs().turnOffLED();
             }
         }
+
+        /*private void ledRadio_Disable()
+        {
+            WhiteLED.IsEnabled = false;
+            BlueLED.IsEnabled = false;
+            FadeLED.IsEnabled = false;
+            RainbowLED.IsEnabled = false;
+        }*/
     }
 }

@@ -257,7 +257,7 @@ namespace SmartThings_Home_Hub__Universal_
         public void turnOffLED()
         {
             this.manualMode = false;
-            /*this.colorGenerator = new TurnOffLED(true, TimeSpan.FromSeconds(1), numLeds);*/
+            this.colorGenerator = new TurnOffLED(true, TimeSpan.FromSeconds(1), numLeds);
         }
     }
 }
