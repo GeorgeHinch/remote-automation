@@ -154,17 +154,17 @@ namespace SmartThings_Home_Hub__Universal_
             }
             else if (settingValue == false)
             {
-                /*ledRadio_Disable();*/
+                ledRadio_Disable();
                 ((App)Application.Current).getLEDs().turnOffLED();
             }
         }
 
-        /*private void ledRadio_Disable()
+        private void ledRadio_Disable()
         {
             WhiteLED.IsEnabled = false;
             BlueLED.IsEnabled = false;
             FadeLED.IsEnabled = false;
             RainbowLED.IsEnabled = false;
-        }*/
+        }
     }
 }
