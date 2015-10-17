@@ -146,18 +146,25 @@ namespace SmartThings_Home_Hub__Universal_
         {
             var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
 
-            bool settingValue = (bool)roamingSettings.Values["ledPower"];
+            if (roamingSettings.Values["ledPower"] == null)
+            {
+                roamingSettings.Values["ledPower"] = true;
+                roamingSettings.Values["ledRadio"] = RainbowLED.Name.ToString();
+            } else
+            {
+                bool settingValue = (bool)roamingSettings.Values["ledPower"];
 
 
-            if (settingValue == true)
-            {
-                ledRadio_Enable();
-                ledRadio_Checker();
-            }
-            else if (settingValue == false)
-            {
-                ledRadio_Disable();
-                ((App)Application.Current).getLEDs().turnOffLED();
+                if (settingValue == true)
+                {
+                    ledRadio_Enable();
+                    ledRadio_Checker();
+                }
+                else if (settingValue == false)
+                {
+                    ledRadio_Disable();
+                    ((App)Application.Current).getLEDs().turnOffLED();
+                }
             }
         }
 
