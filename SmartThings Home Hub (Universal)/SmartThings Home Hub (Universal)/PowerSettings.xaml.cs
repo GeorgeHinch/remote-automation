@@ -61,8 +61,7 @@ namespace SmartThings_Home_Hub__Universal_
                 $"http://localhost:8080/api/control/reboot");
             HttpClient client = new HttpClient();*/
             Debug.WriteLine("Reboot");
-
-            ShutdownManager.BeginShutdown(ShutdownKind.Shutdown, new TimeSpan(0));
+            ShutdownManager.BeginShutdown(ShutdownKind.Restart, new TimeSpan(0));
 
             /*var response = client.SendAsync(request).Result;
             if (response.StatusCode == HttpStatusCode.OK)
