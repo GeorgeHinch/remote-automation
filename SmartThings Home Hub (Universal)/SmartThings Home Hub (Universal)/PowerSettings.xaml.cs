@@ -33,41 +33,24 @@ namespace SmartThings_Home_Hub__Universal_
 
         public void ShutdownComputer(object target, RoutedEventArgs args)
         {
-            /*HttpRequestMessage request = new HttpRequestMessage(
-                HttpMethod.Get,
-                $"http://localhost:8080/api/control/shutdown");
-            HttpClient client = new HttpClient();*/
-
-
-
             Debug.WriteLine("Shutdown");
-
             ShutdownManager.BeginShutdown(ShutdownKind.Shutdown, new TimeSpan(0));
-
-
-
-
-            /*var response = client.SendAsync(request).Result;
-            if (response.StatusCode == HttpStatusCode.OK)
-            {
-                Debug.WriteLine("Shutdown");
-            }*/
         }
 
         public void RebootComputer(object target, RoutedEventArgs args)
         {
-            /*HttpRequestMessage request = new HttpRequestMessage(
-                HttpMethod.Get,
-                $"http://localhost:8080/api/control/reboot");
-            HttpClient client = new HttpClient();*/
             Debug.WriteLine("Reboot");
             ShutdownManager.BeginShutdown(ShutdownKind.Restart, new TimeSpan(0));
+        }
 
-            /*var response = client.SendAsync(request).Result;
-            if (response.StatusCode == HttpStatusCode.OK)
-            {
-                Debug.WriteLine("Shutdown");
-            }*/
+        public void LockComputer(object target, RoutedEventArgs arg)
+        {
+            Debug.WriteLine("Lock");
+
+            Frame rootFrame = Window.Current.Content as Frame;
+
+            rootFrame.Navigate(typeof(MainPage));
+
         }
     }
 }
