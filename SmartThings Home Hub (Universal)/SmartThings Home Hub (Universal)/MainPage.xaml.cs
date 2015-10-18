@@ -70,13 +70,6 @@ namespace SmartThings_Home_Hub__Universal_
                     LockBackgroundImage.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/28H.jpg"));
                 }
             }
-
-            
-
-            /* Store background 1 */
-            roamingSettings.Values["LockBackgroundImage"] = "LockBackgroundImage_1";
-            LockBackgroundImage.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/Weather-background-1.jpg"));
-            return;
         }
 
         private void Unlock_Click(object sender, RoutedEventArgs e)
