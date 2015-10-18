@@ -16,14 +16,14 @@
 
                 <TextBlock Text="Choose a local or network file for the lock background (720x480 px):" />
                 <StackPanel Height="100" HorizontalAlignment="Left" Orientation="Horizontal">
-                    <Button x:Name="LockImage_1" Content="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Width="140">
+                    <Button x:Name="LockImage_1" Click="LockImage1_Click" Content="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Width="140">
                         <Button.Background>
                             <ImageBrush Stretch="Fill" ImageSource="Assets/28H.jpg"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="LockImage_2" Content="Button" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Width="140"/>
-                    <Button x:Name="LockImage_3" Content="Button" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Width="140"/>
-                    <Button x:Name="LockImage_More" Content="&#xE710;" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Width="80" FontFamily="Segoe MDL2 Assets" FontSize="26.667" FontWeight="Bold" Foreground="#FF7A7A7A"/>
+                    <Button x:Name="LockImage_2" Click="LockImage2_Click" Content="Button" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Width="140"/>
+                    <Button x:Name="LockImage_3" Click="LockImage3_Click" Content="Button" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Width="140"/>
+                    <Button x:Name="LockImage_More" Content="&#xE710;" IsEnabled="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Width="80" FontFamily="Segoe MDL2 Assets" FontSize="26.667" FontWeight="Bold" Foreground="#FF7A7A7A"/>
                 </StackPanel>
 
                 <TextBlock x:Name="DisplayHeader" Text="Display" FontSize="18.667" Margin="0,30,0,0" />

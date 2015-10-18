@@ -4,6 +4,7 @@ using Windows.System.Power;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using System.Net.Http;
+using Windows.UI.Xaml.Media.Imaging;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -23,7 +24,7 @@ namespace SmartThings_Home_Hub__Universal_
             timer.Tick += new EventHandler<object>(dispatchTimer_Tick);
             timer.Start();
 
-            
+            Image_Replace();
         }
 
         void  dispatchTimer_Tick(object sender, object e)
@@ -41,6 +42,41 @@ namespace SmartThings_Home_Hub__Universal_
             HttpClient client = new HttpClient();
             client.SendAsync(request);
 
+        }
+
+        public void Image_Replace()
+        {
+            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+
+            if (roamingSettings.Values["LockBackgroundImage"] = null)
+            {
+                roamingSettings.Values["LockBackgroundImage"] = "LockBackgroundImage_1";
+                LockBackgroundImage.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/28H.jpg"));
+            } else
+            {
+                if (roamingSettings.Values["LockBackgroundImage"] == "LockBackgroundImage_1")
+                {
+                    LockBackgroundImage.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/28H.jpg"));
+                }
+                else if (roamingSettings.Values["LockBackgroundImage"] == "LockBackgroundImage_2")
+                {
+                    LockBackgroundImage.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/Weather-Background-1.jpg"));
+                }
+                else if (roamingSettings.Values["LockBackgroundImage"] == "LockBackgroundImage_3")
+                {
+                    LockBackgroundImage.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/Weather-Background-2.jpg"));
+                } else
+                {
+                    LockBackgroundImage.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/28H.jpg"));
+                }
+            }
+
+            
+
+            /* Store background 1 */
+            roamingSettings.Values["LockBackgroundImage"] = "LockBackgroundImage_1";
+            LockBackgroundImage.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/Weather-background-1.jpg"));
+            return;
         }
 
         private void Unlock_Click(object sender, RoutedEventArgs e)

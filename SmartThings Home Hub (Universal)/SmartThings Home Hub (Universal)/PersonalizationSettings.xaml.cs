@@ -45,6 +45,36 @@ namespace SmartThings_Home_Hub__Universal_
             indAlert_Toggler();
         }
 
+        private void LockImage1_Click(object sender, RoutedEventArgs e)
+        {
+            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+
+            /* Store background 1 */
+            roamingSettings.Values["LockBackgroundImage"] = "LockBackgroundImage_1";
+
+            /*new MainPage().Image_Replace();*/
+        }
+
+        private void LockImage2_Click(object sender, RoutedEventArgs e)
+        {
+            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+
+            /* Store background 2 */
+            roamingSettings.Values["LockBackgroundImage"] = "LockBackgroundImage_2";
+
+            /*new MainPage().Image_Replace();*/
+        }
+
+        private void LockImage3_Click(object sender, RoutedEventArgs e)
+        {
+            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+
+            /* Store background 3 */
+            roamingSettings.Values["LockBackgroundImage"] = "LockBackgroundImage_3";
+
+            /*new MainPage().Image_Replace();*/
+        }
+
         public void alertStatus_Toggled(object sender, RoutedEventArgs e)
         {
             var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;

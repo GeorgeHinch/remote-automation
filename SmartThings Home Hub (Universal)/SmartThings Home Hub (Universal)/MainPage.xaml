@@ -9,7 +9,7 @@
 
     <Grid x:Name="lockScreen">
         <Grid.Background>
-            <ImageBrush Stretch="Fill" ImageSource="Assets/28H.jpg"/>
+            <ImageBrush x:Name="LockBackgroundImage" Stretch="Fill" ImageSource="Assets/28H.jpg"/>
         </Grid.Background>
 
         <Grid.ColumnDefinitions>
