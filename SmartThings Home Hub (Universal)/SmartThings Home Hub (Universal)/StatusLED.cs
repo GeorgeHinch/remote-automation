@@ -259,5 +259,11 @@ namespace SmartThings_Home_Hub__Universal_
             this.manualMode = false;
             this.colorGenerator = new TurnOffLED(true, TimeSpan.FromSeconds(1), numLeds);
         }
+
+        public void alertPulseLED()
+        {
+            this.manualMode = false;
+            this.colorGenerator = new AlertPulseGenerator(true, TimeSpan.FromSeconds(2), numLeds);
+        }
     }
 }

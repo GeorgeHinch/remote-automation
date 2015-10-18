@@ -181,6 +181,13 @@
     <Compile Include="AccountSettings.xaml.cs">
       <DependentUpon>AccountSettings.xaml</DependentUpon>
     </Compile>
+    <Compile Include="alerts\SmartThingsLowBattery_Alert.cs" />
+    <Compile Include="alerts\SmartThingsAwayDoor_Alert.cs" />
+    <Compile Include="alerts\SmartThingsKnock_Alert.cs" />
+    <Compile Include="alerts\SmartThingsEnviroment_Alert.cs" />
+    <Compile Include="alerts\SevereWeatherSwitch_Alert.cs" />
+    <Compile Include="alerts\PowerStatusSwitch_Alert.cs" />
+    <Compile Include="alerts\NetworkStatusSwitch_Alert.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -197,6 +204,7 @@
     <Compile Include="EnviromentPage.xaml.cs">
       <DependentUpon>EnviromentPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AlertPulseGenerator.cs" />
     <Compile Include="FadeGenerator.cs" />
     <Compile Include="FeedData.cs" />
     <Compile Include="HomePage.xaml.cs">
