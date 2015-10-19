@@ -156,7 +156,7 @@ namespace SmartThings_Home_Hub__Universal_
                     alerts.SmartThingsLowBattery_Alert alert = new alerts.SmartThingsLowBattery_Alert();
                     alert.alert();
 
-                    ((App)Application.Current).getLEDs().alertPulseLED();
+                    //((App)Application.Current).getLEDs().alertPulseLED();
                 }
                 else
                 {
@@ -188,7 +188,7 @@ namespace SmartThings_Home_Hub__Universal_
                     alerts.SmartThingsKnock_Alert alert = new alerts.SmartThingsKnock_Alert();
                     alert.alert();
 
-                    ((App)Application.Current).getLEDs().alertPulseLED();
+                    //((App)Application.Current).getLEDs().alertPulseLED();
                 }
                 else
                 {
@@ -220,7 +220,7 @@ namespace SmartThings_Home_Hub__Universal_
                     alerts.SmartThingsAwayDoor_Alert alert = new alerts.SmartThingsAwayDoor_Alert();
                     alert.alert();
 
-                    ((App)Application.Current).getLEDs().alertPulseLED();
+                    //((App)Application.Current).getLEDs().alertPulseLED();
                 }
                 else
                 {
@@ -252,7 +252,7 @@ namespace SmartThings_Home_Hub__Universal_
                     alerts.SmartThingsEnviroment_Alert alert = new alerts.SmartThingsEnviroment_Alert();
                     alert.alert();
 
-                    ((App)Application.Current).getLEDs().alertPulseLED();
+                    //((App)Application.Current).getLEDs().alertPulseLED();
                 }
                 else
                 {
@@ -284,7 +284,7 @@ namespace SmartThings_Home_Hub__Universal_
                     alerts.SevereWeatherSwitch_Alert alert = new alerts.SevereWeatherSwitch_Alert();
                     alert.alert();
 
-                    ((App)Application.Current).getLEDs().alertPulseLED();
+                    //((App)Application.Current).getLEDs().alertPulseLED();
                 }
                 else
                 {
@@ -316,7 +316,7 @@ namespace SmartThings_Home_Hub__Universal_
                     alerts.PowerStatusSwitch_Alert alert = new alerts.PowerStatusSwitch_Alert();
                     alert.alert();
 
-                    ((App)Application.Current).getLEDs().alertPulseLED();
+                    //((App)Application.Current).getLEDs().alertPulseLED();
                 }
                 else
                 {
@@ -348,7 +348,7 @@ namespace SmartThings_Home_Hub__Universal_
                     alerts.NetworkStatusSwitch_Alert alert = new alerts.NetworkStatusSwitch_Alert();
                     alert.alert();
 
-                    ((App)Application.Current).getLEDs().alertPulseLED();
+                    //((App)Application.Current).getLEDs().alertPulseLED();
                 }
                 else
                 {
