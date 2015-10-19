@@ -17,14 +17,10 @@ namespace SmartThings_Home_Hub__Universal_
                 if (goUp)
                 {
                     rgbColour[0]++;
-                    rgbColour[1]++;
-                    rgbColour[2]++;
                 }
                 else
                 {
                     rgbColour[0]--;
-                    rgbColour[1]--;
-                    rgbColour[2]--;
                 }
 
                 if (rgbColour[0] == 128)
