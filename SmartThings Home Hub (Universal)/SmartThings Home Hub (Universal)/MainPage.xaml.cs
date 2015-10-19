@@ -5,6 +5,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using System.Net.Http;
 using Windows.UI.Xaml.Media.Imaging;
+using System.Diagnostics;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -48,21 +49,23 @@ namespace SmartThings_Home_Hub__Universal_
         {
             var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
 
-            if (roamingSettings.Values["LockBackgroundImage"] = null)
+            Debug.WriteLine(roamingSettings.Values["LockBackgroundImage"]);
+
+            if (roamingSettings.Values["LockBackgroundImage"] == null)
             {
                 roamingSettings.Values["LockBackgroundImage"] = "LockBackgroundImage_1";
                 LockBackgroundImage.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/28H.jpg"));
             } else
             {
-                if (roamingSettings.Values["LockBackgroundImage"] == "LockBackgroundImage_1")
+                if ((string)roamingSettings.Values["LockBackgroundImage"] == "LockBackgroundImage_1")
                 {
                     LockBackgroundImage.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/28H.jpg"));
                 }
-                else if (roamingSettings.Values["LockBackgroundImage"] == "LockBackgroundImage_2")
+                else if ((string)roamingSettings.Values["LockBackgroundImage"] == "LockBackgroundImage_2")
                 {
                     LockBackgroundImage.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/Weather-Background-1.jpg"));
                 }
-                else if (roamingSettings.Values["LockBackgroundImage"] == "LockBackgroundImage_3")
+                else if ((string)roamingSettings.Values["LockBackgroundImage"] == "LockBackgroundImage_3")
                 {
                     LockBackgroundImage.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/Weather-Background-2.jpg"));
                 } else
