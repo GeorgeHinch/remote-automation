@@ -21,8 +21,16 @@
                             <ImageBrush Stretch="Fill" ImageSource="Assets/28H.jpg"/>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="LockImage_2" Click="LockImage2_Click" Content="Button" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Width="140"/>
-                    <Button x:Name="LockImage_3" Click="LockImage3_Click" Content="Button" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Width="140"/>
+                    <Button x:Name="LockImage_2" Click="LockImage2_Click" Content="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Width="140">
+                        <Button.Background>
+                            <ImageBrush Stretch="Fill" ImageSource="Assets/weather-background-1.jpg"/>
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="LockImage_3" Click="LockImage3_Click" Content="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Width="140">
+                        <Button.Background>
+                            <ImageBrush Stretch="Fill" ImageSource="Assets/weather-background-2.jpg"/>
+                        </Button.Background>
+                    </Button>
                     <Button x:Name="LockImage_More" Content="&#xE710;" IsEnabled="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Width="80" FontFamily="Segoe MDL2 Assets" FontSize="26.667" FontWeight="Bold" Foreground="#FF7A7A7A"/>
                 </StackPanel>
 

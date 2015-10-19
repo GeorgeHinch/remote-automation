@@ -26,5 +26,23 @@ namespace SmartThings_Home_Hub__Universal_
         {
             this.InitializeComponent();
         }
+
+        private void ZIP_Save(object sender, RoutedEventArgs e)
+        {
+            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+
+            /* Store ZIP Code */
+            roamingSettings.Values["ZipCode"] = ZipCodeBox.Text.ToString();
+        }
+
+        private void key_Click(object sender, RoutedEventArgs e)
+        {
+            if (ZipCodeBox.Text.Length <= 4)
+            {
+                Button btn = (Button)e.OriginalSource;
+                string s = btn.Content.ToString();
+                ZipCodeBox.Text += s;
+            }
+        }
     }
 }
