@@ -15,13 +15,13 @@
             
             <TextBlock Text="App ID:" />
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="AppIDBox" PlaceholderText="App ID" Margin="10" Width="300" />
-                    <Button x:Name="AppIDSave" Content="Save"  Margin="10" HorizontalAlignment="Center"/>
+                <TextBox x:Name="AppIDBox" Margin="10" Width="300" />
+                    <Button x:Name="AppIDSave" Click="st_AppId_Save" Content="Save"  Margin="10" HorizontalAlignment="Center"/>
             </StackPanel>
             <TextBlock Text="Access Token:" />
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="AccessTokenBox" PlaceholderText="Access Token" Margin="10" Width="300" />
-                    <Button x:Name="AccessTokenSave" Content="Save"  Margin="10" HorizontalAlignment="Center" />
+                <TextBox x:Name="AccessTokenBox" Margin="10" Width="300" />
+                    <Button x:Name="AccessTokenSave" Click="st_Token_Save" Content="Save"  Margin="10" HorizontalAlignment="Center" />
             </StackPanel>
         </StackPanel>
     </Grid>

@@ -25,6 +25,8 @@ namespace SmartThings_Home_Hub__Universal_
         public LocationSettings()
         {
             this.InitializeComponent();
+
+            ZIP_Load();
         }
 
         private void ZIP_Save(object sender, RoutedEventArgs e)
@@ -42,6 +44,22 @@ namespace SmartThings_Home_Hub__Universal_
                 Button btn = (Button)e.OriginalSource;
                 string s = btn.Content.ToString();
                 ZipCodeBox.Text += s;
+            }
+        }
+
+        private void ZIP_Load()
+        {
+            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+
+            /* Load Zip Code state */
+            if (roamingSettings.Values["ZipCode"] == null)
+            {
+                ZipCodeBox.PlaceholderText = "Zip Code";
+            }
+            else
+            {
+                var zipCode = roamingSettings.Values["ZipCode"].ToString();
+                ZipCodeBox.PlaceholderText = zipCode;
             }
         }
     }

@@ -28,7 +28,7 @@
 
             <TextBlock Text="Zip Code:" />
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="ZipCodeBox" PlaceholderText="Zip Code" MaxLength="5" Margin="10" Width="300" />
+                <TextBox x:Name="ZipCodeBox" MaxLength="5" Margin="10" Width="300" />
                 <Button x:Name="ZipSave" Click="ZIP_Save" Content="Save"  Margin="10" HorizontalAlignment="Center" />
             </StackPanel>
             <!-- <TextBlock Text="State:" />

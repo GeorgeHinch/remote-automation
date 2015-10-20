@@ -71,7 +71,6 @@ namespace SmartThings_Home_Hub__Universal_
             Frame rootFrame = Window.Current.Content as Frame;
 
             rootFrame.Navigate(typeof(MainPage));
-
         }
     }
 }
