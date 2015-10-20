@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Devices.Gpio;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.System;
@@ -31,16 +32,36 @@ namespace SmartThings_Home_Hub__Universal_
             this.InitializeComponent();
         }
 
+        private GpioController gpio;
+
         public void ShutdownComputer(object target, RoutedEventArgs args)
         {
             Debug.WriteLine("Shutdown");
-            ShutdownManager.BeginShutdown(ShutdownKind.Shutdown, new TimeSpan(0));
+
+            this.gpio = GpioController.GetDefault();
+            if (gpio == null)
+            {
+                Debug.WriteLine("No ShutdownManager available.");
+            }
+            else
+            {
+                ShutdownManager.BeginShutdown(ShutdownKind.Shutdown, new TimeSpan(0));
+            }
         }
 
         public void RebootComputer(object target, RoutedEventArgs args)
         {
             Debug.WriteLine("Reboot");
-            ShutdownManager.BeginShutdown(ShutdownKind.Restart, new TimeSpan(0));
+
+            this.gpio = GpioController.GetDefault();
+            if (gpio == null)
+            {
+                Debug.WriteLine("No ShutdownManager available.");
+            }
+            else
+            {
+                ShutdownManager.BeginShutdown(ShutdownKind.Restart, new TimeSpan(0));
+            }
         }
 
         public void LockComputer(object target, RoutedEventArgs arg)
