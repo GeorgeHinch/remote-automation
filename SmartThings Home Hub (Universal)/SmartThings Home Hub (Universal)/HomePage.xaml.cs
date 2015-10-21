@@ -27,10 +27,17 @@ namespace SmartThings_Home_Hub__Universal_
     {
         private DispatcherTimer _timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(10) };
 
+        SystemStatus systemStatus = new SystemStatus();
+
         public HomePage()
         {
             this.InitializeComponent();
             this.timerReset();
+
+            systemStatus.pwrIcon(systemStatus.pwrState());
+            systemStatus.netInterface();
+            systemStatus.netAP();
+            
         }
 
         private void timerReset()
