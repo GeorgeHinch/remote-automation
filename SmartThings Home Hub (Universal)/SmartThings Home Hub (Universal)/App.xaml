@@ -28,5 +28,11 @@
         <SolidColorBrush x:Key="SystemControlHighlightListAccentHighBrush">#FF006AC1</SolidColorBrush>
         <SolidColorBrush x:Key="SystemControlForegroundAccentBrush">#ff1BA1E2</SolidColorBrush>
 
+        <ResourceDictionary x:Name="mDic">
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="NotifBar.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
     </Application.Resources>
 </Application>

@@ -101,5 +101,10 @@ namespace SmartThings_Home_Hub__Universal_
 
             Debug.WriteLine(inter.ToString());
         }
+
+        /* public WlanConnectionProfileDetails getSSID()
+        {
+            var status = WlanConnectionProfileDetails.
+        } */
     }
 }

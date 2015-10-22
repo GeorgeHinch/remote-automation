@@ -54,7 +54,6 @@
             </Grid>
 
             <Grid x:Name="musicListDetails" Grid.Column="1">
-
             </Grid>
 
         </Grid>
