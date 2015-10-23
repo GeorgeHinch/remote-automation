@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -49,7 +51,6 @@ namespace SmartThings_Home_Hub__Universal_
             new LEDsSettings().ledPower_Checker();
             new PersonalizationSettings().alertOff_Toggler();
         }
-
 
         public StatusLED getLEDs()
         {

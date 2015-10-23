@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -29,6 +30,7 @@ namespace SmartThings_Home_Hub__Universal_
 
             netInterface();
             netIP();
+            netInterfaceList();
             netStatusText();
         }
 
@@ -36,14 +38,13 @@ namespace SmartThings_Home_Hub__Universal_
 
         public static string ipLabel;
 
+        public static Windows.Networking.Connectivity.ConnectionProfile connectionProfile = Windows.Networking.Connectivity.NetworkInformation.GetInternetConnectionProfile();
+
         public void netInterface()
         {
-            var profile = Windows.Networking.Connectivity.NetworkInformation.GetInternetConnectionProfile();
-            if (profile != null)
+            if (connectionProfile != null)
             {
-                var interfaceType = profile.NetworkAdapter.IanaInterfaceType;
-
-                Debug.WriteLine(profile.ToString());
+                var interfaceType = connectionProfile.NetworkAdapter.IanaInterfaceType;
 
                 // 71 is WiFi & 6 is Ethernet(LAN)
                 if (interfaceType == 71)
@@ -69,7 +70,11 @@ namespace SmartThings_Home_Hub__Universal_
 
         public void netIP()
         {
+            var Host = Windows.Networking.Connectivity.NetworkInformation.GetHostNames().Last();
+            IPAddress address = IPAddress.Parse(Host.DisplayName);
 
+            ipLabel = address.ToString();
+            Debug.WriteLine("The IP address is: " + address);
         }
 
         public void netStatusText()
@@ -88,7 +93,9 @@ namespace SmartThings_Home_Hub__Universal_
         {
             if (connectionLabel == "wifi")
             {
-                ///List wifi networks
+                var interfaceSSID = connectionProfile.WlanConnectionProfileDetails.GetConnectedSsid();
+
+                Debug.WriteLine(interfaceSSID);
             }
             else
             {
