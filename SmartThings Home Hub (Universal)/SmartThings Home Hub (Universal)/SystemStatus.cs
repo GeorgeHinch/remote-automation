@@ -102,9 +102,19 @@ namespace SmartThings_Home_Hub__Universal_
             Debug.WriteLine(inter.ToString());
         }
 
-        /* public WlanConnectionProfileDetails getSSID()
+        public static Windows.Networking.Connectivity.ConnectionProfile connectionProfile = Windows.Networking.Connectivity.NetworkInformation.GetInternetConnectionProfile();
+
+        public void getSSID()
         {
-            var status = WlanConnectionProfileDetails.
-        } */
+            var interfaceSSID = connectionProfile.WlanConnectionProfileDetails.GetConnectedSsid();
+
+            /* if (interfaceSSID = null)
+            {
+
+            } else
+            {
+            
+            } */
+        }
     }
 }

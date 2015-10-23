@@ -43,17 +43,116 @@
             </StackPanel>
         </Grid>
 
-        <Grid x:Name="music_mainView" Grid.Row="1">
+        <Grid x:Name="enviroment_mainView" Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20*" />
-                <ColumnDefinition Width="80*" />
+                <ColumnDefinition Width="50*" />
+                <ColumnDefinition Width="50*" />
             </Grid.ColumnDefinitions>
 
-            <Grid x:Name="musicListView" Grid.Column="0" Background="#FFF4F4F4">
-
+            <Grid Grid.Column="0" Background="#FFE9E9E9">
+                <Grid HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Margin="37,42,0,0">
+                    <Canvas Margin="10,0,-230,-471" Height="432" VerticalAlignment="Bottom">
+                        <Path Stroke="#3F000000" Data="M100,100 A100,100,0,1,1,200,100"/>
+                    </Canvas>
+                    <TextBlock x:Name="WeatherTemp" HorizontalAlignment="Center" TextWrapping="Wrap" Text="78°" VerticalAlignment="Bottom" Margin="78,0,-160,-88" FontFamily="{StaticResource FF-RobotoThin}" FontSize="64" Width="182" TextAlignment="Center"/>
+                    <Button Click="thermoDown"  Margin="61,254,-27,-185" Background="{x:Null}" FontFamily="{StaticResource FF-RobotoThin}">
+                        <TextBlock x:Name="ThermostatDown" HorizontalAlignment="Right" TextWrapping="Wrap" Text="« lower" VerticalAlignment="Bottom" Foreground="#FF595959"/>
+                    </Button>
+                    <Button Click="thermoUp" Margin="193,254,-165,-185" Background="{x:Null}" FontFamily="{StaticResource FF-RobotoThin}" Width="72">
+                        <TextBlock x:Name="ThermostatUp" HorizontalAlignment="Right" TextWrapping="Wrap" Text="higher »" VerticalAlignment="Bottom" Foreground="#FF595959"/>
+                    </Button>
+                    <TextBlock x:Name="TempLocation" TextWrapping="Wrap" Text="inside" Margin="0,0,-117,-133" FontFamily="{StaticResource FF-RobotoThin}" Foreground="#FF595959" FontSize="10.667" VerticalAlignment="Bottom" TextAlignment="Center" HorizontalAlignment="Right" Width="113"/>
+                </Grid>
             </Grid>
 
-            <Grid x:Name="musicListDetails" Grid.Column="1">
+            <Grid Grid.Column="1" Background="#FFE9E9E9">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="20,0">
+                    <StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20*"/>
+                                <ColumnDefinition Width="10*"/>
+                                <ColumnDefinition Width="70*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0">
+                                <TextBlock Text="" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource FF-WeatherIcons}" TextAlignment="Center" FontSize="29.333" Foreground="#FF004261"/>
+                            </Grid>
+                            <Grid Grid.Column="2">
+                                <StackPanel>
+                                    <TextBlock Text="outside" FontFamily="{StaticResource FF-RobotoThin}" FontSize="12" MinHeight="5" Foreground="#FFCCCCCC" />
+                                    <TextBlock Text="78°" FontFamily="{StaticResource FF-RobotoThin}" Foreground="#FF595959"/>
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                    </StackPanel>
+
+                    <Line Stroke="#FFCFCFCF" X1="0" Y1="0" X2="1000" Y2="0" Margin="0,10,0,10" />
+
+                    <StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20*"/>
+                                <ColumnDefinition Width="10*"/>
+                                <ColumnDefinition Width="70*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0">
+                                <TextBlock Text="" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource FF-WeatherIcons}" TextAlignment="Center" FontSize="29.333" Foreground="#FF004261"/>
+                            </Grid>
+                            <Grid Grid.Column="2">
+                                <StackPanel>
+                                    <TextBlock Text="humidity" FontFamily="{StaticResource FF-RobotoThin}" FontSize="12" MinHeight="5" Foreground="#FFCCCCCC" />
+                                    <TextBlock Text="77%" FontFamily="{StaticResource FF-RobotoThin}" Foreground="#FF595959"/>
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                    </StackPanel>
+
+                    <Line Stroke="#FFCFCFCF" X1="0" Y1="0" X2="1000" Y2="0" Margin="0,10,0,10" />
+
+                    <StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20*"/>
+                                <ColumnDefinition Width="10*"/>
+                                <ColumnDefinition Width="70*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0">
+                                <TextBlock Text="" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource FF-WeatherIcons}" TextAlignment="Center" FontSize="29.333" Foreground="#FF004261"/>
+                            </Grid>
+                            <Grid Grid.Column="2">
+                                <StackPanel>
+                                    <TextBlock Text="pressure" FontFamily="{StaticResource FF-RobotoThin}" FontSize="12" MinHeight="5" Foreground="#FFCCCCCC" />
+                                    <TextBlock Text="1020.34 hpa" FontFamily="{StaticResource FF-RobotoThin}" Foreground="#FF595959"/>
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                    </StackPanel>
+
+                    <Line Stroke="#FFCFCFCF" X1="0" Y1="0" X2="1000" Y2="0" Margin="0,10,0,10" />
+
+                    <StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20*"/>
+                                <ColumnDefinition Width="10*"/>
+                                <ColumnDefinition Width="70*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0">
+                                <TextBlock x:Name="windIcon"  Text="" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource FF-WeatherIcons}" TextAlignment="Center" FontSize="29.333" Foreground="#FF004261"/>
+                            </Grid>
+                            <Grid Grid.Column="2">
+                                <StackPanel>
+                                    <TextBlock Text="wind" FontFamily="{StaticResource FF-RobotoThin}" FontSize="12" MinHeight="5" Foreground="#FFCCCCCC" />
+                                    <TextBlock x:Name="windText" Text="6.63 m/s south by southwest" FontFamily="{StaticResource FF-RobotoThin}" Foreground="#FF595959"/>
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
             </Grid>
 
         </Grid>
