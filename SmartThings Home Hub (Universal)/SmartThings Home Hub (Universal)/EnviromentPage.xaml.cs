@@ -6,6 +6,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
@@ -32,68 +33,132 @@ namespace SmartThings_Home_Hub__Universal_
 			if ((windDegree >= 348.76 && windDegree <= 360) || (windDegree >= 0 && windDegree <= 11.25))
 			{
 				windText.Text = windSpeed + " north";
-				windIcon.Text = "";
-			} else if (windDegree >= 11.26 && windDegree <= 33.75)
+                var rotateAnimation = new DoubleAnimation(0, 0, TimeSpan.FromMilliseconds(200));
+                windIcon.RenderTransformOrigin = new Point(0.5, 0.5);
+                windIcon.RenderTransform = new RotateTransform();
+                var rt = (RotateTransform)windIcon.RenderTransform;
+                rt.BeginAnimation(RotateTransform.AngleProperty, rotateAnimation);
+            } else if (windDegree >= 11.26 && windDegree <= 33.75)
 			{
 				windText.Text = windSpeed + " north by northeast";
-				windIcon.Text = "";
-			} else if (windDegree >= 33.76 && windDegree <= 56.25)
+                var rotateAnimation = new DoubleAnimation(0, 22, TimeSpan.FromMilliseconds(200));
+                windIcon.RenderTransformOrigin = new Point(0.5, 0.5);
+                windIcon.RenderTransform = new RotateTransform();
+                var rt = (RotateTransform)windIcon.RenderTransform;
+                rt.BeginAnimation(RotateTransform.AngleProperty, rotateAnimation);
+            } else if (windDegree >= 33.76 && windDegree <= 56.25)
 			{
 				windText.Text = windSpeed + " northeast";
-				windIcon.Text = "";
-			} else if (windDegree >= 56.26 && windDegree <= 78.75)
+                var rotateAnimation = new DoubleAnimation(0, 45, TimeSpan.FromMilliseconds(200));
+                windIcon.RenderTransformOrigin = new Point(0.5, 0.5);
+                windIcon.RenderTransform = new RotateTransform();
+                var rt = (RotateTransform)windIcon.RenderTransform;
+                rt.BeginAnimation(RotateTransform.AngleProperty, rotateAnimation);
+            } else if (windDegree >= 56.26 && windDegree <= 78.75)
 			{
 				windText.Text = windSpeed + " east by northeast";
-				windIcon.Text = "";
-			} else if (windDegree >= 78.76 && windDegree <= 101.25)
+                var rotateAnimation = new DoubleAnimation(0, 67, TimeSpan.FromMilliseconds(200));
+                windIcon.RenderTransformOrigin = new Point(0.5, 0.5);
+                windIcon.RenderTransform = new RotateTransform();
+                var rt = (RotateTransform)windIcon.RenderTransform;
+                rt.BeginAnimation(RotateTransform.AngleProperty, rotateAnimation);
+            } else if (windDegree >= 78.76 && windDegree <= 101.25)
 			{
 				windText.Text = windSpeed + " east";
-				windIcon.Text = "";
-			} else if (windDegree >= 101.26 && windDegree <= 123.75)
+                var rotateAnimation = new DoubleAnimation(0, 90, TimeSpan.FromMilliseconds(200));
+                windIcon.RenderTransformOrigin = new Point(0.5, 0.5);
+                windIcon.RenderTransform = new RotateTransform();
+                var rt = (RotateTransform)windIcon.RenderTransform;
+                rt.BeginAnimation(RotateTransform.AngleProperty, rotateAnimation);
+            } else if (windDegree >= 101.26 && windDegree <= 123.75)
 			{
 				windText.text = windSpeed + " east by southeast";
-				windIcon.Text = "";
-			} else if (windDegree >= 123.76 && windDegree <= 146.25)
+                var rotateAnimation = new DoubleAnimation(0, 112, TimeSpan.FromMilliseconds(200));
+                windIcon.RenderTransformOrigin = new Point(0.5, 0.5);
+                windIcon.RenderTransform = new RotateTransform();
+                var rt = (RotateTransform)windIcon.RenderTransform;
+                rt.BeginAnimation(RotateTransform.AngleProperty, rotateAnimation);
+            } else if (windDegree >= 123.76 && windDegree <= 146.25)
 			{
 				windText.Text = windSpeed + " southeast";
-				windIcon.Text = "";
-			} else if (windDegree >= 146.26 && windDegree <= 168.75)
+                var rotateAnimation = new DoubleAnimation(0, 135, TimeSpan.FromMilliseconds(200));
+                windIcon.RenderTransformOrigin = new Point(0.5, 0.5);
+                windIcon.RenderTransform = new RotateTransform();
+                var rt = (RotateTransform)windIcon.RenderTransform;
+                rt.BeginAnimation(RotateTransform.AngleProperty, rotateAnimation);
+            } else if (windDegree >= 146.26 && windDegree <= 168.75)
 			{
 				windText.Text = windspeed + " south by southeast";
-				windText.Icon = "";
-			} else if (windDegree >= 168.76 && windDegree <= 191.25)
+                var rotateAnimation = new DoubleAnimation(0, 157, TimeSpan.FromMilliseconds(200));
+                windIcon.RenderTransformOrigin = new Point(0.5, 0.5);
+                windIcon.RenderTransform = new RotateTransform();
+                var rt = (RotateTransform)windIcon.RenderTransform;
+                rt.BeginAnimation(RotateTransform.AngleProperty, rotateAnimation);
+            } else if (windDegree >= 168.76 && windDegree <= 191.25)
 			{
 				windText.Text = windSpeed + " south";
-				windText.Icon = "";	
-			} else if (windDegree >= 191.26 && windDegree <= 213.75)
+                var rotateAnimation = new DoubleAnimation(0, 180, TimeSpan.FromMilliseconds(200));
+                windIcon.RenderTransformOrigin = new Point(0.5, 0.5);
+                windIcon.RenderTransform = new RotateTransform();
+                var rt = (RotateTransform)windIcon.RenderTransform;
+                rt.BeginAnimation(RotateTransform.AngleProperty, rotateAnimation);
+            } else if (windDegree >= 191.26 && windDegree <= 213.75)
 			{
 				windText.Text = windSpeed + " south by southwest";
-				windIcon.Text = "";
-			} else if (windDegree >= 213.76 && windDegree <= 236.25)
+                var rotateAnimation = new DoubleAnimation(0, 202, TimeSpan.FromMilliseconds(200));
+                windIcon.RenderTransformOrigin = new Point(0.5, 0.5);
+                windIcon.RenderTransform = new RotateTransform();
+                var rt = (RotateTransform)windIcon.RenderTransform;
+                rt.BeginAnimation(RotateTransform.AngleProperty, rotateAnimation);
+            } else if (windDegree >= 213.76 && windDegree <= 236.25)
 			{
 				windText.Text = windSpeed + " southwest";
-				windIcon.Text = "";
-			} else if (windDegree >= 236.26 && windDegree <= 258.75)
+                var rotateAnimation = new DoubleAnimation(0, 225, TimeSpan.FromMilliseconds(200));
+                windIcon.RenderTransformOrigin = new Point(0.5, 0.5);
+                windIcon.RenderTransform = new RotateTransform();
+                var rt = (RotateTransform)windIcon.RenderTransform;
+                rt.BeginAnimation(RotateTransform.AngleProperty, rotateAnimation);
+            } else if (windDegree >= 236.26 && windDegree <= 258.75)
 			{
 				windText.Text = windSpeed + " west by southwest";
-				windIcon.Text = "";
-			} else if (windDegree >= 258.76 && windDegree <= 281.25)
+                var rotateAnimation = new DoubleAnimation(0, 247, TimeSpan.FromMilliseconds(200));
+                windIcon.RenderTransformOrigin = new Point(0.5, 0.5);
+                windIcon.RenderTransform = new RotateTransform();
+                var rt = (RotateTransform)windIcon.RenderTransform;
+                rt.BeginAnimation(RotateTransform.AngleProperty, rotateAnimation);
+            } else if (windDegree >= 258.76 && windDegree <= 281.25)
 			{
 				windText.Text = windSpeed + " west";
-				windIcon.Text = "";
-			} else if (windDegree >= 281.26 && windDegree <= 303.75)
+                var rotateAnimation = new DoubleAnimation(0, 270, TimeSpan.FromMilliseconds(200));
+                windIcon.RenderTransformOrigin = new Point(0.5, 0.5);
+                windIcon.RenderTransform = new RotateTransform();
+                var rt = (RotateTransform)windIcon.RenderTransform;
+                rt.BeginAnimation(RotateTransform.AngleProperty, rotateAnimation);
+            } else if (windDegree >= 281.26 && windDegree <= 303.75)
 			{
 				windText.Text = windSpeed + " west by northwest";
-				windIcon.Text = "";
-			} else if (windDegree >= 303.76 && windDegree <= 326.25)
+                var rotateAnimation = new DoubleAnimation(0, 292, TimeSpan.FromMilliseconds(200));
+                windIcon.RenderTransformOrigin = new Point(0.5, 0.5);
+                windIcon.RenderTransform = new RotateTransform();
+                var rt = (RotateTransform)windIcon.RenderTransform;
+                rt.BeginAnimation(RotateTransform.AngleProperty, rotateAnimation);
+            } else if (windDegree >= 303.76 && windDegree <= 326.25)
 			{
 				windText.Text = windSpeed + " northwest";
-				windIcon.Text = "";
-			} else if (windDegree >= 326.26 && windDegree <= 348.75)
+                var rotateAnimation = new DoubleAnimation(0, 315, TimeSpan.FromMilliseconds(200));
+                windIcon.RenderTransformOrigin = new Point(0.5, 0.5);
+                windIcon.RenderTransform = new RotateTransform();
+                var rt = (RotateTransform)windIcon.RenderTransform;
+                rt.BeginAnimation(RotateTransform.AngleProperty, rotateAnimation);
+            } else if (windDegree >= 326.26 && windDegree <= 348.75)
 			{
 				windText.Text = windSpeed + " north by northwest";
-				windIcon.Text = "";
-			} else
+                var rotateAnimation = new DoubleAnimation(0, 337, TimeSpan.FromMilliseconds(200));
+                windIcon.RenderTransformOrigin = new Point(0.5, 0.5);
+                windIcon.RenderTransform = new RotateTransform();
+                var rt = (RotateTransform)windIcon.RenderTransform;
+                rt.BeginAnimation(RotateTransform.AngleProperty, rotateAnimation);
+            } else
 			{
 				windText.Text = "unknown";
 				windText.Text = "";
