@@ -54,7 +54,7 @@
                     <Canvas Margin="10,0,-230,-471" Height="432" VerticalAlignment="Bottom">
                         <Path Stroke="#3F000000" Data="M100,100 A100,100,0,1,1,200,100"/>
                     </Canvas>
-                    <TextBlock x:Name="WeatherTemp" HorizontalAlignment="Center" TextWrapping="Wrap" Text="78°" VerticalAlignment="Bottom" Margin="78,0,-160,-88" FontFamily="{StaticResource FF-RobotoThin}" FontSize="64" Width="182" TextAlignment="Center"/>
+                    <TextBlock x:Name="insideTempBox" HorizontalAlignment="Center" TextWrapping="Wrap" Text="78°" VerticalAlignment="Bottom" Margin="78,0,-160,-88" FontFamily="{StaticResource FF-RobotoThin}" FontSize="64" Width="182" TextAlignment="Center"/>
                     <Button Click="thermoDown"  Margin="61,254,-27,-185" Background="{x:Null}" FontFamily="{StaticResource FF-RobotoThin}">
                         <TextBlock x:Name="ThermostatDown" HorizontalAlignment="Right" TextWrapping="Wrap" Text="« lower" VerticalAlignment="Bottom" Foreground="#FF595959"/>
                     </Button>
@@ -81,7 +81,7 @@
                             <Grid Grid.Column="2">
                                 <StackPanel>
                                     <TextBlock Text="outside" FontFamily="{StaticResource FF-RobotoThin}" FontSize="12" MinHeight="5" Foreground="#FFCCCCCC" />
-                                    <TextBlock Text="78°" FontFamily="{StaticResource FF-RobotoThin}" Foreground="#FF595959"/>
+                                    <TextBlock x:Name="outsideTextBox" Text="78°" FontFamily="{StaticResource FF-RobotoThin}" Foreground="#FF595959"/>
                                 </StackPanel>
                             </Grid>
                         </Grid>

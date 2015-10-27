@@ -14,6 +14,10 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using System.Diagnostics;
+using System.Net.Http;
+using System.Runtime.Serialization.Json;
+using System.Net;
+using System.Text;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -30,7 +34,54 @@ namespace SmartThings_Home_Hub__Universal_
             windDirection();
         }
 
-        public int windDegree = 180;
+        public void openWeatherSerializer()
+        {
+            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+
+            string zip = (string)roamingSettings.Values["ZipCode"];
+            
+            string country = "US";
+
+            if (roamingSettings.Values["ZipCode"] == null)
+            {
+                roamingSettings.Values["ZipCode"] = "98122";
+            }
+            else
+            {
+                HttpRequestMessage request = new HttpRequestMessage(
+                    HttpMethod.Get,
+                    $"http://api.openweathermap.org/data/2.5/weather?zip={zip},{country}&units=imperial&APPID=e1e2647eeddb5412d5c4ee2fef620871");
+                HttpClient client = new HttpClient();
+                var response = client.SendAsync(request).Result;
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    var result = response.Content.ReadAsStringAsync().Result;
+                    var bytes = Encoding.Unicode.GetBytes(result);
+                    using (MemoryStream stream = new MemoryStream(bytes))
+                    {
+                        var serializer = new DataContractJsonSerializer(typeof(WeatherDetails));
+                        var weatherDetails = (WeatherDetails)serializer.ReadObject(stream);
+
+                        WeatherTemp.Text = $"{(weatherDetails.main.temp - 273.15f) * 1.800 + 32:F0}°";
+                        WeatherLow.Text = $"« {(weatherDetails.main.temp_min - 273.15f) * 1.800 + 32:F0}°";
+                        WeatherHigh.Text = $"{(weatherDetails.main.temp_max - 273.15f) * 1.800 + 32:F0}° »";
+                    }
+
+                    using (MemoryStream stream = new MemoryStream(bytes))
+                    {
+                        var serializer = new DataContractJsonSerializer(typeof(WeatherStatus));
+                        var weatherStatus = (WeatherStatus)serializer.ReadObject(stream);
+                    }
+                }
+                else
+                {
+                    insideTempBox.Text = "err";
+                    outsideTextBox.Text = "err";
+                }
+            }
+        }
+
+        public int windDegree = 270;
 
         public int windSpeed = 25;
 
@@ -121,7 +172,7 @@ namespace SmartThings_Home_Hub__Universal_
 		
 		private void getPressure()
 		{
-            pressureText.Text = airPressure + " hpa";
+            pressureText.Text = airPressure + " hPa";
 		}
 		
 		private void getHumidity()
@@ -131,13 +182,15 @@ namespace SmartThings_Home_Hub__Universal_
 		
 		private void insideTemp()
 		{
-			
-		}
+            var temperature = 0;
+            insideTempBox.Text = temperature + "°";
+        }
 		
 		private void outsideTemp()
 		{
-			
-		}
+            var temperature = 0;
+            outsideTextBox.Text = temperature + "°";
+        }
 		
 		private void thermoDown(object sender, RoutedEventArgs e)
 		{
