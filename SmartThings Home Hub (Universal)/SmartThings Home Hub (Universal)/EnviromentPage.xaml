@@ -141,8 +141,8 @@
                                 <ColumnDefinition Width="70*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Grid Grid.Column="0">
-                                <TextBlock x:Name="windIcon"  Text="" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource FF-WeatherIcons}" TextAlignment="Center" FontSize="29.333" Foreground="#FF004261" />
+                            <Grid x:Name="grid" Grid.Column="0">
+                                <TextBlock x:Name="windIcon"  Text="" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource FF-WeatherIcons}" TextAlignment="Center" FontSize="29.333" Foreground="#FF004261" Width="{Binding ActualWidth, ElementName=grid, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=grid, Mode=OneWay}" UseLayoutRounding="True"/>
                             </Grid>
                             <Grid Grid.Column="2">
                                 <StackPanel>

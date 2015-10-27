@@ -29,9 +29,10 @@ namespace SmartThings_Home_Hub__Universal_
             this.InitializeComponent();
             windDirection();
         }
-        public int windDegree = 90;
 
-        public int windSpeed = 0;
+        public int windDegree = 180;
+
+        public int windSpeed = 25;
 
         private void rotateWindIcon(double angle)
         {
@@ -44,67 +45,67 @@ namespace SmartThings_Home_Hub__Universal_
 		{
 			if ((windDegree >= 348.76 && windDegree <= 360) || (windDegree >= 0 && windDegree <= 11.25))
 			{
-				windText.Text = windSpeed + " north";
+				windText.Text = windSpeed + " mph north";
                 rotateWindIcon(0);
             } else if (windDegree >= 11.26 && windDegree <= 33.75)
 			{
-				windText.Text = windSpeed + " north by northeast";
+				windText.Text = windSpeed + " mph north by northeast";
                 rotateWindIcon(22.5);
             } else if (windDegree >= 33.76 && windDegree <= 56.25)
 			{
-				windText.Text = windSpeed + " northeast";
+				windText.Text = windSpeed + " mph northeast";
                 rotateWindIcon(45);
             } else if (windDegree >= 56.26 && windDegree <= 78.75)
 			{
-				windText.Text = windSpeed + " east by northeast";
+				windText.Text = windSpeed + " mph east by northeast";
                 rotateWindIcon(67.5);
             } else if (windDegree >= 78.76 && windDegree <= 101.25)
 			{
-				windText.Text = windSpeed + " east";
+				windText.Text = windSpeed + " mph east";
                 rotateWindIcon(90);
             } else if (windDegree >= 101.26 && windDegree <= 123.75)
 			{
-				windText.Text = windSpeed + " east by southeast";
+				windText.Text = windSpeed + " mph east by southeast";
                 rotateWindIcon(112.5);
             } else if (windDegree >= 123.76 && windDegree <= 146.25)
 			{
-				windText.Text = windSpeed + " southeast";
+				windText.Text = windSpeed + " mph southeast";
                 rotateWindIcon(135);
             } else if (windDegree >= 146.26 && windDegree <= 168.75)
 			{
-				windText.Text = windSpeed + " south by southeast";
+				windText.Text = windSpeed + " mph south by southeast";
                 rotateWindIcon(157.5);
             } else if (windDegree >= 168.76 && windDegree <= 191.25)
 			{
-				windText.Text = windSpeed + " south";
+				windText.Text = windSpeed + " mph south";
                 rotateWindIcon(180);
             } else if (windDegree >= 191.26 && windDegree <= 213.75)
 			{
-				windText.Text = windSpeed + " south by southwest";
+				windText.Text = windSpeed + " mph south by southwest";
                 rotateWindIcon(202.5);
             } else if (windDegree >= 213.76 && windDegree <= 236.25)
 			{
-				windText.Text = windSpeed + " southwest";
+				windText.Text = windSpeed + " mph southwest";
                 rotateWindIcon(225);
             } else if (windDegree >= 236.26 && windDegree <= 258.75)
 			{
-				windText.Text = windSpeed + " west by southwest";
+				windText.Text = windSpeed + " mph west by southwest";
                 rotateWindIcon(247.5);
             } else if (windDegree >= 258.76 && windDegree <= 281.25)
 			{
-				windText.Text = windSpeed + " west";
+				windText.Text = windSpeed + " mph west";
                 rotateWindIcon(270);
             } else if (windDegree >= 281.26 && windDegree <= 303.75)
 			{
-				windText.Text = windSpeed + " west by northwest";
+				windText.Text = windSpeed + " mph west by northwest";
                 rotateWindIcon(292.5);
             } else if (windDegree >= 303.76 && windDegree <= 326.25)
 			{
-				windText.Text = windSpeed + " northwest";
+				windText.Text = windSpeed + " mph northwest";
                 rotateWindIcon(315);
             } else if (windDegree >= 326.26 && windDegree <= 348.75)
 			{
-				windText.Text = windSpeed + " north by northwest";
+				windText.Text = windSpeed + " mph north by northwest";
                 rotateWindIcon(337.5);
             }
             else
