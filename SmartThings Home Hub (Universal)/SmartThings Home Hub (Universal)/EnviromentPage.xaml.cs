@@ -81,6 +81,34 @@ namespace SmartThings_Home_Hub__Universal_
             }
         }
 
+        public class Temperature
+        {
+            public double temp { get; set; }
+            public double temp_min { get; set; }
+            public double temp_max { get; set; }
+        }
+
+        public class WeatherDetails
+        {
+            public Temperature main { get; set; }
+        }
+
+        public class WeatherStatus
+        {
+            public int id { get; set; }
+            public String name { get; set; }
+            public int cod { get; set; }
+            public WeatherCondition[] weather { get; set; }
+        }
+
+        public class WeatherCondition
+        {
+            public int id { get; set; }
+            public String description { get; set; }
+            public String main { get; set; }
+            public String icon { get; set; }
+        }
+
         public int windDegree = 270;
 
         public int windSpeed = 25;
