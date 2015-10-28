@@ -32,7 +32,12 @@ namespace SmartThings_Home_Hub__Universal_
         {
             this.InitializeComponent();
             windDirection();
+            openWeatherSerializer();
         }
+
+        public int windDegree = 0;
+
+        public string windSpeed = "0";
 
         public void openWeatherSerializer()
         {
@@ -62,21 +67,25 @@ namespace SmartThings_Home_Hub__Universal_
                         var serializer = new DataContractJsonSerializer(typeof(WeatherDetails));
                         var weatherDetails = (WeatherDetails)serializer.ReadObject(stream);
 
-                        WeatherTemp.Text = $"{(weatherDetails.main.temp - 273.15f) * 1.800 + 32:F0}°";
-                        WeatherLow.Text = $"« {(weatherDetails.main.temp_min - 273.15f) * 1.800 + 32:F0}°";
-                        WeatherHigh.Text = $"{(weatherDetails.main.temp_max - 273.15f) * 1.800 + 32:F0}° »";
-                    }
+                        outsideTempBox.Text = $"{(weatherDetails.main.temp):F0}°";
+                        pressureText.Text = $"{(weatherDetails.main.pressure):F0} hPa";
+                        humidityText.Text = $"{(weatherDetails.main.humidity):F0}%";
 
-                    using (MemoryStream stream = new MemoryStream(bytes))
-                    {
-                        var serializer = new DataContractJsonSerializer(typeof(WeatherStatus));
-                        var weatherStatus = (WeatherStatus)serializer.ReadObject(stream);
+                        windDegree = (int)weatherDetails.wind.deg;
+                        windSpeed = weatherDetails.wind.speed.ToString();
+
+                        windDirection();
+
+                        Debug.WriteLine(windDegree.ToString());
+                        Debug.WriteLine(windSpeed.ToString());
                     }
                 }
                 else
                 {
                     insideTempBox.Text = "err";
-                    outsideTextBox.Text = "err";
+                    outsideTempBox.Text = "err";
+                    pressureText.Text = "err";
+                    humidityText.Text = "err";
                 }
             }
         }
@@ -86,32 +95,21 @@ namespace SmartThings_Home_Hub__Universal_
             public double temp { get; set; }
             public double temp_min { get; set; }
             public double temp_max { get; set; }
+            public double pressure { get; set; }
+            public double humidity { get; set; }
+        }
+
+        public class Wind
+        {
+            public double speed { get; set; }
+            public double deg { get; set; }
         }
 
         public class WeatherDetails
         {
             public Temperature main { get; set; }
+            public Wind wind { get; set; }
         }
-
-        public class WeatherStatus
-        {
-            public int id { get; set; }
-            public String name { get; set; }
-            public int cod { get; set; }
-            public WeatherCondition[] weather { get; set; }
-        }
-
-        public class WeatherCondition
-        {
-            public int id { get; set; }
-            public String description { get; set; }
-            public String main { get; set; }
-            public String icon { get; set; }
-        }
-
-        public int windDegree = 270;
-
-        public int windSpeed = 25;
 
         private void rotateWindIcon(double angle)
         {
@@ -194,32 +192,12 @@ namespace SmartThings_Home_Hub__Universal_
 			}
 		}
 		
-		public int airPressure = 0;
-		
-		public int humidity = 0;
-		
-		private void getPressure()
-		{
-            pressureText.Text = airPressure + " hPa";
-		}
-		
-		private void getHumidity()
-		{
-			humidityText.Text = humidity + "%";
-		}
-		
 		private void insideTemp()
 		{
             var temperature = 0;
             insideTempBox.Text = temperature + "°";
         }
-		
-		private void outsideTemp()
-		{
-            var temperature = 0;
-            outsideTextBox.Text = temperature + "°";
-        }
-		
+
 		private void thermoDown(object sender, RoutedEventArgs e)
 		{
 			

@@ -127,7 +127,7 @@
                         <Button Width="175" Click="Enviroment_Click" Padding="15,10,15,0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top">
                             <StackPanel>
                                 <TextBlock Text="&#57643;" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" FontSize="48" Margin="0,0,0,15" Foreground="#FF004261"/>
-                                <TextBlock Text="Enviroment" TextAlignment="Center" Margin="0,0,0,5" Foreground="#FF595959"/>
+                                <TextBlock Text="Environment" TextAlignment="Center" Margin="0,0,0,5" Foreground="#FF595959"/>
                                 <TextBlock Text="Thermostat, vent, humidity" TextAlignment="Center" MaxLines="2" TextWrapping="Wrap" Foreground="#FFCCCCCC"/>
                             </StackPanel>
                         </Button>
