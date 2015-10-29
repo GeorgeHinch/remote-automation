@@ -7,6 +7,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" Width="800" Height="480" FontFamily="{StaticResource FF-RobotoThin}">
 
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/SplitViewStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
     <Grid Background="#FFFFFFFF">
 
         <Grid.RowDefinitions>
@@ -44,19 +52,26 @@
         </Grid>
 
         <Grid x:Name="music_mainView" Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20*" />
-                <ColumnDefinition Width="80*" />
-            </Grid.ColumnDefinitions>
+            <SplitView  x:Name="musicSplitView" DisplayMode="Inline" OpenPaneLength="160" IsPaneOpen="True">
+                <SplitView.Content>
+                    <Frame x:Name="musicFrame"></Frame>
+                </SplitView.Content>
+                <SplitView.Pane>
+                    <StackPanel>
+                        <!-- Now Playing button -->
+                        <RadioButton Tag="&#59606;" Content="Now Playing" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnPlayingButtonChecked" IsChecked="True" />
+                        
+                        <!-- Queue button -->
+                        <RadioButton Tag="&#57666;" Content="Queue" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnQueueButtonChecked" />
 
-            <Grid x:Name="musicListView" Grid.Column="0" Background="#FFF4F4F4">
-                
-            </Grid>
+                        <!-- Library button -->
+                        <RadioButton Tag="&#59731;" Content="Library" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnLibraryButtonChecked" />
 
-            <Grid x:Name="musicListDetails" Grid.Column="1">
-                
-            </Grid>
-
+                        <!-- Rooms button -->
+                        <RadioButton Tag="&#57615;" Content="Rooms" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnRoomsButtonChecked" />
+                    </StackPanel>
+                </SplitView.Pane>
+            </SplitView>
         </Grid>
     </Grid>
 </Page>

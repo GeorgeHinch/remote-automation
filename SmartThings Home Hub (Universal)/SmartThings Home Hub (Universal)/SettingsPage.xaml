@@ -51,7 +51,7 @@
             </StackPanel>
         </Grid>
 
-        <Grid x:Name="music_mainView" Grid.Row="1">
+        <Grid x:Name="setings_mainView" Grid.Row="1">
 
             <SplitView  x:Name="settingsSplitView" DisplayMode="Inline" OpenPaneLength="160" IsPaneOpen="True">
                 <SplitView.Content>

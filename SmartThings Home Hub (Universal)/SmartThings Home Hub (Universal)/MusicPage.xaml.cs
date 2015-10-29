@@ -27,6 +27,26 @@ namespace SmartThings_Home_Hub__Universal_
             this.InitializeComponent();
         }
 
+        private void OnPlayingButtonChecked(object sender, RoutedEventArgs e)
+        {
+            musicFrame.Navigate(typeof(NowPlayingMusic));
+        }
+
+        private void OnQueueButtonChecked(object sender, RoutedEventArgs e)
+        {
+            musicFrame.Navigate(typeof(QueueMusic));
+        }
+
+        private void OnLibraryButtonChecked(object sender, RoutedEventArgs e)
+        {
+            musicFrame.Navigate(typeof(LibraryMusic));
+        }
+
+        private void OnRoomsButtonChecked(object sender, RoutedEventArgs e)
+        {
+            musicFrame.Navigate(typeof(RoomsMusic));
+        }
+
         private void Home_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(HomePage));
