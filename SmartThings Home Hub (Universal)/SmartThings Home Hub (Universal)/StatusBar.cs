@@ -19,21 +19,22 @@ namespace SmartThings_Home_Hub__Universal_
         public StatusBar()
         {
             this.DefaultStyleKey = typeof(StatusBar);
-            DispatcherTimer timer = new DispatcherTimer();
+
+            /*DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             EventHandler<Object> stupd = new EventHandler<object>(this.timer_Tick);
             timer.Tick += stupd;
-            timer.Start();
+            timer.Start();*/
         }
 
-        async void timer_Tick(object sender, object something)
+        /*async void timer_Tick(object sender, object something)
         {
             //var wifiAdapters = await WiFiAdapter.FindAllAdaptersAsync();
             //var firstWifiAdapter = wifiAdapters[0]; // be more careful, check size, etc...
             //Debug.WriteLine(wifiAdapters[0]);       // again, check size, or look for your specific network
             //var rssi = firstWifiAdapter.NetworkReport.AvailableNetworks[0].NetworkRssiInDecibelMilliwatts;
+
             this.pwrIcon(this.getCurrentPowerSupplyStatus());
-            // do whatever you want with your RSSI
 
         }
 
@@ -42,23 +43,43 @@ namespace SmartThings_Home_Hub__Universal_
             return Windows.System.Power.PowerManager.PowerSupplyStatus;
         }
 
+        //public static readonly DependencyProperty pwrStateProperty = DependencyProperty.Register("pwrState", typeof(string), typeof(StatusBar), new PropertyMetadata("1"));
+
         public void pwrIcon(PowerSupplyStatus status)
         {
             switch (status)
             {
                 case PowerSupplyStatus.Inadequate:
                     //strPowerLineStatus = "Device is running on battery";
-                    pwrStateIcon.Text = $"";
+
+                    //MyValueProperty = DependencyProperty.Register("pwrState", typeof(string), typeof(StatusBar), new PropertyMetadata("2"));
+                    //pwrState = "2";
+
+                    //pwrStateIcon.Text = $"";
                     break;
                 case PowerSupplyStatus.Adequate:
                     //strPowerLineStatus = "Device is plugged in";
-                    pwrStateIcon.Text = $"";
+
+                    //MyValueProperty = DependencyProperty.Register("pwrState", typeof(string), typeof(StatusBar), new PropertyMetadata("3"));
+                    //pwrState = "3";
+
+                    //pwrStateIcon.Text = $"";
                     break;
                 case PowerSupplyStatus.NotPresent:
                     //strPowerLineStatus = "Power Status: Unknown";
-                    pwrStateIcon.Text = $"";
+
+                    //MyValueProperty = DependencyProperty.Register("pwrState", typeof(string), typeof(StatusBar), new PropertyMetadata("4"));
+                    //pwrState = "4";
+
+                    //pwrStateIcon.Text = $"";
                     break;
             }
         }
+
+        public static string pwrState;
+        {
+            get { return (string)GetValue(pwrStateProperty); }
+            set { SetValue(pwrStateProperty, value); }
+        }*/
     }
 }
