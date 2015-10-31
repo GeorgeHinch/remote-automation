@@ -11,8 +11,8 @@
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Image Source="Assets/OCMS_CMBack_EP.jpg" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="200" Margin="0,0,0,10"/>
             <StackPanel Orientation="Vertical" Margin="0,0,0,20">
-                <TextBlock Text="Dixieland Delight" TextAlignment="Center" FontFamily="{StaticResource FF-RobotoRegular}" Foreground="#FF595959"/>
-                <TextBlock Text="Old Crow Medicine Show" TextAlignment="Center" FontFamily="{StaticResource FF-RobotoThin}" FontSize="12" Foreground="#FF595959"/>
+                <TextBlock Text="Dixieland Delight" TextAlignment="Center" FontFamily="{StaticResource FF-RobotoRegular}"/>
+                <TextBlock Text="Old Crow Medicine Show" TextAlignment="Center" FontFamily="{StaticResource FF-RobotoThin}" FontSize="12"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0,0,0,10">
                 <Button x:Name="ShuffleButton" Content="&#59569;" FontFamily="Segoe MDL2 Assets" Click="ShuffleClick" Background="{x:Null}" BorderBrush="{x:Null}" Margin="0,0,20,0" Foreground="#FFCCCCCC"/>

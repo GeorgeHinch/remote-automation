@@ -14,13 +14,33 @@
             <RowDefinition Height="90*" />
         </Grid.RowDefinitions>
 
-        <Grid x:Name="StatusBarGrid" Grid.Row="0" Background="#FFE9E9E9">
+        <Grid x:Name="StatusBar" Grid.Row="0" Background="#FFE9E9E9">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Margin="15,10,0,0">
                 <Button x:Name="ReturnHome" Click="Home_Click" Content="&#57828;" FontFamily="Segoe MDL2 Assets" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="2" FontSize="18.667" Margin="0,5" Padding="4" />
                 <TextBlock Text="  Security" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource FF-RobotoThin}" />
             </StackPanel>
 
-            <local:StatusBar />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" Opacity="0.15" Margin="0,10,15,0">
+                <Button x:Name="ssmthngNotificationIconBtn" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0" Padding="5" Height="30">
+                    <TextBlock x:Name="ssmthngNotificationIcon" Text="&#59676;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="ssmthingNotification" Foreground="Black" />
+                </Button>
+                <Button x:Name="conBluetoothIconBtn" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0" Padding="5" Height="30">
+                    <TextBlock x:Name="conBluetoothIcon" Text="&#59138;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="conBluetooth" Foreground="Black" />
+                </Button>
+                <Button x:Name="volSoundIconBtn" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0" Padding="5" Height="30">
+                    <TextBlock x:Name="volSoundIcon" Text="&#59797;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="volSound" Foreground="Black" />
+                </Button>
+                <Button x:Name="sigStrengthIconBtn" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0" Padding="5" Height="30">
+                    <TextBlock x:Name="sigStrengthIcon" Text="&#59449;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="sigStrength" Foreground="Black" />
+                </Button>
+                <Button x:Name="pwrStateIconBtn" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0" Padding="5" Height="40" BorderThickness="0">
+                    <TextBlock x:Name="pwrStateIcon" Text="&#59798;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="pwrState" Foreground="Black" FontSize="25" RenderTransformOrigin="0.5,0.5" >
+                        <TextBlock.RenderTransform>
+                            <CompositeTransform TranslateY="-2"/>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                </Button>
+            </StackPanel>
         </Grid>
 
         <Grid x:Name="music_mainView" Grid.Row="1">

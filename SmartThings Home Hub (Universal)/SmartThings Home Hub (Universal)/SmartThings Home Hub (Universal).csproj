@@ -269,7 +269,6 @@
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="SmartThingsAPI.cs" />
-    <Compile Include="StatusBar.cs" />
     <Compile Include="StatusLED.cs" />
     <Compile Include="SystemStatus.cs" />
     <Compile Include="TurnOffLED.cs" />
@@ -385,6 +384,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="NotifBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
     <Page Include="NowPlayingMusic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -420,10 +424,6 @@
     <Page Include="Styles\SplitViewStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Generic.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="UpdatesSettings.xaml">
       <SubType>Designer</SubType>
