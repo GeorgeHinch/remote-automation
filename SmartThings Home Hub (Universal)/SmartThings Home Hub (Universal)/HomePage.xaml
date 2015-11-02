@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
 
         <Grid x:Name="StatusBarRow" Grid.Row="0">
-            <local:SystemStatusNotif />
+            <!--<local:SystemStatusNotif />-->
         </Grid>
 
         <Grid x:Name="home_mainView" Grid.Row="1">

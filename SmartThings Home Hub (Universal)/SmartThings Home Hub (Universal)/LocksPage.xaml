@@ -20,7 +20,7 @@
                 <TextBlock Text="  Locks" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource FF-RobotoThin}" />
             </StackPanel>
 
-            <local:SystemStatusNotif />
+            <!--<local:SystemStatusNotif />-->
         </Grid>
 
         <Grid x:Name="lock_mainView" Grid.Row="1">

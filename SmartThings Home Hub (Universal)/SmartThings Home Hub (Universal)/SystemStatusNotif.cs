@@ -13,11 +13,11 @@ using Windows.UI.Xaml.Media;
 
 namespace SmartThings_Home_Hub__Universal_
 {
-    public sealed class SystemStatusNotif : Control
+    /*public sealed class SystemStatusNotif : Control
     {
         public SystemStatusNotif()
         {
             this.DefaultStyleKey = typeof(SystemStatusNotif);
         }
-    }
+    }*/
 }

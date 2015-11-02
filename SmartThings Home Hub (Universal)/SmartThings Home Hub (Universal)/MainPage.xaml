@@ -80,7 +80,7 @@
         </Grid>
 
         <Grid x:Name="RightColumn" Grid.Column="2">
-            <local:SystemStatusNotif />
+            <!--<local:SystemStatusNotif />-->
         </Grid>
 
 

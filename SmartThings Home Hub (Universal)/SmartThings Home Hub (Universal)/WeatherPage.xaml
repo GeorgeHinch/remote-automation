@@ -23,7 +23,7 @@
                 <TextBlock Text="  Weather" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource FF-RobotoThin}" />
             </StackPanel>
 
-            <local:SystemStatusNotif />
+            <!--<local:SystemStatusNotif />-->
         </Grid>
 
         <Grid x:Name="weather_mainView" Grid.Row="1">

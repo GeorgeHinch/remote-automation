@@ -28,7 +28,7 @@
                 <TextBlock Text="  News" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource FF-RobotoThin}" />
             </StackPanel>
 
-            <local:SystemStatusNotif />
+            <!--<local:SystemStatusNotif />-->
         </Grid>
 
         <Grid x:Name="news_mainView" Grid.Row="1">

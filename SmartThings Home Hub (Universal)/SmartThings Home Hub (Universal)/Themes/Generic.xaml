@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:SmartThings_Home_Hub__Universal_">
 
-    <Style TargetType="local:SystemStatusNotif" >
+    <!--<Style TargetType="local:SystemStatusNotif" >
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:SystemStatusNotif">
@@ -62,5 +62,5 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>
+    </Style>-->
 </ResourceDictionary>
