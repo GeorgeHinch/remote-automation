@@ -199,15 +199,15 @@ namespace SmartThings_Home_Hub__Universal_
             {
                 case PowerSupplyStatus.Inadequate:
                     //strPowerLineStatus = "Device is running on battery";
-                    //pwrStateIcon.Text = $"";
+                    pwrStateIcon.Text = $"";
                     break;
                 case PowerSupplyStatus.Adequate:
                     //strPowerLineStatus = "Device is plugged in";
-                    //pwrStateIcon.Text = $"";
+                    pwrStateIcon.Text = $"";
                     break;
                 case PowerSupplyStatus.NotPresent:
                     //strPowerLineStatus = "Power Status: Unknown";
-                    //pwrStateIcon.Text = $"";
+                    pwrStateIcon.Text = $"";
                     break;
             }
         }
