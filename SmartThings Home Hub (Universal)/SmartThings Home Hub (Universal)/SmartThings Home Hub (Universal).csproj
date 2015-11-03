@@ -271,6 +271,7 @@
     <Compile Include="SmartThingsAPI.cs" />
     <Compile Include="StatusLED.cs" />
     <Compile Include="SystemStatus.cs" />
+    <Compile Include="SystemStatusNotif.cs" />
     <Compile Include="TurnOffLED.cs" />
     <Compile Include="UpdatesSettings.xaml.cs">
       <DependentUpon>UpdatesSettings.xaml</DependentUpon>
@@ -424,6 +425,10 @@
     <Page Include="Styles\SplitViewStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UpdatesSettings.xaml">
       <SubType>Designer</SubType>
