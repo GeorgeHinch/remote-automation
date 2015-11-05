@@ -15,111 +15,110 @@
                 <TextBlock x:Name="albumHeader" TextWrapping="Wrap" Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center" Foreground="#FFCCCCCC"/>
             </StackPanel>
             <Line Stroke="#FFCFCFCF" X1="0" Y1="0" X2="1000" Y2="0" Width="1024" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,0" />
-            <ScrollViewer Width="501" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalScrollMode="Disabled" VerticalScrollMode="Enabled">
-                <StackPanel Height="200">
+            <ScrollViewer Width="501" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalScrollMode="Disabled" VerticalScrollMode="Enabled" Height="380">
+                <StackPanel>
                     <StackPanel x:Name="queueHeader_Copy" Margin="0" Orientation="Horizontal" Width="501" Padding="0,5">
-                        <TextBlock x:Name="songHeader1" TextWrapping="Wrap" Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="artistHeader1" TextWrapping="Wrap" Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="albumHeader1" TextWrapping="Wrap" Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
+                        <TextBlock Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
                     </StackPanel>
                     <StackPanel x:Name="queueHeader_Copy1" Margin="0" Orientation="Horizontal" Width="501" HorizontalAlignment="Right" Padding="0,5">
-                        <TextBlock x:Name="songHeader2" TextWrapping="Wrap" Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="artistHeader2" TextWrapping="Wrap" Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="albumHeader2" TextWrapping="Wrap" Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
+                        <TextBlock Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
                     </StackPanel>
                     <StackPanel x:Name="queueHeader_Copy2" Margin="0" Orientation="Horizontal" Width="501" Padding="0,5">
-                        <TextBlock x:Name="songHeader3" TextWrapping="Wrap" Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="artistHeader3" TextWrapping="Wrap" Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="albumHeader3" TextWrapping="Wrap" Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
+                        <TextBlock Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
                     </StackPanel>
                     <StackPanel x:Name="queueHeader_Copy3" Margin="0" Orientation="Horizontal" Width="501" Padding="0,5">
-                        <TextBlock x:Name="songHeader4" TextWrapping="Wrap" Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="artistHeader4" TextWrapping="Wrap" Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="albumHeader4" TextWrapping="Wrap" Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
+                        <TextBlock Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
                     </StackPanel>
                     <StackPanel x:Name="queueHeader_Copy4" Margin="0" Orientation="Horizontal" Width="501" Padding="0,5">
-                        <TextBlock x:Name="songHeader5" TextWrapping="Wrap" Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="artistHeader5" TextWrapping="Wrap" Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="albumHeader5" TextWrapping="Wrap" Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
+                        <TextBlock Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
                     </StackPanel>
                     <StackPanel x:Name="queueHeader_Copy5" Margin="0" Orientation="Horizontal" Width="501" Padding="0,5">
-                        <TextBlock x:Name="songHeader6" TextWrapping="Wrap" Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="artistHeader6" TextWrapping="Wrap" Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="albumHeader6" TextWrapping="Wrap" Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
+                        <TextBlock Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
                     </StackPanel>
                     <StackPanel x:Name="queueHeader_Copy6" Margin="0" Orientation="Horizontal" Width="501" Padding="0,5">
-                        <TextBlock x:Name="songHeader7" TextWrapping="Wrap" Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="artistHeader7" TextWrapping="Wrap" Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="albumHeader7" TextWrapping="Wrap" Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
+                        <TextBlock Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
                     </StackPanel>
                     <StackPanel x:Name="queueHeader_Copy7" Margin="0" Orientation="Horizontal" Width="501" Padding="0,5">
-                        <TextBlock x:Name="songHeader8" TextWrapping="Wrap" Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="artistHeader8" TextWrapping="Wrap" Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="albumHeader8" TextWrapping="Wrap" Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
+                        <TextBlock Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
                     </StackPanel>
                     <StackPanel x:Name="queueHeader_Copy8" Margin="0" Orientation="Horizontal" Width="501" Padding="0,5">
-                        <TextBlock x:Name="songHeader9" TextWrapping="Wrap" Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="artistHeader9" TextWrapping="Wrap" Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="albumHeader9" TextWrapping="Wrap" Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
+                        <TextBlock Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
                     </StackPanel>
                     <StackPanel x:Name="queueHeader_Copy9" Margin="0" Orientation="Horizontal" Width="501" Padding="0,5">
-                        <TextBlock x:Name="songHeader10" TextWrapping="Wrap" Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="artistHeader10" TextWrapping="Wrap" Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="albumHeader10" TextWrapping="Wrap" Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
+                        <TextBlock Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
                     </StackPanel>
                     <StackPanel x:Name="queueHeader_Copy10" Margin="0" Orientation="Horizontal" Width="501" Padding="0,5">
-                        <TextBlock x:Name="songHeader11" TextWrapping="Wrap" Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="artistHeader11" TextWrapping="Wrap" Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="albumHeader11" TextWrapping="Wrap" Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
+                        <TextBlock Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
                     </StackPanel>
                     <StackPanel x:Name="queueHeader_Copy11" Margin="0" Orientation="Horizontal" Width="501" Padding="0,5">
-                        <TextBlock x:Name="songHeader12" TextWrapping="Wrap" Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="artistHeader12" TextWrapping="Wrap" Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="albumHeader12" TextWrapping="Wrap" Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
+                        <TextBlock Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
                     </StackPanel>
                     <StackPanel x:Name="queueHeader_Copy12" Margin="0" Orientation="Horizontal" Width="501" Padding="0,5">
-                        <TextBlock x:Name="songHeader13" TextWrapping="Wrap" Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="artistHeader13" TextWrapping="Wrap" Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="albumHeader13" TextWrapping="Wrap" Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
+                        <TextBlock Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
                     </StackPanel>
                     <StackPanel x:Name="queueHeader_Copy13" Margin="0" Orientation="Horizontal" Width="501" Padding="0,5">
-                        <TextBlock x:Name="songHeader14" TextWrapping="Wrap" Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="artistHeader14" TextWrapping="Wrap" Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="albumHeader14" TextWrapping="Wrap" Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
+                        <TextBlock Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
                     </StackPanel>
                     <StackPanel x:Name="queueHeader_Copy14" Margin="0" Orientation="Horizontal" Width="501" Padding="0,5">
-                        <TextBlock x:Name="songHeader15" TextWrapping="Wrap" Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="artistHeader15" TextWrapping="Wrap" Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="albumHeader15" TextWrapping="Wrap" Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
+                        <TextBlock Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
                     </StackPanel>
                     <StackPanel x:Name="queueHeader_Copy15" Margin="0" Orientation="Horizontal" Width="501" Padding="0,5">
-                        <TextBlock x:Name="songHeader16" TextWrapping="Wrap" Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="artistHeader16" TextWrapping="Wrap" Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="albumHeader16" TextWrapping="Wrap" Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
+                        <TextBlock Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
                     </StackPanel>
                     <StackPanel x:Name="queueHeader_Copy16" Margin="0" Orientation="Horizontal" Width="501" Padding="0,5">
-                        <TextBlock x:Name="songHeader17" TextWrapping="Wrap" Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="artistHeader17" TextWrapping="Wrap" Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="albumHeader17" TextWrapping="Wrap" Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
+                        <TextBlock Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
                     </StackPanel>
                     <StackPanel x:Name="queueHeader_Copy17" Margin="0" Orientation="Horizontal" Width="501" Padding="0,5">
-                        <TextBlock x:Name="songHeader18" TextWrapping="Wrap" Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="artistHeader18" TextWrapping="Wrap" Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="albumHeader18" TextWrapping="Wrap" Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
+                        <TextBlock Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
                     </StackPanel>
                     <StackPanel x:Name="queueHeader_Copy18" Margin="0" Orientation="Horizontal" Width="501" Padding="0,5">
-                        <TextBlock x:Name="songHeader19" TextWrapping="Wrap" Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="artistHeader19" TextWrapping="Wrap" Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="albumHeader19" TextWrapping="Wrap" Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
+                        <TextBlock Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
                     </StackPanel>
                     <StackPanel x:Name="queueHeader_Copy19" Margin="0" Orientation="Horizontal" Width="501" Padding="0,5">
-                        <TextBlock x:Name="songHeader20" TextWrapping="Wrap" Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="artistHeader20" TextWrapping="Wrap" Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
-                        <TextBlock x:Name="albumHeader20" TextWrapping="Wrap" Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" TextAlignment="Center"/>
+                        <TextBlock Text="Song" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Artist" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
+                        <TextBlock Text="Album" FontFamily="{StaticResource FF-RobotoLight}" Width="167" Padding="10,0"/>
                     </StackPanel>
                 </StackPanel>
             </ScrollViewer>
         </StackPanel>
-
     </Grid>
 </Page>
