@@ -117,6 +117,16 @@ namespace SmartThings_Home_Hub__Universal_
            
         }
 
+        public void georgeRoomLamp_Click(object sender, RoutedEventArgs e)
+        {
+            HttpRequestMessage request = new HttpRequestMessage(
+                HttpMethod.Get,
+                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=switch&device=2c9650de-25da-4f1c-8ea0-51ca3c984007&command=toggle&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
+            HttpClient client = new HttpClient();
+            client.SendAsync(request);
+
+        }
+
         public void georgeRoomLight_Click(object sender, RoutedEventArgs e)
         {
             HttpRequestMessage request = new HttpRequestMessage(
