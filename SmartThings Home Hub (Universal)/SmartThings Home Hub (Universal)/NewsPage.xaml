@@ -34,47 +34,6 @@
         <Grid x:Name="news_mainView" Grid.Row="1">
             <SplitView x:Name="newsSplitView" DisplayMode="Inline" OpenPaneLength="160" IsPaneOpen="True">
                 <SplitView.Pane>
-                    <StackPanel Background="#FFF4F4F4">
-                        <!-- Vertical scrolling item list -->
-                        <ListView
-                        x:Name="itemListView"
-                        AutomationProperties.AutomationId="ItemsListView"
-                        AutomationProperties.Name="Items"
-                        TabIndex="1"
-                        Grid.Row="1"
-                        Margin="-10,-10,0,0"
-                        Padding="120,0,0,60"
-                        ItemsSource="{Binding Source={StaticResource itemsViewSource}}"
-                        IsSwipeEnabled="False"
-                        SelectionChanged="ItemListView_SelectionChanged">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid Height="110" Margin="6">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Border Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}" Width="110" Height="110">
-                                            <Image Source="{Binding Image}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}"/>
-                                        </Border>
-                                        <StackPanel Grid.Column="1" VerticalAlignment="Top" Margin="10,0,0,0">
-                                            <TextBlock Text="{Binding Title}" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="NoWrap"/>
-                                            <TextBlock Text="{Binding PubDate}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap"/>
-                                            <TextBlock Text="{Binding Brief}" Style="{StaticResource BodyTextBlockStyle}" MaxHeight="60"/>
-                                        </StackPanel>
-                                    </Grid>
-
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="FrameworkElement">
-                                    <Setter Property="Margin" Value="0,0,0,10"/>
-                                </Style>
-                            </ListView.ItemContainerStyle>
-                        </ListView>
-                    </StackPanel>
-                </SplitView.Pane>
-                <SplitView.Content>
                     <Grid>
                         <!-- Details for selected item -->
                         <ScrollViewer x:Name="itemDetail" AutomationProperties.AutomationId="ItemDetailScrollViewer" Padding="30,0,30,0" DataContext="{Binding SelectedItem, ElementName=itemListView}" d:DataContext="{Binding Groups[0].Items[0], Source={d:DesignData Source=/DataModel/SampleData.json, Type=data:SampleDataSource}}" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollMode="Disabled" ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.ZoomMode="Disabled">
@@ -116,6 +75,50 @@
                             </Grid>
                         </ScrollViewer>
                     </Grid>
+                </SplitView.Pane>
+                <SplitView.Content>
+
+                    <StackPanel>
+                        <!-- Vertical scrolling item list -->
+                        <ListView
+                        x:Name="itemListView"
+                        AutomationProperties.AutomationId="ItemsListView"
+                        AutomationProperties.Name="Items"
+                        TabIndex="1"
+                        Grid.Row="1"
+                        Margin="-10,-10,0,0"
+                        Padding="120,0,0,60"
+                        ItemsSource="{Binding Source={StaticResource itemsViewSource}}"
+                        IsSwipeEnabled="False"
+                        SelectionChanged="ItemListView_SelectionChanged">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Height="110" Margin="6">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Border Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}" Width="110" Height="110">
+                                            <Image Source="{Binding Image}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}"/>
+                                        </Border>
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Top" Margin="10,0,0,0">
+                                            <TextBlock Text="{Binding Title}" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="NoWrap"/>
+                                            <TextBlock Text="{Binding PubDate}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap"/>
+                                            <TextBlock Text="{Binding Brief}" Style="{StaticResource BodyTextBlockStyle}" MaxHeight="60"/>
+                                        </StackPanel>
+                                    </Grid>
+
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="FrameworkElement">
+                                    <Setter Property="Margin" Value="0,0,0,10"/>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                        </ListView>
+                    </StackPanel>
+                    
+                    
                 </SplitView.Content>
             </SplitView>
         </Grid>
