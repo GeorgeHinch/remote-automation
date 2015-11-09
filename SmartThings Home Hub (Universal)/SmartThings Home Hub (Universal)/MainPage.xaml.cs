@@ -63,11 +63,11 @@ namespace SmartThings_Home_Hub__Universal_
                 }
                 else if ((string)roamingSettings.Values["LockBackgroundImage"] == "LockBackgroundImage_2")
                 {
-                    LockBackgroundImage.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/Weather-Background-1.jpg"));
+                    LockBackgroundImage.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/Lock_Background_2.jpg"));
                 }
                 else if ((string)roamingSettings.Values["LockBackgroundImage"] == "LockBackgroundImage_3")
                 {
-                    LockBackgroundImage.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/Weather-Background-2.jpg"));
+                    LockBackgroundImage.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/Lock_Background_3.jpg"));
                 } else
                 {
                     LockBackgroundImage.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/28H.jpg"));
