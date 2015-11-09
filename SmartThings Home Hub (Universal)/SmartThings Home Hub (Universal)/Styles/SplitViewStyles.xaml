@@ -157,6 +157,7 @@
     <Style TargetType="RadioButton" x:Key="SplitViewNavButtonStyle">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="{ThemeResource SplitViewForegroundBrush}" />
+        <Setter Property="FontSize" Value="13.5" />
         <Setter Property="Padding" Value="1,4,0,0" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="VerticalAlignment" Value="Center" />
