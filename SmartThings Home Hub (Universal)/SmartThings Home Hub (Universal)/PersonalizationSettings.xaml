@@ -58,19 +58,47 @@
 
                 <TextBlock Text="Alerts:" />
 
-                <ToggleSwitch x:Name="SmartThingsLowBatterySwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="SmartThingsLowBatterySwitch_Toggled" Margin="10" Header="SmartThings Low Battery" FontSize="10.667"/>
+                <ToggleSwitch x:Name="SmartThingsLowBatterySwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="SmartThingsLowBatterySwitch_Toggled" Margin="10">
+                    <ToggleSwitch.Header>
+                        <TextBlock Text="SmartThings Low Battery" FontSize="10.667" />
+                    </ToggleSwitch.Header>
+                </ToggleSwitch>
 
-                <ToggleSwitch x:Name="SmartThingsKnockSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="SmartThingsKnockSwitch_Toggled" Margin="10" Header="SmartThings Knock" FontSize="10.667"/>
+                <ToggleSwitch x:Name="SmartThingsKnockSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="SmartThingsKnockSwitch_Toggled" Margin="10">
+                    <ToggleSwitch.Header>
+                        <TextBlock Text="SmartThings Knock" FontSize="10.667" />
+                    </ToggleSwitch.Header>
+                </ToggleSwitch>
 
-                <ToggleSwitch x:Name="SmartThingsAwayDoorSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="SmartThingsAwayDoorSwitch_Toggled" Margin="10" Header="SmartThings Door" FontSize="10.667"/>
+                <ToggleSwitch x:Name="SmartThingsAwayDoorSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="SmartThingsAwayDoorSwitch_Toggled" Margin="10">
+                        <ToggleSwitch.Header>
+                        <TextBlock Text="SmartThings Door" FontSize="10.667" />
+                    </ToggleSwitch.Header>
+                </ToggleSwitch>
 
-                <ToggleSwitch x:Name="SmartThingsEnviromentSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="SmartThingsEnviromentSwitch_Toggled" Margin="10" Header="SmartThings Enviroment" FontSize="10.667"/>
+                <ToggleSwitch x:Name="SmartThingsEnviromentSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="SmartThingsEnviromentSwitch_Toggled" Margin="10">
+                    <ToggleSwitch.Header>
+                        <TextBlock Text="SmartThings Enviroment" FontSize="10.667" />
+                    </ToggleSwitch.Header>
+                </ToggleSwitch>
 
-                <ToggleSwitch x:Name="SeverWeatherSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Toggled="SeverWeatherSwitch_Toggled" Header="Sever Weather" FontSize="10.667"/>
+                <ToggleSwitch x:Name="SeverWeatherSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Toggled="SeverWeatherSwitch_Toggled">
+                    <ToggleSwitch.Header>
+                        <TextBlock Text="Sever Weather" FontSize="10.667" />
+                    </ToggleSwitch.Header>
+                </ToggleSwitch>
 
-                <ToggleSwitch x:Name="PowerStatusSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Toggled="PowerStatusSwitch_Toggled" Header="Device Power" FontSize="10.667"/>
+                <ToggleSwitch x:Name="PowerStatusSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Toggled="PowerStatusSwitch_Toggled">
+                    <ToggleSwitch.Header>
+                        <TextBlock Text="Device Power" FontSize="10.667" />
+                    </ToggleSwitch.Header>
+                </ToggleSwitch>
 
-                <ToggleSwitch x:Name="NetworkStatusSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Toggled="NetworkStatusSwitch_Toggled" Header="Device Network Connectivity" FontSize="10.667"/>
+                <ToggleSwitch x:Name="NetworkStatusSwitch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" Toggled="NetworkStatusSwitch_Toggled">
+                    <ToggleSwitch.Header>
+                        <TextBlock Text="Device Network Connectivity" FontSize="10.667" />
+                    </ToggleSwitch.Header>
+                </ToggleSwitch>
             </StackPanel>
         </ScrollViewer>
     </Grid>
