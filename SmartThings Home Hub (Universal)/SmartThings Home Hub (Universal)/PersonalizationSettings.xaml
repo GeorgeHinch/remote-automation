@@ -44,6 +44,45 @@
                 <TextBlock Text="Brightness:" />
                 <Slider x:Name="slider1" Width="300" HorizontalAlignment="Left" Margin="10" Minimum="20" Value="100"/>
 
+                <TextBlock x:Name="HubLocHeader" Text="Hub Location" FontSize="18.667" Margin="0,30,0,0" />
+
+                <Line Stroke="#FFCFCFCF" X1="0" Y1="0" X2="1000" Y2="0" Margin="0,10,0,20" />
+
+                <StackPanel x:Name="locRadio_Stack" Orientation="Horizontal">
+                    <RadioButton Content="Home" x:Name="LocHome" Margin="10" Checked="LocHome_Checked" MinWidth="0" IsChecked="True">
+                        <RadioButton.Template>
+                            <ControlTemplate>
+                                <ToggleButton IsChecked="{Binding IsChecked, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                          Content="{Binding Content, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"/>
+                            </ControlTemplate>
+                        </RadioButton.Template>
+                    </RadioButton>
+                    <RadioButton Content="Apartment" x:Name="LocApartment" Margin="10" Checked="LocApartment_Checked" MinWidth="0">
+                        <RadioButton.Template>
+                            <ControlTemplate>
+                                <ToggleButton IsChecked="{Binding IsChecked, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                          Content="{Binding Content, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"/>
+                            </ControlTemplate>
+                        </RadioButton.Template>
+                    </RadioButton>
+                    <RadioButton Content="Office" x:Name="LocOffice" Margin="10" Checked="LocOffice_Checked" HorizontalAlignment="Left" MinWidth="0" >
+                        <RadioButton.Template>
+                            <ControlTemplate>
+                                <ToggleButton IsChecked="{Binding IsChecked, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                          Content="{Binding Content, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+                            </ControlTemplate>
+                        </RadioButton.Template>
+                    </RadioButton>
+                    <RadioButton Content="Room" x:Name="LocRoom" Margin="10" Checked="LocRoom_Checked" MinWidth="0">
+                        <RadioButton.Template>
+                            <ControlTemplate>
+                                <ToggleButton IsChecked="{Binding IsChecked, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                          Content="{Binding Content, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"/>
+                            </ControlTemplate>
+                        </RadioButton.Template>
+                    </RadioButton>
+                </StackPanel>
+
                 <TextBlock x:Name="AlertsHeader" Text="Alerts" FontSize="18.667" Margin="0,30,0,0" />
 
                 <Line Stroke="#FFCFCFCF" X1="0" Y1="0" X2="1000" Y2="0" Margin="0,10,0,20" />

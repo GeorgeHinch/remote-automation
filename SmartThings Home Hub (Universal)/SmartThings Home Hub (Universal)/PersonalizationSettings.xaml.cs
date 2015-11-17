@@ -44,6 +44,7 @@ namespace SmartThings_Home_Hub__Universal_
             }
 
             alertOff_Toggler();
+            locRadio_Checker();
             indAlert_Toggler();
         }
 
@@ -76,6 +77,92 @@ namespace SmartThings_Home_Hub__Universal_
 
             /*new MainPage().Image_Replace();*/
         }
+
+
+        private void LocHome_Checked(object sender, RoutedEventArgs e)
+        {
+            locRadioGroup_IsChecked();
+        }
+
+        private void LocApartment_Checked(object sender, RoutedEventArgs e)
+        {
+            locRadioGroup_IsChecked();
+        }
+
+        private void LocOffice_Checked(object sender, RoutedEventArgs e)
+        {
+            locRadioGroup_IsChecked();
+        }
+
+        private void LocRoom_Checked(object sender, RoutedEventArgs e)
+        {
+            locRadioGroup_IsChecked();
+        }
+
+        private void locRadioGroup_IsChecked()
+        {
+            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+
+            RadioButton locState = null;
+
+            if ((bool)LocHome.IsChecked)
+            {
+                locState = LocHome;
+                Debug.WriteLine("Wrote locHome");
+            }
+            else if ((bool)LocApartment.IsChecked)
+            {
+                locState = LocApartment;
+                Debug.WriteLine("Wrote locApartment");
+            }
+            else if ((bool)LocOffice.IsChecked)
+            {
+                locState = LocOffice;
+                Debug.WriteLine("Wrote locOffice");
+            }
+            else if ((bool)LocRoom.IsChecked)
+            {
+                locState = LocRoom;
+                Debug.WriteLine("Wrote locRoom");
+            }
+            else
+            {
+                locState = LocHome;
+            }
+
+            Debug.WriteLine("locState.ToString() = " + locState.Name.ToString() + "|");
+            roamingSettings.Values["locRadio"] = locState.Name.ToString();
+        }
+
+        public void locRadio_Checker()
+        {
+            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+
+            /* Load LED color radio state */
+            if ((string)roamingSettings.Values["locRadio"] == LocHome.Name.ToString())
+            {
+                LocHome.IsChecked = true;
+            }
+            else if ((string)roamingSettings.Values["locRadio"] == LocApartment.Name.ToString())
+            {
+                LocApartment.IsChecked = true;
+            }
+            else if ((string)roamingSettings.Values["locRadio"] == LocOffice.Name.ToString())
+            {
+                LocOffice.IsChecked = true;
+            }
+            else if ((string)roamingSettings.Values["locRadio"] == LocRoom.Name.ToString())
+            {
+                LocRoom.IsChecked = true;
+            }
+            else
+            {
+                Debug.WriteLine("The if statement is fucked up.");
+            }
+        }
+
+
+
 
         public void alertStatus_Toggled(object sender, RoutedEventArgs e)
         {
