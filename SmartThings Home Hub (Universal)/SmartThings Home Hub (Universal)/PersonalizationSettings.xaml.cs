@@ -77,8 +77,7 @@ namespace SmartThings_Home_Hub__Universal_
 
             /*new MainPage().Image_Replace();*/
         }
-
-
+        
         private void LocHome_Checked(object sender, RoutedEventArgs e)
         {
             locRadioGroup_IsChecked();
@@ -142,27 +141,33 @@ namespace SmartThings_Home_Hub__Universal_
             if ((string)roamingSettings.Values["locRadio"] == LocHome.Name.ToString())
             {
                 LocHome.IsChecked = true;
+                Debug.WriteLine("Checked Home");
             }
             else if ((string)roamingSettings.Values["locRadio"] == LocApartment.Name.ToString())
             {
                 LocApartment.IsChecked = true;
+                Debug.WriteLine("Checked Appartment");
             }
             else if ((string)roamingSettings.Values["locRadio"] == LocOffice.Name.ToString())
             {
                 LocOffice.IsChecked = true;
+                Debug.WriteLine("Checked Office");
             }
             else if ((string)roamingSettings.Values["locRadio"] == LocRoom.Name.ToString())
             {
                 LocRoom.IsChecked = true;
+                Debug.WriteLine("Checked Room");
+            }
+            else if ((string)roamingSettings.Values["locRadio"] == null)
+            {
+                LocHome.IsChecked = true;
+                Debug.WriteLine("Checked home because null");
             }
             else
             {
                 Debug.WriteLine("The if statement is fucked up.");
             }
         }
-
-
-
 
         public void alertStatus_Toggled(object sender, RoutedEventArgs e)
         {

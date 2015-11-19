@@ -26,6 +26,7 @@ namespace SmartThings_Home_Hub__Universal_
             timer.Start();
 
             Image_Replace();
+            Location_Replace();
         }
 
         void  dispatchTimer_Tick(object sender, object e)
@@ -71,6 +72,41 @@ namespace SmartThings_Home_Hub__Universal_
                 } else
                 {
                     LockBackgroundImage.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/28H.jpg"));
+                }
+            }
+        }
+
+        public void Location_Replace()
+        {
+            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+
+            Debug.WriteLine(roamingSettings.Values["locRadio"]);
+
+            if (roamingSettings.Values["locRadio"] == null)
+            {
+                LockBackgroundImage.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/28H.jpg"));
+            }
+            else
+            {
+                if ((string)roamingSettings.Values["locRadio"] == "LocHome")
+                {
+                    HouseStatusLabel.Text = "home is set to...";
+                }
+                else if ((string)roamingSettings.Values["locRadio"] == "LocApartment")
+                {
+                    HouseStatusLabel.Text = "apartment is set to...";
+                }
+                else if ((string)roamingSettings.Values["locRadio"] == "LocOffice")
+                {
+                    HouseStatusLabel.Text = "office is set to...";
+                }
+                else if ((string)roamingSettings.Values["locRadio"] == "LocRoom")
+                {
+                    HouseStatusLabel.Text = "room is set to...";
+                }
+                else
+                {
+                    HouseStatusLabel.Text = "home is set to...";
                 }
             }
         }

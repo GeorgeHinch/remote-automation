@@ -49,7 +49,7 @@
                 <Line Stroke="#FFCFCFCF" X1="0" Y1="0" X2="1000" Y2="0" Margin="0,10,0,20" />
 
                 <StackPanel x:Name="locRadio_Stack" Orientation="Horizontal">
-                    <RadioButton Content="Home" x:Name="LocHome" Margin="10" Checked="LocHome_Checked" MinWidth="0" IsChecked="True">
+                    <RadioButton Content="Home" x:Name="LocHome" Margin="10" Checked="LocHome_Checked" MinWidth="0">
                         <RadioButton.Template>
                             <ControlTemplate>
                                 <ToggleButton IsChecked="{Binding IsChecked, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
