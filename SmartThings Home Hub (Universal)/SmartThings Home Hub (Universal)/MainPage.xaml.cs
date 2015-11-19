@@ -84,7 +84,7 @@ namespace SmartThings_Home_Hub__Universal_
 
             if (roamingSettings.Values["locRadio"] == null)
             {
-                LockBackgroundImage.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/28H.jpg"));
+                HouseStatusLabel.Text = "home is set to...";
             }
             else
             {
