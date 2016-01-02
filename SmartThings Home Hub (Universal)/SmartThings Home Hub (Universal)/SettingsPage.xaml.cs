@@ -25,6 +25,18 @@ namespace SmartThings_Home_Hub__Universal_
         public SettingsPage()
         {
             this.InitializeComponent();
+
+            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+
+            /* Disable GPIO based options */
+            if (roamingSettings.Values["GPIOVal"] != null)
+            {
+                
+            }
+            else
+            {
+                LEDsButton.IsEnabled = false;
+            }
         }
 
         private void Home_Click(object sender, RoutedEventArgs e)
