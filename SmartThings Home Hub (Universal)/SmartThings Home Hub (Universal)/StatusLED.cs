@@ -40,7 +40,15 @@ namespace SmartThings_Home_Hub__Universal_
 
         public StatusLED(byte clock_pin, byte data_pin, byte num_leds)
         {
-            this.gpio = GpioController.GetDefault();
+            try {
+                this.gpio = GpioController.GetDefault();
+            }
+            catch(System.IO.FileNotFoundException fileException)
+            {
+                Debug.WriteLine(fileException.FileName);
+                gpio = null;
+            }
+
             if (gpio == null)
             {
                 Debug.WriteLine("There is no GPIO controller on this device.");
