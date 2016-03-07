@@ -29,6 +29,9 @@ namespace SmartThings_Home_Hub__Universal_
             Location_Replace();
         }
 
+        /// <summary>
+        /// Timer controls the date and time on the lock screen. 
+        /// </summary>
         void  dispatchTimer_Tick(object sender, object e)
         {
             // Placing time & date on lock
@@ -46,6 +49,9 @@ namespace SmartThings_Home_Hub__Universal_
 
         }
 
+        /// <summary>
+        /// Customizes the lock screen background. Can be changed using the image picker on the Personalization page.
+        /// </summary>
         public void Image_Replace()
         {
             var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
@@ -76,6 +82,9 @@ namespace SmartThings_Home_Hub__Universal_
             }
         }
 
+        /// <summary>
+        /// Customizes the location text on the lock screen. Options can be sellected with a toggle in the Personalization page.
+        /// </summary>
         public void Location_Replace()
         {
             var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
@@ -111,6 +120,9 @@ namespace SmartThings_Home_Hub__Universal_
             }
         }
 
+        /// <summary>
+        /// Click to unlock button
+        /// </summary>
         private void Unlock_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(HomePage));

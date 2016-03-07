@@ -8,11 +8,11 @@
     mc:Ignorable="d" Width="800" Height="480" FontFamily="{StaticResource FF-RobotoThin}">
 
     <Page.Resources>
-        <!-- Collection of items displayed by this page -->
-        <CollectionViewSource
-            x:Name="itemsViewSource"
-            Source="{Binding Items}"
-            d:Source="{Binding Groups[0].Items, Source={d:DesignData Source=/DataModel/SampleData.json, Type=data:SampleDataSource}}"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/NewsViewStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Page.Resources>
 
     <Grid Background="#FFFFFFFF">
@@ -32,94 +32,16 @@
         </Grid>
 
         <Grid x:Name="news_mainView" Grid.Row="1">
-            <SplitView x:Name="newsSplitView" DisplayMode="Inline" OpenPaneLength="160" IsPaneOpen="True">
-                <SplitView.Pane>
-                    <Grid>
-                        <!-- Details for selected item -->
-                        <ScrollViewer x:Name="itemDetail" AutomationProperties.AutomationId="ItemDetailScrollViewer" Padding="30,0,30,0" DataContext="{Binding SelectedItem, ElementName=itemListView}" d:DataContext="{Binding Groups[0].Items[0], Source={d:DesignData Source=/DataModel/SampleData.json, Type=data:SampleDataSource}}" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollMode="Disabled" ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.ZoomMode="Disabled">
-
-                            <Grid x:Name="itemDetailGrid" Width="{Binding ActualWidth, ElementName=itemDetail, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=itemDetail, Mode=OneWay}">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-                                <StackPanel x:Name="itemDetailTitlePanel" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
-                                    <TextBlock x:Name="itemTitle" Margin="0,-10,0,0" Text="{Binding Title}" Style="{StaticResource SubheaderTextBlockStyle}"/>
-                                    <TextBlock x:Name="itemSubtitle" Margin="0,0,0,20" Text="{Binding PubDate}" Style="{StaticResource SubtitleTextBlockStyle}"/>
-                                </StackPanel>
-                                <Grid Grid.Row="1">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="120"/>
-                                        <ColumnDefinition/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <TextBlock Grid.Row="0" Text="Author" Style="{StaticResource SubtitleTextBlockStyle}" Margin="0,10" />
-                                    <TextBlock Grid.Row="1" Text="Pub Date" Style="{StaticResource SubtitleTextBlockStyle}" Margin="0,10" />
-                                    <TextBlock Grid.Row="2" Text="Link" Style="{StaticResource SubtitleTextBlockStyle}" Margin="0,10" />
-                                    <TextBlock Grid.Row="3" Text="Categories" Style="{StaticResource SubtitleTextBlockStyle}" Margin="0,10" />
-
-                                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Author}" Style="{StaticResource BodyTextBlockStyle}" Margin="0,10" />
-                                    <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding PubDate}" Style="{StaticResource BodyTextBlockStyle}" Margin="0,10" />
-                                    <HyperlinkButton Grid.Row="2" Grid.Column="1" Content="{Binding Link}" Margin="0,10" />
-                                    <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding CategoriesAppended}" Style="{StaticResource BodyTextBlockStyle}" Margin="0,10" />
-
-                                    <TextBlock Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Summary}" Style="{StaticResource BodyTextBlockStyle}" Margin="0,10" />
-                                </Grid>
-                            </Grid>
-                        </ScrollViewer>
-                    </Grid>
-                </SplitView.Pane>
+            <SplitView x:Name="newsSplitView" DisplayMode="Inline" OpenPaneLength="250" IsPaneOpen="True">
                 <SplitView.Content>
-
-                    <StackPanel>
-                        <!-- Vertical scrolling item list -->
-                        <ListView
-                        x:Name="itemListView"
-                        AutomationProperties.AutomationId="ItemsListView"
-                        AutomationProperties.Name="Items"
-                        TabIndex="1"
-                        Grid.Row="1"
-                        Margin="-10,-10,0,0"
-                        Padding="120,0,0,60"
-                        ItemsSource="{Binding Source={StaticResource itemsViewSource}}"
-                        IsSwipeEnabled="False"
-                        SelectionChanged="ItemListView_SelectionChanged">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid Height="110" Margin="6">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Border Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}" Width="110" Height="110">
-                                            <Image Source="{Binding Image}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}"/>
-                                        </Border>
-                                        <StackPanel Grid.Column="1" VerticalAlignment="Top" Margin="10,0,0,0">
-                                            <TextBlock Text="{Binding Title}" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="NoWrap"/>
-                                            <TextBlock Text="{Binding PubDate}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap"/>
-                                            <TextBlock Text="{Binding Brief}" Style="{StaticResource BodyTextBlockStyle}" MaxHeight="60"/>
-                                        </StackPanel>
-                                    </Grid>
-
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="FrameworkElement">
-                                    <Setter Property="Margin" Value="0,0,0,10"/>
-                                </Style>
-                            </ListView.ItemContainerStyle>
-                        </ListView>
-                    </StackPanel>
-                    
-                    
+                    <Frame />
                 </SplitView.Content>
+                
+                <SplitView.Pane>
+                    <ScrollViewer>
+                        <StackPanel x:Name="TopStories_Stackpanel" Orientation="Vertical"/>
+                    </ScrollViewer>
+                </SplitView.Pane>
             </SplitView>
         </Grid>
     </Grid>
