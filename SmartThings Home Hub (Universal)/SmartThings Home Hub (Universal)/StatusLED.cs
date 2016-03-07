@@ -40,38 +40,57 @@ namespace SmartThings_Home_Hub__Universal_
 
         public StatusLED(byte clock_pin, byte data_pin, byte num_leds)
         {
-            this.gpio = GpioController.GetDefault();
+            try {
+                this.gpio = GpioController.GetDefault();
+            }
+            catch(System.IO.FileNotFoundException fileException)
+            {
+                Debug.WriteLine(fileException.FileName);
+                gpio = null;
+            }
+
             if (gpio == null)
             {
                 Debug.WriteLine("There is no GPIO controller on this device.");
+
+                var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+
+                /* Stores GPIO presence */
+                roamingSettings.Values["GPIOVal"] = null;
+
                 return;
             } else
             {
-              this.clockPin = clock_pin;
-              this.dataPin = data_pin;
-              this.numLeds = num_leds;
-              this.ledVals = new Dictionary<byte, RGBVal>();
-              this.generatedLedVals = new Dictionary<byte, RGBVal>();
-              this.timer = new DispatcherTimer();
-              bool clockOpen = gpio.TryOpenPin(this.clockPin, GpioSharingMode.Exclusive, out gpClockPin, out gpClockStatus);
-              bool dataOpen = gpio.TryOpenPin(this.dataPin, GpioSharingMode.Exclusive, out gpDataPin, out gpDataStatus);
-              gpClockPin.SetDriveMode(GpioPinDriveMode.Output);
-              gpDataPin.SetDriveMode(GpioPinDriveMode.Output);
-              if (!dataOpen || !clockOpen)
-              {
-                  throw new Exception("Failed to open required pins.");
-              }
-              for (byte i = 0; i < this.numLeds; i++)
-              {
-                  this.ledVals[i] = new RGBVal(0, 0, 0);
-                  this.generatedLedVals[i] = new RGBVal(0, 0, 0);
-              }
-              hasUpdate = true;
-              manualMode = true;
-              this.timer.Interval = TimeSpan.FromMilliseconds(100);
-              this.timer.Tick += Timer_Tick;
-              this.timer.Start();
-              Debug.WriteLine("Started status led thing.");
+                var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+
+                /* Stores GPIO presence */
+                roamingSettings.Values["GPIOVal"] = "present";
+
+                this.clockPin = clock_pin;
+                this.dataPin = data_pin;
+                this.numLeds = num_leds;
+                this.ledVals = new Dictionary<byte, RGBVal>();
+                this.generatedLedVals = new Dictionary<byte, RGBVal>();
+                this.timer = new DispatcherTimer();
+                bool clockOpen = gpio.TryOpenPin(this.clockPin, GpioSharingMode.Exclusive, out gpClockPin, out gpClockStatus);
+                bool dataOpen = gpio.TryOpenPin(this.dataPin, GpioSharingMode.Exclusive, out gpDataPin, out gpDataStatus);
+                gpClockPin.SetDriveMode(GpioPinDriveMode.Output);
+                gpDataPin.SetDriveMode(GpioPinDriveMode.Output);
+                if (!dataOpen || !clockOpen)
+                {
+                    throw new Exception("Failed to open required pins.");
+                }
+                for (byte i = 0; i < this.numLeds; i++)
+                {
+                    this.ledVals[i] = new RGBVal(0, 0, 0);
+                    this.generatedLedVals[i] = new RGBVal(0, 0, 0);
+                }
+                hasUpdate = true;
+                manualMode = true;
+                this.timer.Interval = TimeSpan.FromMilliseconds(100);
+                this.timer.Tick += Timer_Tick;
+                this.timer.Start();
+                Debug.WriteLine("Started status led thing.");
             }
         }
 

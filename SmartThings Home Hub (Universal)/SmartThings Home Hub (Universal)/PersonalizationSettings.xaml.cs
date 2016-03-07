@@ -31,6 +31,16 @@ namespace SmartThings_Home_Hub__Universal_
 
             var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
 
+            /* Disable GPIO based options */
+            if (roamingSettings.Values["GPIOVal"] != null)
+            {
+                alertOff_Toggler();
+            }
+            else
+            {
+                roamingSettings.Values["alertStatus"] = false;
+            }
+
             /* Load LED power toggle state */
             if (roamingSettings.Values["alertStatus"] != null)
             {
@@ -39,8 +49,8 @@ namespace SmartThings_Home_Hub__Universal_
             }
             else
             {
-                Debug.WriteLine("You fucked up.");
-                return;
+                object alertValue = true;
+                AlertModalsSwitch.IsOn = (bool)alertValue;
             }
 
             alertOff_Toggler();
@@ -182,7 +192,7 @@ namespace SmartThings_Home_Hub__Universal_
         public void alertOff_Toggler()
         {
             var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
-
+            
             bool alertValue = (bool)roamingSettings.Values["alertStatus"];
 
 

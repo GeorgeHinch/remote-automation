@@ -60,30 +60,30 @@
                 <SplitView.Pane>
                     <StackPanel>
                         <!-- Accounts button -->
-                        <RadioButton Tag="&#57826;" Content="Accounts" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnAccountsButtonChecked" IsChecked="True" />
+                        <RadioButton x:Name="AccountsButton" Tag="&#57826;" Content="Accounts" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnAccountsButtonChecked" IsChecked="True" />
 
                         <!-- Bluetooth button -->
-                        <RadioButton Tag="&#59138;" Content="Bluetooth" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnBluetoothButtonChecked" />
+                        <RadioButton x:Name="BluetoothButton" Tag="&#59138;" Content="Bluetooth" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnBluetoothButtonChecked" />
 
                         <!-- LEDs button -->
-                        <RadioButton Tag="&#59265;" Content="LEDs" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnLEDsButtonChecked" />
+                        <RadioButton x:Name="LEDsButton" Tag="&#59265;" Content="LEDs" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnLEDsButtonChecked" />
 
                         <!-- Location button -->
-                        <RadioButton Tag="&#57796;" Content="Location" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnLocationButtonChecked" />
+                        <RadioButton x:Name="LocationButton" Tag="&#57796;" Content="Location" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnLocationButtonChecked" />
 
-                        <!-- Location button -->
-                        <RadioButton Tag="&#59449;" Content="Network" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnNetworkButtonChecked" />
+                        <!-- Network button -->
+                        <RadioButton x:Name="NetworkButton" Tag="&#59449;" Content="Network" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnNetworkButtonChecked" />
 
                         <!-- Personalization button -->
-                        <RadioButton Tag="&#59249;" Content="Personalization" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnPersonalizationButtonChecked" />
+                        <RadioButton x:Name="PersonalizationButton" Tag="&#59249;" Content="Personalization" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnPersonalizationButtonChecked" />
 
                         <!-- Updates button -->
-                        <RadioButton Tag="&#59752;" Content="Updates" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnUpdatesButtonChecked" />
+                        <RadioButton x:Name="UpdatesButton" Tag="&#59752;" Content="Updates" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnUpdatesButtonChecked" />
 
                         <Line Stroke="#FFCFCFCF" X1="0" Y1="0" X2="160" Y2="0"/>
 
                         <!-- Power button -->
-                        <RadioButton Tag="&#57805;" Content="Power" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnPowerButtonChecked" />
+                        <RadioButton x:Name="PowerButton" Tag="&#57805;" Content="Power" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnPowerButtonChecked" />
                     </StackPanel>
                 </SplitView.Pane>
             </SplitView>
