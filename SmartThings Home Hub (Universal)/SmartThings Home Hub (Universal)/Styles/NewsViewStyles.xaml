@@ -279,23 +279,24 @@
                             <Rectangle x:Name="FocusVisualBlack" Stroke="{ThemeResource FocusVisualBlackStrokeThemeBrush}" StrokeDashOffset="0.5" Style="{StaticResource FocusVisual}" />
 
                             <!-- text -->
-                            <StackPanel Grid.Column="1" Orientation="Vertical">
-                                <ContentPresenter x:Name="ContentPresenter"
+                            <StackPanel Grid.Column="1" Orientation="Vertical" BorderThickness="0,0,0,1" BorderBrush="Black">
+                                <TextBlock x:Name="ContentPresenter"
                         			Margin="{TemplateBinding Padding}"
                         			HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                         			VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                         			AutomationProperties.AccessibilityView="Raw"
-                        			Content="{TemplateBinding Content}"
-                        			ContentTemplate="{TemplateBinding ContentTemplate}"
-                        			ContentTransitions="{TemplateBinding ContentTransitions}" />
-                                <ContentPresenter x:Name="ContentPresenter_synopsis"
+                                    Text="{TemplateBinding Content}"
+                                    TextTrimming="CharacterEllipsis"
+                                    FontWeight="Medium"/>
+                                <TextBlock x:Name="ContentPresenter_synopsis"
                         			Margin="{TemplateBinding Padding}"
                         			HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                         			VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                         			AutomationProperties.AccessibilityView="Raw"
-                        			Content="{TemplateBinding Tag}"
-                        			ContentTemplate="{TemplateBinding ContentTemplate}"
-                        			ContentTransitions="{TemplateBinding ContentTransitions}" />
+                        			Text="{TemplateBinding GroupName}"
+                                    TextWrapping="Wrap"
+                                    TextTrimming="CharacterEllipsis"
+                                    MaxLines="2" />
                             </StackPanel>
                         </Grid>
                     </Border>

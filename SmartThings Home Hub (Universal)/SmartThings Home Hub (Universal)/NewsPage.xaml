@@ -34,7 +34,22 @@
         <Grid x:Name="news_mainView" Grid.Row="1">
             <SplitView x:Name="newsSplitView" DisplayMode="Inline" OpenPaneLength="250" IsPaneOpen="True">
                 <SplitView.Content>
-                    <Frame />
+                    <Grid>
+                        <Frame x:Name="StoryPreview_Frame" />
+                        <Grid x:FieldModifier="Public" x:Name="StoryWeb_Frame" Visibility="Collapsed" Background="White">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="9*" />
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Orientation="Horizontal" Tapped="previewReturn_Clicked">
+                                <TextBlock Text="&#xE760;" FontFamily="Segoe MDL2 Assets" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15,0,10,0" Foreground="#FFE9E9E9" />
+                                <TextBlock Text="return to preview" VerticalAlignment="Center" Foreground="#FFC6C6C6" />
+                            </StackPanel>
+                            
+                            <WebView x:FieldModifier="Public" x:Name="StoryWeb_View" Grid.Row="1" Width="500"/>
+                        </Grid>
+                    </Grid>
                 </SplitView.Content>
                 
                 <SplitView.Pane>

@@ -235,6 +235,9 @@
     <Compile Include="NewsPage.xaml.cs">
       <DependentUpon>NewsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NewsStoryPreview.xaml.cs">
+      <DependentUpon>NewsStoryPreview.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NowPlayingMusic.xaml.cs">
       <DependentUpon>NowPlayingMusic.xaml</DependentUpon>
     </Compile>
@@ -375,6 +378,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="NewsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NewsStoryPreview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

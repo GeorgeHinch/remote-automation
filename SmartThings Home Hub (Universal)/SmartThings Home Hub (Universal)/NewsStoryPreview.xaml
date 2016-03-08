@@ -1,0 +1,41 @@
+﻿<Page
+    x:Class="SmartThings_Home_Hub__Universal_.NewsStoryPreview"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SmartThings_Home_Hub__Universal_"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ScrollViewer>
+            <Grid>
+                <StackPanel>
+                    <Image x:Name="Preview_Image" Stretch="UniformToFill" MaxHeight="350" />
+
+                    <StackPanel Margin="25">
+                        <TextBlock x:Name="Preview_Title" Text="Bloomberg Says He Won\u2019t Run, Fearing Victory for Trump" FontSize="26.667" TextWrapping="Wrap" FontWeight="Medium" Margin="0,0,0,25" />
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0" Orientation="Vertical" Margin="0,0,20,0">
+                                <TextBlock x:Name="Preview_Info" Text="US, Politics" TextTrimming="CharacterEllipsis" />
+                                <TextBlock x:Name="Preview_Byline" Text="By MAGGIE HABERMAN and ALEXANDER BURNS" FontWeight="Thin" TextTrimming="CharacterEllipsis" Foreground="Gray" />
+                                <Button Content="View on NYT" Margin="0,15,0,0" Padding="8,2" Tapped="goToLink_Clicked" />
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1" Orientation="Vertical" Margin="25,0,15,0">
+                                <TextBlock x:Name="Preview_Time" Text="3/7/2016, 8:00 A.M." FontWeight="Thin" Margin="0,0,0,10" Foreground="Gray" />
+                                <TextBlock x:Name="Preview_Abstract" Text="The former New York mayor had considered making it a three-way race for president, but decided that would only aid \u201cthe most divisive and demagogic presidential campaign I can remember." TextWrapping="Wrap" FontSize="17.333" CharacterSpacing="5" />
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>

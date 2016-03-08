@@ -16,10 +16,5 @@
                 </StackPanel>
             </Button>
         </StackPanel>
-
-        <StackPanel Orientation="Vertical">
-            <ContentPresenter />
-        </StackPanel>
-
     </Grid>
 </Page>
