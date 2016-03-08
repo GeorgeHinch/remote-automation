@@ -12,6 +12,7 @@
             <Grid>
                 <StackPanel>
                     <Image x:Name="Preview_Image" Stretch="UniformToFill" MaxHeight="350" />
+                    <TextBlock x:Name="Preview_Caption" Margin="25,5,25,0" FontSize="13.333" FontWeight="Medium" Foreground="Gray" TextWrapping="Wrap" MaxLines="2" TextTrimming="CharacterEllipsis" />
 
                     <StackPanel Margin="25">
                         <TextBlock x:Name="Preview_Title" Text="Bloomberg Says He Won\u2019t Run, Fearing Victory for Trump" FontSize="26.667" TextWrapping="Wrap" FontWeight="Medium" Margin="0,0,0,25" />

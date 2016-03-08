@@ -38,10 +38,11 @@ namespace SmartThings_Home_Hub__Universal_
                 if(m.format == "superJumbo")
                 {
                     Preview_Image.Source = new BitmapImage(new Uri(m.url, UriKind.Absolute));
+                    Preview_Caption.Visibility = Visibility.Visible;
+                    Preview_Caption.Text = m.caption + " " + m.copyright + ".";
                 }
-                else { Preview_Image.Source = null; }
+                else { Preview_Image.Source = null; Preview_Caption.Visibility = Visibility.Collapsed; }
             }
-
             Preview_Title.Text = result.title;
             if(result.subsection == "")
             {
