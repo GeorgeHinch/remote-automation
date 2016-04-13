@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SmartThings_Home_Hub__Universal_.Classes;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -7,11 +8,13 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Devices.WiFi;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Networking.Connectivity;
 using Windows.System.Power;
 using Windows.UI;
 using Windows.UI.Xaml;
@@ -39,30 +42,6 @@ namespace SmartThings_Home_Hub__Universal_
             EventHandler<Object> stupd = new EventHandler<object>(this.timer_Tick);
             timer.Tick += stupd;
             timer.Start();
-
-
-            HttpRequestMessage request = new HttpRequestMessage(
-                HttpMethod.Get,
-                $"https://graph.api.smartthings.com/api/smartapps/installations/5e726fc9-2569-4915-9af1-e1493524adf5/switches/?access_token=385f1cb1-9d53-4828-9cc3-931087483137");
-            HttpClient client = new HttpClient();
-            var response = client.SendAsync(request).Result;
-            if (response.StatusCode == HttpStatusCode.OK)
-            {
-                var result = response.Content.ReadAsStringAsync().Result;
-                var bytes = Encoding.UTF8.GetBytes(result);
-
-                using (MemoryStream stream = new MemoryStream(bytes))
-                {
-                    var byteString = System.Text.Encoding.UTF8.GetString(bytes);
-                    SwitchesDetails[] switchesDetails = Newtonsoft.Json.JsonConvert.DeserializeObject<SwitchesDetails[]>(byteString);
-
-                    for (int i = 0; i < switchesDetails.Length; i++)
-                    {
-                        Debug.WriteLine(switchesDetails[i].label);
-                        ;// Light1.Text = switchesDetails[i].label;
-                    }
-                }
-            }
         }
 
         /// Lights
@@ -186,6 +165,211 @@ namespace SmartThings_Home_Hub__Universal_
             client.SendAsync(request);
 
         }
+
+        public void loadDevices()
+        {
+            string app = getApp();
+            string token = getToken();
+
+            ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
+            bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
+
+            string rqstMsg = "https://graph.api.smartthings.com/api/smartapps/installations/" + app + "data?access_token=" + token;
+
+            HttpRequestMessage request = new HttpRequestMessage(
+                    HttpMethod.Get,
+                    rqstMsg);
+            HttpClient client = new HttpClient();
+            if (internet != false)
+            {
+                var response = client.SendAsync(request).Result;
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    var result = response.Content.ReadAsStringAsync().Result;
+                    var bytes = Encoding.Unicode.GetBytes(result);
+                    using (MemoryStream stream = new MemoryStream(bytes))
+                    {
+                        var serializer = new DataContractJsonSerializer(typeof(SmartThingsHub));
+                        SmartThingsHub[] devices = (SmartThingsHub[])serializer.ReadObject(stream);
+
+                        List<Button> deviceButtonList = new List<Button>();
+
+                        foreach (SmartThingsHub sth in devices)
+                        {
+                            if (sth.tile == "device" && sth.type == "switch")
+                            {
+                                Button btn = new Button();
+                                StackPanel sp = new StackPanel();
+                                TextBlock tbIcon = new TextBlock();
+                                TextBlock tbName = new TextBlock();
+                                TextBlock tbType = new TextBlock();
+
+
+                                #region Create icon textblock
+                                tbIcon.Text = WebUtility.HtmlDecode("&#60032;");
+                                if (sth.value == "on")
+                                {
+                                    tbIcon.Foreground = new SolidColorBrush(Color.FromArgb(255, 0, 66, 97));
+                                } else { tbIcon.Foreground = new SolidColorBrush(Color.FromArgb(255, 89, 89, 89)); }
+                                tbIcon.FontFamily = new FontFamily("Segoe MDL2 Assets");
+                                tbIcon.TextAlignment = TextAlignment.Center;
+                                tbIcon.FontSize = 48;
+                                tbIcon.Margin = new Thickness(0, 0, 0, 15);
+                                #endregion
+
+                                #region Create name textblock
+                                tbName.Text = sth.name;
+                                tbName.TextAlignment = TextAlignment.Center;
+                                tbName.Margin = new Thickness(0, 0, 0, 5);
+                                tbName.Foreground = new SolidColorBrush(Color.FromArgb(255, 89, 89, 89));
+                                #endregion
+
+                                #region Create type textblock
+                                tbType.Text = sth.type;
+                                tbType.TextAlignment = TextAlignment.Center;
+                                tbType.MaxLines = 2;
+                                tbType.TextWrapping = TextWrapping.Wrap;
+                                tbType.Foreground = new SolidColorBrush(Color.FromArgb(255, 204, 204, 204));
+                                #endregion
+
+
+                                #region Add textblocks to stackpanel
+                                sp.Children.Add(tbIcon);
+                                sp.Children.Add(tbName);
+                                sp.Children.Add(tbType);
+                                #endregion
+
+                                #region Add stackpanel to button
+                                btn.Content = sp;
+                                // Width="175" Click="brelandRoomLight_Click" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top"
+                                btn.Width = 175;
+                                btn.Click += new RoutedEventHandler(toggleLight);
+                                btn.Background = null;
+                                btn.BorderBrush = null;
+                                btn.VerticalAlignment = VerticalAlignment.Top;
+                                btn.Tag = sth.device;
+                                #endregion
+
+                                #region Add button to list
+                                deviceButtonList.Add(btn);
+                                #endregion
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        #region Button tapped handler to toggle lights
+        public void toggleLight(object sender, RoutedEventArgs e)
+        {
+            Button sendr = (Button)sender;
+            string app = getApp();
+            string device = sendr.Tag.ToString();
+            string command = lightStatus(device);
+            string token = getToken();
+
+            string rqstMsg = "https://graph.api.smartthings.com/api/smartapps/installations/" + app + "/command?type=switch&device=" + device + "&command=" + command + "&access_token=" + token;
+            HttpRequestMessage request = new HttpRequestMessage(
+                HttpMethod.Get,
+                rqstMsg);
+            HttpClient client = new HttpClient();
+            client.SendAsync(request);
+        }
+        #endregion
+
+        #region Checks the on/off status of light
+        public string lightStatus(string sender)
+        {
+            string app = getApp();
+            string token = getToken();
+            string command;
+            string deviceVal = "";
+
+            ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
+            bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
+
+            string rqstMsg = "https://graph.api.smartthings.com/api/smartapps/installations/" + app + "data?access_token=" + token; 
+
+            HttpRequestMessage request = new HttpRequestMessage(
+                    HttpMethod.Get,
+                    rqstMsg);
+            HttpClient client = new HttpClient();
+            if (internet != false)
+            {
+                var response = client.SendAsync(request).Result;
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    var result = response.Content.ReadAsStringAsync().Result;
+                    var bytes = Encoding.Unicode.GetBytes(result);
+                    using (MemoryStream stream = new MemoryStream(bytes))
+                    {
+                        var serializer = new DataContractJsonSerializer(typeof(SmartThingsHub));
+                        SmartThingsHub[] devices = (SmartThingsHub[])serializer.ReadObject(stream);
+
+                        foreach (SmartThingsHub sth in devices)
+                        {
+                            if (sth.tile == "device")
+                            {
+                                if (sth.device == sender)
+                                {
+                                    deviceVal = sth.value;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (deviceVal == "off")
+            {
+                command = "on";
+            }
+            else { command = "off"; }
+
+            return command;
+        }
+        #endregion
+
+        #region Gets the SmartThings app ID
+        public string getApp()
+        {
+            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+            string app = "";
+
+            /* Load SmartThings App ID */
+            if (roamingSettings.Values["stAppID"] == null)
+            {
+                this.Frame.Navigate(typeof(SettingsPage));
+            }
+            else
+            {
+                app = roamingSettings.Values["stAppID"].ToString();
+            }
+
+            return app;
+        }
+        #endregion
+
+        #region Gets the SmartThings app token
+        public string getToken()
+        {
+            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+            string token = "";
+
+            /* Load SmartThings Access Token */
+            if (roamingSettings.Values["stToken"] == null)
+            {
+                this.Frame.Navigate(typeof(SettingsPage));
+            }
+            else
+            {
+                token = roamingSettings.Values["stToken"].ToString();
+            }
+
+            return token;
+        }
+        #endregion
 
         async void timer_Tick(object sender, object something)
         {

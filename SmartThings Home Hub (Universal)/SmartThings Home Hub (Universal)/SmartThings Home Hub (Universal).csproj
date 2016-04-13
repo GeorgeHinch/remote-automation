@@ -195,6 +195,7 @@
       <DependentUpon>BluetoothSettings.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\NYT_TopStories.cs" />
+    <Compile Include="Classes\SmartThingsHub.cs" />
     <Compile Include="EnviromentPage.xaml.cs">
       <DependentUpon>EnviromentPage.xaml</DependentUpon>
     </Compile>
