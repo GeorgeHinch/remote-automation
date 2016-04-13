@@ -193,7 +193,14 @@ namespace SmartThings_Home_Hub__Universal_
                         SmartThingsHub[] devices = (SmartThingsHub[])serializer.ReadObject(stream);
 
                         List<Button> deviceButtonList = new List<Button>();
+                        List<StackPanel> deviceStackpanelList = new List<StackPanel>();
+                        List<StackPanel> mainStackpanelList = new List<StackPanel>();
+                        StackPanel indexSP = new StackPanel();
+                        StackPanel mainIndexSP = new StackPanel();
+                        int indexVal = 1;
+                        int mainIndexVal = 1;
 
+                        #region Creates buttons from ST JSON
                         foreach (SmartThingsHub sth in devices)
                         {
                             if (sth.tile == "device" && sth.type == "switch")
@@ -255,6 +262,50 @@ namespace SmartThings_Home_Hub__Universal_
                                 #endregion
                             }
                         }
+                        #endregion
+
+                        #region Creates stackpanel rows of 4 buttons
+                        foreach (Button btn in deviceButtonList)
+                        {
+                            indexSP.Children.Add(btn);
+
+                            if (indexVal % 4 == 0)
+                            {
+                                indexSP.Orientation = Orientation.Horizontal;
+                                indexSP.Margin = new Thickness(0, 20, 0, 0);
+                                deviceStackpanelList.Add(indexSP);
+                                indexSP = new StackPanel();
+                            }
+
+                            indexVal++;
+                        }
+                        #endregion
+
+                        #region Creates stackpanels of two stackpanel rows
+                        foreach (StackPanel sp in deviceStackpanelList)
+                        {
+                            mainIndexSP.Children.Add(sp);
+
+                            if (mainIndexVal % 2 == 0)
+                            {
+                                mainIndexSP.HorizontalAlignment = HorizontalAlignment.Center;
+                                mainIndexSP.Height = 300;
+                                mainIndexSP.VerticalAlignment = VerticalAlignment.Center;
+                                mainIndexSP.Width = 700;
+                                deviceStackpanelList.Add(mainIndexSP);
+                                mainIndexSP = new StackPanel();
+                            }
+
+                            mainIndexVal++;
+                        }
+                        #endregion
+
+                        #region Adds main stackpanels to flipview
+                        foreach (StackPanel sp in mainStackpanelList)
+                        {
+                            light_flipView.Items.Add(sp);
+                        }
+                        #endregion
                     }
                 }
             }
