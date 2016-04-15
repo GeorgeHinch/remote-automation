@@ -24,28 +24,7 @@
         </Grid>
 
         <Grid x:Name="motion_mainView" Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
-            <Grid Grid.Column="0">
-
-            </Grid>
-
-            <Grid Grid.Column="1">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock x:Name="presIcon2" Text="&#59389;" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" FontSize="96" Margin="0,0,0,15" Foreground="#FF004261"/>
-                    <TextBlock x:Name="presName2" Text="Living Room" TextAlignment="Center" Margin="0,0,0,5" Foreground="#FF595959"/>
-                    <TextBlock x:Name="presStat2" Text="motion" TextAlignment="Center" MaxLines="2" TextWrapping="Wrap" Foreground="#FFCCCCCC"/>
-                </StackPanel>
-            </Grid>
-
-            <Grid Grid.Column="2">
-
-            </Grid>
-
+            <StackPanel x:Name="motion_Stackpanel" Orientation="Horizontal" HorizontalAlignment="Center" />
         </Grid>
     </Grid>
 </Page>

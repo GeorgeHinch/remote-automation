@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SmartThings_Home_Hub__Universal_.Classes;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -6,9 +7,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Runtime.Serialization.Json;
 using System.Text;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Networking.Connectivity;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -29,39 +33,135 @@ namespace SmartThings_Home_Hub__Universal_
         public MotionPage()
         {
             this.InitializeComponent();
-            MotionLoad();
+            loadDevices();
         }
 
-        public static void MotionLoad(/*object sender, RoutedEventArgs e*/)
+        public void loadDevices()
         {
+            string app = getApp();
+            string token = getToken();
+
+            ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
+            bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
+
+            string rqstMsg = "https://graph.api.smartthings.com/api/smartapps/installations/" + app + "/data?access_token=" + token;
+
             HttpRequestMessage request = new HttpRequestMessage(
-                HttpMethod.Get,
-                $"https://graph.api.smartthings.com/api/smartapps/installations/5e726fc9-2569-4915-9af1-e1493524adf5/switches/?access_token=385f1cb1-9d53-4828-9cc3-931087483137");
+                    HttpMethod.Get,
+                    rqstMsg);
             HttpClient client = new HttpClient();
-            var response = client.SendAsync(request).Result;
-            if (response.StatusCode == HttpStatusCode.OK)
+            if (internet != false)
             {
-                var result = response.Content.ReadAsStringAsync().Result;
-                var bytes = Encoding.UTF8.GetBytes(result);
-
-
-
-                using (MemoryStream stream = new MemoryStream(bytes))
+                var response = client.SendAsync(request).Result;
+                if (response.StatusCode == HttpStatusCode.OK)
                 {
-                    var byteString = System.Text.Encoding.UTF8.GetString(bytes);
-                    MotionDetails[] motionDetails = Newtonsoft.Json.JsonConvert.DeserializeObject<MotionDetails[]>(byteString);
+                    var result = response.Content.ReadAsStringAsync().Result;
+                    var bytes = Encoding.Unicode.GetBytes(result);
+                    using (MemoryStream stream = new MemoryStream(bytes))
+                    {
+                        var serializer = new DataContractJsonSerializer(typeof(SmartThingsHub[]));
+                        SmartThingsHub[] devices = (SmartThingsHub[])serializer.ReadObject(stream);
 
-                    
+                        #region Creates stackpanel from ST JSON
+                        foreach (SmartThingsHub sth in devices)
+                        {
+                            if (sth.tile == "device" && sth.type == "motion")
+                            {
+                                StackPanel sp = new StackPanel();
+                                TextBlock tbIcon = new TextBlock();
+                                TextBlock tbName = new TextBlock();
+                                TextBlock tbType = new TextBlock();
+
+
+                                #region Create icon textblock
+                                tbIcon.Text = WebUtility.HtmlDecode("&#59389;");
+                                if (sth.value == "active")
+                                {
+                                    tbIcon.Foreground = new SolidColorBrush(Color.FromArgb(255, 0, 66, 97));
+                                }
+                                else { tbIcon.Foreground = new SolidColorBrush(Color.FromArgb(255, 204, 204, 204)); }
+                                tbIcon.FontFamily = new FontFamily("Segoe MDL2 Assets");
+                                tbIcon.TextAlignment = TextAlignment.Center;
+                                tbIcon.FontSize = 96;
+                                tbIcon.Margin = new Thickness(0, 0, 0, 15);
+                                #endregion
+
+                                #region Create name textblock
+                                tbName.Text = sth.name;
+                                tbName.TextAlignment = TextAlignment.Center;
+                                tbName.Margin = new Thickness(0, 0, 0, 5);
+                                tbName.Foreground = new SolidColorBrush(Color.FromArgb(255, 89, 89, 89));
+                                #endregion
+
+                                #region Create type textblock
+                                tbType.Text = sth.type;
+                                tbType.TextAlignment = TextAlignment.Center;
+                                tbType.MaxLines = 2;
+                                tbType.TextWrapping = TextWrapping.Wrap;
+                                tbType.Foreground = new SolidColorBrush(Color.FromArgb(255, 204, 204, 204));
+                                #endregion
+
+
+                                #region Add textblocks to stackpanel
+                                sp.Children.Add(tbIcon);
+                                sp.Children.Add(tbName);
+                                sp.Children.Add(tbType);
+                                #endregion
+
+                                #region Add stackpanel to list
+                                sp.Orientation = Orientation.Vertical;
+                                sp.HorizontalAlignment = HorizontalAlignment.Center;
+                                sp.VerticalAlignment = VerticalAlignment.Center;
+                                sp.Width = 250;
+                                motion_Stackpanel.Children.Add(sp);
+                                #endregion
+                            }
+                        }
+                        #endregion
+                    }
                 }
             }
         }
 
-        public class MotionDetails
+        #region Gets the SmartThings app ID
+        public string getApp()
         {
-            public String id { get; set; }
-            public String label { get; set; }
-            public String type { get; set; }
+            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+            string app = "";
+
+            /* Load SmartThings App ID */
+            if (roamingSettings.Values["stAppID"] == null)
+            {
+                this.Frame.Navigate(typeof(SettingsPage));
+            }
+            else
+            {
+                app = roamingSettings.Values["stAppID"].ToString();
+            }
+
+            return app;
         }
+        #endregion
+
+        #region Gets the SmartThings app token
+        public string getToken()
+        {
+            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+            string token = "";
+
+            /* Load SmartThings Access Token */
+            if (roamingSettings.Values["stToken"] == null)
+            {
+                this.Frame.Navigate(typeof(SettingsPage));
+            }
+            else
+            {
+                token = roamingSettings.Values["stToken"].ToString();
+            }
+
+            return token;
+        }
+        #endregion
 
         private void Home_Click(object sender, RoutedEventArgs e)
         {

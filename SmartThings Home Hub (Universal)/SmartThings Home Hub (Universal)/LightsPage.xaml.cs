@@ -42,128 +42,7 @@ namespace SmartThings_Home_Hub__Universal_
             EventHandler<Object> stupd = new EventHandler<object>(this.timer_Tick);
             timer.Tick += stupd;
             timer.Start();
-        }
-
-        /// Lights
-        /// 
-        public void brelandRoomLight_Click(object sender, RoutedEventArgs e)
-        {
-            HttpRequestMessage request = new HttpRequestMessage(
-                HttpMethod.Get,
-                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=dimmer&device=43447e8e-9709-4445-8dd7-7c0e46fa149f&command=toggle&value=10&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
-            HttpClient client = new HttpClient();
-            client.SendAsync(request);
-
-        }
-
-        public void brelandBathLight_Click(object sender, RoutedEventArgs e)
-        {
-            HttpRequestMessage request = new HttpRequestMessage(
-                HttpMethod.Get,
-                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=dimmer&device=08760254-cf3e-4ea1-a625-ec0822177d07&command=toggle&value=10&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
-            HttpClient client = new HttpClient();
-            client.SendAsync(request);
-
-        }
-
-        public void brelandLight_Click(object sender, RoutedEventArgs e)
-        {
-            HttpRequestMessage request = new HttpRequestMessage(
-                HttpMethod.Get,
-                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=switch&device=f04af812-1a35-4106-ba8a-04eedbf10c79&command=toggle&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
-            HttpClient client = new HttpClient();
-            client.SendAsync(request);
-
-        }
-
-        public void entryLight_Click(object sender, RoutedEventArgs e)
-        {
-            HttpRequestMessage request = new HttpRequestMessage(
-                HttpMethod.Get,
-                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=switch&device=a48055ea-da98-490d-9229-d9524dcda6b3&command=toggle&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
-            HttpClient client = new HttpClient();
-            client.SendAsync(request);
-
-        }
-
-        public void georgeBathLight_Click(object sender, RoutedEventArgs e)
-        {
-            HttpRequestMessage request = new HttpRequestMessage(
-                HttpMethod.Get,
-                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=dimmer&device=765c8e03-2022-4c34-af6b-3cec3e44afe3&command=toggle&value=10&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
-            HttpClient client = new HttpClient();
-            client.SendAsync(request);
-           
-        }
-
-        public void georgeRoomLamp_Click(object sender, RoutedEventArgs e)
-        {
-            HttpRequestMessage request = new HttpRequestMessage(
-                HttpMethod.Get,
-                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=switch&device=2c9650de-25da-4f1c-8ea0-51ca3c984007&command=toggle&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
-            HttpClient client = new HttpClient();
-            client.SendAsync(request);
-
-        }
-
-        public void georgeRoomLight_Click(object sender, RoutedEventArgs e)
-        {
-            HttpRequestMessage request = new HttpRequestMessage(
-                HttpMethod.Get,
-                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=switch&device=2c9650de-25da-4f1c-8ea0-51ca3c984007&command=toggle&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
-            HttpClient client = new HttpClient();
-            client.SendAsync(request);
-
-        }
-
-        public void hallwayLight_Click(object sender, RoutedEventArgs e)
-        {
-            HttpRequestMessage request = new HttpRequestMessage(
-                HttpMethod.Get,
-                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=switch&device=7066e4f4-ef7a-4254-8140-306a2e36b8e0&command=toggle&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
-            HttpClient client = new HttpClient();
-            client.SendAsync(request);
-
-        }
-
-        public void kitchenLight_Click(object sender, RoutedEventArgs e)
-        {
-            HttpRequestMessage request = new HttpRequestMessage(
-                HttpMethod.Get,
-                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=switch&device=90270527-f60e-4382-8e5c-c1db05b3ae58&command=toggle&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
-            HttpClient client = new HttpClient();
-            client.SendAsync(request);
-
-        }
-
-        public void kitchenBarLight_Click(object sender, RoutedEventArgs e)
-        {
-            HttpRequestMessage request = new HttpRequestMessage(
-                HttpMethod.Get,
-                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=dimmer&device=395d668e-1f0a-4321-b4fb-9a273c32322d&command=toggle&value=10&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
-            HttpClient client = new HttpClient();
-            client.SendAsync(request);
-
-        }
-
-        public void livingRoomCouchLight_Click(object sender, RoutedEventArgs e)
-        {
-            HttpRequestMessage request = new HttpRequestMessage(
-                HttpMethod.Get,
-                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=switch&device=7a609c91-5775-4bf1-a136-f7798941b20b&command=toggle&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
-            HttpClient client = new HttpClient();
-            client.SendAsync(request);
-
-        }
-
-        public void livingRoomLight_Click(object sender, RoutedEventArgs e)
-        {
-            HttpRequestMessage request = new HttpRequestMessage(
-                HttpMethod.Get,
-                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=dimmer&device=3a7e702b-4cc7-496c-9302-2475c4cff667&command=toggle&value=10&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79");
-            HttpClient client = new HttpClient();
-            client.SendAsync(request);
-
+            loadDevices();
         }
 
         public void loadDevices()
@@ -174,7 +53,7 @@ namespace SmartThings_Home_Hub__Universal_
             ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
             bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
 
-            string rqstMsg = "https://graph.api.smartthings.com/api/smartapps/installations/" + app + "data?access_token=" + token;
+            string rqstMsg = "https://graph.api.smartthings.com/api/smartapps/installations/" + app + "/data?access_token=" + token;
 
             HttpRequestMessage request = new HttpRequestMessage(
                     HttpMethod.Get,
@@ -189,7 +68,7 @@ namespace SmartThings_Home_Hub__Universal_
                     var bytes = Encoding.Unicode.GetBytes(result);
                     using (MemoryStream stream = new MemoryStream(bytes))
                     {
-                        var serializer = new DataContractJsonSerializer(typeof(SmartThingsHub));
+                        var serializer = new DataContractJsonSerializer(typeof(SmartThingsHub[]));
                         SmartThingsHub[] devices = (SmartThingsHub[])serializer.ReadObject(stream);
 
                         List<Button> deviceButtonList = new List<Button>();
@@ -217,11 +96,13 @@ namespace SmartThings_Home_Hub__Universal_
                                 if (sth.value == "on")
                                 {
                                     tbIcon.Foreground = new SolidColorBrush(Color.FromArgb(255, 0, 66, 97));
-                                } else { tbIcon.Foreground = new SolidColorBrush(Color.FromArgb(255, 89, 89, 89)); }
+                                } else { tbIcon.Foreground = new SolidColorBrush(Color.FromArgb(255, 204, 204, 204)); }
                                 tbIcon.FontFamily = new FontFamily("Segoe MDL2 Assets");
                                 tbIcon.TextAlignment = TextAlignment.Center;
                                 tbIcon.FontSize = 48;
                                 tbIcon.Margin = new Thickness(0, 0, 0, 15);
+                                tbIcon.Name = "Icon-" + sth.device;
+                                Debug.WriteLine("Icon Name: " + tbIcon.Name + " |");
                                 #endregion
 
                                 #region Create name textblock
@@ -258,6 +139,7 @@ namespace SmartThings_Home_Hub__Universal_
                                 #endregion
 
                                 #region Add button to list
+                                btn.Name = sth.device;
                                 deviceButtonList.Add(btn);
                                 #endregion
                             }
@@ -279,6 +161,13 @@ namespace SmartThings_Home_Hub__Universal_
 
                             indexVal++;
                         }
+
+                        if (indexSP.Children.Count != 0)
+                        {
+                            indexSP.Orientation = Orientation.Horizontal;
+                            indexSP.Margin = new Thickness(0, 20, 0, 0);
+                            deviceStackpanelList.Add(indexSP);
+                        }
                         #endregion
 
                         #region Creates stackpanels of two stackpanel rows
@@ -292,11 +181,16 @@ namespace SmartThings_Home_Hub__Universal_
                                 mainIndexSP.Height = 300;
                                 mainIndexSP.VerticalAlignment = VerticalAlignment.Center;
                                 mainIndexSP.Width = 700;
-                                deviceStackpanelList.Add(mainIndexSP);
+                                mainStackpanelList.Add(mainIndexSP);
                                 mainIndexSP = new StackPanel();
                             }
 
                             mainIndexVal++;
+                        }
+
+                        if (mainIndexSP.Children.Count != 0)
+                        {
+                            mainStackpanelList.Add(mainIndexSP);
                         }
                         #endregion
 
@@ -309,6 +203,8 @@ namespace SmartThings_Home_Hub__Universal_
                     }
                 }
             }
+
+            //refreshLights(app, token);
         }
 
         #region Button tapped handler to toggle lights
@@ -340,7 +236,7 @@ namespace SmartThings_Home_Hub__Universal_
             ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
             bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
 
-            string rqstMsg = "https://graph.api.smartthings.com/api/smartapps/installations/" + app + "data?access_token=" + token; 
+            string rqstMsg = "https://graph.api.smartthings.com/api/smartapps/installations/" + app + "/data?access_token=" + token; 
 
             HttpRequestMessage request = new HttpRequestMessage(
                     HttpMethod.Get,
@@ -355,7 +251,7 @@ namespace SmartThings_Home_Hub__Universal_
                     var bytes = Encoding.Unicode.GetBytes(result);
                     using (MemoryStream stream = new MemoryStream(bytes))
                     {
-                        var serializer = new DataContractJsonSerializer(typeof(SmartThingsHub));
+                        var serializer = new DataContractJsonSerializer(typeof(SmartThingsHub[]));
                         SmartThingsHub[] devices = (SmartThingsHub[])serializer.ReadObject(stream);
 
                         foreach (SmartThingsHub sth in devices)
@@ -379,6 +275,91 @@ namespace SmartThings_Home_Hub__Universal_
             else { command = "off"; }
 
             return command;
+        }
+        #endregion
+
+        #region Refreshes light status every N seconds
+        public void refreshLights(string app, string token)
+        {
+            ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
+            bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
+
+            string rqstMsg = "https://graph.api.smartthings.com/api/smartapps/installations/" + app + "/data?access_token=" + token;
+
+            HttpRequestMessage request = new HttpRequestMessage(
+                    HttpMethod.Get,
+                    rqstMsg);
+            HttpClient client = new HttpClient();
+            if (internet != false)
+            {
+                var response = client.SendAsync(request).Result;
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    var result = response.Content.ReadAsStringAsync().Result;
+                    var bytes = Encoding.Unicode.GetBytes(result);
+                    using (MemoryStream stream = new MemoryStream(bytes))
+                    {
+                        var serializer = new DataContractJsonSerializer(typeof(SmartThingsHub[]));
+                        SmartThingsHub[] devices = (SmartThingsHub[])serializer.ReadObject(stream);
+
+                        foreach (SmartThingsHub sth in devices)
+                        {
+                            if (sth.tile == "device" && sth.type == "switch")
+                            {
+                                string iconName = "Icon-" + sth.device;
+                                Button btn = (Button)this.FindName(sth.device);
+                                Debug.WriteLine("Btn Content: " + btn.Content + " |");
+
+                                StackPanel sp = new StackPanel();
+                                TextBlock tbIcon = new TextBlock();
+                                TextBlock tbName = new TextBlock();
+                                TextBlock tbType = new TextBlock();
+
+
+                                #region Create icon textblock
+                                tbIcon.Text = WebUtility.HtmlDecode("&#60032;");
+                                if (sth.value == "on")
+                                {
+                                    tbIcon.Foreground = new SolidColorBrush(Color.FromArgb(255, 0, 66, 97));
+                                }
+                                else { tbIcon.Foreground = new SolidColorBrush(Color.FromArgb(255, 204, 204, 204)); }
+                                tbIcon.FontFamily = new FontFamily("Segoe MDL2 Assets");
+                                tbIcon.TextAlignment = TextAlignment.Center;
+                                tbIcon.FontSize = 48;
+                                tbIcon.Margin = new Thickness(0, 0, 0, 15);
+                                tbIcon.Name = "Icon-" + sth.device;
+                                #endregion
+
+                                #region Create name textblock
+                                tbName.Text = sth.name;
+                                tbName.TextAlignment = TextAlignment.Center;
+                                tbName.Margin = new Thickness(0, 0, 0, 5);
+                                tbName.Foreground = new SolidColorBrush(Color.FromArgb(255, 89, 89, 89));
+                                #endregion
+
+                                #region Create type textblock
+                                tbType.Text = sth.type;
+                                tbType.TextAlignment = TextAlignment.Center;
+                                tbType.MaxLines = 2;
+                                tbType.TextWrapping = TextWrapping.Wrap;
+                                tbType.Foreground = new SolidColorBrush(Color.FromArgb(255, 204, 204, 204));
+                                #endregion
+
+
+                                #region Add textblocks to stackpanel
+                                sp.Children.Add(tbIcon);
+                                sp.Children.Add(tbName);
+                                sp.Children.Add(tbType);
+                                #endregion
+
+                                #region Add stackpanel to button
+                                btn.Content = sp;
+                                #endregion
+                            }
+                        }
+                    }
+                }
+            }
         }
         #endregion
 
