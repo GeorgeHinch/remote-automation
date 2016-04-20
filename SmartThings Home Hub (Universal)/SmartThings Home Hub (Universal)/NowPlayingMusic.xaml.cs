@@ -25,6 +25,21 @@ namespace SmartThings_Home_Hub__Universal_
         public NowPlayingMusic()
         {
             this.InitializeComponent();
+
+            // Volume
+            // https://graph.api.smartthings.com/api/smartapps/installations/45b32e18-a124-4e1a-ba86-b92f6068c8f6/command?type=music&device=9e55e73e-2061-4be9-9fc1-e26d09b4d63b&command=level&value=5&access_token=82738eb3-f9c7-4f4c-a7f6-d55952ee7ea2&_=1461119060404
+
+            // Pause
+            // https://graph.api.smartthings.com/api/smartapps/installations/45b32e18-a124-4e1a-ba86-b92f6068c8f6/command?type=music&device=9e55e73e-2061-4be9-9fc1-e26d09b4d63b&command=pause&access_token=82738eb3-f9c7-4f4c-a7f6-d55952ee7ea2&_=1461119060397
+
+            // Play
+            // https://graph.api.smartthings.com/api/smartapps/installations/45b32e18-a124-4e1a-ba86-b92f6068c8f6/command?type=music&device=9e55e73e-2061-4be9-9fc1-e26d09b4d63b&command=play&access_token=82738eb3-f9c7-4f4c-a7f6-d55952ee7ea2&_=1461119060398
+
+            // Next Track
+            // https://graph.api.smartthings.com/api/smartapps/installations/45b32e18-a124-4e1a-ba86-b92f6068c8f6/command?type=music&device=9e55e73e-2061-4be9-9fc1-e26d09b4d63b&command=nextTrack&access_token=82738eb3-f9c7-4f4c-a7f6-d55952ee7ea2&_=1461123759343
+
+            // Previous Track
+            // https://graph.api.smartthings.com/api/smartapps/installations/45b32e18-a124-4e1a-ba86-b92f6068c8f6/command?type=music&device=9e55e73e-2061-4be9-9fc1-e26d09b4d63b&command=previousTrack&access_token=82738eb3-f9c7-4f4c-a7f6-d55952ee7ea2&_=1461123759345
         }
 
         public bool isPlaying = false;

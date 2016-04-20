@@ -18,6 +18,8 @@ using System.Net.Http;
 using System.Runtime.Serialization.Json;
 using System.Net;
 using System.Text;
+using SmartThings_Home_Hub__Universal_.Classes;
+using Windows.Networking.Connectivity;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -33,6 +35,7 @@ namespace SmartThings_Home_Hub__Universal_
             this.InitializeComponent();
             windDirection();
             openWeatherSerializer();
+            insideTemp();
         }
 
         public int windDegree = 0;
@@ -82,7 +85,6 @@ namespace SmartThings_Home_Hub__Universal_
                 }
                 else
                 {
-                    insideTempBox.Text = "err";
                     outsideTempBox.Text = "err";
                     pressureText.Text = "err";
                     humidityText.Text = "err";
@@ -194,11 +196,87 @@ namespace SmartThings_Home_Hub__Universal_
 		
 		private void insideTemp()
 		{
-            var temperature = 0;
-            insideTempBox.Text = temperature + "°";
+            string app = getApp();
+            string token = getToken();
+
+            ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
+            bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
+
+            string rqstMsg = "https://graph.api.smartthings.com/api/smartapps/installations/" + app + "/data?access_token=" + token;
+
+            HttpRequestMessage request = new HttpRequestMessage(
+                    HttpMethod.Get,
+                    rqstMsg);
+            HttpClient client = new HttpClient();
+            if (internet != false)
+            {
+                var response = client.SendAsync(request).Result;
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    var result = response.Content.ReadAsStringAsync().Result;
+                    var bytes = Encoding.Unicode.GetBytes(result);
+                    using (MemoryStream stream = new MemoryStream(bytes))
+                    {
+                        var serializer = new DataContractJsonSerializer(typeof(SmartThingsHub[]));
+                        SmartThingsHub[] devices = (SmartThingsHub[])serializer.ReadObject(stream);
+
+                        #region Creates stackpanel from ST JSON
+                        foreach (SmartThingsHub sth in devices)
+                        {
+                            if (sth.tile == "device" && sth.type == "temperature")
+                            {
+                                #region Updates inside temp
+                                insideTempBox.Text = sth.value;
+                                #endregion
+                            }
+                        }
+                        #endregion
+                    }
+                }
+            }
         }
 
-		private void thermoDown(object sender, RoutedEventArgs e)
+        #region Gets the SmartThings app ID
+        public string getApp()
+        {
+            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+            string app = "";
+
+            /* Load SmartThings App ID */
+            if (roamingSettings.Values["stAppID"] == null)
+            {
+                this.Frame.Navigate(typeof(SettingsPage));
+            }
+            else
+            {
+                app = roamingSettings.Values["stAppID"].ToString();
+            }
+
+            return app;
+        }
+        #endregion
+
+        #region Gets the SmartThings app token
+        public string getToken()
+        {
+            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+            string token = "";
+
+            /* Load SmartThings Access Token */
+            if (roamingSettings.Values["stToken"] == null)
+            {
+                this.Frame.Navigate(typeof(SettingsPage));
+            }
+            else
+            {
+                token = roamingSettings.Values["stToken"].ToString();
+            }
+
+            return token;
+        }
+        #endregion
+
+        private void thermoDown(object sender, RoutedEventArgs e)
 		{
 			
 		}

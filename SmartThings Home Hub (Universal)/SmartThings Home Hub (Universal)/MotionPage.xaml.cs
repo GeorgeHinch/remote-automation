@@ -65,7 +65,7 @@ namespace SmartThings_Home_Hub__Universal_
                         #region Creates stackpanel from ST JSON
                         foreach (SmartThingsHub sth in devices)
                         {
-                            if (sth.tile == "device" && sth.type == "motion")
+                            if (sth.tile == "device" && (sth.type == "motion" || sth.type == "contact"))
                             {
                                 StackPanel sp = new StackPanel();
                                 TextBlock tbIcon = new TextBlock();
