@@ -11,7 +11,7 @@
     <AssemblyName>SmartThings Home Hub (Universal)</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
+    <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
@@ -194,6 +194,10 @@
     <Compile Include="BluetoothSettings.xaml.cs">
       <DependentUpon>BluetoothSettings.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CameraPage.xaml.cs">
+      <DependentUpon>CameraPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\LastFM_SongFind.cs" />
     <Compile Include="Classes\NYT_TopStories.cs" />
     <Compile Include="Classes\SmartThingsHub.cs" />
     <Compile Include="Classes\SubstringExtension.cs" />
@@ -335,6 +339,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CameraPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EnviromentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -446,10 +454,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="Microsoft.NET.Native.Runtime.1.1, Version=1.1">
-      <Name>Microsoft .NET Core Runtime Package for Windows</Name>
-    </SDKReference>
-    <SDKReference Include="WindowsIoT, Version=10.0.10240.0">
+    <SDKReference Include="WindowsIoT, Version=10.0.10586.0">
       <Name>Windows IoT Extensions for the UWP</Name>
     </SDKReference>
   </ItemGroup>

@@ -56,7 +56,7 @@
                             <StackPanel>
                                 <TextBlock Text="&#59184;" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" FontSize="48" Margin="0,0,0,15" Foreground="#FF004261"/>
                                 <TextBlock Text="Security" TextAlignment="Center" Margin="0,0,0,5" Foreground="#FF595959"/>
-                                <TextBlock Text="Alarm, siren, strobe" TextAlignment="Center" MaxLines="2" TextWrapping="Wrap" Foreground="#FFCCCCCC"/>
+                                <TextBlock Text="Alarm, siren, strobe, moisture, flood" TextAlignment="Center" MaxLines="2" TextWrapping="Wrap" Foreground="#FFCCCCCC"/>
                             </StackPanel>
                         </Button>
                         <Button Width="175" Click="Presence_Click" Padding="15,10,15,0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top">
@@ -86,6 +86,13 @@
 
                 <StackPanel x:Name="HomeGroup2" HorizontalAlignment="Center" Height="300" VerticalAlignment="Center" Width="700">
                     <StackPanel Orientation="Horizontal">
+                        <Button Width="175" Click="Camera_Click" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top">
+                            <StackPanel>
+                                <TextBlock Text="&#xE714;" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" FontSize="48" Margin="0,0,0,15" Foreground="#FF004261"/>
+                                <TextBlock Text="Camera" TextAlignment="Center" Margin="0,0,0,5" Foreground="#FF595959"/>
+                                <TextBlock Text="Still, video, security" TextAlignment="Center" MaxLines="2" TextWrapping="Wrap" Foreground="#FFCCCCCC"/>
+                            </StackPanel>
+                        </Button>
                         <Button Width="175" Click="News_Click" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top">
                             <StackPanel>
                                 <TextBlock Text="&#57811;" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" FontSize="48" Margin="0,0,0,15" Foreground="#FF004261"/>
@@ -100,8 +107,6 @@
                                 <TextBlock Text="Accounts, LED, personalization" TextAlignment="Center" MaxLines="2" TextWrapping="Wrap" Foreground="#FFCCCCCC"/>
                             </StackPanel>
                         </Button>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
                     </StackPanel>
                 </StackPanel>
             </FlipView>

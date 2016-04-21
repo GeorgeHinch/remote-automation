@@ -9,15 +9,15 @@
 
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Image Source="Assets/OCMS_CMBack_EP.jpg" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="200" Margin="0,0,0,10"/>
+            <Image x:Name="songArt" Source="Assets/OCMS_CMBack_EP.jpg" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="200" Margin="0,0,0,10"/>
             <StackPanel Orientation="Vertical" Margin="0,0,0,20">
-                <TextBlock Text="Dixieland Delight" TextAlignment="Center" FontFamily="{StaticResource FF-RobotoRegular}"/>
-                <TextBlock Text="Old Crow Medicine Show" TextAlignment="Center" FontFamily="{StaticResource FF-RobotoThin}" FontSize="12"/>
+                <TextBlock x:Name="songTitle" TextAlignment="Center" FontFamily="{StaticResource FF-RobotoRegular}"/>
+                <TextBlock x:Name="songArtist" TextAlignment="Center" FontFamily="{StaticResource FF-RobotoThin}" FontSize="12"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0,0,0,10">
                 <Button x:Name="ShuffleButton" Content="&#59569;" FontFamily="Segoe MDL2 Assets" Click="ShuffleClick" Background="{x:Null}" BorderBrush="{x:Null}" Margin="0,0,20,0" Foreground="#FFCCCCCC"/>
                 <Button x:Name="RewindButton" Content="&#57600;" FontFamily="Segoe MDL2 Assets" Click="RewindClick" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF595959"/>
-                <Button x:Name="PlayPauseButton" Content="&#57602;" FontFamily="Segoe MDL2 Assets" Click="PlayPauseClick" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="32" Foreground="#FF595959"/>
+                <ToggleButton x:Name="PlayPauseButton" Checked="PlayPauseButton_Checked" Unchecked="PlayPauseButton_Unchecked" Content="&#57602;" FontFamily="Segoe MDL2 Assets" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="32" Foreground="#FF595959" />
                 <Button x:Name="FastforwardButton" Content="&#57601;" FontFamily="Segoe MDL2 Assets" Click="FastforwardClick" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF595959"/>
                 <Button x:Name="RepeatButton" Content="&#57805;" FontFamily="Segoe MDL2 Assets" Click="RepeatClick" Background="{x:Null}" BorderBrush="{x:Null}" Margin="20,0,0,0" Foreground="#FFCCCCCC"/>
             </StackPanel>

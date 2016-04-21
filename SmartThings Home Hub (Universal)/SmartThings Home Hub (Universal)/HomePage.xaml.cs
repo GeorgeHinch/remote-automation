@@ -139,6 +139,11 @@ namespace SmartThings_Home_Hub__Universal_
             this.Frame.Navigate(typeof(EnviromentPage));
         }
 
+        private void Camera_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(CameraPage));
+        }
+
         private void News_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(NewsPage));
