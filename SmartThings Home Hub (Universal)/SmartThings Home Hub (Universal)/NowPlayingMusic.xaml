@@ -9,7 +9,7 @@
 
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Image x:Name="songArt" Source="Assets/OCMS_CMBack_EP.jpg" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="200" Margin="0,0,0,10"/>
+            <Image x:Name="songArt" Source="Assets/albumArt.jpg" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="200" Margin="0,0,0,10"/>
             <StackPanel Orientation="Vertical" Margin="0,0,0,20">
                 <TextBlock x:Name="songTitle" TextAlignment="Center" FontFamily="{StaticResource FF-RobotoRegular}"/>
                 <TextBlock x:Name="songArtist" TextAlignment="Center" FontFamily="{StaticResource FF-RobotoThin}" FontSize="12"/>

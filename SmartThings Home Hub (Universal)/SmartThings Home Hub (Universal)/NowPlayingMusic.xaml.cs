@@ -99,7 +99,10 @@ namespace SmartThings_Home_Hub__Universal_
 
                                         string albumArt = fetchArtwork(song, artist);
 
-                                        songArt.Source = new BitmapImage(new Uri(albumArt, UriKind.Absolute));
+                                        if(albumArt != null)
+                                        {
+                                            songArt.Source = new BitmapImage(new Uri(albumArt, UriKind.Absolute));
+                                        }
                                     }
                                     else { songTitle.Text = trackDescription; }
                                 }
@@ -301,6 +304,7 @@ namespace SmartThings_Home_Hub__Universal_
         public string fetchArtwork(string song, string artist)
         {
             string k = "73bd84173ee30b7e3d5e55c1c73f672a";
+            string imgBMP = null;
 
             ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
             bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
@@ -322,40 +326,47 @@ namespace SmartThings_Home_Hub__Universal_
                     var bytes = Encoding.Unicode.GetBytes(result);
                     using (MemoryStream stream = new MemoryStream(bytes))
                     {
-                        var serializer = new DataContractJsonSerializer(typeof(LastFM_SongFind));
-                        LastFM_SongFind foundSong = (LastFM_SongFind)serializer.ReadObject(stream);
-                        IList<SongImage> image = (IList<SongImage>)foundSong.track.album.image;
-
-                        #region Gets and sets album info from JSON
-                        foreach (SongImage img in image)
+                        try
                         {
-                            if (img.size == "extralarge")
+                            var serializer = new DataContractJsonSerializer(typeof(LastFM_SongFind));
+                            LastFM_SongFind foundSong = (LastFM_SongFind)serializer.ReadObject(stream);
+                            IList<SongImage> image = (IList<SongImage>)foundSong.track.album.image;
+
+                            #region Gets and sets album info from JSON
+                            foreach (SongImage img in image)
                             {
-                                return img.text;
+                                if (img.size == "extralarge")
+                                {
+                                    imgBMP = img.text;
+                                }
+                                else if (img.size == "large")
+                                {
+                                    imgBMP = img.text;
+                                }
+                                else if (img.size == "medium")
+                                {
+                                    imgBMP = img.text;
+                                }
+                                else if (img.size == "small")
+                                {
+                                    imgBMP = img.text;
+                                }
+                                else
+                                {
+                                    imgBMP = null;
+                                }
                             }
-                            else if (img.size == "large")
-                            {
-                                return img.text;
-                            }
-                            else if (img.size == "medium")
-                            {
-                                return img.text;
-                            }
-                            else if (img.size == "small")
-                            {
-                                return img.text;
-                            }
-                            else
-                            {
-                                return null;
-                            }
+                            #endregion
                         }
-                        #endregion
+                        catch(Exception ex)
+                        {
+                            Debug.WriteLine("Album Artwork Exception: " + ex.Message + " |");
+                            return null;
+                        }
                     }
                 }
             }
-
-            return null;
+            return imgBMP;
         }
         #endregion
 
