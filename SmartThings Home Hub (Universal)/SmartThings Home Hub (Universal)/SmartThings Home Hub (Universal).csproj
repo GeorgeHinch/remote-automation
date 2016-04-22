@@ -200,6 +200,7 @@
     <Compile Include="Classes\LastFM_SongFind.cs" />
     <Compile Include="Classes\NYT_TopStories.cs" />
     <Compile Include="Classes\SmartThingsHub.cs" />
+    <Compile Include="Classes\Spotify_SongFind.cs" />
     <Compile Include="Classes\SubstringExtension.cs" />
     <Compile Include="EnviromentPage.xaml.cs">
       <DependentUpon>EnviromentPage.xaml</DependentUpon>

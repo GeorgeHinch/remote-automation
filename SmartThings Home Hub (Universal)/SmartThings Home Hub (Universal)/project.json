@@ -1,10 +1,12 @@
 ﻿{
   "dependencies": {
-    "Microsoft.ApplicationInsights": "2.0.1",
-    "Microsoft.ApplicationInsights.PersistenceChannel": "1.2.3",
+    "Microsoft.ApplicationInsights": "2.1.0-beta3",
+    "Microsoft.ApplicationInsights.PersistenceChannel": "2.0.0-beta3",
     "Microsoft.ApplicationInsights.WindowsApps": "1.1.1",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
-    "Newtonsoft.Json": "8.0.3"
+    "Newtonsoft.Json": "8.0.3",
+    "sonossharp": "0.1.0-rev00009",
+    "Zirpl.Spotify.MetadataApi": "1.0.35"
   },
   "frameworks": {
     "uap10.0": {}

@@ -41,108 +41,21 @@ namespace SmartThings_Home_Hub__Universal_
 
             // Volume
             // https://graph.api.smartthings.com/api/smartapps/installations/45b32e18-a124-4e1a-ba86-b92f6068c8f6/command?type=music&device=9e55e73e-2061-4be9-9fc1-e26d09b4d63b&command=level&value=5&access_token=82738eb3-f9c7-4f4c-a7f6-d55952ee7ea2&_=1461119060404
-
-            // Pause
-            // https://graph.api.smartthings.com/api/smartapps/installations/45b32e18-a124-4e1a-ba86-b92f6068c8f6/command?type=music&device=9e55e73e-2061-4be9-9fc1-e26d09b4d63b&command=pause&access_token=82738eb3-f9c7-4f4c-a7f6-d55952ee7ea2&_=1461119060397
-
-            // Play
-            // https://graph.api.smartthings.com/api/smartapps/installations/45b32e18-a124-4e1a-ba86-b92f6068c8f6/command?type=music&device=9e55e73e-2061-4be9-9fc1-e26d09b4d63b&command=play&access_token=82738eb3-f9c7-4f4c-a7f6-d55952ee7ea2&_=1461119060398
-
-            // Next Track
-            // https://graph.api.smartthings.com/api/smartapps/installations/45b32e18-a124-4e1a-ba86-b92f6068c8f6/command?type=music&device=9e55e73e-2061-4be9-9fc1-e26d09b4d63b&command=nextTrack&access_token=82738eb3-f9c7-4f4c-a7f6-d55952ee7ea2&_=1461123759343
-
-            // Previous Track
-            // https://graph.api.smartthings.com/api/smartapps/installations/45b32e18-a124-4e1a-ba86-b92f6068c8f6/command?type=music&device=9e55e73e-2061-4be9-9fc1-e26d09b4d63b&command=previousTrack&access_token=82738eb3-f9c7-4f4c-a7f6-d55952ee7ea2&_=1461123759345
         }
 
-        public void loadStatus(string app, string token)
-        {
-            ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
-            bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
-
-            string rqstMsg = "https://graph.api.smartthings.com/api/smartapps/installations/" + app + "/data?access_token=" + token;
-
-            HttpRequestMessage request = new HttpRequestMessage(
-                    HttpMethod.Get,
-                    rqstMsg);
-            HttpClient client = new HttpClient();
-            if (internet != false)
-            {
-                var response = client.SendAsync(request).Result;
-                if (response.StatusCode == HttpStatusCode.OK)
-                {
-                    var result = response.Content.ReadAsStringAsync().Result;
-                    var bytes = Encoding.Unicode.GetBytes(result);
-                    using (MemoryStream stream = new MemoryStream(bytes))
-                    {
-                        var serializer = new DataContractJsonSerializer(typeof(SmartThingsHub[]));
-                        SmartThingsHub[] devices = (SmartThingsHub[])serializer.ReadObject(stream);
-
-                        #region Gets and sets album info from JSON
-                        foreach (SmartThingsHub sth in devices)
-                        {
-                            if (sth.tile == "device" && sth.type == "music")
-                            {
-                                string trackDescription = (string)sth.trackDescription;
-
-                                if(trackDescription.Before(" - ") != songTitle.Text)
-                                {
-                                    string song = trackDescription.Before(" - ");
-                                    string artist = trackDescription.After(" - ");
-                                    Debug.WriteLine("Song: " + song + " |");
-                                    Debug.WriteLine("Artist: " + artist + " |");
-
-                                    if (song.Trim() != "" && artist.Trim() != "")
-                                    {
-                                        songTitle.Text = song;
-                                        songArtist.Text = artist;
-
-                                        string albumArt = fetchArtwork(song, artist);
-
-                                        if(albumArt != null)
-                                        {
-                                            songArt.Source = new BitmapImage(new Uri(albumArt, UriKind.Absolute));
-                                        }
-                                    }
-                                    else { songTitle.Text = trackDescription; }
-                                }
-
-                                if (sth.status == "paused")
-                                {
-                                    PlayPauseButton.IsChecked = false;
-                                }
-                                else
-                                {
-                                    PlayPauseButton.IsChecked = true;
-                                }
-                            }
-                        }
-                        #endregion
-                    }
-                }
-            }
-        }
-
-        public bool isPlaying = false;
         public bool isShuffle = false;
         public bool isRepeat = false;
 
-        private void PlayPauseClick(object sender, RoutedEventArgs e)
+        private void PlayPauseButton_Checked(object sender, RoutedEventArgs e)
         {
-            if (isPlaying)
-            {
-                //music.pause();
-                performAction("pause");
-                isPlaying = false;
-                PlayPauseButton.Content = "";
-                return;
-            }
-
-            //music.play();
             performAction("play");
-            isPlaying = true;
             PlayPauseButton.Content = "";
-            return;
+        }
+
+        private void PlayPauseButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            performAction("pause");
+            PlayPauseButton.Content = "";
         }
 
         private void RewindClick(object sender, RoutedEventArgs e)
@@ -301,7 +214,7 @@ namespace SmartThings_Home_Hub__Universal_
         #endregion
 
         #region Fetches artwork from lastFM
-        public string fetchArtwork(string song, string artist)
+        public string fetchLastFMArtwork(string song, string artist)
         {
             string k = "73bd84173ee30b7e3d5e55c1c73f672a";
             string imgBMP = null;
@@ -370,16 +283,138 @@ namespace SmartThings_Home_Hub__Universal_
         }
         #endregion
 
-        private void PlayPauseButton_Checked(object sender, RoutedEventArgs e)
+        #region Fetches artwork from Spotify
+        public string fetchSpotifyArtwork(string song, string artist)
         {
-            performAction("play");
-            PlayPauseButton.Content = "";
-        }
+            string k = "73bd84173ee30b7e3d5e55c1c73f672a";
+            string imgBMP = null;
 
-        private void PlayPauseButton_Unchecked(object sender, RoutedEventArgs e)
-        {
-            performAction("pause");
-            PlayPauseButton.Content = "";
+            ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
+            bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
+
+
+            string rqstMsg = "https://api.spotify.com/v1/search?q=artist:" + Uri.EscapeDataString(artist) + "%20track:" + Uri.EscapeDataString(song) + "&offset=0&limit=1&type=track";
+            Debug.WriteLine("Song URL: " + rqstMsg + " |");
+
+            HttpRequestMessage request = new HttpRequestMessage(
+                    HttpMethod.Get,
+                    rqstMsg);
+            HttpClient client = new HttpClient();
+            if (internet != false)
+            {
+                var response = client.SendAsync(request).Result;
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    var result = response.Content.ReadAsStringAsync().Result;
+                    var bytes = Encoding.Unicode.GetBytes(result);
+                    using (MemoryStream stream = new MemoryStream(bytes))
+                    {
+                        try
+                        {
+                            var serializer = new DataContractJsonSerializer(typeof(Spotify_SongFind));
+                            Spotify_SongFind foundSong = (Spotify_SongFind)serializer.ReadObject(stream);
+                            Spotify_Item sItem = foundSong.tracks.items.Last();
+                            IList<Spotify_Image> images = sItem.album.images;
+
+                            #region Gets and sets album info from JSON
+                            foreach (Spotify_Image img in images)
+                            {
+                                if(img.height == 640)
+                                {
+                                    return img.url;
+                                }
+                                else if (img.height == 300)
+                                {
+                                    return img.url;
+                                }
+                                else
+                                {
+                                    return img.url;
+                                }
+                            }
+                            #endregion
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine("Album Artwork Exception: " + ex.Message + " |");
+                            return null;
+                        }
+                    }
+                }
+            }
+            return imgBMP;
         }
+        #endregion
+
+        #region Loads and sets information from SmartThings JSON for now playing song
+        public void loadStatus(string app, string token)
+        {
+            ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
+            bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
+
+            string rqstMsg = "https://graph.api.smartthings.com/api/smartapps/installations/" + app + "/data?access_token=" + token;
+
+            HttpRequestMessage request = new HttpRequestMessage(
+                    HttpMethod.Get,
+                    rqstMsg);
+            HttpClient client = new HttpClient();
+            if (internet != false)
+            {
+                var response = client.SendAsync(request).Result;
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    var result = response.Content.ReadAsStringAsync().Result;
+                    var bytes = Encoding.Unicode.GetBytes(result);
+                    using (MemoryStream stream = new MemoryStream(bytes))
+                    {
+                        var serializer = new DataContractJsonSerializer(typeof(SmartThingsHub[]));
+                        SmartThingsHub[] devices = (SmartThingsHub[])serializer.ReadObject(stream);
+
+                        #region Gets and sets album info from JSON
+                        foreach (SmartThingsHub sth in devices)
+                        {
+                            if (sth.tile == "device" && sth.type == "music")
+                            {
+                                string trackDescription = (string)sth.trackDescription;
+
+                                if (trackDescription.Before(" - ") != songTitle.Text)
+                                {
+                                    string song = trackDescription.Before(" - ");
+                                    string artist = trackDescription.After(" - ");
+                                    Debug.WriteLine("Song: " + song + " |");
+                                    Debug.WriteLine("Artist: " + artist + " |");
+
+                                    if (song.Trim() != "" && artist.Trim() != "")
+                                    {
+                                        songTitle.Text = song;
+                                        songArtist.Text = artist;
+
+                                        string albumArt = fetchSpotifyArtwork(song, artist);
+
+                                        if (albumArt != null)
+                                        {
+                                            songArt.Source = new BitmapImage(new Uri(albumArt, UriKind.Absolute));
+                                        }
+                                    }
+                                    else { songTitle.Text = trackDescription; }
+                                }
+
+                                if (sth.status == "paused")
+                                {
+                                    PlayPauseButton.IsChecked = false;
+                                }
+                                else
+                                {
+                                    PlayPauseButton.IsChecked = true;
+                                }
+                            }
+                        }
+                        #endregion
+                    }
+                }
+            }
+        }
+        #endregion
+
     }
 }
