@@ -17,6 +17,7 @@ namespace SmartThings_Home_Hub__Universal_
 
     public sealed partial class MainPage : Page
     {
+        public static MainPage mainPage;
         public MainPage()
         {
             InitializeComponent();

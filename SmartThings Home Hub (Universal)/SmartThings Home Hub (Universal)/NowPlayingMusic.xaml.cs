@@ -10,6 +10,7 @@ using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Runtime.Serialization.Json;
 using System.Text;
+using System.Threading;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Networking.Connectivity;
@@ -37,8 +38,12 @@ namespace SmartThings_Home_Hub__Universal_
 
             string app = getApp();
             string token = getToken();
-            loadStatus(app, token);
+            loadStatus(null, null);
 
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(2);
+            timer.Tick += new EventHandler<object>(loadStatus);
+            timer.Start();
 
             // Volume
             // https://graph.api.smartthings.com/api/smartapps/installations/45b32e18-a124-4e1a-ba86-b92f6068c8f6/command?type=music&device=9e55e73e-2061-4be9-9fc1-e26d09b4d63b&command=level&value=5&access_token=82738eb3-f9c7-4f4c-a7f6-d55952ee7ea2&_=1461119060404
@@ -348,8 +353,11 @@ namespace SmartThings_Home_Hub__Universal_
         #endregion
 
         #region Loads and sets information from SmartThings JSON for now playing song
-        public void loadStatus(string app, string token)
+        public void loadStatus(object sender, object e)
         {
+            string app = getApp();
+            string token = getToken();
+
             ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
             bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
 
@@ -420,7 +428,7 @@ namespace SmartThings_Home_Hub__Universal_
         #region Seeing what's up with SonosSharp
         public void sonosSharp()
         {
-            //TrackMetaData md = SonosSharp.TrackMetaData();
+            //TrackMetaData md = SonosSharp.TrackMetaData
         }
         #endregion
     }
