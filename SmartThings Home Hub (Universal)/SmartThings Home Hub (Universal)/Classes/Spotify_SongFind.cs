@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SmartThings_Home_Hub__Universal_.Classes
 {
-    class Spotify_SongFind
+    public class Spotify_SongFind
     {
         [DataMember]
         public Tracks tracks { get; set; }

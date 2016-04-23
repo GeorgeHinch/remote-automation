@@ -1,4 +1,5 @@
 ﻿using SmartThings_Home_Hub__Universal_.Classes;
+using SonosSharp;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -416,5 +417,11 @@ namespace SmartThings_Home_Hub__Universal_
         }
         #endregion
 
+        #region Seeing what's up with SonosSharp
+        public void sonosSharp()
+        {
+            //TrackMetaData md = SonosSharp.TrackMetaData();
+        }
+        #endregion
     }
 }
