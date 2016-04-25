@@ -67,8 +67,8 @@ namespace SmartThings_Home_Hub__Universal_
                 tbName.Foreground = new SolidColorBrush(Color.FromArgb(255, 89, 89, 89));
                 #endregion
 
-                #region Create type textblock
-                tbType.Text = sth.type;
+                #region Create value textblock
+                tbType.Text = sth.value;
                 tbType.TextAlignment = TextAlignment.Center;
                 tbType.MaxLines = 2;
                 tbType.TextWrapping = TextWrapping.Wrap;

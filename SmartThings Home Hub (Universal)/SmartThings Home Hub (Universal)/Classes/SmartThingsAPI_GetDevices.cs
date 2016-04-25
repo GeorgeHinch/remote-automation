@@ -50,7 +50,7 @@ namespace SmartThings_Home_Hub__Universal_.Classes
                             {
                                 typeString = (sth.type == "music");
                             }
-                            else if (type == "swtich")
+                            else if (type == "switch")
                             {
                                 typeString = (sth.type == "switch");
                             }
@@ -62,6 +62,7 @@ namespace SmartThings_Home_Hub__Universal_.Classes
                             {
                                 typeString = (sth.type == "presence");
                             }
+
 
                             if (sth.tile == "device" && typeString)
                             {
@@ -114,7 +115,7 @@ namespace SmartThings_Home_Hub__Universal_.Classes
                             {
                                 typeString = (sth.type == "music");
                             }
-                            else if (type == "swtich")
+                            else if (type == "switch")
                             {
                                 typeString = (sth.type == "switch");
                             }
@@ -126,6 +127,7 @@ namespace SmartThings_Home_Hub__Universal_.Classes
                             {
                                 typeString = (sth.type == "presence");
                             }
+
 
                             if (sth.tile == "device" && typeString)
                             {
