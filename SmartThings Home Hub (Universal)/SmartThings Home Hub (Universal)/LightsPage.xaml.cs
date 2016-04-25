@@ -275,9 +275,7 @@ namespace SmartThings_Home_Hub__Universal_
                         {
                             if (sth.tile == "device" && sth.type == "switch")
                             {
-                                Debug.WriteLine("STH Device: " + sth.device + " |");
                                 TextBlock tb = (TextBlock)this.FindName(sth.device);
-                                Debug.WriteLine("TB Name: " + tb.Name + " |");
 
                                 if (sth.value == "on")
                                 {
@@ -287,26 +285,6 @@ namespace SmartThings_Home_Hub__Universal_
                                 {
                                     tb.Foreground = new SolidColorBrush(Color.FromArgb(255, 204, 204, 204));
                                 }
-                                /*foreach (var child in lights_mainView.Children)
-                                {
-                                    if(child is TextBlock)
-                                    {
-                                        TextBlock tb = (TextBlock)child;
-                                        Debug.WriteLine("TB Name: " + tb.Name + " |");
-
-                                        if (tb.Name == sth.device)
-                                        {
-                                            if (sth.value == "on")
-                                            {
-                                                tb.Foreground = new SolidColorBrush(Color.FromArgb(255, 0, 66, 97));
-                                            }
-                                            else if (sth.value == "off")
-                                            {
-                                                tb.Foreground = new SolidColorBrush(Color.FromArgb(255, 204, 204, 204));
-                                            }
-                                        }
-                                    }
-                                }/**/
                             }
                         }
                     }

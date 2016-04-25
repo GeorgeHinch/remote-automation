@@ -32,9 +32,17 @@ namespace SmartThings_Home_Hub__Universal_
         public PresencePage()
         {
             this.InitializeComponent();
+
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(5);
+            EventHandler<Object> stupd = new EventHandler<object>(this.refreshTick);
+            timer.Tick += stupd;
+            timer.Start();
+
             loadDevices();
         }
 
+        #region Loads and creates presence icons
         public void loadDevices()
         {
             List<SmartThingsHub> devices = SmartThingsAPI_GetDevices.getDevice("presence");
@@ -48,6 +56,7 @@ namespace SmartThings_Home_Hub__Universal_
 
 
                 #region Create icon textblock
+                tbIcon.Name = sth.device;
                 tbIcon.Text = WebUtility.HtmlDecode("&#57796;");
                 if (sth.value == "present")
                 {
@@ -91,6 +100,56 @@ namespace SmartThings_Home_Hub__Universal_
                 #endregion
             }
         }
+        #endregion
+
+        #region Refreshes presence every 5 seconds
+        async void refreshTick(object sender, object e)
+        {
+            string app = SmartThingsAPI_Access.getApp();
+            string token = SmartThingsAPI_Access.getToken();
+
+            ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
+            bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
+
+            string rqstMsg = "https://graph.api.smartthings.com/api/smartapps/installations/" + app + "/data?access_token=" + token;
+
+            HttpRequestMessage request = new HttpRequestMessage(
+                    HttpMethod.Get,
+                    rqstMsg);
+            HttpClient client = new HttpClient();
+            if (internet != false)
+            {
+                var response = client.SendAsync(request).Result;
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    var result = response.Content.ReadAsStringAsync().Result;
+                    var bytes = Encoding.Unicode.GetBytes(result);
+                    using (MemoryStream stream = new MemoryStream(bytes))
+                    {
+                        var serializer = new DataContractJsonSerializer(typeof(SmartThingsHub[]));
+                        SmartThingsHub[] devices = (SmartThingsHub[])serializer.ReadObject(stream);
+
+                        foreach (SmartThingsHub sth in devices)
+                        {
+                            if (sth.tile == "device" && sth.type == "presence")
+                            {
+                                TextBlock tb = (TextBlock)this.FindName(sth.device);
+
+                                if (sth.value == "present")
+                                {
+                                    tb.Foreground = new SolidColorBrush(Color.FromArgb(255, 0, 66, 97));
+                                }
+                                else if (sth.value == "not present")
+                                {
+                                    tb.Foreground = new SolidColorBrush(Color.FromArgb(255, 204, 204, 204));
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        #endregion
 
         private void Home_Click(object sender, RoutedEventArgs e)
         {
