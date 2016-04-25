@@ -276,7 +276,6 @@
     <Compile Include="SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SmartThingsAPI.cs" />
     <Compile Include="StatusLED.cs" />
     <Compile Include="SystemStatus.cs" />
     <Compile Include="SystemStatusNotif.cs" />

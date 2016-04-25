@@ -37,14 +37,16 @@ namespace SmartThings_Home_Hub__Universal_
         public LightsPage()
         {
             this.InitializeComponent();
+            loadDevices();
+
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1);
-            EventHandler<Object> stupd = new EventHandler<object>(this.timer_Tick);
+            timer.Interval = TimeSpan.FromSeconds(5);
+            EventHandler<Object> stupd = new EventHandler<object>(this.refreshTick);
             timer.Tick += stupd;
             timer.Start();
-            loadDevices();
         }
 
+        #region Loads and creates buttons on lights page
         public void loadDevices()
         {
             List<Button> deviceButtonList = new List<Button>();
@@ -78,7 +80,7 @@ namespace SmartThings_Home_Hub__Universal_
                 tbIcon.TextAlignment = TextAlignment.Center;
                 tbIcon.FontSize = 48;
                 tbIcon.Margin = new Thickness(0, 0, 0, 15);
-                tbIcon.Name = "Icon-" + sth.device;
+                tbIcon.Name = sth.device;
                 Debug.WriteLine("Icon Name: " + tbIcon.Name + " |");
                 #endregion
 
@@ -116,7 +118,6 @@ namespace SmartThings_Home_Hub__Universal_
                 #endregion
 
                 #region Add button to list
-                btn.Name = sth.device;
                 deviceButtonList.Add(btn);
                 #endregion
             }
@@ -177,6 +178,7 @@ namespace SmartThings_Home_Hub__Universal_
             }
             #endregion
         }
+        #endregion
 
         #region Button tapped handler to toggle lights
         public void toggleLight(object sender, RoutedEventArgs e)
@@ -242,9 +244,12 @@ namespace SmartThings_Home_Hub__Universal_
         }
         #endregion
 
-        #region Refreshes light status every N seconds
-        public void refreshLights(string app, string token)
+        #region Refreshes lights every 5 seconds
+        async void refreshTick(object sender, object e)
         {
+            string app = SmartThingsAPI_Access.getApp();
+            string token = SmartThingsAPI_Access.getToken();
+
             ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
             bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
 
@@ -270,55 +275,38 @@ namespace SmartThings_Home_Hub__Universal_
                         {
                             if (sth.tile == "device" && sth.type == "switch")
                             {
-                                string iconName = "Icon-" + sth.device;
-                                Button btn = (Button)this.FindName(sth.device);
-                                Debug.WriteLine("Btn Content: " + btn.Content + " |");
+                                Debug.WriteLine("STH Device: " + sth.device + " |");
+                                TextBlock tb = (TextBlock)this.FindName(sth.device);
+                                Debug.WriteLine("TB Name: " + tb.Name + " |");
 
-                                StackPanel sp = new StackPanel();
-                                TextBlock tbIcon = new TextBlock();
-                                TextBlock tbName = new TextBlock();
-                                TextBlock tbType = new TextBlock();
-
-
-                                #region Create icon textblock
-                                tbIcon.Text = WebUtility.HtmlDecode("&#60032;");
                                 if (sth.value == "on")
                                 {
-                                    tbIcon.Foreground = new SolidColorBrush(Color.FromArgb(255, 0, 66, 97));
+                                    tb.Foreground = new SolidColorBrush(Color.FromArgb(255, 0, 66, 97));
                                 }
-                                else { tbIcon.Foreground = new SolidColorBrush(Color.FromArgb(255, 204, 204, 204)); }
-                                tbIcon.FontFamily = new FontFamily("Segoe MDL2 Assets");
-                                tbIcon.TextAlignment = TextAlignment.Center;
-                                tbIcon.FontSize = 48;
-                                tbIcon.Margin = new Thickness(0, 0, 0, 15);
-                                tbIcon.Name = "Icon-" + sth.device;
-                                #endregion
+                                else if (sth.value == "off")
+                                {
+                                    tb.Foreground = new SolidColorBrush(Color.FromArgb(255, 204, 204, 204));
+                                }
+                                /*foreach (var child in lights_mainView.Children)
+                                {
+                                    if(child is TextBlock)
+                                    {
+                                        TextBlock tb = (TextBlock)child;
+                                        Debug.WriteLine("TB Name: " + tb.Name + " |");
 
-                                #region Create name textblock
-                                tbName.Text = sth.name;
-                                tbName.TextAlignment = TextAlignment.Center;
-                                tbName.Margin = new Thickness(0, 0, 0, 5);
-                                tbName.Foreground = new SolidColorBrush(Color.FromArgb(255, 89, 89, 89));
-                                #endregion
-
-                                #region Create type textblock
-                                tbType.Text = sth.type;
-                                tbType.TextAlignment = TextAlignment.Center;
-                                tbType.MaxLines = 2;
-                                tbType.TextWrapping = TextWrapping.Wrap;
-                                tbType.Foreground = new SolidColorBrush(Color.FromArgb(255, 204, 204, 204));
-                                #endregion
-
-
-                                #region Add textblocks to stackpanel
-                                sp.Children.Add(tbIcon);
-                                sp.Children.Add(tbName);
-                                sp.Children.Add(tbType);
-                                #endregion
-
-                                #region Add stackpanel to button
-                                btn.Content = sp;
-                                #endregion
+                                        if (tb.Name == sth.device)
+                                        {
+                                            if (sth.value == "on")
+                                            {
+                                                tb.Foreground = new SolidColorBrush(Color.FromArgb(255, 0, 66, 97));
+                                            }
+                                            else if (sth.value == "off")
+                                            {
+                                                tb.Foreground = new SolidColorBrush(Color.FromArgb(255, 204, 204, 204));
+                                            }
+                                        }
+                                    }
+                                }/**/
                             }
                         }
                     }
@@ -361,14 +349,6 @@ namespace SmartThings_Home_Hub__Universal_
                     break;
             }
         }
-
-        public class SwitchesDetails
-        {
-            public String id { get; set; }
-            public String label { get; set; }
-            public String type { get; set; }
-        }
-    
 
         private void Home_Click(object sender, RoutedEventArgs e)
         {
