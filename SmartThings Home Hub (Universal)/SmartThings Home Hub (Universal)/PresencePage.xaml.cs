@@ -37,130 +37,60 @@ namespace SmartThings_Home_Hub__Universal_
 
         public void loadDevices()
         {
-            string app = getApp();
-            string token = getToken();
+            List<SmartThingsHub> devices = SmartThingsAPI_GetDevices.getDevice("presence");
 
-            ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
-            bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
-
-            string rqstMsg = "https://graph.api.smartthings.com/api/smartapps/installations/" + app + "/data?access_token=" + token;
-
-            HttpRequestMessage request = new HttpRequestMessage(
-                    HttpMethod.Get,
-                    rqstMsg);
-            HttpClient client = new HttpClient();
-            if (internet != false)
+            foreach (SmartThingsHub sth in devices)
             {
-                var response = client.SendAsync(request).Result;
-                if (response.StatusCode == HttpStatusCode.OK)
+                StackPanel sp = new StackPanel();
+                TextBlock tbIcon = new TextBlock();
+                TextBlock tbName = new TextBlock();
+                TextBlock tbType = new TextBlock();
+
+
+                #region Create icon textblock
+                tbIcon.Text = WebUtility.HtmlDecode("&#57796;");
+                if (sth.value == "present")
                 {
-                    var result = response.Content.ReadAsStringAsync().Result;
-                    var bytes = Encoding.Unicode.GetBytes(result);
-                    using (MemoryStream stream = new MemoryStream(bytes))
-                    {
-                        var serializer = new DataContractJsonSerializer(typeof(SmartThingsHub[]));
-                        SmartThingsHub[] devices = (SmartThingsHub[])serializer.ReadObject(stream);
-
-                        #region Creates stackpanel from ST JSON
-                        foreach (SmartThingsHub sth in devices)
-                        {
-                            if (sth.tile == "device" && sth.type == "presence")
-                            {
-                                StackPanel sp = new StackPanel();
-                                TextBlock tbIcon = new TextBlock();
-                                TextBlock tbName = new TextBlock();
-                                TextBlock tbType = new TextBlock();
-
-
-                                #region Create icon textblock
-                                tbIcon.Text = WebUtility.HtmlDecode("&#57796;");
-                                if (sth.value == "present")
-                                {
-                                    tbIcon.Foreground = new SolidColorBrush(Color.FromArgb(255, 0, 66, 97));
-                                }
-                                else { tbIcon.Foreground = new SolidColorBrush(Color.FromArgb(255, 204, 204, 204)); }
-                                tbIcon.FontFamily = new FontFamily("Segoe MDL2 Assets");
-                                tbIcon.TextAlignment = TextAlignment.Center;
-                                tbIcon.FontSize = 96;
-                                tbIcon.Margin = new Thickness(0, 0, 0, 15);
-                                #endregion
-
-                                #region Create name textblock
-                                tbName.Text = sth.name;
-                                tbName.TextAlignment = TextAlignment.Center;
-                                tbName.Margin = new Thickness(0, 0, 0, 5);
-                                tbName.Foreground = new SolidColorBrush(Color.FromArgb(255, 89, 89, 89));
-                                #endregion
-
-                                #region Create type textblock
-                                tbType.Text = sth.type;
-                                tbType.TextAlignment = TextAlignment.Center;
-                                tbType.MaxLines = 2;
-                                tbType.TextWrapping = TextWrapping.Wrap;
-                                tbType.Foreground = new SolidColorBrush(Color.FromArgb(255, 204, 204, 204));
-                                #endregion
-
-
-                                #region Add textblocks to stackpanel
-                                sp.Children.Add(tbIcon);
-                                sp.Children.Add(tbName);
-                                sp.Children.Add(tbType);
-                                #endregion
-
-                                #region Add stackpanel to list
-                                sp.Orientation = Orientation.Vertical;
-                                sp.HorizontalAlignment = HorizontalAlignment.Center;
-                                sp.VerticalAlignment = VerticalAlignment.Center;
-                                sp.Width = 190;
-                                presence_Stackpanel.Children.Add(sp);
-                                #endregion
-                            }
-                        }
-                        #endregion
-                    }
+                    tbIcon.Foreground = new SolidColorBrush(Color.FromArgb(255, 0, 66, 97));
                 }
+                else { tbIcon.Foreground = new SolidColorBrush(Color.FromArgb(255, 204, 204, 204)); }
+                tbIcon.FontFamily = new FontFamily("Segoe MDL2 Assets");
+                tbIcon.TextAlignment = TextAlignment.Center;
+                tbIcon.FontSize = 96;
+                tbIcon.Margin = new Thickness(0, 0, 0, 15);
+                #endregion
+
+                #region Create name textblock
+                tbName.Text = sth.name;
+                tbName.TextAlignment = TextAlignment.Center;
+                tbName.Margin = new Thickness(0, 0, 0, 5);
+                tbName.Foreground = new SolidColorBrush(Color.FromArgb(255, 89, 89, 89));
+                #endregion
+
+                #region Create type textblock
+                tbType.Text = sth.type;
+                tbType.TextAlignment = TextAlignment.Center;
+                tbType.MaxLines = 2;
+                tbType.TextWrapping = TextWrapping.Wrap;
+                tbType.Foreground = new SolidColorBrush(Color.FromArgb(255, 204, 204, 204));
+                #endregion
+
+
+                #region Add textblocks to stackpanel
+                sp.Children.Add(tbIcon);
+                sp.Children.Add(tbName);
+                sp.Children.Add(tbType);
+                #endregion
+
+                #region Add stackpanel to list
+                sp.Orientation = Orientation.Vertical;
+                sp.HorizontalAlignment = HorizontalAlignment.Center;
+                sp.VerticalAlignment = VerticalAlignment.Center;
+                sp.Width = 190;
+                presence_Stackpanel.Children.Add(sp);
+                #endregion
             }
         }
-
-        #region Gets the SmartThings app ID
-        public string getApp()
-        {
-            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
-            string app = "";
-
-            /* Load SmartThings App ID */
-            if (roamingSettings.Values["stAppID"] == null)
-            {
-                this.Frame.Navigate(typeof(SettingsPage));
-            }
-            else
-            {
-                app = roamingSettings.Values["stAppID"].ToString();
-            }
-
-            return app;
-        }
-        #endregion
-
-        #region Gets the SmartThings app token
-        public string getToken()
-        {
-            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
-            string token = "";
-
-            /* Load SmartThings Access Token */
-            if (roamingSettings.Values["stToken"] == null)
-            {
-                this.Frame.Navigate(typeof(SettingsPage));
-            }
-            else
-            {
-                token = roamingSettings.Values["stToken"].ToString();
-            }
-
-            return token;
-        }
-        #endregion
 
         private void Home_Click(object sender, RoutedEventArgs e)
         {

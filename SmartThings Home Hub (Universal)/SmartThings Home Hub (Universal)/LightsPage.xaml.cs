@@ -45,8 +45,142 @@ namespace SmartThings_Home_Hub__Universal_
             loadDevices();
         }
 
+        /*public void loadDevices()
+        {
+            List<Button> deviceButtonList = new List<Button>();
+            List<StackPanel> deviceStackpanelList = new List<StackPanel>();
+            List<StackPanel> mainStackpanelList = new List<StackPanel>();
+            StackPanel indexSP = new StackPanel();
+            StackPanel mainIndexSP = new StackPanel();
+            int indexVal = 1;
+            int mainIndexVal = 1;
+
+            List<SmartThingsHub> devices = SmartThingsAPI_GetDevices.getDevice("switch");
+
+            #region Creates buttons from ST JSON
+            foreach (SmartThingsHub sth in devices)
+            {
+                Button btn = new Button();
+                StackPanel sp = new StackPanel();
+                TextBlock tbIcon = new TextBlock();
+                TextBlock tbName = new TextBlock();
+                TextBlock tbType = new TextBlock();
+
+
+                #region Create icon textblock
+                tbIcon.Text = WebUtility.HtmlDecode("&#60032;");
+                if (sth.value == "on")
+                {
+                    tbIcon.Foreground = new SolidColorBrush(Color.FromArgb(255, 0, 66, 97));
+                }
+                else { tbIcon.Foreground = new SolidColorBrush(Color.FromArgb(255, 204, 204, 204)); }
+                tbIcon.FontFamily = new FontFamily("Segoe MDL2 Assets");
+                tbIcon.TextAlignment = TextAlignment.Center;
+                tbIcon.FontSize = 48;
+                tbIcon.Margin = new Thickness(0, 0, 0, 15);
+                tbIcon.Name = "Icon-" + sth.device;
+                Debug.WriteLine("Icon Name: " + tbIcon.Name + " |");
+                #endregion
+
+                #region Create name textblock
+                tbName.Text = sth.name;
+                tbName.TextAlignment = TextAlignment.Center;
+                tbName.Margin = new Thickness(0, 0, 0, 5);
+                tbName.Foreground = new SolidColorBrush(Color.FromArgb(255, 89, 89, 89));
+                #endregion
+
+                #region Create type textblock
+                tbType.Text = sth.type;
+                tbType.TextAlignment = TextAlignment.Center;
+                tbType.MaxLines = 2;
+                tbType.TextWrapping = TextWrapping.Wrap;
+                tbType.Foreground = new SolidColorBrush(Color.FromArgb(255, 204, 204, 204));
+                #endregion
+
+
+                #region Add textblocks to stackpanel
+                sp.Children.Add(tbIcon);
+                sp.Children.Add(tbName);
+                sp.Children.Add(tbType);
+                #endregion
+
+                #region Add stackpanel to button
+                btn.Content = sp;
+                // Width="175" Click="brelandRoomLight_Click" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top"
+                btn.Width = 175;
+                btn.Click += new RoutedEventHandler(toggleLight);
+                btn.Background = null;
+                btn.BorderBrush = null;
+                btn.VerticalAlignment = VerticalAlignment.Top;
+                btn.Tag = sth.device;
+                #endregion
+
+                #region Add button to list
+                btn.Name = sth.device;
+                deviceButtonList.Add(btn);
+                #endregion
+            }
+            #endregion
+
+            #region Creates stackpanel rows of 4 buttons
+            foreach (Button btn in deviceButtonList)
+            {
+                indexSP.Children.Add(btn);
+
+                if (indexVal % 4 == 0)
+                {
+                    indexSP.Orientation = Orientation.Horizontal;
+                    indexSP.Margin = new Thickness(0, 20, 0, 0);
+                    deviceStackpanelList.Add(indexSP);
+                    indexSP = new StackPanel();
+                }
+
+                indexVal++;
+            }
+
+            if (indexSP.Children.Count != 0)
+            {
+                indexSP.Orientation = Orientation.Horizontal;
+                indexSP.Margin = new Thickness(0, 20, 0, 0);
+                deviceStackpanelList.Add(indexSP);
+            }
+            #endregion
+
+            #region Creates stackpanels of two stackpanel rows
+            foreach (StackPanel sp in deviceStackpanelList)
+            {
+                mainIndexSP.Children.Add(sp);
+
+                if (mainIndexVal % 2 == 0)
+                {
+                    mainIndexSP.HorizontalAlignment = HorizontalAlignment.Center;
+                    mainIndexSP.Height = 300;
+                    mainIndexSP.VerticalAlignment = VerticalAlignment.Center;
+                    mainIndexSP.Width = 700;
+                    mainStackpanelList.Add(mainIndexSP);
+                    mainIndexSP = new StackPanel();
+                }
+
+                mainIndexVal++;
+            }
+
+            if (mainIndexSP.Children.Count != 0)
+            {
+                mainStackpanelList.Add(mainIndexSP);
+            }
+            #endregion
+
+            #region Adds main stackpanels to flipview
+            foreach (StackPanel sp in mainStackpanelList)
+            {
+                light_flipView.Items.Add(sp);
+            }
+            #endregion
+        } */
+
         public void loadDevices()
         {
+
             string app = SmartThingsAPI_Access.getApp();
             string token = SmartThingsAPI_Access.getToken();
 
@@ -129,7 +263,6 @@ namespace SmartThings_Home_Hub__Universal_
 
                                 #region Add stackpanel to button
                                 btn.Content = sp;
-                                // Width="175" Click="brelandRoomLight_Click" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top"
                                 btn.Width = 175;
                                 btn.Click += new RoutedEventHandler(toggleLight);
                                 btn.Background = null;

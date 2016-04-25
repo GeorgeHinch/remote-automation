@@ -61,7 +61,7 @@ namespace SmartThings_Home_Hub__Universal_.Classes
             #endregion
 
             #region Actions for SWITCH type devices
-            if (type == "switches")
+            if (type == "switch")
             {
                 if (!isAll)
                 {
