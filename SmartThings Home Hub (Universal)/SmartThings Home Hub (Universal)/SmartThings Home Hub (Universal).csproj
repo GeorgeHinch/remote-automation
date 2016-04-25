@@ -197,12 +197,14 @@
     <Compile Include="CameraPage.xaml.cs">
       <DependentUpon>CameraPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Classes\LastFM_AlbumFetch.cs" />
     <Compile Include="Classes\LastFM_SongFind.cs" />
     <Compile Include="Classes\NYT_TopStories.cs" />
     <Compile Include="Classes\SmartThingsAPI_Actions.cs" />
     <Compile Include="Classes\SmartThingsAPI_Access.cs" />
     <Compile Include="Classes\SmartThingsAPI_GetDevices.cs" />
     <Compile Include="Classes\SmartThingsHub.cs" />
+    <Compile Include="Classes\Spotify_AlbumFetch.cs" />
     <Compile Include="Classes\Spotify_SongFind.cs" />
     <Compile Include="Classes\SubstringExtension.cs" />
     <Compile Include="EnviromentPage.xaml.cs">

@@ -39,6 +39,8 @@ namespace SmartThings_Home_Hub__Universal_
             string app = SmartThingsAPI_Access.getApp();
             string token = SmartThingsAPI_Access.getToken();
 
+
+
             //DispatcherTimer timer = new DispatcherTimer();
             //timer.Interval = TimeSpan.FromSeconds(2);
             //timer.Tick += new EventHandler<object>(loadStatus);
@@ -105,187 +107,11 @@ namespace SmartThings_Home_Hub__Universal_
             return;
         }
 
-        #region Gets all Sonos music devices in SmartThings
-        public List<string> getDevice(string app, string token)
-        {
-            List<string> deviceIDList = new List<string>();
-
-            ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
-            bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
-
-            string rqstMsg = "https://graph.api.smartthings.com/api/smartapps/installations/" + app + "/data?access_token=" + token;
-
-            HttpRequestMessage request = new HttpRequestMessage(
-                    HttpMethod.Get,
-                    rqstMsg);
-            HttpClient client = new HttpClient();
-            if (internet != false)
-            {
-                var response = client.SendAsync(request).Result;
-                if (response.StatusCode == HttpStatusCode.OK)
-                {
-                    var result = response.Content.ReadAsStringAsync().Result;
-                    var bytes = Encoding.Unicode.GetBytes(result);
-                    using (MemoryStream stream = new MemoryStream(bytes))
-                    {
-                        var serializer = new DataContractJsonSerializer(typeof(SmartThingsHub[]));
-                        SmartThingsHub[] devices = (SmartThingsHub[])serializer.ReadObject(stream);
-
-                        #region Adds device IDs to list
-                        foreach (SmartThingsHub sth in devices)
-                        {
-                            if (sth.tile == "device" && sth.type == "music")
-                            {
-                                deviceIDList.Add(sth.device);
-                            }
-                        }
-                        #endregion
-                    }
-                }
-                return deviceIDList;
-            }
-            else { return null; }
-        }
-        #endregion
-
-        #region Fetches artwork from lastFM
-        public string fetchLastFMArtwork(string song, string artist)
-        {
-            string k = "73bd84173ee30b7e3d5e55c1c73f672a";
-            string imgBMP = null;
-
-            ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
-            bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
-            
-
-            string rqstMsg = "http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=" + k + "&artist=" + Uri.EscapeDataString(artist) + "&track=" + Uri.EscapeDataString(song) + "&format=json";
-            Debug.WriteLine("Song URL: " + rqstMsg + " |");
-
-            HttpRequestMessage request = new HttpRequestMessage(
-                    HttpMethod.Get,
-                    rqstMsg);
-            HttpClient client = new HttpClient();
-            if (internet != false)
-            {
-                var response = client.SendAsync(request).Result;
-                if (response.StatusCode == HttpStatusCode.OK)
-                {
-                    var result = response.Content.ReadAsStringAsync().Result;
-                    var bytes = Encoding.Unicode.GetBytes(result);
-                    using (MemoryStream stream = new MemoryStream(bytes))
-                    {
-                        try
-                        {
-                            var serializer = new DataContractJsonSerializer(typeof(LastFM_SongFind));
-                            LastFM_SongFind foundSong = (LastFM_SongFind)serializer.ReadObject(stream);
-                            IList<SongImage> image = (IList<SongImage>)foundSong.track.album.image;
-
-                            #region Gets and sets album info from JSON
-                            foreach (SongImage img in image)
-                            {
-                                if (img.size == "extralarge")
-                                {
-                                    imgBMP = img.text;
-                                }
-                                else if (img.size == "large")
-                                {
-                                    imgBMP = img.text;
-                                }
-                                else if (img.size == "medium")
-                                {
-                                    imgBMP = img.text;
-                                }
-                                else if (img.size == "small")
-                                {
-                                    imgBMP = img.text;
-                                }
-                                else
-                                {
-                                    imgBMP = null;
-                                }
-                            }
-                            #endregion
-                        }
-                        catch(Exception ex)
-                        {
-                            Debug.WriteLine("Album Artwork Exception: " + ex.Message + " |");
-                            return null;
-                        }
-                    }
-                }
-            }
-            return imgBMP;
-        }
-        #endregion
-
-        #region Fetches artwork from Spotify
-        public string fetchSpotifyArtwork(string song, string artist)
-        {
-            string k = "73bd84173ee30b7e3d5e55c1c73f672a";
-            string imgBMP = null;
-
-            ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
-            bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
-
-
-            string rqstMsg = "https://api.spotify.com/v1/search?q=artist:" + Uri.EscapeDataString(artist) + "%20track:" + Uri.EscapeDataString(song) + "&offset=0&limit=1&type=track";
-            Debug.WriteLine("Song URL: " + rqstMsg + " |");
-
-            HttpRequestMessage request = new HttpRequestMessage(
-                    HttpMethod.Get,
-                    rqstMsg);
-            HttpClient client = new HttpClient();
-            if (internet != false)
-            {
-                var response = client.SendAsync(request).Result;
-                if (response.StatusCode == HttpStatusCode.OK)
-                {
-                    var result = response.Content.ReadAsStringAsync().Result;
-                    var bytes = Encoding.Unicode.GetBytes(result);
-                    using (MemoryStream stream = new MemoryStream(bytes))
-                    {
-                        try
-                        {
-                            var serializer = new DataContractJsonSerializer(typeof(Spotify_SongFind));
-                            Spotify_SongFind foundSong = (Spotify_SongFind)serializer.ReadObject(stream);
-                            Spotify_Item sItem = foundSong.tracks.items.Last();
-                            IList<Spotify_Image> images = sItem.album.images;
-
-                            #region Gets and sets album info from JSON
-                            foreach (Spotify_Image img in images)
-                            {
-                                if(img.height == 640)
-                                {
-                                    return img.url;
-                                }
-                                else if (img.height == 300)
-                                {
-                                    return img.url;
-                                }
-                                else
-                                {
-                                    return img.url;
-                                }
-                            }
-                            #endregion
-                        }
-                        catch (Exception ex)
-                        {
-                            Debug.WriteLine("Album Artwork Exception: " + ex.Message + " |");
-                            return null;
-                        }
-                    }
-                }
-            }
-            return imgBMP;
-        }
-        #endregion
-
         #region Loads and sets information from SmartThings JSON for now playing song
         public void loadStatus(object sender, object e)
         {
-            string app = getApp();
-            string token = getToken();
+            string app = SmartThingsAPI_Access.getApp();
+            string token = SmartThingsAPI_Access.getToken();
 
             ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
             bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
@@ -327,7 +153,7 @@ namespace SmartThings_Home_Hub__Universal_
                                         songTitle.Text = song;
                                         songArtist.Text = artist;
 
-                                        string albumArt = fetchSpotifyArtwork(song, artist);
+                                        string albumArt = Spotify_AlbumFetch.fetchSpotifyArtwork(song, artist);
 
                                         if (albumArt != null)
                                         {

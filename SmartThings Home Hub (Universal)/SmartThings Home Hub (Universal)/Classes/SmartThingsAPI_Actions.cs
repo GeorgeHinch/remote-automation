@@ -17,7 +17,7 @@ namespace SmartThings_Home_Hub__Universal_.Classes
             List<string> devices = null;
             if (isAll)
             {
-                devices = SmartThingsAPI_GetDevices.getDevice(app, token, type);
+                devices = SmartThingsAPI_GetDevices.getDeviceID(type);
             }
 
             #region Actions for MUSIC type devices
