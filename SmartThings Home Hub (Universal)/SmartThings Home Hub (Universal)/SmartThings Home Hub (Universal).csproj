@@ -199,7 +199,7 @@
     </Compile>
     <Compile Include="Classes\LastFM_SongFind.cs" />
     <Compile Include="Classes\NYT_TopStories.cs" />
-    <Compile Include="Classes\Perform_MusicAction.cs" />
+    <Compile Include="Classes\SmartThingsAPI_Actions.cs" />
     <Compile Include="Classes\SmartThingsAPI_Access.cs" />
     <Compile Include="Classes\SmartThingsAPI_GetDevices.cs" />
     <Compile Include="Classes\SmartThingsHub.cs" />

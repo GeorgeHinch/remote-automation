@@ -38,8 +38,8 @@ namespace SmartThings_Home_Hub__Universal_
 
         public void loadDevices()
         {
-            string app = getApp();
-            string token = getToken();
+            string app = SmartThingsAPI_Access.getApp();
+            string token = SmartThingsAPI_Access.getToken();
 
             ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
             bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
@@ -122,46 +122,6 @@ namespace SmartThings_Home_Hub__Universal_
                 }
             }
         }
-
-        #region Gets the SmartThings app ID
-        public string getApp()
-        {
-            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
-            string app = "";
-
-            /* Load SmartThings App ID */
-            if (roamingSettings.Values["stAppID"] == null)
-            {
-                this.Frame.Navigate(typeof(SettingsPage));
-            }
-            else
-            {
-                app = roamingSettings.Values["stAppID"].ToString();
-            }
-
-            return app;
-        }
-        #endregion
-
-        #region Gets the SmartThings app token
-        public string getToken()
-        {
-            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
-            string token = "";
-
-            /* Load SmartThings Access Token */
-            if (roamingSettings.Values["stToken"] == null)
-            {
-                this.Frame.Navigate(typeof(SettingsPage));
-            }
-            else
-            {
-                token = roamingSettings.Values["stToken"].ToString();
-            }
-
-            return token;
-        }
-        #endregion
 
         private void Home_Click(object sender, RoutedEventArgs e)
         {

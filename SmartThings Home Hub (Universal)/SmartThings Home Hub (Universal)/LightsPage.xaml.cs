@@ -47,8 +47,8 @@ namespace SmartThings_Home_Hub__Universal_
 
         public void loadDevices()
         {
-            string app = getApp();
-            string token = getToken();
+            string app = SmartThingsAPI_Access.getApp();
+            string token = SmartThingsAPI_Access.getToken();
 
             ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
             bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
@@ -203,33 +203,24 @@ namespace SmartThings_Home_Hub__Universal_
                     }
                 }
             }
-
-            //refreshLights(app, token);
         }
 
         #region Button tapped handler to toggle lights
         public void toggleLight(object sender, RoutedEventArgs e)
         {
             Button sendr = (Button)sender;
-            string app = getApp();
             string device = sendr.Tag.ToString();
             string command = lightStatus(device);
-            string token = getToken();
 
-            string rqstMsg = "https://graph.api.smartthings.com/api/smartapps/installations/" + app + "/command?type=switch&device=" + device + "&command=" + command + "&access_token=" + token;
-            HttpRequestMessage request = new HttpRequestMessage(
-                HttpMethod.Get,
-                rqstMsg);
-            HttpClient client = new HttpClient();
-            client.SendAsync(request);
+            SmartThingsAPI_Actions.performAction("switch", device, command, 0, false);
         }
         #endregion
 
         #region Checks the on/off status of light
         public string lightStatus(string sender)
         {
-            string app = getApp();
-            string token = getToken();
+            string app = SmartThingsAPI_Access.getApp();
+            string token = SmartThingsAPI_Access.getToken();
             string command;
             string deviceVal = "";
 
@@ -360,46 +351,6 @@ namespace SmartThings_Home_Hub__Universal_
                     }
                 }
             }
-        }
-        #endregion
-
-        #region Gets the SmartThings app ID
-        public string getApp()
-        {
-            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
-            string app = "";
-
-            /* Load SmartThings App ID */
-            if (roamingSettings.Values["stAppID"] == null)
-            {
-                this.Frame.Navigate(typeof(SettingsPage));
-            }
-            else
-            {
-                app = roamingSettings.Values["stAppID"].ToString();
-            }
-
-            return app;
-        }
-        #endregion
-
-        #region Gets the SmartThings app token
-        public string getToken()
-        {
-            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
-            string token = "";
-
-            /* Load SmartThings Access Token */
-            if (roamingSettings.Values["stToken"] == null)
-            {
-                this.Frame.Navigate(typeof(SettingsPage));
-            }
-            else
-            {
-                token = roamingSettings.Values["stToken"].ToString();
-            }
-
-            return token;
         }
         #endregion
 

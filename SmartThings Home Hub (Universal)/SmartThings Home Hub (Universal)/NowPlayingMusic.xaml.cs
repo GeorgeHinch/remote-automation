@@ -36,14 +36,13 @@ namespace SmartThings_Home_Hub__Universal_
         {
             this.InitializeComponent();
 
-            string app = getApp();
-            string token = getToken();
-            loadStatus(null, null);
+            string app = SmartThingsAPI_Access.getApp();
+            string token = SmartThingsAPI_Access.getToken();
 
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(2);
-            timer.Tick += new EventHandler<object>(loadStatus);
-            timer.Start();
+            //DispatcherTimer timer = new DispatcherTimer();
+            //timer.Interval = TimeSpan.FromSeconds(2);
+            //timer.Tick += new EventHandler<object>(loadStatus);
+            //timer.Start();
 
             // Volume
             // https://graph.api.smartthings.com/api/smartapps/installations/45b32e18-a124-4e1a-ba86-b92f6068c8f6/command?type=music&device=9e55e73e-2061-4be9-9fc1-e26d09b4d63b&command=level&value=5&access_token=82738eb3-f9c7-4f4c-a7f6-d55952ee7ea2&_=1461119060404
@@ -54,24 +53,24 @@ namespace SmartThings_Home_Hub__Universal_
 
         private void PlayPauseButton_Checked(object sender, RoutedEventArgs e)
         {
-            performAction("play");
+            SmartThingsAPI_Actions.performAction("music", null, "play", 0, true);
             PlayPauseButton.Content = "";
         }
 
         private void PlayPauseButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            performAction("pause");
+            SmartThingsAPI_Actions.performAction("music", null, "pause", 0, true);
             PlayPauseButton.Content = "";
         }
 
         private void RewindClick(object sender, RoutedEventArgs e)
         {
-            performAction("previousTrack");
+            SmartThingsAPI_Actions.performAction("music", null, "previousTrack", 0, true);
         }
 
         private void FastforwardClick(object sender, RoutedEventArgs e)
         {
-            performAction("nextTrack");
+            SmartThingsAPI_Actions.performAction("music", null, "nextTrack", 0, true);
         }
 
         private void ShuffleClick(object sender, RoutedEventArgs e)
@@ -105,76 +104,6 @@ namespace SmartThings_Home_Hub__Universal_
             RepeatButton.Foreground = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0, 66, 97));
             return;
         }
-
-        private void performAction(string command)
-        {
-            string app = getApp();
-            string token = getToken();
-            List<string> devices = getDevice(app, token);
-
-            if (command == "play" || command == "pause")
-            {
-                foreach (string device in devices)
-                {
-                    string rqstMsg = "https://graph.api.smartthings.com/api/smartapps/installations/" + app + "/command?type=music&device=" + device + "&command=" + command + "&access_token=" + token;
-                    HttpRequestMessage request = new HttpRequestMessage(
-                        HttpMethod.Get,
-                        rqstMsg);
-                    HttpClient client = new HttpClient();
-                    client.SendAsync(request);
-                }
-            }
-            else
-            {
-                string device = devices[0];
-                string rqstMsg = "https://graph.api.smartthings.com/api/smartapps/installations/" + app + "/command?type=music&device=" + device + "&command=" + command + "&access_token=" + token;
-                HttpRequestMessage request = new HttpRequestMessage(
-                    HttpMethod.Get,
-                    rqstMsg);
-                HttpClient client = new HttpClient();
-                client.SendAsync(request);
-            }
-        }
-
-        #region Gets the SmartThings app ID
-        public string getApp()
-        {
-            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
-            string app = "";
-
-            /* Load SmartThings App ID */
-            if (roamingSettings.Values["stAppID"] == null)
-            {
-                this.Frame.Navigate(typeof(SettingsPage));
-            }
-            else
-            {
-                app = roamingSettings.Values["stAppID"].ToString();
-            }
-
-            return app;
-        }
-        #endregion
-
-        #region Gets the SmartThings app token
-        public string getToken()
-        {
-            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
-            string token = "";
-
-            /* Load SmartThings Access Token */
-            if (roamingSettings.Values["stToken"] == null)
-            {
-                this.Frame.Navigate(typeof(SettingsPage));
-            }
-            else
-            {
-                token = roamingSettings.Values["stToken"].ToString();
-            }
-
-            return token;
-        }
-        #endregion
 
         #region Gets all Sonos music devices in SmartThings
         public List<string> getDevice(string app, string token)
