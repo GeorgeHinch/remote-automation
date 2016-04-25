@@ -13,7 +13,7 @@ namespace SmartThings_Home_Hub__Universal_.Classes
 {
     class SmartThingsAPI_GetDevices
     {
-        #region Gets all  devices of TYPE in SmartThings
+        #region Gets all device IDs of TYPE in SmartThings
         public static List<string> getDeviceID(string type)
         {
             string app = SmartThingsAPI_Access.getApp();
@@ -78,7 +78,7 @@ namespace SmartThings_Home_Hub__Universal_.Classes
         }
         #endregion
 
-        #region Gets all  devices of TYPE in SmartThings
+        #region Gets all devices of TYPE in SmartThings
         public static List<SmartThingsHub> getDevice(string type)
         {
             string app = SmartThingsAPI_Access.getApp();
