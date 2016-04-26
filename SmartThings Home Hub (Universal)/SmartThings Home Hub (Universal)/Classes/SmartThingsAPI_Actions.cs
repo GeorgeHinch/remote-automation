@@ -10,7 +10,7 @@ namespace SmartThings_Home_Hub__Universal_.Classes
     class SmartThingsAPI_Actions
     {
         #region Performs actions on SmartThings API
-        public static void performAction(string type, string sender, string command, int value, bool isAll)
+        public static void performAction(string type, string sender, string command, double value, bool isAll)
         {
             string app = SmartThingsAPI_Access.getApp();
             string token = SmartThingsAPI_Access.getToken();
@@ -89,6 +89,20 @@ namespace SmartThings_Home_Hub__Universal_.Classes
 
             #region Actions for LOCK type devices
             if (type == "lock")
+            {
+
+            }
+            #endregion
+
+            #region Actions for THERMOSTAT type devices
+            if (type == "thermostatHeat" || type == "thermostatCool")
+            {
+
+            }
+            #endregion
+
+            #region Actions for MODE
+            if (type == "mode")
             {
 
             }
