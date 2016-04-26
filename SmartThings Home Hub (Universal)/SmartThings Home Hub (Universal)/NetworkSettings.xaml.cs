@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.Networking.Connectivity;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -38,7 +39,7 @@ namespace SmartThings_Home_Hub__Universal_
 
         public static string ipLabel;
 
-        public static Windows.Networking.Connectivity.ConnectionProfile connectionProfile = Windows.Networking.Connectivity.NetworkInformation.GetInternetConnectionProfile();
+        public static ConnectionProfile connectionProfile = NetworkInformation.GetInternetConnectionProfile();
 
         public void netInterface()
         {
@@ -70,11 +71,10 @@ namespace SmartThings_Home_Hub__Universal_
 
         public void netIP()
         {
-            var Host = Windows.Networking.Connectivity.NetworkInformation.GetHostNames().Last();
+            var Host = NetworkInformation.GetHostNames().Last();
             IPAddress address = IPAddress.Parse(Host.DisplayName);
 
             ipLabel = address.ToString();
-            Debug.WriteLine("The IP address is: " + address);
         }
 
         public void netStatusText()
@@ -93,12 +93,14 @@ namespace SmartThings_Home_Hub__Universal_
         {
             if (connectionLabel == "wifi")
             {
-                var interfaceSSID = connectionProfile.WlanConnectionProfileDetails.GetConnectedSsid();
+                netInterfaceTextBox.Visibility = Visibility.Collapsed;
 
-                Debug.WriteLine(interfaceSSID);
+                sigWifiStackpanel.Visibility = Visibility.Visible;
+                sigWifiTextblock.Text = connectionProfile.WlanConnectionProfileDetails.GetConnectedSsid();
             }
             else
             {
+                netInterfaceTextBox.Visibility = Visibility.Visible;
                 netInterfaceTextBox.Text = "No wireless device found.";
             }
         }

@@ -207,6 +207,9 @@
     <Compile Include="Classes\Spotify_AlbumFetch.cs" />
     <Compile Include="Classes\Spotify_SongFind.cs" />
     <Compile Include="Classes\SubstringExtension.cs" />
+    <Compile Include="Controls\NotifBarTray.xaml.cs">
+      <DependentUpon>NotifBarTray.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EnviromentPage.xaml.cs">
       <DependentUpon>EnviromentPage.xaml</DependentUpon>
     </Compile>
@@ -345,6 +348,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CameraPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\NotifBarTray.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

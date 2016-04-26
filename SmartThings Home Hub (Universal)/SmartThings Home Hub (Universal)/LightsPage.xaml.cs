@@ -41,8 +41,8 @@ namespace SmartThings_Home_Hub__Universal_
 
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(5);
-            EventHandler<Object> stupd = new EventHandler<object>(this.refreshTick);
-            timer.Tick += stupd;
+            EventHandler<Object> handlr = new EventHandler<object>(this.refreshTick);
+            timer.Tick += handlr;
             timer.Start();
         }
 
@@ -292,41 +292,6 @@ namespace SmartThings_Home_Hub__Universal_
             }
         }
         #endregion
-
-        async void timer_Tick(object sender, object something)
-        {
-            //var wifiAdapters = await WiFiAdapter.FindAllAdaptersAsync();
-            //var firstWifiAdapter = wifiAdapters[0]; // be more careful, check size, etc...
-            //Debug.WriteLine(wifiAdapters[0]);       // again, check size, or look for your specific network
-            //var rssi = firstWifiAdapter.NetworkReport.AvailableNetworks[0].NetworkRssiInDecibelMilliwatts;
-            this.pwrIcon(this.getCurrentPowerSupplyStatus());
-            // do whatever you want with your RSSI
-
-        } 
-
-        public PowerSupplyStatus getCurrentPowerSupplyStatus()
-        {
-            return Windows.System.Power.PowerManager.PowerSupplyStatus;
-        }
-
-        public void pwrIcon(PowerSupplyStatus status)
-        {
-            switch (status)
-            {
-                case PowerSupplyStatus.Inadequate:
-                    //strPowerLineStatus = "Device is running on battery";
-                    pwrStateIcon.Text = $"";
-                    break;
-                case PowerSupplyStatus.Adequate:
-                    //strPowerLineStatus = "Device is plugged in";
-                    pwrStateIcon.Text = $"";
-                    break;
-                case PowerSupplyStatus.NotPresent:
-                    //strPowerLineStatus = "Power Status: Unknown";
-                    pwrStateIcon.Text = $"";
-                    break;
-            }
-        }
 
         private void Home_Click(object sender, RoutedEventArgs e)
         {

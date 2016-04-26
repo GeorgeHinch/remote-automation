@@ -57,6 +57,7 @@ namespace SmartThings_Home_Hub__Universal_
 
 
                 #region Create icon textblock
+                tbIcon.Name = sth.device;
                 tbIcon.Text = WebUtility.HtmlDecode("&#59389;");
                 if (sth.value == "active" || sth.value == "open")
                 {

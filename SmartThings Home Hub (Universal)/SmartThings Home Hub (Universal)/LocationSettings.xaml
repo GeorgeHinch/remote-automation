@@ -23,7 +23,7 @@
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Weather Location" FontSize="18.667" />
-                <Line Stroke="#FFCFCFCF" X1="0" Y1="0" X2="1000" Y2="0" Margin="0,10,0,20" />
+                <Line Stroke="#FFCFCFCF" X1="0" Y1="0" X2="1000" Y2="0" Margin="0,10,0,15" />
             </StackPanel>
 
             <TextBlock Text="Zip Code:" />

@@ -66,7 +66,7 @@ namespace SmartThings_Home_Hub__Universal_
 
         public void netInterface()
         {
-            var profile = Windows.Networking.Connectivity.NetworkInformation.GetInternetConnectionProfile();
+            var profile = NetworkInformation.GetInternetConnectionProfile();
             if (profile != null)
             {
                 var interfaceType = profile.NetworkAdapter.IanaInterfaceType;
@@ -95,14 +95,14 @@ namespace SmartThings_Home_Hub__Universal_
 
         public void netAP()
         {
-            var profile = Windows.Networking.Connectivity.NetworkInformation.GetInternetConnectionProfile();
-            var prof = Windows.Networking.Connectivity.NetworkInformation.GetConnectionProfiles();
+            var profile = NetworkInformation.GetInternetConnectionProfile();
+            var prof = NetworkInformation.GetConnectionProfiles();
             var inter = profile.GetNetworkNames();
 
             Debug.WriteLine(inter.ToString());
         }
 
-        public static Windows.Networking.Connectivity.ConnectionProfile connectionProfile = Windows.Networking.Connectivity.NetworkInformation.GetInternetConnectionProfile();
+        public static ConnectionProfile connectionProfile = NetworkInformation.GetInternetConnectionProfile();
 
         public void getSSID()
         {

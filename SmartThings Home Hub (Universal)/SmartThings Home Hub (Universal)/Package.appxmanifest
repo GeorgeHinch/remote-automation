@@ -42,5 +42,6 @@
     <DeviceCapability Name="microphone" />
     <DeviceCapability Name="proximity" />
     <DeviceCapability Name="b7152a76-3644-4e58-9083-9f42639b78d5" />
+    <DeviceCapability Name="wifiControl" />
   </Capabilities>
 </Package>

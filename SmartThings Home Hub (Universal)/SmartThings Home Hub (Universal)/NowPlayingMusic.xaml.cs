@@ -36,15 +36,11 @@ namespace SmartThings_Home_Hub__Universal_
         {
             this.InitializeComponent();
 
-            string app = SmartThingsAPI_Access.getApp();
-            string token = SmartThingsAPI_Access.getToken();
-
-
-
-            //DispatcherTimer timer = new DispatcherTimer();
-            //timer.Interval = TimeSpan.FromSeconds(2);
-            //timer.Tick += new EventHandler<object>(loadStatus);
-            //timer.Start();
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(5);
+            EventHandler<Object> stupd = new EventHandler<object>(this.loadStatus);
+            timer.Tick += stupd;
+            timer.Start();
 
             // Volume
             // https://graph.api.smartthings.com/api/smartapps/installations/45b32e18-a124-4e1a-ba86-b92f6068c8f6/command?type=music&device=9e55e73e-2061-4be9-9fc1-e26d09b4d63b&command=level&value=5&access_token=82738eb3-f9c7-4f4c-a7f6-d55952ee7ea2&_=1461119060404
@@ -55,12 +51,17 @@ namespace SmartThings_Home_Hub__Universal_
 
         private void PlayPauseButton_Checked(object sender, RoutedEventArgs e)
         {
-            SmartThingsAPI_Actions.performAction("music", null, "play", 0, true);
+            Debug.WriteLine("E: " + e.OriginalSource + " |");
+            if (sender.ToString() == "Windows.UI.Xaml.Controls.Primitives.ToggleButton")
+            {
+                SmartThingsAPI_Actions.performAction("music", null, "play", 0, true);
+            }
             PlayPauseButton.Content = "";
         }
 
         private void PlayPauseButton_Unchecked(object sender, RoutedEventArgs e)
         {
+            Debug.WriteLine("Sender: " + sender.ToString() + " |");
             SmartThingsAPI_Actions.performAction("music", null, "pause", 0, true);
             PlayPauseButton.Content = "";
         }
