@@ -102,6 +102,8 @@ namespace SmartThings_Home_Hub__Universal_
             {
                 netInterfaceTextBox.Visibility = Visibility.Visible;
                 netInterfaceTextBox.Text = "No wireless device found.";
+
+                sigWifiStackpanel.Visibility = Visibility.Collapsed;
             }
         }
     }

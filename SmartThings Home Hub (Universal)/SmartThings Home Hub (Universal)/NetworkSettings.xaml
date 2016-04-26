@@ -21,7 +21,7 @@
 
             <TextBlock x:Name="netInterfaceTextBox" Text="No wireless device found." />
             
-            <StackPanel x:Name="sigWifiStackpanel" Orientation="Horizontal" Margin="10,0">
+            <StackPanel x:Name="sigWifiStackpanel" Visibility="Collapsed" Orientation="Horizontal" Margin="10,0">
                 <TextBlock Text="&#xE701;" FontFamily="Segoe MDL2 Assets" FontSize="25" />
                 <StackPanel Margin="10,0,0,0">
                     <TextBlock x:Name="sigWifiTextblock" FontWeight="Medium" TextTrimming="CharacterEllipsis"/>

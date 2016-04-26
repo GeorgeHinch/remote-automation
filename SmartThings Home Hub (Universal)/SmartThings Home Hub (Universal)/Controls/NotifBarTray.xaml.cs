@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
+using Windows.Devices.WiFi;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Networking.Connectivity;
@@ -34,12 +37,8 @@ namespace SmartThings_Home_Hub__Universal_.Controls
 
         async void timer_Tick(object sender, object something)
         {
-            //var wifiAdapters = await WiFiAdapter.FindAllAdaptersAsync();
-            //var firstWifiAdapter = wifiAdapters[0]; // be more careful, check size, etc...
-            //Debug.WriteLine(wifiAdapters[0]);       // again, check size, or look for your specific network
-            //var rssi = firstWifiAdapter.NetworkReport.AvailableNetworks[0].NetworkRssiInDecibelMilliwatts;
-            this.pwrIcon(this.getCurrentPowerSupplyStatus()); 
-            // do whatever you want with your RSSI
+            this.pwrIcon(this.getCurrentPowerSupplyStatus());
+            await this.sigIcon();
 
         }
 
@@ -70,22 +69,53 @@ namespace SmartThings_Home_Hub__Universal_.Controls
         #endregion
 
         #region Determines network status
-        public void sigIcon()
+        public async Task sigIcon()
         {
             Tuple<string, string, string> conProfile = this.netInterface(this.getCurrentConnectionProfile());
 
             sigStrengthIcon.Text = conProfile.Item2;
             sigStrengthTextblock.Text = "This devices is connected to the network via " + conProfile.Item1 + ".";
+
+            #region If the network type is wifi
             if (conProfile.Item1 == "wifi")
             {
                 sigWifiStackpanel.Visibility = Visibility.Visible;
                 sigWifiTextblock.Text = conProfile.Item3;
+
+                var wifiAdapters = await WiFiAdapter.FindAllAdaptersAsync();
+                var firstWifiAdapter = wifiAdapters[0]; // be more careful, check size, etc...
+                var rssi = firstWifiAdapter.NetworkReport.AvailableNetworks[0].NetworkRssiInDecibelMilliwatts;
+
+                #region Conrects dBm to icon
+                if (rssi >= -67)
+                {
+                    sigStrengthIcon.Text = "";
+                }
+                else if (rssi < -67 && rssi >= -70)
+                {
+                    sigStrengthIcon.Text = "";
+                }
+                else if (rssi < -70 && rssi >= -80)
+                {
+                    sigStrengthIcon.Text = "";
+                }
+                else if (rssi < -80)
+                {
+                    sigStrengthIcon.Text = "";
+                }
+                else
+                {
+                    sigStrengthIcon.Text = "";
+                }
+                #endregion
             }
+            #endregion
         }
 
         public ConnectionProfile getCurrentConnectionProfile()
         {
             return NetworkInformation.GetInternetConnectionProfile();
+
         }
 
         public Tuple<string, string, string> netInterface(ConnectionProfile connectionProfile)
@@ -117,6 +147,19 @@ namespace SmartThings_Home_Hub__Universal_.Controls
             }
 
             return null;
+        }
+
+        #endregion
+
+        #region Determines and sets volume
+        private void volSoundIconBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Volume_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            
         }
         #endregion
     }
