@@ -24,7 +24,7 @@
                 <Button.Flyout>
                     <Flyout Placement="Bottom">
                         <Grid Width="250">
-                            <TextBlock FontSize="12" Text="Your content here" />
+                            <TextBlock FontSize="12" Text="No bluetooth devices found." HorizontalAlignment="Center" Foreground="#FFCFCFCF" />
                         </Grid>
                     </Flyout>
                 </Button.Flyout>
