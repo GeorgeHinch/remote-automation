@@ -6,6 +6,12 @@ using Windows.UI.Xaml.Controls;
 using System.Net.Http;
 using Windows.UI.Xaml.Media.Imaging;
 using System.Diagnostics;
+using SmartThings_Home_Hub__Universal_.Classes;
+using System.Collections.Generic;
+using Windows.UI.Xaml.Media;
+using Windows.UI;
+using Windows.UI.Text;
+using Windows.UI.Xaml.Input;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -18,13 +24,22 @@ namespace SmartThings_Home_Hub__Universal_
     public sealed partial class MainPage : Page
     {
         public static MainPage mainPage;
+
+        public DispatcherTimer timerClock = new DispatcherTimer();
+        public DispatcherTimer timerStatus = new DispatcherTimer();
+
         public MainPage()
         {
             InitializeComponent();
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1);
-            timer.Tick += new EventHandler<object>(dispatchTimer_Tick);
-            timer.Start();
+            statusTimer_Tick(this, null);
+            
+            timerClock.Interval = TimeSpan.FromSeconds(1);
+            timerClock.Tick += new EventHandler<object>(dispatchTimer_Tick);
+            timerClock.Start();
+            
+            timerStatus.Interval = TimeSpan.FromMinutes(1);
+            timerStatus.Tick += new EventHandler<object>(statusTimer_Tick);
+            timerStatus.Start();
 
             Image_Replace();
             Location_Replace();
@@ -42,11 +57,6 @@ namespace SmartThings_Home_Hub__Universal_
 
         public void allLights_Click(object sender, RoutedEventArgs e)
         {
-            HttpRequestMessage request = new HttpRequestMessage(
-                HttpMethod.Get,
-                $"https://graph.api.smartthings.com/api/smartapps/installations/6f9372eb-2568-4544-9fae-b530d9140166/command?type=helloHome&device=helloHome&command=Auto+Sleep&access_token=f2adcb57-b59c-4338-9b78-a541a400ec79s");
-            HttpClient client = new HttpClient();
-            client.SendAsync(request);
 
         }
 
@@ -126,8 +136,54 @@ namespace SmartThings_Home_Hub__Universal_
         /// </summary>
         private void Unlock_Click(object sender, RoutedEventArgs e)
         {
+            timerClock.Stop();
+            timerStatus.Stop();
+
             this.Frame.Navigate(typeof(HomePage));
         }
 
+        void statusTimer_Tick(object sender, object e)
+        {
+            List<SmartThingsHub> devices = SmartThingsAPI_GetDevices.getDevice("mode");
+            Status_mode.Text = devices[0].mode;
+        }
+
+        private void HouseStatus_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            List<SmartThingsHub> devices = SmartThingsAPI_GetDevices.getDevice("mode");
+            SmartThingsHub hub = devices[0];
+            IList<string> modes = hub.modes;
+
+            foreach (string mode in modes)
+            {
+                Button btn = new Button();
+                btn.Background = new SolidColorBrush(Color.FromArgb(255, 75, 75, 75));
+                btn.Foreground = new SolidColorBrush(Colors.White);
+                btn.HorizontalAlignment = HorizontalAlignment.Stretch;
+                btn.VerticalAlignment = VerticalAlignment.Center;
+                btn.Height = 50;
+                btn.Content = mode;
+                btn.Margin = new Thickness(0, 5, 0, 0);
+                btn.FontWeight = FontWeights.Thin;
+                btn.Tag = mode;
+                btn.Tapped += new TappedEventHandler(ModeSelect_Tapped);
+
+                ModeSelect_Stackpanel.Children.Add(btn);
+            }
+
+            ModeSelect_Grid.Visibility = Visibility.Visible;
+        }
+
+        private void ModeSelect_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Button sdr = (Button)sender;
+            SmartThingsAPI_Actions.performAction("mode", null, sdr.Tag.ToString(), 0, false);
+
+            ModeSelect_Grid.Visibility = Visibility.Collapsed;
+
+            ModeSelect_Stackpanel.Children.Clear();
+
+            statusTimer_Tick(this, null);
+        }
     }
 }

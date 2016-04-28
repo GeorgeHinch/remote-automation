@@ -44,7 +44,7 @@ namespace SmartThings_Home_Hub__Universal_.Controls
         async void timer_Tick(object sender, object something)
         {
             this.pwrIcon(this.getCurrentPowerSupplyStatus());
-            await this.sigIcon();
+            this.sigIcon();
 
         }
 

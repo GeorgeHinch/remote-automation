@@ -85,7 +85,7 @@ namespace SmartThings_Home_Hub__Universal_.Classes
             string token = SmartThingsAPI_Access.getToken();
 
             List<SmartThingsHub> deviceIDList = new List<SmartThingsHub>();
-
+            string tileString = "";
             ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
             bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
 
@@ -113,23 +113,32 @@ namespace SmartThings_Home_Hub__Universal_.Classes
                             bool typeString = false;
                             if (type == "music")
                             {
+                                tileString = "device";
                                 typeString = (sth.type == "music");
                             }
                             else if (type == "switch")
                             {
+                                tileString = "device";
                                 typeString = (sth.type == "switch");
                             }
                             else if (type == "motion")
                             {
+                                tileString = "device";
                                 typeString = (sth.type == "motion" || sth.type == "contact");
                             }
                             else if (type == "presence")
                             {
+                                tileString = "device";
                                 typeString = (sth.type == "presence");
+                            }
+                            else if (type == "mode")
+                            {
+                                tileString = "mode";
+                                typeString = (sth.type == "mode");
                             }
 
 
-                            if (sth.tile == "device" && typeString)
+                            if (sth.tile == tileString && typeString)
                             {
                                 deviceIDList.Add(sth);
                             }

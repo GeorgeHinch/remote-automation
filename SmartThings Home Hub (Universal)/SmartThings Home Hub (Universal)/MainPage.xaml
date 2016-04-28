@@ -36,7 +36,7 @@
                     <TextBlock x:Name="Status_Time" TextWrapping="Wrap" Text="11:28" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Height="{Binding RowDefinitions[0].Height.Value, ElementName=TimeDateBlock, Mode=OneWay}" Width="{Binding ActualWidth, ElementName=CenterColumn, Mode=OneWay}" FontSize="96" TextAlignment="Center" FontFamily="{StaticResource FF-RobotoThin}"/>
                     <TextBlock x:Name="Status_Date" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Tuesday, May 15, 2015" VerticalAlignment="Bottom" Width="{Binding ActualWidth, ElementName=CenterColumn, Mode=OneWay}" TextAlignment="Center" Foreground="White" Margin="0,0,0,12" FontFamily="{StaticResource FF-RobotoThin}" FontSize="13.333"/>
                 </Grid>
-                <Grid x:Name="HouseStatus" HorizontalAlignment="Left" Width="{Binding ActualWidth, ElementName=CenterColumn, Mode=OneWay}" Margin="0,5,0,15" Grid.RowSpan="1" Background="#7F000000" Height="60" Grid.Row="1">
+                <Grid x:Name="HouseStatus" HorizontalAlignment="Left" Width="{Binding ActualWidth, ElementName=CenterColumn, Mode=OneWay}" Margin="0,5,0,15" Grid.RowSpan="1" Background="#7F000000" Height="60" Grid.Row="1" Tapped="HouseStatus_Tapped">
                     <TextBlock x:Name="HouseStatusLabel" Text="apartment is set to..." Margin="15,10" FontFamily="{StaticResource FF-RobotoLight}" Foreground="White" FontSize="10.667" />
                     <TextBlock x:Name="Status_mode" Text="home" Margin="15,23,15,8" FontFamily="{StaticResource FF-RobotoLight}" Foreground="#7FFFFFFF" FontSize="24" d:LayoutOverrides="Height, TopPosition, BottomPosition" />
                 </Grid>
@@ -83,6 +83,23 @@
             <local:SystemStatusNotif />
         </Grid>
 
+        <Grid x:Name="ModeSelect_Grid" Grid.ColumnSpan="3" Background="#F2282828" Visibility="Collapsed">
+            <!-- #F23C6D74 #F200B1FF-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="7*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <ScrollViewer Grid.Column="1" Grid.Row="1">
+                <StackPanel x:Name="ModeSelect_Stackpanel" Orientation="Vertical" VerticalAlignment="Center" />
+            </ScrollViewer>
+        </Grid>
     </Grid>
 </Page>

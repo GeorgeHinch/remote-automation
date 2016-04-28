@@ -104,7 +104,12 @@ namespace SmartThings_Home_Hub__Universal_.Classes
             #region Actions for MODE
             if (type == "mode")
             {
-
+                string rqstMsg = "https://graph.api.smartthings.com/api/smartapps/installations/" + app + "/command?type=mode&device=mode&command=" + command.Replace(" ", "+") + "&access_token=" + token;
+                HttpRequestMessage request = new HttpRequestMessage(
+                    HttpMethod.Get,
+                    rqstMsg);
+                HttpClient client = new HttpClient();
+                client.SendAsync(request);
             }
             #endregion
         }
