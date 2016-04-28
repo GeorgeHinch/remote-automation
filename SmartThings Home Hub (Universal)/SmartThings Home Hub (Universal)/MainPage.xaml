@@ -55,20 +55,20 @@
                         <Button x:Name="lockBttm1" Click="allLights_Click" HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Height="80">
                             <Grid>
                                 <TextBlock x:Name="lockBttm1Icon" Text="&#xEA80;" FontFamily="Segoe MDL2 Assets" Foreground="#7FFFFFFF" TextAlignment="Center" FontSize="40" Height="60"/>
-                                <TextBlock x:Name="lockBttm1Label" Text="all lights" FontFamily="{StaticResource FF-RobotoThin}" Foreground="White" TextAlignment="Center" Height="20" Margin="0,45,0,-5"/>
+                                <TextBlock x:Name="lockBttm1Label" Text="all lights" FontFamily="{StaticResource FF-RobotoThin}" Foreground="White" TextAlignment="Center" Height="20" Margin="0,45,0,-5" TextTrimming="CharacterEllipsis"/>
                             </Grid>
                         </Button>
                     </Grid>
                     <Grid Grid.Column="1" Background="#7F000000" Margin="2.5,0" >
-                        <Button x:Name="lockBttm2" HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Height="80">
+                        <Button x:Name="lockBttm2" Click="custom1_Click" HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Height="80">
                             <Grid>
                                 <TextBlock x:Name="lockBttm2Icon" Text="&#xEA80;" FontFamily="Segoe MDL2 Assets" Foreground="#7FFFFFFF" TextAlignment="Center" FontSize="40" Height="60"/>
-                                <TextBlock x:Name="lockBttm2Label" Text="all lights" FontFamily="{StaticResource FF-RobotoThin}" Foreground="White" TextAlignment="Center" Height="20" Margin="0,45,0,-5"/>
+                                <TextBlock x:Name="lockBttm2Label" Text="kitchen mood" FontFamily="{StaticResource FF-RobotoThin}" Foreground="White" TextAlignment="Center" Height="20" Margin="0,45,0,-5" TextTrimming="CharacterEllipsis"/>
                             </Grid>
                         </Button>
                     </Grid>
                     <Grid Grid.Column="2" Background="#7F000000" Margin="2.5,0,0,0" >
-                        <Button x:Name="lockBttm3" HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Height="80">
+                        <Button x:Name="lockBttm3" Click="custom2_Click" HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Height="80">
                             <Grid>
                                 <TextBlock x:Name="lockBttm3Icon" Text="&#xEA80;" FontFamily="Segoe MDL2 Assets" Foreground="#7FFFFFFF" TextAlignment="Center" FontSize="40" Height="60"/>
                                 <TextBlock x:Name="lockBttm3Label" Text="all lights" FontFamily="{StaticResource FF-RobotoThin}" Foreground="White" TextAlignment="Center" Height="20" Margin="0,45,0,-5"/>

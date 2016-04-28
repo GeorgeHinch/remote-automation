@@ -23,6 +23,16 @@ namespace SmartThings_Home_Hub__Universal_
 
     public sealed partial class MainPage : Page
     {
+        #region Stops timers on navigation from page
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            timerClock.Stop();
+            timerStatus.Stop();
+
+            base.OnNavigatedFrom(e);
+        }
+        #endregion
+
         public static MainPage mainPage;
 
         public DispatcherTimer timerClock = new DispatcherTimer();
@@ -36,116 +46,34 @@ namespace SmartThings_Home_Hub__Universal_
             timerClock.Interval = TimeSpan.FromSeconds(1);
             timerClock.Tick += new EventHandler<object>(dispatchTimer_Tick);
             timerClock.Start();
-            
-            timerStatus.Interval = TimeSpan.FromMinutes(1);
+
+            timerStatus.Interval = TimeSpan.FromSeconds(30);
             timerStatus.Tick += new EventHandler<object>(statusTimer_Tick);
             timerStatus.Start();
 
             Image_Replace();
             Location_Replace();
         }
-
-        /// <summary>
-        /// Timer controls the date and time on the lock screen. 
-        /// </summary>
-        void  dispatchTimer_Tick(object sender, object e)
+        
+        #region Timers to update lock screen
+        void dispatchTimer_Tick(object sender, object e)
         {
             // Placing time & date on lock
             Status_Time.Text = DateTime.Now.ToString("h" + ":" + "mm");
             Status_Date.Text = DateTime.Now.ToString("dddd, " + "MMMM dd" + ", " + "yyyy");
         }
 
-        public void allLights_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        /// <summary>
-        /// Customizes the lock screen background. Can be changed using the image picker on the Personalization page.
-        /// </summary>
-        public void Image_Replace()
-        {
-            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
-
-            Debug.WriteLine(roamingSettings.Values["LockBackgroundImage"]);
-
-            if (roamingSettings.Values["LockBackgroundImage"] == null)
-            {
-                roamingSettings.Values["LockBackgroundImage"] = "LockBackgroundImage_1";
-                LockBackgroundImage.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/28H.jpg"));
-            } else
-            {
-                if ((string)roamingSettings.Values["LockBackgroundImage"] == "LockBackgroundImage_1")
-                {
-                    LockBackgroundImage.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/28H.jpg"));
-                }
-                else if ((string)roamingSettings.Values["LockBackgroundImage"] == "LockBackgroundImage_2")
-                {
-                    LockBackgroundImage.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/Lock_Background_2.jpg"));
-                }
-                else if ((string)roamingSettings.Values["LockBackgroundImage"] == "LockBackgroundImage_3")
-                {
-                    LockBackgroundImage.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/Lock_Background_3.jpg"));
-                } else
-                {
-                    LockBackgroundImage.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/28H.jpg"));
-                }
-            }
-        }
-
-        /// <summary>
-        /// Customizes the location text on the lock screen. Options can be sellected with a toggle in the Personalization page.
-        /// </summary>
-        public void Location_Replace()
-        {
-            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
-
-            Debug.WriteLine(roamingSettings.Values["locRadio"]);
-
-            if (roamingSettings.Values["locRadio"] == null)
-            {
-                HouseStatusLabel.Text = "home is set to...";
-            }
-            else
-            {
-                if ((string)roamingSettings.Values["locRadio"] == "LocHome")
-                {
-                    HouseStatusLabel.Text = "home is set to...";
-                }
-                else if ((string)roamingSettings.Values["locRadio"] == "LocApartment")
-                {
-                    HouseStatusLabel.Text = "apartment is set to...";
-                }
-                else if ((string)roamingSettings.Values["locRadio"] == "LocOffice")
-                {
-                    HouseStatusLabel.Text = "office is set to...";
-                }
-                else if ((string)roamingSettings.Values["locRadio"] == "LocRoom")
-                {
-                    HouseStatusLabel.Text = "room is set to...";
-                }
-                else
-                {
-                    HouseStatusLabel.Text = "home is set to...";
-                }
-            }
-        }
-
-        /// <summary>
-        /// Click to unlock button
-        /// </summary>
-        private void Unlock_Click(object sender, RoutedEventArgs e)
-        {
-            timerClock.Stop();
-            timerStatus.Stop();
-
-            this.Frame.Navigate(typeof(HomePage));
-        }
-
         void statusTimer_Tick(object sender, object e)
         {
             List<SmartThingsHub> devices = SmartThingsAPI_GetDevices.getDevice("mode");
             Status_mode.Text = devices[0].mode;
+        }
+        #endregion
+
+        #region Actions for buttons on lock screen
+        private void Unlock_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(HomePage));
         }
 
         private void HouseStatus_Tapped(object sender, TappedRoutedEventArgs e)
@@ -185,5 +113,90 @@ namespace SmartThings_Home_Hub__Universal_
 
             statusTimer_Tick(this, null);
         }
+
+        public void allLights_Click(object sender, RoutedEventArgs e)
+        {
+            SmartThingsAPI_Actions.performAction("switch", null, "off", 0, true);
+        }
+
+        public void custom1_Click(object sender, RoutedEventArgs e)
+        {
+            SmartThingsAPI_Actions.performAction("switch", "ba69bfdf-ae9a-44ac-ac38-c16cc4cadf1b", "on", 0, false);
+        }
+
+        public void custom2_Click(object sender, RoutedEventArgs e)
+        {
+            SmartThingsAPI_Actions.performAction("switch", "ba69bfdf-ae9a-44ac-ac38-c16cc4cadf1b", "on", 0, false);
+        }
+        #endregion
+
+        #region Customizes the lock screen background. Can be changed using the image picker on the Personalization page.
+        public void Image_Replace()
+        {
+            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+
+            Debug.WriteLine(roamingSettings.Values["LockBackgroundImage"]);
+
+            if (roamingSettings.Values["LockBackgroundImage"] == null)
+            {
+                roamingSettings.Values["LockBackgroundImage"] = "LockBackgroundImage_1";
+                LockBackgroundImage.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/28H.jpg"));
+            } else
+            {
+                if ((string)roamingSettings.Values["LockBackgroundImage"] == "LockBackgroundImage_1")
+                {
+                    LockBackgroundImage.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/28H.jpg"));
+                }
+                else if ((string)roamingSettings.Values["LockBackgroundImage"] == "LockBackgroundImage_2")
+                {
+                    LockBackgroundImage.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/Lock_Background_2.jpg"));
+                }
+                else if ((string)roamingSettings.Values["LockBackgroundImage"] == "LockBackgroundImage_3")
+                {
+                    LockBackgroundImage.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/Lock_Background_3.jpg"));
+                } else
+                {
+                    LockBackgroundImage.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/28H.jpg"));
+                }
+            }
+        }
+        #endregion
+        
+        #region Customizes the location text on the lock screen. Options can be sellected with a toggle in the Personalization page.
+        public void Location_Replace()
+        {
+            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+
+            Debug.WriteLine(roamingSettings.Values["locRadio"]);
+
+            if (roamingSettings.Values["locRadio"] == null)
+            {
+                HouseStatusLabel.Text = "home is set to...";
+            }
+            else
+            {
+                if ((string)roamingSettings.Values["locRadio"] == "LocHome")
+                {
+                    HouseStatusLabel.Text = "home is set to...";
+                }
+                else if ((string)roamingSettings.Values["locRadio"] == "LocApartment")
+                {
+                    HouseStatusLabel.Text = "apartment is set to...";
+                }
+                else if ((string)roamingSettings.Values["locRadio"] == "LocOffice")
+                {
+                    HouseStatusLabel.Text = "office is set to...";
+                }
+                else if ((string)roamingSettings.Values["locRadio"] == "LocRoom")
+                {
+                    HouseStatusLabel.Text = "room is set to...";
+                }
+                else
+                {
+                    HouseStatusLabel.Text = "home is set to...";
+                }
+            }
+        }
+        #endregion
     }
 }
