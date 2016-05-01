@@ -23,17 +23,17 @@
             <my:NotifBarTray />
         </Grid>
 
-        <Grid x:Name="music_mainView" Grid.Row="1">
+        <Grid x:Name="security_mainView" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="20*" />
                 <ColumnDefinition Width="80*" />
             </Grid.ColumnDefinitions>
 
-            <Grid x:Name="musicListView" Grid.Column="0" Background="#FFF4F4F4">
+            <Grid x:Name="securityListView" Grid.Column="0" Background="#FFF4F4F4">
 
             </Grid>
 
-            <Grid x:Name="musicListDetails" Grid.Column="1">
+            <Grid x:Name="securityListDetails" Grid.Column="1">
 
             </Grid>
 
