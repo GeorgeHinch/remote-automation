@@ -32,18 +32,25 @@ namespace SmartThings_Home_Hub__Universal_
     /// </summary>
     public sealed partial class NowPlayingMusic : Page
     {
+        #region Stops timers on navigation from page
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            timer.Stop();
+
+            base.OnNavigatedFrom(e);
+        }
+        #endregion
+
+        public DispatcherTimer timer = new DispatcherTimer();
+
         public NowPlayingMusic()
         {
             this.InitializeComponent();
 
-            DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(5);
-            EventHandler<Object> stupd = new EventHandler<object>(this.loadStatus);
-            timer.Tick += stupd;
+            EventHandler<Object> handlr = new EventHandler<object>(this.loadStatus);
+            timer.Tick += handlr;
             timer.Start();
-
-            // Volume
-            // https://graph.api.smartthings.com/api/smartapps/installations/45b32e18-a124-4e1a-ba86-b92f6068c8f6/command?type=music&device=9e55e73e-2061-4be9-9fc1-e26d09b4d63b&command=level&value=5&access_token=82738eb3-f9c7-4f4c-a7f6-d55952ee7ea2&_=1461119060404
         }
 
         public bool isShuffle = false;

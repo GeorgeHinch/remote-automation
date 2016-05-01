@@ -97,7 +97,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <ScrollViewer Grid.Column="1" Grid.Row="1">
+            <ScrollViewer Grid.Column="1" Grid.Row="1" VerticalScrollBarVisibility="Hidden">
                 <StackPanel x:Name="ModeSelect_Stackpanel" Orientation="Vertical" VerticalAlignment="Center" />
             </ScrollViewer>
         </Grid>
