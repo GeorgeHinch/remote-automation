@@ -1,4 +1,4 @@
-﻿<Page
+﻿<Page xmlns:my="using:SmartThings_Home_Hub__Universal_.Controls" 
     x:Class="SmartThings_Home_Hub__Universal_.SecurityPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -20,7 +20,7 @@
                 <TextBlock Text="  Security" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource FF-RobotoThin}" />
             </StackPanel>
 
-            <local:SystemStatusNotif />
+            <my:NotifBarTray />
         </Grid>
 
         <Grid x:Name="music_mainView" Grid.Row="1">

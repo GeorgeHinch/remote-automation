@@ -20,7 +20,6 @@
                 <TextBlock Text="  Lights" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource FF-RobotoThin}" />
             </StackPanel>
 
-            <!--<local:SystemStatusNotif />-->
             <my:NotifBarTray />
         </Grid>
 

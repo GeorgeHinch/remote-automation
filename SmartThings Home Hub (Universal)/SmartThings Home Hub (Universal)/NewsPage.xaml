@@ -1,4 +1,4 @@
-﻿<Page
+﻿<Page xmlns:my="using:SmartThings_Home_Hub__Universal_.Controls" 
     x:Class="SmartThings_Home_Hub__Universal_.NewsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -28,7 +28,7 @@
                 <TextBlock Text="  News" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource FF-RobotoThin}" />
             </StackPanel>
 
-            <local:SystemStatusNotif />
+            <my:NotifBarTray />
         </Grid>
 
         <Grid x:Name="news_mainView" Grid.Row="1">

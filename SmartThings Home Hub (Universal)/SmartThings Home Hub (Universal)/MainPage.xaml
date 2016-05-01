@@ -1,4 +1,4 @@
-﻿<Page
+﻿<Page xmlns:my="using:SmartThings_Home_Hub__Universal_.Controls" 
     x:Class="SmartThings_Home_Hub__Universal_.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -80,7 +80,7 @@
         </Grid>
 
         <Grid x:Name="RightColumn" Grid.Column="2">
-            <local:SystemStatusNotif />
+            <my:NotifBarTray />
         </Grid>
 
         <Grid x:Name="ModeSelect_Grid" Grid.ColumnSpan="3" Background="#F2282828" Visibility="Collapsed">

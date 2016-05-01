@@ -14,7 +14,7 @@
                 <Button.Flyout>
                     <Flyout Placement="Bottom">
                         <Grid Width="250">
-                            <TextBlock FontSize="12" Text="Your content here" />
+                            <TextBlock FontSize="12" Text="No notifications at this time." />
                         </Grid>
                     </Flyout>
                 </Button.Flyout>
