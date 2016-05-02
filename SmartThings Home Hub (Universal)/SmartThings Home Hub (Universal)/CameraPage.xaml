@@ -30,11 +30,14 @@
             </Grid.ColumnDefinitions>
 
             <Grid x:Name="camerasListView" Grid.Column="0" Background="#FFF4F4F4">
-
+                <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                    <StackPanel x:Name="cameraListStackpanel" Orientation="Vertical" />
+                </ScrollViewer>
             </Grid>
 
             <Grid x:Name="camreasListDetails" Grid.Column="1">
-
+                <MediaElement x:Name="cameraViewVideo" />
+                <Image x:Name="cameraViewImage" />
             </Grid>
 
         </Grid>

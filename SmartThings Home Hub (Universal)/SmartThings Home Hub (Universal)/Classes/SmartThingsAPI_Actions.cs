@@ -101,6 +101,13 @@ namespace SmartThings_Home_Hub__Universal_.Classes
             }
             #endregion
 
+            #region Actions for CAMERA type devices
+            if (type == "camera")
+            {
+
+            }
+            #endregion
+
             #region Actions for MODE type
             if (type == "mode")
             {
