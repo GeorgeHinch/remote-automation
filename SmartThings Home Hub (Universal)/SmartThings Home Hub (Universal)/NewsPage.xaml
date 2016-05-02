@@ -25,7 +25,7 @@
         <Grid x:Name="StatusBar" Grid.Row="0" Background="#FFE9E9E9">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Margin="15,10,0,0">
                 <Button x:Name="ReturnHome" Click="Home_Click" Content="&#57828;" FontFamily="Segoe MDL2 Assets" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="2" FontSize="18.667" Margin="0,5" Padding="4" />
-                <TextBlock Text="  News" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource FF-RobotoThin}" />
+                <TextBlock Text="News" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource FF-RobotoThin}" Margin="7,0,0,0" />
             </StackPanel>
 
             <my:NotifBarTray />
