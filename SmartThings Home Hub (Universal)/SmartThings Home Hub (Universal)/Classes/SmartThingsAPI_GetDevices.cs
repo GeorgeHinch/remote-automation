@@ -138,7 +138,7 @@ namespace SmartThings_Home_Hub__Universal_.Classes
                             }
 
 
-                            if (sth.tile == tileString && typeString)
+                            if ((sth.tile == tileString) && typeString)
                             {
                                 deviceIDList.Add(sth);
                             }
@@ -148,7 +148,10 @@ namespace SmartThings_Home_Hub__Universal_.Classes
                 }
                 return deviceIDList;
             }
-            else { return null; }
+            else
+            {
+                return null;
+            }
         }
         #endregion
 

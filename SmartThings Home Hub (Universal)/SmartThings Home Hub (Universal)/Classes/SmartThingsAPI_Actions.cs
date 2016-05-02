@@ -90,7 +90,27 @@ namespace SmartThings_Home_Hub__Universal_.Classes
             #region Actions for LOCK type devices
             if (type == "lock")
             {
-
+                if (!isAll)
+                {
+                    string rqstMsg = "https://graph.api.smartthings.com/api/smartapps/installations/" + app + "/command?type=lock&device=" + sender + "&command=" + command + "&access_token=" + token;
+                    HttpRequestMessage request = new HttpRequestMessage(
+                        HttpMethod.Get,
+                        rqstMsg);
+                    HttpClient client = new HttpClient();
+                    client.SendAsync(request);
+                }
+                else
+                {
+                    foreach (string device in devices)
+                    {
+                        string rqstMsg = "https://graph.api.smartthings.com/api/smartapps/installations/" + app + "/command?type=lock&device=" + device + "&command=" + command + "&access_token=" + token;
+                        HttpRequestMessage request = new HttpRequestMessage(
+                            HttpMethod.Get,
+                            rqstMsg);
+                        HttpClient client = new HttpClient();
+                        client.SendAsync(request);
+                    }
+                }
             }
             #endregion
 

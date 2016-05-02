@@ -78,5 +78,10 @@ namespace SmartThings_Home_Hub__Universal_
 
             cameraViewImage.Source = new BitmapImage();
         }
+
+        private void Home_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(HomePage));
+        }
     }
 }
