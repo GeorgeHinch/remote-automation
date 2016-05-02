@@ -30,11 +30,21 @@ namespace SmartThings_Home_Hub__Universal_
     /// </summary>
     public sealed partial class MotionPage : Page
     {
+        #region Stops timers on navigation from page
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            timer.Stop();
+
+            base.OnNavigatedFrom(e);
+        }
+        #endregion
+
+        public DispatcherTimer timer = new DispatcherTimer();
+
         public MotionPage()
         {
             this.InitializeComponent();
-
-            DispatcherTimer timer = new DispatcherTimer();
+            
             timer.Interval = TimeSpan.FromSeconds(5);
             EventHandler<Object> stupd = new EventHandler<object>(this.refreshTick);
             timer.Tick += stupd;

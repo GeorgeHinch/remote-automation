@@ -34,12 +34,22 @@ namespace SmartThings_Home_Hub__Universal_
     /// </summary>
     public sealed partial class LightsPage : Page
     {
+        #region Stops timers on navigation from page
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            timer.Stop();
+
+            base.OnNavigatedFrom(e);
+        }
+        #endregion
+
+        public DispatcherTimer timer = new DispatcherTimer();
+
         public LightsPage()
         {
             this.InitializeComponent();
             loadDevices();
 
-            DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(5);
             EventHandler<Object> handlr = new EventHandler<object>(this.refreshTick);
             timer.Tick += handlr;
