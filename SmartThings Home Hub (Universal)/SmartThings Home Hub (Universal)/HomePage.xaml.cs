@@ -25,79 +25,10 @@ namespace SmartThings_Home_Hub__Universal_
     /// </summary>
     public sealed partial class HomePage : Page
     {
-        private DispatcherTimer _timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(10) };
-
-        SystemStatus systemStatus = new SystemStatus();
-
         public HomePage()
         {
             this.InitializeComponent();
-            this.timerReset();
-
-            systemStatus.pwrIcon(systemStatus.pwrState());
-            systemStatus.netInterface();
-            systemStatus.netAP();
-            
         }
-
-        private void timerReset()
-        {
-            _timer.Start();
-        }
-
-        private void HomePage_PointerMoved(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
-        {
-            // restart the timer whenever the user moves the cursor
-            timerReset();
-        }
-
-        private void Timer_Tick(object sender, object e)
-        {
-            this.Frame.Navigate(typeof(MainPage));
-        }
-
-        private void btnPlay_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            _timer.Tick += Timer_Tick;
-            this.PointerMoved += HomePage_PointerMoved;
-
-            _timer.Start();
-        }
-
-        private void btnPause_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            _timer.Tick -= Timer_Tick;
-            this.PointerMoved -= HomePage_PointerMoved;
-
-            _timer.Stop();
-        }
-
-
-
-
-
-
-
-
-
-
-        /* public void AttachEvents()
-        {
-            Application.Current.RootVisual.MouseMove += new MouseEventHandler(RootVisual_MouseMove);
-            Application.Current.RootVisual.KeyDown += new KeyEventHandler(RootVisual_KeyDown);
-
-            MouseDevice.MouseMoved; 
-
-            Application.Current.RootVisual.AddHandler(UIElement.MouseLeftButtonDownEvent, (MouseButtonEventHandler)RootVisual_MouseButtonDown, true);
-            Application.Current.RootVisual.AddHandler(UIElement.MouseRightButtonDownEvent, (MouseButtonEventHandler)RootVisual_MouseButtonDown, true);
-        }
-
-        public event TypedEventHandler<MouseDevice, MouseEventArgs> MouseMoved;
-        */
-
-
-
-
 
         private void Lights_Click(object sender, RoutedEventArgs e)
         {

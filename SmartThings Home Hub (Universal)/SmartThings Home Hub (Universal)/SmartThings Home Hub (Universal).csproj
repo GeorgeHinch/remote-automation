@@ -279,7 +279,6 @@
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="StatusLED.cs" />
-    <Compile Include="SystemStatus.cs" />
     <Compile Include="TurnOffLED.cs" />
     <Compile Include="UpdatesSettings.xaml.cs">
       <DependentUpon>UpdatesSettings.xaml</DependentUpon>
