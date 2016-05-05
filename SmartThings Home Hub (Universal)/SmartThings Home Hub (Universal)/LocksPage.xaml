@@ -24,7 +24,8 @@
         </Grid>
 
         <Grid x:Name="lock_mainView" Grid.Row="1">
-            <TextBlock x:Name="NoLocks" Text="no locks present" TextAlignment="Center" TextWrapping="Wrap" Foreground="#FFCCCCCC" VerticalAlignment="Center" />
+            <FlipView x:Name="lock_flipView" d:LayoutOverrides="Height, LeftPosition, RightPosition" Background="{x:Null}"/>
+            <TextBlock x:Name="NoLocks_TB" Text="no locks present" TextAlignment="Center" TextWrapping="Wrap" Foreground="#FFCCCCCC" VerticalAlignment="Center" Visibility="Collapsed" />
         </Grid>
     </Grid>
 </Page>

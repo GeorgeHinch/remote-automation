@@ -280,7 +280,6 @@
     </Compile>
     <Compile Include="StatusLED.cs" />
     <Compile Include="SystemStatus.cs" />
-    <Compile Include="SystemStatusNotif.cs" />
     <Compile Include="TurnOffLED.cs" />
     <Compile Include="UpdatesSettings.xaml.cs">
       <DependentUpon>UpdatesSettings.xaml</DependentUpon>
