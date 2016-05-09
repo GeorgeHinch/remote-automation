@@ -207,6 +207,7 @@
     <Compile Include="Classes\Spotify_AlbumFetch.cs" />
     <Compile Include="Classes\Spotify_SongFind.cs" />
     <Compile Include="Classes\SubstringExtension.cs" />
+    <Compile Include="Classes\System_NetworkState.cs" />
     <Compile Include="Controls\NotifBarTray.xaml.cs">
       <DependentUpon>NotifBarTray.xaml</DependentUpon>
     </Compile>

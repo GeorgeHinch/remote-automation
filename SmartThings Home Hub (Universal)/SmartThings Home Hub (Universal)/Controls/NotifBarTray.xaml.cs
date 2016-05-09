@@ -77,16 +77,16 @@ namespace SmartThings_Home_Hub__Universal_.Controls
         #region Determines network status
         public async Task sigIcon()
         {
-            Tuple<string, string, string> conProfile = this.netInterface(this.getCurrentConnectionProfile());
+            System_NetworkState conProfile = this.netInterface(this.getCurrentConnectionProfile());
 
-            sigStrengthIcon.Text = conProfile.Item2;
-            sigStrengthTextblock.Text = "This devices is connected to the network via " + conProfile.Item1 + ".";
+            sigStrengthIcon.Text = conProfile.icon;
+            sigStrengthTextblock.Text = "This devices is connected to the network via " + conProfile.type + ".";
 
             #region If the network type is wifi
-            if (conProfile.Item1 == "wifi")
+            if (conProfile.type == "wifi")
             {
                 sigWifiStackpanel.Visibility = Visibility.Visible;
-                sigWifiTextblock.Text = conProfile.Item3;
+                sigWifiTextblock.Text = conProfile.ssid;
 
                 var wifiAdapters = await WiFiAdapter.FindAllAdaptersAsync();
                 var firstWifiAdapter = wifiAdapters[0]; // be more careful, check size, etc...
@@ -121,34 +121,43 @@ namespace SmartThings_Home_Hub__Universal_.Controls
         public ConnectionProfile getCurrentConnectionProfile()
         {
             return NetworkInformation.GetInternetConnectionProfile();
-
         }
 
-        public Tuple<string, string, string> netInterface(ConnectionProfile connectionProfile)
+        public System_NetworkState netInterface(ConnectionProfile connectionProfile)
         {
             if (connectionProfile != null)
             {
                 var interfaceType = connectionProfile.NetworkAdapter.IanaInterfaceType;
+                System_NetworkState State = new System_NetworkState();
 
                 // 71 is WiFi & 6 is Ethernet(LAN)
                 if (interfaceType == 71)
                 {
                     var interfaceSSID = connectionProfile.WlanConnectionProfileDetails.GetConnectedSsid();
-                    return Tuple.Create("wifi", "", interfaceSSID.ToString());
+                    State.type = "wifi";
+                    State.icon = "";
+                    State.ssid = interfaceSSID.ToString();
+                    return State;
                 }
                 // 71 is WiFi & 6 is Ethernet(LAN)
                 else if (interfaceType == 6)
                 {
-                    return Tuple.Create("ethernet", "", "");
+                    State.type = "ethernet";
+                    State.icon = "";
+                    return State;
                 }
                 // 243 & 244 is 3G/Mobile
                 else if (interfaceType == 243 || interfaceType == 244)
                 {
-                    return Tuple.Create("3G/LTE", "", "");
+                    State.type = "3G/LTE";
+                    State.icon = "";
+                    return State;
                 }
                 else
                 {
-                    return Tuple.Create("unknown", "", "");
+                    State.type = "unknown";
+                    State.icon = "";
+                    return State;
                 }
             }
 
