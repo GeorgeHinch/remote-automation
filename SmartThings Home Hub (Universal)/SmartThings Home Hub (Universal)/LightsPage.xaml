@@ -26,6 +26,7 @@
         <Grid x:Name="lights_mainView" Grid.Row="1">
 
             <FlipView x:Name="light_flipView" d:LayoutOverrides="Height, LeftPosition, RightPosition" Background="{x:Null}"/>
+            <TextBlock x:Name="NoLights_TB" Text="no lights present" TextAlignment="Center" TextWrapping="Wrap" Foreground="#FFCCCCCC" VerticalAlignment="Center" Visibility="Collapsed" />
 
         </Grid>
     </Grid>

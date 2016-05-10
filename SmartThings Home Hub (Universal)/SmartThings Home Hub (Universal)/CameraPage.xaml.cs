@@ -16,26 +16,41 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace SmartThings_Home_Hub__Universal_
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// This page displays all of the CAMERA TYPE devices in the SmartThings Hub and captures photos.
     /// </summary>
     public sealed partial class CameraPage : Page
     {
+        #region Stops timers on navigation from page
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+        }
+        #endregion
+
         public CameraPage()
         {
             this.InitializeComponent();
-
-            loadCameras();
-        }
-
-        public void loadCameras()
-        {
             List<SmartThingsHub> devices = SmartThingsAPI_GetDevices.getDevice("camera");
 
+            #region Checks to see if there are any cameras
+            if (devices.Count != 0)
+            {
+                loadCameras(devices);
+            }
+            else
+            {
+                NoCamera_TB.Visibility = Visibility.Visible;
+                cameras_mainView.Visibility = Visibility.Collapsed;
+            }
+            #endregion
+        }
+
+        public void loadCameras(List<SmartThingsHub> devices)
+        {
+            #region Creates textblocks for each camera TYPE
             foreach (SmartThingsHub device in devices)
             {
                 TextBlock headTB = new TextBlock();
@@ -60,8 +75,10 @@ namespace SmartThings_Home_Hub__Universal_
 
                 this.cameraListStackpanel.Children.Add(camera_rb);
             }
+            #endregion
         }
 
+        #region Changes detail view based on camera selected
         private void radioButton_Checked(object sender, RoutedEventArgs routedEventArgs)
         {
             RadioButton radioButton = ((RadioButton)sender);
@@ -83,5 +100,6 @@ namespace SmartThings_Home_Hub__Universal_
         {
             this.Frame.Navigate(typeof(HomePage));
         }
+        #endregion
     }
 }

@@ -21,19 +21,20 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace SmartThings_Home_Hub__Universal_
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// This page displays all of the MOTION && CONTACT TYPE devices in the SmartThings Hub.
     /// </summary>
     public sealed partial class MotionPage : Page
     {
         #region Stops timers on navigation from page
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            timer.Stop();
+            if (timer.IsEnabled)
+            {
+                timer.Stop();
+            }
 
             base.OnNavigatedFrom(e);
         }
@@ -44,21 +45,29 @@ namespace SmartThings_Home_Hub__Universal_
         public MotionPage()
         {
             this.InitializeComponent();
-            
-            timer.Interval = TimeSpan.FromSeconds(5);
-            EventHandler<Object> stupd = new EventHandler<object>(this.refreshTick);
-            timer.Tick += stupd;
-            timer.Start();
+            List<SmartThingsHub> devices = SmartThingsAPI_GetDevices.getDevice("motion");
 
-            loadDevices();
+            #region Checks to see if there are any sensors
+            if (devices.Count != 0)
+            {
+                loadDevices(devices);
+
+                timer.Interval = TimeSpan.FromSeconds(5);
+                EventHandler<Object> handlr = new EventHandler<object>(this.refreshTick);
+                timer.Tick += handlr;
+                timer.Start();
+            }
+            else
+            {
+                NoSensors_TB.Visibility = Visibility.Visible;
+            }
+            #endregion
         }
 
         #region Loads and creates icons for motion devices
-        public void loadDevices()
+        public void loadDevices(List<SmartThingsHub> devices)
         {
-            List<SmartThingsHub> devices = SmartThingsAPI_GetDevices.getDevice("motion");
-
-            foreach(SmartThingsHub sth in devices)
+            foreach (SmartThingsHub sth in devices)
             {
                 StackPanel sp = new StackPanel();
                 TextBlock tbIcon = new TextBlock();

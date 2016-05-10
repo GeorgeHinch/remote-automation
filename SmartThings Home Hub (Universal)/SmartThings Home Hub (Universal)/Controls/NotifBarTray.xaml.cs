@@ -117,7 +117,9 @@ namespace SmartThings_Home_Hub__Universal_.Controls
             }
             #endregion
         }
+        #endregion
 
+        #region Determines type of network
         public ConnectionProfile getCurrentConnectionProfile()
         {
             return NetworkInformation.GetInternetConnectionProfile();
@@ -163,7 +165,6 @@ namespace SmartThings_Home_Hub__Universal_.Controls
 
             return null;
         }
-
         #endregion
 
         #region Determines and sets volume & now playing information

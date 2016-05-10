@@ -21,12 +21,10 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace SmartThings_Home_Hub__Universal_
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// This page displays all of the LOCK TYPE devices in the SmartThings Hub and allows you to toggle the status.
     /// </summary>
     public sealed partial class LocksPage : Page
     {
@@ -52,7 +50,7 @@ namespace SmartThings_Home_Hub__Universal_
             #region Checks to see if there are any locks
             if (devices.Count != 0)
             {
-                loadDevices();
+                loadDevices(devices);
 
                 timer.Interval = TimeSpan.FromSeconds(5);
                 EventHandler<Object> handlr = new EventHandler<object>(this.refreshTick);
@@ -67,14 +65,12 @@ namespace SmartThings_Home_Hub__Universal_
         }
 
         #region Loads and creates buttons on locks page
-        public void loadDevices()
+        public void loadDevices(List<SmartThingsHub> devices)
         {
             List<Button> deviceButtonList = new List<Button>();
             List<StackPanel> deviceStackpanelList = new List<StackPanel>();
             StackPanel indexSP = new StackPanel();
             int indexVal = 1;
-
-            List<SmartThingsHub> devices = SmartThingsAPI_GetDevices.getDevice("lock");
 
             #region Creates buttons from ST JSON
             foreach (SmartThingsHub sth in devices)

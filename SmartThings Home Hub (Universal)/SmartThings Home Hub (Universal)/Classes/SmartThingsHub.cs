@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace SmartThings_Home_Hub__Universal_.Classes
 {
     [DataContract]
-    class SmartThingsHub
+    public class SmartThingsHub
     {
         [DataMember(Name = "tile")]
         public string tile { get; set; }

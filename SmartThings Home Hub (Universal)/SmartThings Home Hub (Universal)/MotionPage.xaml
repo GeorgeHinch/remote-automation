@@ -25,6 +25,7 @@
 
         <Grid x:Name="motion_mainView" Grid.Row="1">
             <StackPanel x:Name="motion_Stackpanel" Orientation="Horizontal" HorizontalAlignment="Center" />
+            <TextBlock x:Name="NoSensors_TB" Text="no sensors present" TextAlignment="Center" TextWrapping="Wrap" Foreground="#FFCCCCCC" VerticalAlignment="Center" Visibility="Collapsed" />
         </Grid>
     </Grid>
 </Page>

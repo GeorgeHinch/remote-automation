@@ -25,19 +25,20 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace SmartThings_Home_Hub__Universal_
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// This page displays all of the SWITCH TYPE devices in the SmartThings Hub and allows you to toggle the status.
     /// </summary>
     public sealed partial class LightsPage : Page
     {
         #region Stops timers on navigation from page
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            timer.Stop();
+            if (timer.IsEnabled)
+            {
+                timer.Stop();
+            }
 
             base.OnNavigatedFrom(e);
         }
@@ -48,16 +49,27 @@ namespace SmartThings_Home_Hub__Universal_
         public LightsPage()
         {
             this.InitializeComponent();
-            loadDevices();
+            List<SmartThingsHub> devices = SmartThingsAPI_GetDevices.getDevice("switch");
 
-            timer.Interval = TimeSpan.FromSeconds(5);
-            EventHandler<Object> handlr = new EventHandler<object>(this.refreshTick);
-            timer.Tick += handlr;
-            timer.Start();
+            #region Checks to see if there are any lights
+            if (devices.Count != 0)
+            {
+                loadDevices(devices);
+
+                timer.Interval = TimeSpan.FromSeconds(5);
+                EventHandler<Object> handlr = new EventHandler<object>(this.refreshTick);
+                timer.Tick += handlr;
+                timer.Start();
+            }
+            else
+            {
+                NoLights_TB.Visibility = Visibility.Visible;
+            }
+            #endregion
         }
 
         #region Loads and creates buttons on lights page
-        public void loadDevices()
+        public void loadDevices(List<SmartThingsHub> devices)
         {
             List<Button> deviceButtonList = new List<Button>();
             List<StackPanel> deviceStackpanelList = new List<StackPanel>();
@@ -66,8 +78,6 @@ namespace SmartThings_Home_Hub__Universal_
             StackPanel mainIndexSP = new StackPanel();
             int indexVal = 1;
             int mainIndexVal = 1;
-
-            List<SmartThingsHub> devices = SmartThingsAPI_GetDevices.getDevice("switch");
 
             #region Creates buttons from ST JSON
             foreach (SmartThingsHub sth in devices)
