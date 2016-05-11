@@ -69,5 +69,20 @@ namespace SmartThings_Home_Hub__Universal_.Classes
 
         [DataMember(Name = "ts")]
         public string ts { get; set; }
+
+        [DataMember(Name = "humidity")]
+        public string humidity { get; set; }
+
+        [DataMember(Name = "temperature")]
+        public string temperature { get; set; }
+
+        [DataMember(Name = "thermostatFanMode")]
+        public string thermostatFanMode { get; set; }
+
+        [DataMember(Name = "thermostatOperatingState")]
+        public string thermostatOperatingState { get; set; }
+
+        [DataMember(Name = "setpoint")]
+        public int setpoint { get; set; }
     }
 }

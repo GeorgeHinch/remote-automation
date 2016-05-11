@@ -64,7 +64,16 @@ namespace SmartThings_Home_Hub__Universal_
         void statusTimer_Tick(object sender, object e)
         {
             List<SmartThingsHub> devices = SmartThingsAPI_GetDevices.getDevice("mode");
-            Status_mode.Text = devices[0].mode.ToLower();
+
+            if (devices.Count != 0 || devices == null)
+            {
+                Status_mode.Text = devices[0].mode.ToLower();
+            }
+            else
+            {
+                Status_mode.Text = "null";
+                Status_hub.Text = "offline";
+            }
         }
         #endregion
 
