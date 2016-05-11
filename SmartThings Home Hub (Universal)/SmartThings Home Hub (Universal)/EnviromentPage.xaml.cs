@@ -20,6 +20,7 @@ using System.Net;
 using System.Text;
 using SmartThings_Home_Hub__Universal_.Classes;
 using Windows.Networking.Connectivity;
+using static SmartThings_Home_Hub__Universal_.Classes.OWM_WeatherStatus;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -44,73 +45,25 @@ namespace SmartThings_Home_Hub__Universal_
 
         public void openWeatherSerializer()
         {
-            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+            WeatherDetails weatherDetails = OWM_GetWeather.getSingleCity();
 
-            string zip = (string)roamingSettings.Values["ZipCode"];
-            
-            string country = "US";
-
-            if (roamingSettings.Values["ZipCode"] == null)
+            if (weatherDetails != null)
             {
-                roamingSettings.Values["ZipCode"] = "98122";
+                outsideTempBox.Text = Math.Round(weatherDetails.main.temp) + "°";
+                pressureText.Text = Math.Round(weatherDetails.main.pressure) + " hPa";
+                humidityText.Text = weatherDetails.main.humidity + "%";
+
+                windDegree = (int)weatherDetails.wind.deg;
+                windSpeed = weatherDetails.wind.speed.ToString();
+
+                windDirection();
             }
             else
             {
-                HttpRequestMessage request = new HttpRequestMessage(
-                    HttpMethod.Get,
-                    $"http://api.openweathermap.org/data/2.5/weather?zip={zip},{country}&units=imperial&APPID=e1e2647eeddb5412d5c4ee2fef620871");
-                HttpClient client = new HttpClient();
-                var response = client.SendAsync(request).Result;
-                if (response.StatusCode == HttpStatusCode.OK)
-                {
-                    var result = response.Content.ReadAsStringAsync().Result;
-                    var bytes = Encoding.Unicode.GetBytes(result);
-                    using (MemoryStream stream = new MemoryStream(bytes))
-                    {
-                        var serializer = new DataContractJsonSerializer(typeof(WeatherDetails));
-                        var weatherDetails = (WeatherDetails)serializer.ReadObject(stream);
-
-                        outsideTempBox.Text = $"{(weatherDetails.main.temp):F0}°";
-                        pressureText.Text = $"{(weatherDetails.main.pressure):F0} hPa";
-                        humidityText.Text = $"{(weatherDetails.main.humidity):F0}%";
-
-                        windDegree = (int)weatherDetails.wind.deg;
-                        windSpeed = weatherDetails.wind.speed.ToString();
-
-                        windDirection();
-
-                        Debug.WriteLine(windDegree.ToString());
-                        Debug.WriteLine(windSpeed.ToString());
-                    }
-                }
-                else
-                {
-                    outsideTempBox.Text = "err";
-                    pressureText.Text = "err";
-                    humidityText.Text = "err";
-                }
+                outsideTempBox.Text = "err";
+                pressureText.Text = "err";
+                humidityText.Text = "err";
             }
-        }
-
-        public class Temperature
-        {
-            public double temp { get; set; }
-            public double temp_min { get; set; }
-            public double temp_max { get; set; }
-            public double pressure { get; set; }
-            public double humidity { get; set; }
-        }
-
-        public class Wind
-        {
-            public double speed { get; set; }
-            public double deg { get; set; }
-        }
-
-        public class WeatherDetails
-        {
-            public Temperature main { get; set; }
-            public Wind wind { get; set; }
         }
 
         private void rotateWindIcon(double angle)
