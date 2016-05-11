@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -16,6 +17,8 @@ using Windows.Data.Json;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
+using Windows.UI.Input;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -50,6 +53,35 @@ namespace SmartThings_Home_Hub__Universal_
             /* this.statusLeds.setColorAll(0, 255, 0); */
             new LEDsSettings().ledPower_Checker();
             new PersonalizationSettings().alertOff_Toggler();
+
+            startIdleTimer();
+            Window.Current.CoreWindow.PointerPressed += idleTimerReset;
+        }
+        
+        public DispatcherTimer timer = new DispatcherTimer();
+
+        public void startIdleTimer()
+        {
+            timer.Interval = TimeSpan.FromSeconds(30);
+            EventHandler<Object> handlr = new EventHandler<object>(this.idleTimerTick);
+            timer.Tick += handlr;
+            timer.Start();
+        }
+
+        public void idleTimerReset(CoreWindow sender, PointerEventArgs args)
+        {
+            Debug.WriteLine("Timer reset | ");
+            timer.Start();
+        }
+
+        public void idleTimerTick(object sender, object e)
+        {
+            Frame rootFrame = (Frame)Window.Current.Content;
+
+            Debug.WriteLine("Timer Tick | ");
+            Debug.WriteLine("RootFrame Content: " + rootFrame.Content + " |");
+            //if (rootFrame.Content != typeof(MainPage)) { }
+            rootFrame.Navigate(typeof(MainPage));
         }
 
         public StatusLED getLEDs()
