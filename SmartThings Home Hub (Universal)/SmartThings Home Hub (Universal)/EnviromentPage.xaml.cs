@@ -34,14 +34,10 @@ namespace SmartThings_Home_Hub__Universal_
         public EnviromentPage()
         {
             this.InitializeComponent();
-            windDirection();
+
             openWeatherSerializer();
             insideTemp();
         }
-
-        public int windDegree = 0;
-
-        public string windSpeed = "0";
 
         public void openWeatherSerializer()
         {
@@ -53,10 +49,7 @@ namespace SmartThings_Home_Hub__Universal_
                 pressureText.Text = Math.Round(weatherDetails.main.pressure) + " hPa";
                 humidityText.Text = weatherDetails.main.humidity + "%";
 
-                windDegree = (int)weatherDetails.wind.deg;
-                windSpeed = weatherDetails.wind.speed.ToString();
-
-                windDirection();
+                windDirection((int)weatherDetails.wind.deg, weatherDetails.wind.speed.ToString());
             }
             else
             {
@@ -73,7 +66,7 @@ namespace SmartThings_Home_Hub__Universal_
             windIcon.UpdateLayout();
         }
 		
-		private void windDirection()
+		private void windDirection(int windDegree, string windSpeed)
 		{
 			if ((windDegree >= 348.76 && windDegree <= 360) || (windDegree >= 0 && windDegree <= 11.25))
 			{
@@ -149,85 +142,13 @@ namespace SmartThings_Home_Hub__Universal_
 		
 		private void insideTemp()
 		{
-            string app = getApp();
-            string token = getToken();
+            List<SmartThingsHub> devices = SmartThingsAPI_GetDevices.getDevice("temperature");
 
-            ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
-            bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
-
-            string rqstMsg = "https://graph.api.smartthings.com/api/smartapps/installations/" + app + "/data?access_token=" + token;
-
-            HttpRequestMessage request = new HttpRequestMessage(
-                    HttpMethod.Get,
-                    rqstMsg);
-            HttpClient client = new HttpClient();
-            if (internet != false)
+            if (devices.Count != 0)
             {
-                var response = client.SendAsync(request).Result;
-                if (response.StatusCode == HttpStatusCode.OK)
-                {
-                    var result = response.Content.ReadAsStringAsync().Result;
-                    var bytes = Encoding.Unicode.GetBytes(result);
-                    using (MemoryStream stream = new MemoryStream(bytes))
-                    {
-                        var serializer = new DataContractJsonSerializer(typeof(SmartThingsHub[]));
-                        SmartThingsHub[] devices = (SmartThingsHub[])serializer.ReadObject(stream);
-
-                        #region Creates stackpanel from ST JSON
-                        foreach (SmartThingsHub sth in devices)
-                        {
-                            if (sth.tile == "device" && sth.type == "temperature")
-                            {
-                                #region Updates inside temp
-                                insideTempBox.Text = sth.value;
-                                #endregion
-                            }
-                        }
-                        #endregion
-                    }
-                }
+                insideTempBox.Text = devices[0].value;
             }
         }
-
-        #region Gets the SmartThings app ID
-        public string getApp()
-        {
-            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
-            string app = "";
-
-            /* Load SmartThings App ID */
-            if (roamingSettings.Values["stAppID"] == null)
-            {
-                this.Frame.Navigate(typeof(SettingsPage));
-            }
-            else
-            {
-                app = roamingSettings.Values["stAppID"].ToString();
-            }
-
-            return app;
-        }
-        #endregion
-
-        #region Gets the SmartThings app token
-        public string getToken()
-        {
-            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
-            string token = "";
-
-            /* Load SmartThings Access Token */
-            if (roamingSettings.Values["stToken"] == null)
-            {
-                this.Frame.Navigate(typeof(SettingsPage));
-            }
-            else
-            {
-                token = roamingSettings.Values["stToken"].ToString();
-            }
-
-            return token;
-        }
-        #endregion
 
         private void thermoDown(object sender, RoutedEventArgs e)
 		{

@@ -141,6 +141,9 @@ namespace SmartThings_Home_Hub__Universal_.Classes
             [DataMember]
             public IList<Weather> weather { get; set; }
 
+            [DataMember(Name = "base")]
+            public string weatherBase { get; set; }
+
             [DataMember]
             public Main main { get; set; }
 
