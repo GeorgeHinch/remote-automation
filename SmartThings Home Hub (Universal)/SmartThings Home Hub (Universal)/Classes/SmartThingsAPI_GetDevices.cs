@@ -62,6 +62,10 @@ namespace SmartThings_Home_Hub__Universal_.Classes
                             {
                                 typeString = (sth.type == "presence");
                             }
+                            else if (type == "temperature")
+                            {
+                                typeString = (sth.type == "temperature");
+                            }
 
 
                             if (sth.tile == "device" && typeString)
@@ -130,6 +134,10 @@ namespace SmartThings_Home_Hub__Universal_.Classes
                             {
                                 tileString = "device";
                                 typeString = (sth.type == "presence");
+                            }
+                            else if (type == "temperature")
+                            {
+                                typeString = (sth.type == "temperature");
                             }
                             else if (type == "mode")
                             {
@@ -260,6 +268,11 @@ namespace SmartThings_Home_Hub__Universal_.Classes
                             {
                                 tileString = "device";
                                 typeString = (sth.type == "presence");
+                            }
+                            else if (type == "temperature")
+                            {
+                                tileString = "device";
+                                typeString = (sth.type == "temperature");
                             }
                             else if (type == "mode")
                             {
