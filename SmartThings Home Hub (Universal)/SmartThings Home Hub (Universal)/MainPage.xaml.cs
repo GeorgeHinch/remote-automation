@@ -13,12 +13,10 @@ using Windows.UI;
 using Windows.UI.Text;
 using Windows.UI.Xaml.Input;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
-
 namespace SmartThings_Home_Hub__Universal_
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// This page is the default view on app load.
     /// </summary>
 
     public sealed partial class MainPage : Page
@@ -112,6 +110,13 @@ namespace SmartThings_Home_Hub__Universal_
             ModeSelect_Stackpanel.Children.Clear();
 
             statusTimer_Tick(this, null);
+        }
+
+        private void ModeSelect_Close_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            ModeSelect_Grid.Visibility = Visibility.Collapsed;
+
+            ModeSelect_Stackpanel.Children.Clear();
         }
 
         public void allLights_Click(object sender, RoutedEventArgs e)

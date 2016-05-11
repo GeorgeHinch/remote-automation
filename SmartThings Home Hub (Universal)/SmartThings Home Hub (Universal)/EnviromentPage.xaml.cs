@@ -22,12 +22,10 @@ using SmartThings_Home_Hub__Universal_.Classes;
 using Windows.Networking.Connectivity;
 using static SmartThings_Home_Hub__Universal_.Classes.OWM_WeatherStatus;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace SmartThings_Home_Hub__Universal_
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// This page displays information for the local environment from OpenWeatherMap
     /// </summary>
     public sealed partial class EnviromentPage : Page
     {

@@ -23,6 +23,7 @@ namespace SmartThings_Home_Hub__Universal_
         {
             this.InitializeComponent();
 
+            #region Gets weather for city from Settings
             WeatherDetails weatherDetails = OWM_GetWeather.getSingleCity();
 
             if (weatherDetails != null)
@@ -39,6 +40,7 @@ namespace SmartThings_Home_Hub__Universal_
             {
                 WeatherTemp.Text = "err";
             }
+            #endregion
         }
 
         private void Home_Click(object sender, RoutedEventArgs e)

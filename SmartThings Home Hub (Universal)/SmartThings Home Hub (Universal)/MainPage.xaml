@@ -83,8 +83,7 @@
             <my:NotifBarTray />
         </Grid>
 
-        <Grid x:Name="ModeSelect_Grid" Grid.ColumnSpan="3" Background="#F2282828" Visibility="Collapsed">
-            <!-- #F23C6D74 #F200B1FF-->
+        <Grid x:Name="ModeSelect_Grid" Grid.ColumnSpan="3" Background="#F2282828" Visibility="Collapsed" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -97,6 +96,8 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
+            <TextBlock x:Name="ModeSelect_Close" Grid.Column="2" Text="&#xE711;" FontFamily="Segoe MDL2 Assets" Foreground="White" FontSize="24" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0" Tapped="ModeSelect_Close_Tapped" />
+            
             <ScrollViewer Grid.Column="1" Grid.Row="1" VerticalScrollBarVisibility="Hidden">
                 <StackPanel x:Name="ModeSelect_Stackpanel" Orientation="Vertical" VerticalAlignment="Center" />
             </ScrollViewer>
