@@ -64,8 +64,8 @@ namespace SmartThings_Home_Hub__Universal_
         void statusTimer_Tick(object sender, object e)
         {
             List<SmartThingsHub> devices = SmartThingsAPI_GetDevices.getDevice("mode");
-
-            if (devices.Count != 0 || devices == null)
+            
+            if (devices != null && devices.Count != 0)
             {
                 Status_mode.Text = devices[0].mode.ToLower();
             }

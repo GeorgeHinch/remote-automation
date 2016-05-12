@@ -53,9 +53,6 @@ namespace SmartThings_Home_Hub__Universal_
             /* this.statusLeds.setColorAll(0, 255, 0); */
             new LEDsSettings().ledPower_Checker();
             new PersonalizationSettings().alertOff_Toggler();
-
-            startIdleTimer();
-            Window.Current.CoreWindow.PointerPressed += idleTimerReset;
         }
         
         public DispatcherTimer timer = new DispatcherTimer();
@@ -70,18 +67,17 @@ namespace SmartThings_Home_Hub__Universal_
 
         public void idleTimerReset(CoreWindow sender, PointerEventArgs args)
         {
-            Debug.WriteLine("Timer reset | ");
             timer.Start();
         }
 
         public void idleTimerTick(object sender, object e)
         {
             Frame rootFrame = (Frame)Window.Current.Content;
-
-            Debug.WriteLine("Timer Tick | ");
-            Debug.WriteLine("RootFrame Content: " + rootFrame.Content + " |");
-            //if (rootFrame.Content != typeof(MainPage)) { }
-            rootFrame.Navigate(typeof(MainPage));
+            
+            if (rootFrame.Content.ToString() != "SmartThings_Home_Hub__Universal_.MainPage")
+            {
+                rootFrame.Navigate(typeof(MainPage));
+            }
         }
 
         public StatusLED getLEDs()
@@ -133,6 +129,9 @@ namespace SmartThings_Home_Hub__Universal_
             }
             // Ensure the current window is active
             Window.Current.Activate();
+
+            startIdleTimer();
+            Window.Current.CoreWindow.PointerPressed += this.idleTimerReset;
         }
 
         /// <summary>
